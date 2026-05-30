@@ -7,16 +7,15 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f8fafc;
+      --bg: #f5f8fb;
       --surface: #ffffff;
-      --surface-soft: #fcfdff;
+      --surface-soft: #f8fbff;
       --text: #111827;
       --muted: #52606d;
       --accent: #2563eb;
-      --accent-strong: #1d4ed8;
-      --accent-soft: rgba(37, 99, 235, 0.12);
+      --accent-dark: #1d4ed8;
       --border: #e2e8f0;
-      --shadow: 0 36px 80px rgba(15, 23, 42, 0.08);
+      --shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
       --radius: 28px;
     }
 
@@ -30,14 +29,14 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
     }
 
-    img,
-    svg {
+    img, svg {
       max-width: 100%;
       display: block;
     }
@@ -47,8 +46,7 @@
       text-decoration: none;
     }
 
-    button,
-    .btn {
+    button, .btn {
       font: inherit;
     }
 
@@ -61,10 +59,10 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(226,232,240,0.85);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     header.scrolled {
@@ -72,7 +70,7 @@
     }
 
     header.hide-nav {
-      transform: translateY(-115%);
+      transform: translateY(-120%);
     }
 
     .topbar {
@@ -81,6 +79,7 @@
       justify-content: space-between;
       gap: 24px;
       min-height: 84px;
+      padding: 0 0 6px;
     }
 
     .brand {
@@ -95,10 +94,10 @@
     .brand-mark {
       width: 38px;
       height: 38px;
-      border-radius: 14px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-radius: 14px;
+      background: linear-gradient(135deg, #2d6cec, #2563eb);
       color: white;
       font-weight: 800;
       font-size: 1rem;
@@ -126,9 +125,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 22px;
+      padding: 14px 24px;
       border-radius: 999px;
-      border: 1px solid transparent;
       background: var(--accent);
       color: white;
       font-weight: 700;
@@ -137,51 +135,73 @@
 
     .nav-cta:hover {
       transform: translateY(-1px);
-      background: #1d4ed8;
+      background: var(--accent-dark);
     }
 
     main {
-      padding: 36px 0 92px;
+      padding: 32px 0 72px;
     }
 
     .hero {
+      position: relative;
+      padding: 72px 0 40px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 800px;
+      height: 800px;
+      transform: translateX(-48%) translateY(-38%);
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.16), transparent 42%);
+      pointer-events: none;
+      filter: blur(60px);
+      z-index: 0;
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.16fr) minmax(320px, 0.84fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
       gap: 40px;
       align-items: start;
-      padding-top: 14px;
-      padding-bottom: 72px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-copy {
-      max-width: 620px;
+      max-width: 640px;
     }
 
-    .hero-copy span {
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--accent);
       margin-bottom: 20px;
-      text-transform: uppercase;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 700;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      width: fit-content;
     }
 
-    .hero-copy h1 {
-      font-size: clamp(3rem, 5vw, 5.2rem);
+    .hero-title {
+      font-size: clamp(3rem, 5vw, 5rem);
       line-height: 0.96;
+      max-width: 12ch;
       margin: 0;
-      letter-spacing: -0.06em;
-      max-width: 11ch;
     }
 
-    .hero-copy p {
+    .hero-description {
       margin: 28px 0 32px;
       color: var(--muted);
       font-size: 1.05rem;
-      max-width: 640px;
+      max-width: 680px;
     }
 
     .hero-actions {
@@ -190,125 +210,87 @@
       gap: 16px;
     }
 
-    .btn-primary,
-    .btn-secondary {
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
-      font-weight: 700;
       padding: 16px 26px;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
-    .btn-primary {
+    .button-primary {
       background: var(--accent);
       color: white;
     }
 
-    .btn-secondary {
+    .button-secondary {
+      border: 1px solid var(--border);
       background: white;
       color: var(--text);
-      border-color: var(--border);
     }
 
-    .btn-primary:hover,
-    .btn-secondary:hover {
+    .button:hover {
       transform: translateY(-1px);
     }
 
-    .hero-band {
+    .hero-stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 38px;
+      margin-top: 42px;
     }
 
-    .hero-band-item {
+    .stat-card {
+      padding: 22px 24px;
+      border-radius: 22px;
       background: rgba(37, 99, 235, 0.08);
-      border-radius: 18px;
-      padding: 22px;
-      min-height: 112px;
-      display: grid;
-      gap: 12px;
+      min-height: 108px;
     }
 
-    .hero-band-item strong {
-      display: block;
-      font-size: 1.3rem;
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    .hero-band-item span {
+    .stat-label {
       color: var(--muted);
       font-size: 0.95rem;
     }
 
     .hero-panel {
-      position: relative;
-      padding: 28px;
-      border-radius: 32px;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #f3f7ff 100%);
+      border: 1px solid rgba(148, 163, 184, 0.18);
       box-shadow: var(--shadow);
-      border: 1px solid rgba(148, 163, 184, 0.16);
-    }
-
-    .hero-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.15), transparent 38%);
-      pointer-events: none;
-    }
-
-    .hero-panel-content {
-      position: relative;
+      border-radius: 32px;
+      padding: 32px;
       display: grid;
-      gap: 22px;
+      gap: 24px;
     }
 
-    .panel-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
+    .hero-panel h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
     }
 
-    .panel-title {
-      font-size: 1rem;
-      letter-spacing: -0.01em;
-      font-weight: 700;
-    }
-
-    .panel-badge {
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      padding: 10px 14px;
-      background: rgba(37, 99, 235, 0.1);
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-
-    .panel-copy {
+    .hero-panel p {
+      margin: 0;
       color: var(--muted);
-      font-size: 0.98rem;
       line-height: 1.8;
     }
 
-    .panel-list {
+    .hero-panel-list {
       list-style: none;
-      display: grid;
-      gap: 14px;
       padding: 0;
       margin: 0;
+      display: grid;
+      gap: 14px;
     }
 
-    .panel-list li {
+    .hero-panel-list li {
       display: flex;
       align-items: flex-start;
       gap: 12px;
@@ -316,35 +298,35 @@
       color: var(--text);
     }
 
-    .panel-list li::before {
+    .hero-panel-list li::before {
       content: "";
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      margin-top: 0.5em;
       background: var(--accent);
+      margin-top: 6px;
       flex-shrink: 0;
     }
 
     .section {
-      padding: 92px 0;
+      padding: 88px 0;
     }
 
-    .section h2 {
+    .section-title {
       font-size: clamp(2.4rem, 3.2vw, 3.6rem);
       line-height: 1.02;
       margin: 0;
       max-width: 13ch;
     }
 
-    .section p.lead {
+    .section-lead {
       margin: 20px 0 0;
       max-width: 720px;
       color: var(--muted);
       font-size: 1.02rem;
     }
 
-    .grid-4 {
+    .cards-grid {
       display: grid;
       gap: 22px;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -355,62 +337,79 @@
       background: var(--surface);
       border-radius: 28px;
       padding: 32px;
-      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
       border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 24px 40px rgba(15, 23, 42, 0.05);
+      display: grid;
+      gap: 18px;
     }
 
     .card h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
+      margin: 0;
       font-size: 1.1rem;
     }
 
     .card p {
+      margin: 0;
       color: var(--muted);
       line-height: 1.8;
     }
 
-    .two-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      align-items: center;
-      margin-top: 32px;
-    }
-
-    .feature-callout {
+    .highlight-panel {
       background: rgba(37, 99, 235, 0.08);
       border: 1px solid rgba(37, 99, 235, 0.12);
-      border-radius: 30px;
+      border-radius: 32px;
       padding: 36px;
       box-shadow: 0 30px 60px rgba(37, 99, 235, 0.08);
     }
 
-    .feature-callout h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
+    .highlight-panel h3 {
+      margin: 0 0 18px;
       font-size: clamp(2rem, 2.8vw, 2.6rem);
+      line-height: 1.05;
     }
 
-    .feature-callout p {
+    .highlight-panel p {
+      margin: 0;
       color: var(--muted);
-      font-size: 1rem;
       line-height: 1.85;
     }
 
-    .about-grid {
+    .split-grid {
       display: grid;
-      gap: 28px;
-      grid-template-columns: 1.08fr 0.92fr;
-      align-items: start;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
       margin-top: 32px;
+      align-items: start;
     }
 
-    .about-copy p {
+    .feature-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .feature-item .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .feature-item p {
       margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
-    .testimonial-grid {
+    .testimonials {
       display: grid;
       gap: 24px;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -422,48 +421,79 @@
       color: white;
       border-radius: 28px;
       padding: 32px;
-      min-height: 220px;
+      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.18);
       display: grid;
-      gap: 16px;
+      gap: 18px;
     }
 
     .testimonial h3 {
       margin: 0;
-      font-size: 1.12rem;
+      font-size: 1.14rem;
+      line-height: 1.4;
     }
 
     .testimonial p {
       margin: 0;
-      line-height: 1.8;
       color: #cbd5e1;
+      line-height: 1.85;
     }
 
     .testimonial span {
+      display: inline-flex;
       color: #94a3b8;
       font-size: 0.95rem;
       font-weight: 600;
     }
 
+    .cta-panel {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border-radius: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      padding: 44px 36px;
+      box-shadow: var(--shadow);
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .cta-panel h3 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.02;
+    }
+
+    .cta-panel p {
+      margin: 20px auto 0;
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.02rem;
+      line-height: 1.85;
+    }
+
+    .cta-panel .button {
+      margin-top: 30px;
+    }
+
     footer {
-      padding: 22px 0 40px;
+      padding: 24px 0 40px;
       color: var(--muted);
       font-size: 0.95rem;
       text-align: center;
     }
 
-    @media (max-width: 1060px) {
-      .hero,
-      .two-column,
-      .about-grid {
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .split-grid,
+      .cards-grid,
+      .testimonials {
         grid-template-columns: 1fr;
       }
 
-      .hero-band {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .testimonial-grid {
-        grid-template-columns: 1fr;
+      .section {
+        padding: 72px 0;
       }
     }
 
@@ -477,25 +507,29 @@
         align-items: stretch;
       }
 
-      header {
-        padding: 0 0 10px;
-      }
-
       nav {
         justify-content: center;
       }
 
-      .hero-band,
-      .grid-4 {
+      .hero {
+        padding: 52px 0 30px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.4rem, 8vw, 3.6rem);
+      }
+
+      .hero-stats,
+      .hero-grid,
+      .cards-grid,
+      .split-grid,
+      .testimonials {
         grid-template-columns: 1fr;
       }
 
-      .hero-copy h1 {
-        font-size: clamp(2.6rem, 9vw, 4rem);
-      }
-
       .hero-panel,
-      .feature-callout {
+      .highlight-panel,
+      .cta-panel {
         padding: 28px;
       }
 
@@ -516,7 +550,7 @@
       <nav>
         <a href="#come-aiutiamo">Come aiutiamo</a>
         <a href="#metodo">Metodo 80/20</a>
-        <a href="#azienda">La nostra azienda</a>
+        <a href="#azienda">Azienda</a>
         <a href="#testimonianze">Testimonianze</a>
       </nav>
       <a class="nav-cta" href="#contattaci">Contattaci</a>
@@ -525,153 +559,152 @@
 
   <main class="page" id="top">
     <section class="hero">
-      <div class="hero-copy">
-        <span>Risolviamo i tuoi problemi di capelli</span>
-        <h1>Ti accompagniamo nella soluzione dei problemi di cute e capelli</h1>
-        <p>Ti accompagniamo nella soluzione dei problema di cute e capelli creando un percorso personalizzato grazie al metodo 80/20 testato su più di 280 persone.</p>
-        <div class="hero-actions">
-          <a class="btn-primary" href="#metodo">Scopri il metodo</a>
-          <a class="btn-secondary" href="#azienda">Scopri l'azienda</a>
-        </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Metodo 80/20 per cute e capelli</div>
+          <h1 class="hero-title">Un percorso personalizzato per cute e capelli sani e forti</h1>
+          <p class="hero-description">Aiutiamo persone con problemi di cute e capelli a risolvere le anomalie gravi con un metodo semplice, pratico e adatto al tuo caso.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contattaci">Prenota la consulenza</a>
+            <a class="button button-secondary" href="#metodo">Scopri il metodo</a>
+          </div>
 
-        <div class="hero-band">
-          <div class="hero-band-item">
-            <strong>280+</strong>
-            <span>persone già aiutate</span>
-          </div>
-          <div class="hero-band-item">
-            <strong>40+</strong>
-            <span>anni di esperienza tricologica</span>
-          </div>
-          <div class="hero-band-item">
-            <strong>80/20</strong>
-            <span>metodo testato per risultati reali</span>
-          </div>
-          <div class="hero-band-item">
-            <strong>Percorso personalizzato</strong>
-            <span>dal primo consulto al mantenimento</span>
-          </div>
-        </div>
-      </div>
-
-      <aside class="hero-panel" aria-label="Widget recensioni">
-        <div class="hero-panel-content">
-          <div class="panel-head">
-            <div>
-              <p class="panel-title">Piccolissimo widget recensioni</p>
-              <p class="panel-copy">Un elemento discreto ma autorevole che mostra l'esperienza diretta dei nostri clienti.</p>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <div class="stat-value">280+</div>
+              <div class="stat-label">clienti curati</div>
             </div>
-            <div class="panel-badge">Recensioni reali</div>
+            <div class="stat-card">
+              <div class="stat-value">40+</div>
+              <div class="stat-label">anni di esperienza</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">80/20</div>
+              <div class="stat-label">metodo testato</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">approccio personalizzato</div>
+            </div>
           </div>
+        </div>
 
-          <p class="panel-copy">Basato su oltre 280 persone, il nostro approccio non è una promessa: è un percorso costruito per risolvere problemi reali di cute e capelli.</p>
-
-          <ul class="panel-list">
-            <li>Per soluzioni concrete e misurabili</li>
-            <li>Metodo 80/20 validato nel tempo</li>
-            <li>Supporto personalizzato passo dopo passo</li>
+        <aside class="hero-panel" aria-label="Informazioni sul metodo">
+          <h3>Metodo 80/20: diagnosi, cura, mantenimento</h3>
+          <p>Ogni percorso parte da un'analisi dettagliata della tua cute e capelli, poi prosegue con un piano su misura e il controllo costante dei risultati.</p>
+          <ul class="hero-panel-list">
+            <li>Strategia su misura per ogni persona</li>
+            <li>Solo interventi efficaci, senza perdita di tempo</li>
+            <li>Supporto dedicato durante tutto il percorso</li>
           </ul>
-
-          <div style="display:grid; gap:14px; margin-top: 20px;">
-            <div style="display:flex; align-items:center; gap:12px;">
-              <img src="data:image/png;base64,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" alt="Recensioni" width="42" height="42" style="border-radius: 16px; background: white;"/>
-              <div>
-                <p style="margin:0; font-weight:700;">Reputation</p>
-                <p style="margin:0; color: var(--muted); font-size:0.95rem;">Widget di recensioni incluso per raccontare fiducia.</p>
-              </div>
-            </div>
+          <div class="hero-panel-cta">
+            <a class="button button-primary" href="#contattaci">Voglio una consulenza</a>
           </div>
-        </div>
-      </aside>
+        </aside>
+      </div>
     </section>
 
     <section id="come-aiutiamo" class="section">
-      <h2>Come aiutiamo i nostri clienti</h2>
-      <p class="lead">RISOLVIAMO ANOMALIE DI CUTE E CAPELLI</p>
+      <h2 class="section-title">Come aiutiamo i nostri clienti</h2>
+      <p class="section-lead">Offriamo un sistema completo per riportare salute e equilibrio alla cute e ai capelli, partendo da dati concreti e risultati misurabili.</p>
 
-      <div class="grid-4">
+      <div class="cards-grid">
         <article class="card">
-          <h3>La nostra consulenza tricologica</h3>
-          <p>Analisi approfondita della cute e delle esigenze di capelli, con un percorso costruito attorno alla tua situazione specifica.</p>
+          <h3>Consulenza tricologica professionale</h3>
+          <p>Analisi della cute e del capello per individuare le cause reali dei problemi e costruire una soluzione efficace.</p>
         </article>
         <article class="card">
-          <h3>I nostri percorsi</h3>
-          <p>Piani su misura per ogni fase del trattamento, pensati per riportare salute e vigore ai tuoi capelli.</p>
+          <h3>Piani personalizzati di trattamento</h3>
+          <p>Percorsi su misura per ogni fase del trattamento, con focus su riduzione dell'infiammazione e riparazione del capello.</p>
         </article>
         <article class="card">
-          <h3>I nostri percorsi di mantenimento</h3>
-          <p>Programmi dedicati per consolidare i risultati ottenuti e mantenere la salute della cute nel tempo.</p>
+          <h3>Mantenimento e follow-up</h3>
+          <p>Programmi continui per mantenere i risultati nel tempo e prevenire la ricomparsa delle anomalie.</p>
         </article>
         <article class="card">
-          <h3>Prodotti personalizzati</h3>
-          <p>Formule scelte in base al tuo caso, per trattamenti che agiscono in modo mirato e sensibile.</p>
+          <h3>Prodotti selezionati</h3>
+          <p>Scelte mirate di formule e trattamenti che si adattano alla tua situazione specifica e favoriscono un recupero duraturo.</p>
         </article>
       </div>
     </section>
 
     <section id="metodo" class="section">
-      <div class="two-column">
+      <div class="split-grid">
         <div>
-          <h2>Per poter dare alle persone qualcosa di estremamente diverso</h2>
-          <p class="lead">ABBIAMO UNITO OLTRE 40 ANNI DI ESPERIENZA in ambito tricologico per creare 80/20. Un metodo che basa sui "prodotti miracolosi" ma risultati reali.</p>
-          <div style="margin-top: 28px; display: grid; gap: 18px;">
-            <p style="margin:0;"><strong>Risolviamo i tuoi problemi di capelli</strong></p>
-            <p style="margin:0; color: var(--muted);">Lo facciamo grazie ad un metodo, all'insieme di strumenti e competenze che abbiamo messo insieme negli ultimi anni lavorando su + di 280 persone.</p>
-            <p style="margin:0; color: var(--muted);">Risolvendo centinaia di anomalie, imparando dagli errori e rinnovandoci ogni settimana di idee nuove.</p>
-            <p style="margin:0; color: var(--accent); font-weight:700;">COME POSSIAMO AIUTARTI</p>
+          <h2 class="section-title">Il nostro metodo 80/20 per capelli migliori</h2>
+          <p class="section-lead">Non è magia: è esperienza costruita su oltre 280 percorsi reali, con un metodo che elimina gli interventi inutili e concentra solo ciò che funziona.</p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="dot"></span>
+              <p>Analisi accurata della cute e del capello per identificare esattamente il problema.</p>
+            </div>
+            <div class="feature-item">
+              <span class="dot"></span>
+              <p>Interventi chiari e mirati, senza prodotti eccessivi o soluzioni generiche.</p>
+            </div>
+            <div class="feature-item">
+              <span class="dot"></span>
+              <p>Controllo continuo dei risultati e aggiustamenti rapidi per migliorare il percorso.</p>
+            </div>
           </div>
         </div>
-        <div class="feature-callout">
-          <h3>Un metodo estremamente diverso</h3>
-          <p>Il nostro approccio è costruito attorno alla cura, alla precisione e alla personalizzazione. Ogni percorso parte da una diagnosi reale e prosegue con interventi mirati per il mantenimento.</p>
+        <div class="highlight-panel">
+          <h3>Un approccio diverso per risultati reali</h3>
+          <p>Il metodo 80/20 viene costruito attorno al tuo caso, utilizzando i nostri anni di esperienza e i feedback di oltre 280 persone per impostare un percorso che funzioni davvero.</p>
         </div>
       </div>
     </section>
 
     <section id="azienda" class="section">
-      <h2>Siamo Beautrì</h2>
-      <p class="lead">Siamo Beautrì, un'azienda specializzata nella cura dei capelli che si occupa di risolvere tutte le anomalie che riguardano la cute e capelli.</p>
-      <div class="about-grid">
-        <div class="about-copy">
-          <p>Il nostro obiettivo è essere il veicolo per raggiungere i sogni e gli obiettivi dei nostri clienti e lo vogliamo fare a tutti i costi: Capelli sani nascono da persone ascoltate.</p>
-          <p>Non promettiamo risultati con la bacchetta magica, sarebbe contro la nostra etica.</p>
-          <p>Promettiamo però che tratteremo i tuoi capelli come se fossero i nostri, con l’ossessione per il risultato che ci contraddistingue, con la voglia di migliorarci sempre grazie ai vostri risultati.</p>
-          <p>Con la voglia di farti ottenere i risultati.</p>
-        </div>
-        <div class="feature-callout">
-          <h3>LA NOSTRA AZIENDA</h3>
-          <p>Il supporto che cerchi, con esperienza, cura e un metodo che unisce strumenti e conoscenze per portare risultati duraturi.</p>
-        </div>
+      <h2 class="section-title">Siamo Beautrì</h2>
+      <p class="section-lead">Crediamo nella cura autentica dei capelli: niente scorciatoie, solo un lavoro accurato che mette la tua cute al centro.</p>
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Supporto dedicato</h3>
+          <p>Professionisti che ti seguono passo dopo passo e rispondono a ogni esigenza durante il percorso.</p>
+        </article>
+        <article class="card">
+          <h3>Esperienza e conoscenza</h3>
+          <p>Oltre 40 anni di esperienza nel settore tricologico e centinaia di casi risolti con successo.</p>
+        </article>
+        <article class="card">
+          <h3>Etica e trasparenza</h3>
+          <p>Ti proponiamo solo ciò che serve davvero, con chiarezza sulle tempistiche e sui risultati attesi.</p>
+        </article>
+        <article class="card">
+          <h3>Risultati misurabili</h3>
+          <p>Il nostro lavoro è orientato a risultati concreti, non a slogan: salute, densità e benessere della cute.</p>
+        </article>
       </div>
     </section>
 
     <section id="testimonianze" class="section">
-      <h2>Alcune delle nostre testimonianze</h2>
-      <p class="lead">Cosa dice di noi chi si è affidato a noi per risolvere i problemi di cute e capelli</p>
-      <div class="testimonial-grid">
+      <h2 class="section-title">Le testimonianze dei nostri clienti</h2>
+      <p class="section-lead">Scopri le esperienze di chi ha scelto Beautrì per risolvere problemi di cute e capelli.</p>
+      <div class="testimonials">
         <article class="testimonial">
           <h3>"Finalmente ho trovato una soluzione concreta"</h3>
-          <p>La consulenza tricologica è stata precisa e personalizzata. Ho visto miglioramenti reali in poche settimane.</p>
+          <p>La consulenza è stata precisa e il percorso su misura ha portato miglioramenti visibili in poche settimane.</p>
           <span>Cliente soddisfatta</span>
         </article>
         <article class="testimonial">
-          <h3>"Ogni prodotto è studiato per me"</h3>
-          <p>I prodotti personalizzati hanno cambiato la mia routine e il mio cuoio capelluto ora è più sano e luminoso.</p>
+          <h3>"La mia cute non è mai stata così calma"</h3>
+          <p>Il trattamento ha ridotto prurito e irritazioni, e i capelli appaiono più forti e sani.</p>
           <span>Cliente felice</span>
         </article>
         <article class="testimonial">
-          <h3>"Il metodo 80/20 ha funzionato davvero"</h3>
-          <p>Approccio pratico, basato sui fatti e non sulle promesse. Un percorso fatto di supporto e risultati misurabili.</p>
+          <h3>"Un metodo basato sui fatti, non sulle promesse"</h3>
+          <p>Ogni passaggio era documentato, con controlli regolari e un piano chiaro per mantenere il risultato.</p>
           <span>Cliente consigliato</span>
         </article>
       </div>
     </section>
 
-    <section id="contattaci" class="section" style="padding-bottom: 56px;">
-      <div class="feature-callout" style="text-align:center;">
-        <h3>Sei pronto a risolvere i problemi di cute e capelli?</h3>
-        <p>Parliamo del tuo caso con una consulenza personalizzata. Scopri il metodo 80/20 e inizia il percorso che porta risultati reali.</p>
-        <a class="nav-cta" href="mailto:info@beautri.it" style="margin-top: 26px; display: inline-flex;">Contattaci ora</a>
+    <section id="contattaci" class="section">
+      <div class="cta-panel">
+        <h3>Pronto a iniziare il tuo percorso per cute e capelli migliori?</h3>
+        <p>Contattaci per una consulenza personalizzata e scopri come il metodo 80/20 può trasformare la tua situazione.</p>
+        <a class="button button-primary" href="mailto:info@beautri.it">Contattaci ora</a>
       </div>
     </section>
   </main>
