@@ -235,6 +235,40 @@
       transform: translateY(-1px);
     }
 
+    .reviews-widget {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 10px 18px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(26, 26, 26, 0.06);
+    }
+
+    .reviews-score {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .reviews-stars {
+      color: #EAB30A;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+    }
+
+    .reviews-count {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #4285F4;
+    }
+
+    .reviews-count:hover {
+      text-decoration: underline;
+    }
+
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -562,11 +596,15 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <div class="hero-eyebrow">Metodo 80/20 per cute e capelli</div>
-          <h1 class="hero-title">Un percorso personalizzato per cute e capelli sani e forti</h1>
-          <p class="hero-description">Aiutiamo persone con problemi di cute e capelli a risolvere le anomalie gravi con un metodo semplice, pratico e adatto al tuo caso.</p>
+          <h1 class="hero-title">Risolviamo i tuoi problemi di capelli</h1>
+          <p class="hero-description">Ti accompagniamo nella soluzione dei problemi di cute e capelli creando un percorso personalizzato grazie al metodo 80/20 testato su più di 280 persone.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#contattaci">Prenota la consulenza</a>
-            <a class="button button-secondary" href="#metodo">Scopri il metodo</a>
+            <a class="button button-primary" href="#come-aiutiamo">Come possiamo aiutarti</a>
+          </div>
+          <div class="reviews-widget">
+            <span class="reviews-score">4,9</span>
+            <span class="reviews-stars">★★★★★</span>
+            <a class="reviews-count" href="#testimonianze">207 recensioni</a>
           </div>
 
           <div class="hero-stats">
