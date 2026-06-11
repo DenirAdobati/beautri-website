@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Siamo — Beautrì</title>
+  <meta name="description" content="40 anni di esperienza. Un metodo unico. Scopri chi siamo e la nostra missione.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800;900&family=Lora:ital@1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #0A0A0A; line-height: 1.6; }
+    a { text-decoration: none; }
+    img { max-width: 100%; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAVBAR (identica a index.html) ── */
+    #main-navbar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 820px;
+      z-index: 9999;
+      border-radius: 999px;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      background: rgba(10,10,10,0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 999px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .nav-logo-img { height: 28px; width: auto; object-fit: contain; display: block; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-cta {
+      background: #F5C200; color: #0A0A0A; font-weight: 700; font-size: 13px;
+      padding: 8px 18px; border-radius: 999px; text-decoration: none;
+      white-space: nowrap; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #FFFFFF; border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 80px; left: 16px; right: 16px;
+      background: rgba(10,10,10,0.96); backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 24px; z-index: 9998; flex-direction: column;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-logo { display: flex; align-items: center; gap: 10px; padding-bottom: 20px; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .mobile-menu-brand { font-size: 20px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em; }
+    .mobile-menu-brand em { font-style: normal; color: #F5C200; }
+    .mobile-menu a { color: #FFFFFF; text-decoration: none; font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-cta { background: #F5C200; color: #0A0A0A; font-weight: 700; text-align: center; padding: 14px; border-radius: 999px; margin-top: 16px; border-bottom: none; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .cs-hero {
+      padding: 120px 0 80px;
+      background-color: #F5C200;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .cs-hero-inner {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .cs-badge {
+      display: inline-block;
+      background: rgba(0,0,0,0.1);
+      color: #0A0A0A;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 6px 16px;
+    }
+    .cs-hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #0A0A0A;
+      margin-top: 20px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .cs-hero-sub {
+      color: #1A1A1A;
+      font-size: 18px;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+    .daniela-img {
+      width: 100%;
+      max-width: 420px;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    }
+
+    /* ── SEZIONE 2: STORIA ── */
+    .cs-story {
+      padding: 80px 0;
+      background-color: #FFFFFF;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .cs-story-inner { max-width: 800px; margin: 0 auto; }
+    .cs-story h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #0A0A0A;
+      margin-bottom: 32px;
+    }
+    .cs-story p {
+      color: #444444;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .cs-story p:last-child { margin-bottom: 0; }
+
+    /* ── SEZIONE 3: STATS ── */
+    .cs-stats {
+      padding: 80px 0;
+      background-color: #0A0A0A;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .cs-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .cs-stat {
+      text-align: center;
+      padding: 48px 24px;
+      border-right: 1px solid #222222;
+    }
+    .cs-stat:last-child { border-right: none; }
+    .cs-stat-val {
+      font-family: 'Poppins', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: #F5C200;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .cs-stat-lbl {
+      color: #A0A0A0;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    /* ── SEZIONE 4: CTA ── */
+    .cs-cta {
+      padding: 100px 0;
+      background-color: #F5C200;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      text-align: center;
+    }
+    .cs-cta h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      color: #0A0A0A;
+      letter-spacing: -0.03em;
+    }
+    .cs-cta-sub {
+      color: #1A1A1A;
+      font-size: 17px;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    .cs-cta-btn {
+      display: inline-block;
+      background: #0A0A0A;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 999px;
+      padding: 16px 36px;
+      margin-top: 32px;
+      transition: opacity 0.2s;
+    }
+    .cs-cta-btn:hover { opacity: 0.8; }
+    .cs-cta-back {
+      display: block;
+      text-align: center;
+      color: #333333;
+      font-size: 14px;
+      margin-top: 20px;
+      transition: color 0.2s;
+    }
+    .cs-cta-back:hover { color: #0A0A0A; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background-color: #0A0A0A;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      padding: 64px 0 32px;
+      color: #A0A0A0;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand { font-size: 20px; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; }
+    .footer-brand span { color: #F5C200; }
+    .footer-desc { font-size: 14px; line-height: 1.7; color: #666666; }
+    .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #555555; margin-bottom: 16px; }
+    .footer-col a { display: block; color: #666666; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: #FFFFFF; }
+    .footer-btm { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid #1A1A1A; font-size: 13px; color: #444444; }
+    .footer-btm a { color: #444444; transition: color 0.2s; }
+    .footer-btm a:hover { color: #FFFFFF; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .cs-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .cs-hero h1 { font-size: 2.2rem; }
+      .cs-hero-sub { font-size: 16px; }
+      .daniela-img { height: 380px; margin-top: 0; }
+      .cs-stats-grid { grid-template-columns: 1fr 1fr; }
+      .cs-stat { border-right: none; border-bottom: 1px solid #222222; }
+      .cs-stat:nth-child(2n) { border-left: 1px solid #222222; }
+      .cs-stat:nth-last-child(-n+2) { border-bottom: none; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-btm { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="./Logo.png" alt="Beautrì logo" class="nav-logo-img">
+        <span>Beautr<span style="color:#FFFFFF">ì</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#metodo">Consulenza</a>
+        <a href="index.html#metodo">Percorsi</a>
+        <a href="chi-siamo.html">Chi Siamo</a>
+        <a href="index.html#testimonianze">Testimonianze</a>
+      </div>
+      <div class="nav-right">
+        <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="nav-cta">Come Possiamo Aiutarti</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-logo">
+      <img src="./Logo.png" alt="Beautrì logo" style="height:36px; width:auto; object-fit:contain;">
+      <span class="mobile-menu-brand">Beautr<em>ì</em></span>
+    </div>
+    <a href="index.html#metodo">Consulenza Tricologica</a>
+    <a href="index.html#metodo">Percorsi</a>
+    <a href="index.html#metodo">Percorso Mantenimento</a>
+    <a href="chi-siamo.html">Chi Siamo</a>
+    <a href="index.html#testimonianze">Testimonianze</a>
+    <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="mobile-cta">Come Possiamo Aiutarti</a>
+  </div>
+
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="wrap cs-hero-inner">
+
+      <div>
+        <span class="cs-badge">Chi Siamo</span>
+        <h1>Siamo Beautrì</h1>
+        <p class="cs-hero-sub">40 anni di esperienza. Un metodo unico.<br>Una missione: risolvere i tuoi problemi di cute e capelli.</p>
+      </div>
+
+      <div>
+        <img src="Daniela%20(1).jpg" alt="Daniela - Fondatrice Beautrì" class="daniela-img">
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- SEZIONE 2: STORIA -->
+  <section class="cs-story">
+    <div class="wrap cs-story-inner">
+      <h2>La nostra storia</h2>
+      <p>Siamo un'azienda specializzata nella cura dei capelli che si occupa di risolvere tutte le anomalie che riguardano la cute e i capelli.</p>
+      <p>Il nostro obiettivo è essere il veicolo per raggiungere i sogni e gli obiettivi dei nostri clienti.</p>
+      <p>Non promettiamo risultati con la bacchetta magica, sarebbe contro la nostra etica. Promettiamo però che tratteremo i tuoi capelli come se fossero i nostri, con l'ossessione per il risultato che ci contraddistingue.</p>
+    </div>
+  </section>
+
+
+  <!-- SEZIONE 3: STATS -->
+  <section class="cs-stats">
+    <div class="wrap">
+      <div class="cs-stats-grid">
+        <div class="cs-stat">
+          <div class="cs-stat-val">280+</div>
+          <div class="cs-stat-lbl">Persone trattate</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-val">40+</div>
+          <div class="cs-stat-lbl">Anni di esperienza</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-val">3</div>
+          <div class="cs-stat-lbl">Specialisti dedicati</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-val">100%</div>
+          <div class="cs-stat-lbl">Percorsi personalizzati</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEZIONE 4: CTA -->
+  <section class="cs-cta">
+    <div class="wrap">
+      <h2>Inizia il tuo percorso</h2>
+      <p class="cs-cta-sub">Il primo passo è una consulenza.<br>Ti ascoltiamo davvero.</p>
+      <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="cs-cta-btn">Come Possiamo Aiutarti</a>
+      <a href="index.html" class="cs-cta-back">← Torna alla home</a>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Beautr<span>ì</span></div>
+          <p class="footer-desc">Centro tricologico a Cologno al Serio (BG).<br>Risolviamo i problemi di cute e capelli con il Metodo 80/20.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigazione</h4>
+          <a href="index.html">Home</a>
+          <a href="chi-siamo.html">Chi Siamo</a>
+          <a href="index.html#testimonianze">Testimonianze</a>
+          <a href="https://form.typeform.com/to/QUzap8so" target="_blank">Consulenza</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contatti</h4>
+          <a href="mailto:info@beautri.it">info@beautri.it</a>
+          <a href="https://instagram.com/beautriparrucchieri" target="_blank">@beautriparrucchieri</a>
+        </div>
+      </div>
+      <div class="footer-btm">
+        <span>© 2025 Beautrì S.R.L. — Cologno al Serio (BG)</span>
+        <span>P.IVA — tutti i diritti riservati</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

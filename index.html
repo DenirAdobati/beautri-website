@@ -200,8 +200,8 @@
       top: 16px;
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100% - 32px);
-      max-width: 900px;
+      width: calc(100% - 48px);
+      max-width: 820px;
       z-index: 9999;
       border-radius: 999px;
     }
@@ -777,9 +777,24 @@
 
     .about-split {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
+      grid-template-columns: 55fr 45fr;
+      gap: 64px;
       align-items: center;
+    }
+
+    .daniela-img {
+      width: 100%;
+      max-width: 420px;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    }
+    @media (max-width: 768px) {
+      .daniela-img { height: 380px; margin-top: 32px; }
     }
 
     .about-text h2 { margin-bottom: 24px; }
@@ -1228,7 +1243,7 @@
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
         <img src="./Logo.png" alt="Beautrì logo" class="nav-logo-img">
-        <span>Beautr<span style="color:#F5C200">ì</span></span>
+        <span>Beautr<span style="color:#FFFFFF">ì</span></span>
       </a>
       <div class="nav-links">
         <a href="#">Consulenza</a>
@@ -2171,26 +2186,11 @@
           <h2 class="sec-h2 fi fi-d1">Siamo Beautrì</h2>
           <p class="fi fi-d2">Siamo un'azienda specializzata nella cura dei capelli che si occupa di risolvere tutte le anomalie che riguardano la cute e i capelli. Il nostro obiettivo è essere il veicolo per raggiungere i sogni e gli obiettivi dei nostri clienti.</p>
           <p class="fi fi-d2">Non promettiamo risultati con la bacchetta magica, sarebbe contro la nostra etica. Promettiamo però che tratteremo i tuoi capelli come se fossero i nostri, con l'ossessione per il risultato che ci contraddistingue.</p>
-          <a href="#contattaci" class="split-link fi fi-d3">La nostra azienda <span>→</span></a>
+          <a href="chi-siamo.html" class="split-link fi fi-d3">La nostra azienda <span>→</span></a>
         </div>
 
-        <div class="stat-grid fi fi-d2">
-          <div class="sg-item">
-            <div class="sg-val">280+</div>
-            <div class="sg-lbl">Persone trattate</div>
-          </div>
-          <div class="sg-item">
-            <div class="sg-val">40+</div>
-            <div class="sg-lbl">Anni di esperienza</div>
-          </div>
-          <div class="sg-item">
-            <div class="sg-val">3</div>
-            <div class="sg-lbl">Specialisti dedicati</div>
-          </div>
-          <div class="sg-item">
-            <div class="sg-val">100%</div>
-            <div class="sg-lbl">Percorso personalizzato</div>
-          </div>
+        <div class="fi fi-d2">
+          <img src="Daniela%20(1).jpg" alt="Daniela - Fondatrice Beautrì" class="daniela-img">
         </div>
 
       </div>
