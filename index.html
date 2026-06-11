@@ -194,167 +194,171 @@
     /* ══════════════════════════════════════════════════
        NAVBAR
     ══════════════════════════════════════════════════ */
-    #nav {
+    /* ── NAVBAR ── */
+    #main-navbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 999;
-      background: rgba(10,10,10,0.82);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 900px;
+      z-index: 9999;
+      border-radius: 999px;
     }
-    #nav.hidden { transform: translateY(-100%); }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
-      gap: 16px;
+      padding: 8px 16px;
+      background: rgba(10,10,10,0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 999px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.25);
     }
 
     .nav-logo {
-      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #FFFFFF;
       font-weight: 800;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      flex-shrink: 0;
+      font-size: 18px;
+    }
+    .nav-logo-img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .nav-logo-img[src] {
+      font-size: 0;
+      color: transparent;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 2px;
-      list-style: none;
-      flex: 1;
-      justify-content: center;
+      gap: 28px;
     }
     .nav-links a {
-      padding: 8px 14px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-2);
-      border-radius: 8px;
-      transition: color 0.18s, background 0.18s;
-      white-space: nowrap;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-links a:hover { color: #FFFFFF; }
 
-    .nav-cta-wrap { flex-shrink: 0; }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      width: 32px;
-      padding: 4px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      width: 100%; height: 1.5px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all 0.28s ease;
-    }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
-    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
-
-    /* New mobile nav actions */
-    .nav-mobile-actions {
-      display: none;
-      align-items: center;
-      gap: 8px;
-    }
-    .nav-hamburger {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      padding: 0;
-      width: 42px;
-      height: 42px;
+    .nav-right {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      gap: 12px;
+    }
+
+    .nav-cta {
+      background: #F5C200;
+      color: #0A0A0A;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
       gap: 5px;
+      background: none;
+      border: none;
       cursor: pointer;
+      padding: 4px;
     }
     .nav-hamburger span {
       display: block;
-      width: 18px;
+      width: 22px;
       height: 2px;
-      background: #ffffff;
+      background: #FFFFFF;
       border-radius: 2px;
+      transition: all 0.3s;
     }
-    .nav-cta-icon {
-      background: #F5C200;
-      border: none;
-      border-radius: 10px;
-      width: 42px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    /* Mobile dropdown menu */
+
+    /* Mobile menu */
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 68px;
-      left: 0;
-      right: 0;
-      background: #0A0A0A;
-      border-bottom: 1px solid #222;
+      top: 80px;
+      left: 16px;
+      right: 16px;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
       padding: 24px;
+      z-index: 9998;
       flex-direction: column;
-      gap: 20px;
-      z-index: 999;
-    }
-    .mobile-menu a {
-      color: #ffffff;
-      font-size: 16px;
-      text-decoration: none;
-      padding: 8px 0;
-      border-bottom: 1px solid #1a1a1a;
     }
     .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-cta {
+      background: #F5C200;
+      color: #0A0A0A;
+      font-weight: 700;
+      text-align: center;
+      padding: 14px;
+      border-radius: 999px;
+      margin-top: 16px;
+      border-bottom: none;
+    }
 
-    /* Mobile drawer */
-    #drawer {
-      display: none;
-      position: fixed;
-      top: 68px; left: 0; right: 0;
-      background: rgba(10,10,10,0.97);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 20px 24px;
-      z-index: 998;
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
     }
-    #drawer.open { display: block; }
-    #drawer ul { list-style: none; margin-bottom: 16px; }
-    #drawer ul li a {
-      display: block;
-      padding: 13px 16px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-2);
-      border-radius: 8px;
-      transition: color 0.18s, background 0.18s;
+
+    .mobile-menu-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 20px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    #drawer ul li a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-    #drawer .btn { width: 100%; justify-content: center; }
+    .mobile-menu-brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+    .mobile-menu-brand em {
+      font-style: normal;
+      color: #F5C200;
+    }
+
+    /* Hamburger → X */
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ══════════════════════════════════════════════════
        SECTION 1 · HERO
     ══════════════════════════════════════════════════ */
     .hero {
-      padding: 168px 0 108px;
+      padding: 90px 0 108px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -1052,9 +1056,6 @@
 
     @media (max-width: 768px) {
       .wrap { padding: 0 20px; }
-      .nav-links, .nav-cta-wrap { display: none; }
-      .hamburger { display: none; }
-      .nav-mobile-actions { display: flex; }
 
       .hero { padding: 130px 0 80px; }
       .hero-review-badge { font-size: 0.78rem; }
@@ -1072,7 +1073,6 @@
 
       .sec-cta { padding: 100px 0; }
       .val-pills { gap: 8px; }
-      #drawer { padding: 12px 16px 20px; }
     }
 
     @media (max-width: 500px) {
@@ -1090,32 +1090,6 @@
 
     /* Neutralize hex-bg utility classes */
     .hex-bg, .hex-bg-lg { background-color: unset; background-image: none; background-size: unset; }
-
-    /* ── NAVBAR (transparent → white on scroll) ── */
-    #nav {
-      background: transparent;
-      border-bottom-color: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.35s cubic-bezier(0.4,0,0.2,1);
-    }
-    #nav.scrolled {
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom-color: #E5E5E5;
-      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
-    }
-    .nav-logo { color: #0A0A0A; }
-    .nav-links a { color: #555555; }
-    .nav-links a:hover { color: #0A0A0A; background: rgba(0,0,0,0.04); }
-    .nav-hamburger { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.12); }
-    .nav-hamburger span { background: #0A0A0A; }
-    #drawer { background: rgba(255,255,255,0.98); border-bottom-color: #E5E5E5; backdrop-filter: blur(20px); }
-    #drawer ul li a { color: #444444; }
-    #drawer ul li a:hover { color: #0A0A0A; background: rgba(0,0,0,0.04); }
-    .mobile-menu { background: #FFFFFF; border-bottom-color: #E5E5E5; }
-    .mobile-menu a { color: #0A0A0A; border-bottom-color: #E5E5E5; }
 
     /* ── HERO (WHITE) ── */
     .hero { background-color: #FFFFFF; }
@@ -1135,51 +1109,42 @@
     .hero .btn-outline:hover { background: rgba(0,0,0,0.05); border-color: #888888; }
 
 
-    /* ── COME AIUTIAMO — stili nell'inline <style> della sezione ── */
-
-    /* ── METODO 80/20 (GIALLO) ── */
-    .sec-m80 { background-color: #F5C200; border-top-color: rgba(0,0,0,0.1); border-bottom-color: rgba(0,0,0,0.1); }
-    .sec-m80 .eyebrow { color: rgba(0,0,0,0.6); }
-    .sec-m80 .eyebrow::before { background: rgba(0,0,0,0.6); }
-    .sec-m80 .sec-h2 { color: #0A0A0A; }
-    .m80-sub { color: #1a1a1a; }
-    .m80-text p { color: #1a1a1a; }
-    .m80-em { color: #0A0A0A !important; }
-    .m80-leg { color: #0A0A0A; }
-    .m80-leg strong { color: #0A0A0A !important; }
-    .m80-step { background: rgba(0,0,0,0.07); border-color: rgba(0,0,0,0.12); }
-    .m80-step:hover { border-color: rgba(0,0,0,0.3); transform: translateY(-3px); }
-    .m80-step-icon { background: rgba(0,0,0,0.1); border-color: rgba(0,0,0,0.15); color: #0A0A0A; }
-    .m80-step h3 { color: #0A0A0A; }
-    .m80-step p { color: #1a1a1a; }
-    .sec-m80 .split-link { color: #0A0A0A; text-decoration: underline; }
-    .sec-m80 .split-link:hover { gap: 16px; }
-
-    /* ── TABELLA NOI VS ALTRI (WHITE) ── */
-    .sec-method { background-color: #FFFFFF; border-bottom-color: #E5E5E5; }
-    .sec-method .eyebrow { color: #888888; }
-    .sec-method .eyebrow::before { background: #888888; }
-    .sec-method .sec-h2 { color: #0A0A0A; }
-    .sec-method .split-text p { color: #444444; }
+    /* ── TABELLA NOI VS ALTRI (DARK) ── */
+    .sec-method .eyebrow { color: #F5C200; }
+    .sec-method .eyebrow::before { background: #F5C200; }
+    .sec-method .sec-h2 { color: #FFFFFF; }
+    .sec-method .split-text p { color: #A0A0A0; }
     .sec-method .split-link { color: #F5C200; }
-    .cmp-card { background: #FFFFFF; border-color: #E5E5E5; }
-    .cmp-tabs { border-bottom-color: #E5E5E5; }
-    .ctab { color: #888888; background: #F5F5F5; border-color: #E5E5E5; }
-    .ctab.on { background: #F5C200; color: #0A0A0A; border-color: transparent; }
-    .ctab:not(.on):hover { background: rgba(0,0,0,0.04); color: #0A0A0A; border-color: #D0D0D0; }
-    .cmp-row { border-bottom-color: #E5E5E5; }
-    .cmp-row.hdr { background: #FAFAFA; }
-    .cmp-cell:first-child { color: #666666; border-right-color: #E5E5E5; }
-    .cmp-cell:last-child { color: #0A0A0A; }
-    .cmp-row.hdr .cmp-cell { color: #888888; }
-    .sec-method .c-yes { color: #22C55E !important; }
-    .sec-method .c-no  { color: #EF4444 !important; }
-    .row-good { background: rgba(34,197,94,0.05); }
-    .row-good .cmp-cell:last-child { color: #22C55E !important; font-weight: 700; }
-    .row-bad  { background: rgba(239,68,68,0.05); }
-    .row-bad  .cmp-cell:last-child { color: #EF4444 !important; font-weight: 700; }
-    .cmp-row.row-good .cmp-cell:first-child,
-    .cmp-row.row-bad  .cmp-cell:first-child { color: #0A0A0A; font-weight: 600; }
+    .cmp2-wrap { width: 100%; border-radius: 16px; overflow: hidden; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid #222222; }
+    .cmp2-table { width: 100%; border-collapse: separate; border-spacing: 0; background: #111111; }
+    .cmp2-thead th { padding: 16px 24px; font-size: 14px; text-align: left; }
+    .cmp2-thead th:nth-child(1) { background: #111111; }
+    .cmp2-thead th:nth-child(2) { background: #222222; color: #FFFFFF; font-weight: 800; }
+    .cmp2-thead th:nth-child(3) { background: #111111; color: #666666; font-weight: 600; }
+    .cmp2-table tbody tr:nth-child(odd)  { background: #111111; }
+    .cmp2-table tbody tr:nth-child(even) { background: #161616; }
+    .cmp2-table td { border-bottom: 1px solid #252525; padding: 18px 20px; font-size: 14px; }
+    .cmp2-table tbody td:nth-child(2) { background: rgba(34,34,34,0.8); border-left: 2px solid #F5C200; border-right: 1px solid #333333; }
+    .cmp2-table tbody tr:last-child td { border-bottom: none; }
+    .cmp2-td-aspect { color: #999999; font-size: 14px; font-weight: 500; }
+    .cmp2-td-yes { color: #22C55E; font-weight: 600; }
+    .cmp2-td-no  { color: #EF4444; }
+    .cmp2-tr-final { background: linear-gradient(135deg, #0A2A0A 0%, #0A0A0A 100%) !important; }
+    .cmp2-tr-final td { border-top: 2px solid #22C55E; padding: 24px 20px; }
+    .cmp2-tr-final .cmp2-td-aspect { color: #FFFFFF; font-weight: 800; font-size: 15px; }
+    .cmp2-tr-final .cmp2-td-yes { color: #22C55E; font-weight: 900; font-size: 17px; }
+    .cmp2-tr-final .cmp2-td-no  { color: #EF4444; font-weight: 700; font-size: 15px; }
+    @media (max-width: 768px) {
+      .cmp2-table td { padding: 12px 10px; font-size: 13px; }
+      .cmp2-td-aspect { font-size: 12px; color: #888888; min-width: 90px; }
+      .cmp2-thead th { font-size: 13px; padding: 12px 10px; }
+      .cmp2-tr-final td { padding: 12px 10px; }
+      .cmp2-tr-final .cmp2-td-yes { font-size: 14px; }
+      .cmp2-tr-final .cmp2-td-no  { font-size: 13px; }
+    }
+    @media (max-width: 400px) {
+      .cmp2-td-aspect { max-width: 80px; white-space: normal; }
+    }
 
     /* ── CHI SIAMO / SIAMO BEAUTRI (GIALLO) ── */
     .sec-about { background-color: #F5C200; border-bottom-color: rgba(0,0,0,0.1); }
@@ -1259,62 +1224,39 @@
   <!-- ════════════════════════════════════════
        NAVBAR
   ════════════════════════════════════════ -->
-  <nav id="nav">
-    <div class="wrap nav-inner">
-      <a href="#top" class="nav-logo">Beautrì</a>
-
-      <ul class="nav-links">
-        <li><a href="#come-aiutiamo">Consulenza Tricologica</a></li>
-        <li><a href="#come-aiutiamo">Percorsi</a></li>
-        <li><a href="#come-aiutiamo">Percorso Mantenimento</a></li>
-        <li><a href="#chi-siamo">Chi Siamo</a></li>
-        <li><a href="#testimonianze">Testimonianze</a></li>
-      </ul>
-
-      <div class="nav-cta-wrap">
-        <a href="#contattaci" class="btn btn-yellow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Come Possiamo Aiutarti</a>
+  <nav id="main-navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="./Logo.png" alt="Beautrì logo" class="nav-logo-img">
+        <span>Beautr<span style="color:#F5C200">ì</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#">Consulenza</a>
+        <a href="#">Percorsi</a>
+        <a href="#">Chi Siamo</a>
+        <a href="#">Testimonianze</a>
       </div>
-
-      <div class="nav-mobile-actions">
-        <button class="nav-hamburger" id="menuToggle" aria-label="Apri menu">
+      <div class="nav-right">
+        <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="nav-cta">Come Possiamo Aiutarti</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
-        <a href="#contattaci" class="nav-cta-icon" aria-label="Contattaci">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-        </a>
       </div>
-      <!-- kept for JS compat -->
-      <button class="hamburger" id="ham" style="display:none" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </nav>
 
-  <!-- Mobile drawer -->
-  <div id="drawer">
-    <ul>
-      <li><a href="#come-aiutiamo" onclick="closeDrawer()">Consulenza Tricologica</a></li>
-      <li><a href="#come-aiutiamo" onclick="closeDrawer()">Percorsi</a></li>
-      <li><a href="#come-aiutiamo" onclick="closeDrawer()">Percorso Mantenimento</a></li>
-      <li><a href="#chi-siamo"     onclick="closeDrawer()">Chi Siamo</a></li>
-      <li><a href="#testimonianze" onclick="closeDrawer()">Testimonianze</a></li>
-    </ul>
-    <a href="#contattaci" class="btn btn-yellow" onclick="closeDrawer()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Come Possiamo Aiutarti</a>
-  </div>
-
-  <!-- Mobile dropdown menu -->
+  <!-- Menu mobile -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#come-aiutiamo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Consulenza Tricologica</a>
-    <a href="#come-aiutiamo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Percorsi</a>
-    <a href="#come-aiutiamo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Percorso Mantenimento</a>
-    <a href="#chi-siamo"     onclick="document.getElementById('mobileMenu').classList.remove('open')">Chi Siamo</a>
-    <a href="#testimonianze" onclick="document.getElementById('mobileMenu').classList.remove('open')">Testimonianze</a>
-    <a href="#contattaci" class="btn btn-yellow" style="width:100%; margin-top:16px; justify-content:center;" onclick="document.getElementById('mobileMenu').classList.remove('open')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Come Possiamo Aiutarti
-    </a>
+    <div class="mobile-menu-logo">
+      <img src="./Logo.png" alt="Beautrì logo" style="height:36px; width:auto; object-fit:contain;">
+      <span class="mobile-menu-brand">Beautr<em>ì</em></span>
+    </div>
+    <a href="#">Consulenza Tricologica</a>
+    <a href="#">Percorsi</a>
+    <a href="#">Percorso Mantenimento</a>
+    <a href="#">Chi Siamo</a>
+    <a href="#">Testimonianze</a>
+    <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="mobile-cta">Come Possiamo Aiutarti</a>
   </div>
 
 
@@ -1455,7 +1397,7 @@
           <p class="story-title-1">Il Problema non sei tu.</p>
           <p class="story-title-2">È che Nessuno si ferma ad ascoltarti.</p>
           <p class="story-body">Il mercato è pieno di aziende valide… che sembrano tutte uguali. Prodotti finti. Frasi aziendali. Contenuti senz'anima. E mentre tu aspetti che qualcuno si fermi, qualcun altro si prende la loro fiducia.</p>
-          <a href="#il-metodo" class="story-btn">Scopri il Metodo</a>
+          <a href="#metodo" class="story-btn">Scopri il Metodo</a>
         </div>
 
       </div>
@@ -1598,133 +1540,6 @@
     </div>
   </section>
 
-
-  <!-- ════════════════════════════════════════
-       S2 · COME AIUTIAMO (ecomflow dark card)
-  ════════════════════════════════════════ -->
-  <style>
-    /* ── SEZIONE ── */
-    .sec-services { padding: 48px 0 104px; background: #FFFFFF; }
-    .sec-services .sec-h2 { color: #0A0A0A; }
-    .sec-services .sec-lead { color: #666666; }
-
-    /* ── DARK CARD CONTAINER ── */
-    .sv-dark-card {
-      position: relative; overflow: hidden;
-      background: #0A0A0A; border-radius: 24px;
-      padding: 48px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
-      margin-top: 56px;
-    }
-    .sv-dots-deco {
-      position: absolute; top: 0; right: 0;
-      width: 200px; height: 200px;
-      background-image: radial-gradient(circle, rgba(245,194,0,0.2) 1.5px, transparent 1.5px);
-      background-size: 16px 16px;
-      pointer-events: none; z-index: 0;
-    }
-
-    /* ── CARD HEADER ── */
-    .sv-card-hdr {
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
-      margin-bottom: 48px; position: relative; z-index: 1;
-    }
-    .sv-card-title {
-      font-size: 28px; font-weight: 700; color: #FFFFFF;
-      margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.2;
-    }
-    .sv-card-sub { font-size: 15px; color: #A0A0A0; margin: 0; line-height: 1.55; }
-    .sv-card-link {
-      font-size: 14px; font-weight: 600; color: #F5C200;
-      text-decoration: none; white-space: nowrap; flex-shrink: 0;
-      transition: opacity 0.2s;
-    }
-    .sv-card-link:hover { opacity: 0.75; }
-
-    /* ── PHASES ROW ── */
-    .sv-phases {
-      display: flex; align-items: flex-start; gap: 0;
-      position: relative; z-index: 1;
-    }
-    .sv-phase {
-      flex: 1; min-width: 0;
-      display: flex; flex-direction: column; align-items: flex-start;
-    }
-    .sv-phase-icon {
-      width: 52px; height: 52px;
-      background: #1A1A1A; border: 1px solid #333333; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      color: #FFFFFF; flex-shrink: 0;
-    }
-    .sv-phase-content { margin-top: 20px; padding-right: 12px; }
-    .sv-phase-badge {
-      display: inline-block;
-      background: rgba(245,194,0,0.12); color: #F5C200;
-      border: 1px solid rgba(245,194,0,0.25); border-radius: 20px;
-      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-      padding: 3px 8px;
-    }
-    .sv-phase-title {
-      font-size: 15px; font-weight: 700; color: #FFFFFF;
-      margin: 12px 0 6px; line-height: 1.3;
-    }
-    .sv-phase-desc { font-size: 13px; color: #A0A0A0; line-height: 1.6; margin: 0; }
-
-    /* ── PRODOTTI (addon) ── */
-    .sv-phase-addon {
-      background: #F5C200;
-      border: none;
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .sv-phase-addon .sv-phase-icon {
-      background: rgba(0,0,0,0.1);
-      border: none;
-      color: #0A0A0A;
-    }
-    .sv-phase-addon .sv-phase-title { color: #0A0A0A; }
-    .sv-phase-addon .sv-phase-desc  { color: #1A1A1A; }
-    .sv-phase-addon-note {
-      font-size: 12px; font-style: italic; color: #333333;
-      margin: 6px 0 0; line-height: 1.5;
-    }
-
-    /* ── DASHED CONNECTOR ── */
-    .sv-dash {
-      flex: 0 0 auto; width: 40px;
-      display: flex; align-items: flex-start; padding-top: 26px;
-    }
-    .sv-dash::after {
-      content: ''; display: block;
-      width: 100%; height: 0;
-      border-top: 2px dashed rgba(245,194,0,0.4);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1080px) and (min-width: 769px) {
-      .sv-dark-card { padding: 36px; }
-      .sv-card-title { font-size: 22px; }
-      .sv-phase-title { font-size: 14px; }
-      .sv-phase-desc { font-size: 12px; }
-      .sv-dash { width: 20px; }
-    }
-    @media (max-width: 768px) {
-      .sv-dark-card { padding: 24px; margin-top: 40px; }
-      .sv-card-hdr { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
-      .sv-card-title { font-size: 20px; }
-      .sv-phases { flex-direction: column; align-items: stretch; }
-      .sv-phase { flex-direction: row; align-items: flex-start; gap: 16px; }
-      .sv-phase-content { margin-top: 0; padding-right: 0; }
-      .sv-dash {
-        display: block;
-        width: 2px; height: 32px;
-        border-left: 2px dashed rgba(245,194,0,0.4);
-        margin: 8px 0 8px 26px;
-        padding: 0;
-      }
-      .sv-dash::after { display: none; }
-    }
-  </style>
 
   <!-- ════════════════════════════════════════
        S · TESTIMONIANZE SCROLL
@@ -2107,323 +1922,179 @@
   </section>
 
 
-  <section id="come-aiutiamo" class="sec-services grid-bg">
-    <div class="wrap">
-
-      <h2 class="sec-h2 fi fi-d1">Come aiutiamo i nostri clienti</h2>
-      <p class="sec-lead fi fi-d2">Dalla consulenza ai risultati: un percorso costruito su di te.</p>
-
-      <!-- BIG DARK CARD -->
-      <div class="sv-dark-card fi fi-d3">
-        <div class="sv-dots-deco" aria-hidden="true"></div>
-
-        <!-- Card header -->
-        <div class="sv-card-hdr">
-          <div>
-            <h3 class="sv-card-title">Un percorso in 3 fasi.</h3>
-            <p class="sv-card-sub">Ogni fase è costruita sulla precedente. Niente è lasciato al caso.</p>
-          </div>
-          <a href="https://form.typeform.com/to/QUzap8so" class="sv-card-link" target="_blank" rel="noopener">Scopri il percorso →</a>
-        </div>
-
-        <!-- 4 phases -->
-        <div class="sv-phases">
-
-          <!-- FASE 1 -->
-          <div class="sv-phase">
-            <div class="sv-phase-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-              </svg>
-            </div>
-            <div class="sv-phase-content">
-              <div class="sv-phase-badge">Fase 1</div>
-              <h4 class="sv-phase-title">Consulenza Beautrì</h4>
-              <p class="sv-phase-desc">Analizziamo cute e capelli per identificare la causa vera del problema. Senza consulenza, non esiste un percorso.</p>
-            </div>
-          </div>
-
-          <div class="sv-dash" aria-hidden="true"></div>
-
-          <!-- FASE 2 -->
-          <div class="sv-phase">
-            <div class="sv-phase-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
-                <circle cx="3" cy="6" r="1.2" fill="currentColor" stroke="none"/>
-                <circle cx="3" cy="12" r="1.2" fill="currentColor" stroke="none"/>
-                <circle cx="3" cy="18" r="1.2" fill="currentColor" stroke="none"/>
-              </svg>
-            </div>
-            <div class="sv-phase-content">
-              <div class="sv-phase-badge">Fase 2</div>
-              <h4 class="sv-phase-title">Percorso</h4>
-              <p class="sv-phase-desc">Il percorso personalizzato che riequilibra l'anomalia e risolve i problemi di cute e capelli alla radice.</p>
-            </div>
-          </div>
-
-          <div class="sv-dash" aria-hidden="true"></div>
-
-          <!-- FASE 3 -->
-          <div class="sv-phase">
-            <div class="sv-phase-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <div class="sv-phase-content">
-              <div class="sv-phase-badge">Fase 3</div>
-              <h4 class="sv-phase-title">Percorso di Mantenimento</h4>
-              <p class="sv-phase-desc">Preserviamo nel tempo i risultati ottenuti, adattandoci all'evoluzione delle tue esigenze.</p>
-            </div>
-          </div>
-
-          <div class="sv-dash" aria-hidden="true"></div>
-
-          <!-- Prodotti Personalizzati — incluso nelle fasi 2 & 3 -->
-          <div class="sv-phase sv-phase-addon">
-            <div class="sv-phase-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                <line x1="12" y1="22.08" x2="12" y2="12"/>
-              </svg>
-            </div>
-            <div class="sv-phase-content">
-              <h4 class="sv-phase-title">Prodotti Personalizzati</h4>
-              <p class="sv-phase-desc">Per la tua routine quotidiana ti daremo prodotti personalizzati.</p>
-              <p class="sv-phase-addon-note">(non centinaia di prodotti, solo 2/3 prodotti che servono davvero)</p>
-            </div>
-          </div>
-
-        </div><!-- /sv-phases -->
-      </div><!-- /sv-dark-card -->
-
-    </div>
-  </section>
-
-
   <!-- ════════════════════════════════════════
-       S3 · METODO 80/20
+       S · IL METODO 80/20
   ════════════════════════════════════════ -->
   <style>
-    .sec-m80 { padding: 104px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .m80-hdr { text-align: center; margin-bottom: 72px; }
-    .m80-hdr .sec-h2 { max-width: 680px; margin: 0 auto 16px; }
-    .m80-sub { color: var(--text-2); font-size: 1.05rem; line-height: 1.72; max-width: 560px; margin: 0 auto; }
-    .m80-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-bottom: 72px; }
-    .m80-text p { color: var(--text-2); font-size: 0.97rem; line-height: 1.78; margin-bottom: 18px; }
-    .m80-em { color: var(--text) !important; font-weight: 700; font-size: 1.12rem !important; line-height: 1.5 !important; margin-bottom: 28px !important; }
-    .m80-chart-wrap { display: flex; flex-direction: column; align-items: center; gap: 28px; }
-    #donut80 { display: block; max-width: 300px; }
-    .m80-legend { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 300px; }
-    .m80-leg { display: flex; align-items: flex-start; gap: 12px; font-size: 0.86rem; color: var(--text-2); line-height: 1.5; }
-    .m80-sq { width: 13px; height: 13px; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
-    .m80-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .m80-step { background: var(--bg-card); border: 1px solid var(--border-2); border-radius: 12px; padding: 28px 24px; display: flex; flex-direction: column; gap: 14px; transition: border-color 0.22s, transform 0.22s; }
-    .m80-step:hover { border-color: rgba(245,194,0,0.28); transform: translateY(-3px); }
-    .m80-step-icon { width: 44px; height: 44px; border-radius: 11px; background: rgba(245,194,0,0.08); border: 1px solid rgba(245,194,0,0.2); display: flex; align-items: center; justify-content: center; color: var(--accent); }
-    .m80-step h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin: 0; }
-    .m80-step p { font-size: 0.875rem; color: var(--text-2); line-height: 1.65; margin: 0; }
+    .sec-metodo-split {
+      padding: 80px 0;
+      background-color: #FFFFFF;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .metodo-center {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .metodo-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888888;
+      margin-bottom: 16px;
+    }
+    .metodo-eyebrow::before {
+      content: '';
+      width: 22px; height: 2px;
+      background: #888888;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .metodo-h2 {
+      font-size: clamp(2rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #0A0A0A;
+      line-height: 1.1;
+    }
+    .metodo-sub {
+      color: #666666;
+      font-size: 17px;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+    .metodo-svg-wrap {
+      max-width: 320px;
+      margin: 32px auto;
+      display: block;
+    }
+    .metodo-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .metodo-card {
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .metodo-card-dark {
+      background-color: #0A0A0A;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .metodo-card-yellow {
+      background-color: #F5C200;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .metodo-card-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .metodo-card-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .metodo-card-text {
+      font-size: 14px;
+      line-height: 1.65;
+      margin-top: 8px;
+    }
+    .metodo-bold {
+      margin-top: 28px;
+      font-weight: 800;
+      font-size: 17px;
+      color: #0A0A0A;
+      line-height: 1.6;
+      text-align: center;
+    }
+    .metodo-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      margin: 24px auto 0;
+      background: #F5C200;
+      color: #0A0A0A;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 14px 32px;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+    .metodo-cta-btn:hover { opacity: 0.85; }
     @media (max-width: 768px) {
-      .m80-cols { grid-template-columns: 1fr; gap: 48px; }
-      .m80-steps { grid-template-columns: 1fr; }
+      .sec-metodo-split { padding: 48px 0; }
+      .metodo-cards { grid-template-columns: 1fr; }
     }
   </style>
 
-  <section id="il-metodo" class="sec-m80 grid-bg-yellow">
+  <section class="sec-metodo-split">
     <div class="wrap">
+      <div class="metodo-center fi">
 
-      <div class="m80-hdr">
-        <div class="eyebrow-center fi"><span class="eyebrow">Il nostro approccio</span></div>
-        <h2 class="sec-h2 fi fi-d1">Il Metodo 80/20</h2>
-        <p class="m80-sub fi fi-d2">La maggior parte dei trattamenti si concentra solo sul capello. Noi abbiamo ribaltato tutto.</p>
-      </div>
+        <div class="metodo-eyebrow">Il Nostro Approccio</div>
+        <h2 class="metodo-h2">Il Metodo 80/20</h2>
+        <p class="metodo-sub">La maggior parte dei trattamenti si concentra solo sul capello.<br><span style="background-color: #E53E3E; color: #FFFFFF; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Noi abbiamo ribaltato tutto.</span></p>
 
-      <div class="m80-cols fi fi-d2">
-
-        <!-- testo sinistra -->
-        <div class="m80-text">
-          <p>Il metodo 80/20 nasce da una semplice verità che abbiamo scoperto lavorando su oltre 280 persone: l'80% del problema non sta nel capello, sta nella persona. Stress, alimentazione, ormoni, abitudini quotidiane.</p>
-          <p>Solo il 20% riguarda il capello in sé: prodotti, trattamenti, routine di cura. Ecco perché i prodotti miracolosi non funzionano: attaccano il 20% ignorando l'80%.</p>
-          <p class="m80-em">Noi lavoriamo sull'intera persona.<br>Prima ascoltiamo, poi agiamo.</p>
-          <a href="#contattaci" class="split-link">Scopri come funziona <span>→</span></a>
+        <div class="metodo-svg-wrap">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 200 200 L 200 40 A 160 160 0 1 1 47.8 150.6 Z" fill="#0A0A0A"/>
+            <path d="M 200 200 L 47.8 150.6 A 160 160 0 0 1 200 40 Z" fill="#F5C200"/>
+            <circle cx="200" cy="200" r="80" fill="#FFFFFF"/>
+            <text x="270" y="297" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-size="28" font-weight="900" font-family="Inter,sans-serif">80%</text>
+            <text x="135" y="111" text-anchor="middle" dominant-baseline="middle" fill="#0A0A0A" font-size="18" font-weight="900" font-family="Inter,sans-serif">20%</text>
+            <text x="200" y="192" text-anchor="middle" dominant-baseline="middle" fill="#888888" font-size="13" font-family="Inter,sans-serif">Metodo</text>
+            <text x="200" y="212" text-anchor="middle" dominant-baseline="middle" fill="#0A0A0A" font-size="18" font-weight="800" font-family="Inter,sans-serif">Beautrì</text>
+          </svg>
         </div>
 
-        <!-- grafico donut destra -->
-        <div class="m80-chart-wrap">
-          <canvas id="donut80" width="300" height="300"></canvas>
-          <div class="m80-legend">
-            <div class="m80-leg">
-              <span class="m80-sq" style="background:#0A0A0A;"></span>
-              <span><strong style="color:#0A0A0A;">80%</strong> — Persona: stress, alimentazione, ormoni, stile di vita</span>
+        <div class="metodo-cards">
+          <div class="metodo-card metodo-card-dark">
+            <div class="metodo-card-label">
+              <span class="metodo-card-dot" style="background:#FFFFFF;"></span>
+              <span style="color:#FFFFFF;">80% — La Persona</span>
             </div>
-            <div class="m80-leg">
-              <span class="m80-sq" style="background:rgba(0,0,0,0.3);border:1px solid rgba(0,0,0,0.2);"></span>
-              <span><strong style="color:#0A0A0A;">20%</strong> — Capello: prodotti, trattamenti, routine</span>
+            <p class="metodo-card-text" style="color:#A0A0A0;">Stress, alimentazione, ormoni, abitudini quotidiane. L'80% del problema non sta nel capello, sta nella persona.</p>
+          </div>
+          <div class="metodo-card metodo-card-yellow">
+            <div class="metodo-card-label">
+              <span class="metodo-card-dot" style="background:#0A0A0A;"></span>
+              <span style="color:#0A0A0A;">20% — Il Capello</span>
             </div>
+            <p class="metodo-card-text" style="color:#1A1A1A;">Solo il 20% riguarda il capello in sé: prodotti, trattamenti, routine di cura.</p>
           </div>
         </div>
+
+        <p class="metodo-bold">Noi lavoriamo sull'intera persona.<br>Prima ascoltiamo, poi agiamo.</p>
+
+        <a href="metodo.html" class="metodo-cta-btn">Conosci il Metodo →</a>
 
       </div>
-
-      <!-- 3 step card -->
-      <div class="m80-steps">
-
-        <div class="m80-step fi fi-d1">
-          <div class="m80-step-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </div>
-          <h3>Ascoltiamo</h3>
-          <p>Prima di tutto capiamo chi sei, come vivi, cosa ti stanca. Il capello è solo la fine della storia.</p>
-        </div>
-
-        <div class="m80-step fi fi-d2">
-          <div class="m80-step-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-            </svg>
-          </div>
-          <h3>Analizziamo</h3>
-          <p>Valutiamo cute e capello con strumenti professionali. Ogni analisi è unica come la persona davanti a noi.</p>
-        </div>
-
-        <div class="m80-step fi fi-d3">
-          <div class="m80-step-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-            </svg>
-          </div>
-          <h3>Agiamo</h3>
-          <p>Costruiamo un percorso su misura che attacca il problema alla radice, non i sintomi.</p>
-        </div>
-
-      </div>
-
     </div>
   </section>
-
-  <script>
-    /* ── Donut 80/20 (animato) ── */
-    (function () {
-      const canvas = document.getElementById('donut80');
-      if (!canvas) return;
-
-      const dpr  = window.devicePixelRatio || 1;
-      const SIZE = 300;
-      canvas.width  = SIZE * dpr;
-      canvas.height = SIZE * dpr;
-      canvas.style.width  = SIZE + 'px';
-      canvas.style.height = SIZE + 'px';
-
-      const ctx = canvas.getContext('2d');
-      ctx.scale(dpr, dpr);
-
-      const cx = SIZE / 2, cy = SIZE / 2;
-      const Ro = 118, Ri = 74;        /* raggi esterno / interno */
-      const START = -Math.PI / 2;     /* partenza ore 12 */
-      const TAU   = Math.PI * 2;
-      const DUR   = 1200;             /* durata animazione ms */
-      let t0 = null, started = false;
-
-      function ease(t) { return 1 - Math.pow(1 - t, 3); }
-
-      function seg(a0, a1) {
-        ctx.beginPath();
-        ctx.arc(cx, cy, Ro, a0, a1, false);
-        ctx.arc(cx, cy, Ri, a1, a0, true);
-        ctx.closePath();
-      }
-
-      function draw(prog) {
-        const p = ease(Math.min(prog, 1));
-        ctx.clearRect(0, 0, SIZE, SIZE);
-
-        /* ring di sfondo */
-        seg(0, TAU);
-        ctx.fillStyle = 'rgba(0,0,0,0.12)';
-        ctx.fill();
-
-        /* arco nero 80% */
-        const yEnd = START + TAU * 0.8 * p;
-        if (p > 0.001) {
-          seg(START, yEnd);
-          ctx.fillStyle = '#0A0A0A';
-          ctx.fill();
-        }
-
-        /* arco grigio 20% */
-        const gEnd = START + TAU * p;
-        if (p * 0.2 * TAU > 0.003) {
-          seg(yEnd, gEnd);
-          ctx.fillStyle = 'rgba(0,0,0,0.25)';
-          ctx.fill();
-          ctx.strokeStyle = 'rgba(0,0,0,0.2)';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-
-        /* linee separatrici (colore sfondo) */
-        function gap(a) {
-          ctx.beginPath();
-          ctx.moveTo(cx + Ri * Math.cos(a), cy + Ri * Math.sin(a));
-          ctx.lineTo(cx + Ro * Math.cos(a), cy + Ro * Math.sin(a));
-          ctx.strokeStyle = '#F5C200';
-          ctx.lineWidth = 3;
-          ctx.stroke();
-        }
-        if (p > 0.01) gap(START);
-        if (p > 0.80) gap(START + TAU * 0.8);
-
-        /* buco centrale */
-        ctx.beginPath();
-        ctx.arc(cx, cy, Ri - 1, 0, TAU);
-        ctx.fillStyle = '#F5C200';
-        ctx.fill();
-
-        /* testo centrale */
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.font = '900 40px Inter, system-ui, sans-serif';
-        ctx.fillStyle = '#0A0A0A';
-        ctx.fillText('80/20', cx, cy - 12);
-        ctx.font = '500 12px Inter, system-ui, sans-serif';
-        ctx.fillStyle = '#333333';
-        ctx.fillText('Il nostro metodo', cx, cy + 16);
-      }
-
-      function frame(ts) {
-        if (!t0) t0 = ts;
-        const el = ts - t0;
-        draw(el / DUR);
-        if (el < DUR) requestAnimationFrame(frame);
-        else draw(1);
-      }
-
-      /* IntersectionObserver: parte quando visibile */
-      const obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting && !started) {
-            started = true;
-            t0 = null;
-            requestAnimationFrame(frame);
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      draw(0);          /* stato iniziale vuoto */
-      obs.observe(canvas);
-    }());
-  </script>
 
 
   <!-- ════════════════════════════════════════
        S4 · METODO 80/20 (split)
   ════════════════════════════════════════ -->
-  <section id="metodo" class="sec-method grid-bg">
+  <section id="metodo" class="sec-method grid-bg-dark">
     <div class="wrap">
       <div class="split">
 
@@ -2436,51 +2107,50 @@
           <a href="#contattaci" class="split-link fi fi-d3">Come Possiamo Aiutarti <span>→</span></a>
         </div>
 
-        <!-- Right: comparison card -->
+        <!-- Right: comparison table -->
         <div class="fi fi-d2">
-          <div class="cmp-card">
-
-            <div class="cmp-tabs">
-              <button class="ctab on" id="t-b" onclick="cmpTab('b')">Metodo Beautrì 80/20</button>
-              <button class="ctab"    id="t-t" onclick="cmpTab('t')">Metodo Tradizionale</button>
-            </div>
-
-            <!-- Beautrì panel -->
-            <div class="cmp-panel on" id="p-b">
-              <div class="cmp-row hdr">
-                <div class="cmp-cell">Aspetto</div>
-                <div class="cmp-cell">Metodo Beautrì 80/20</div>
-              </div>
-              <div class="cmp-row"><div class="cmp-cell">Analisi del problema</div><div class="cmp-cell c-yes">Approfondita ✓</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Prodotti consigliati</div><div class="cmp-cell c-yes">Personalizzati ✓</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Durata del percorso</div><div class="cmp-cell c-yes">Definita e chiara ✓</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Personalizzazione</div><div class="cmp-cell c-yes">Totale ✓</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Follow-up</div><div class="cmp-cell c-yes">Continuo ✓</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Risultati</div><div class="cmp-cell c-yes">Misurabili ✓</div></div>
-              <div class="cmp-row row-good">
-                <div class="cmp-cell">Esito finale</div>
-                <div class="cmp-cell">Problema risolto ✓</div>
-              </div>
-            </div>
-
-            <!-- Traditional panel -->
-            <div class="cmp-panel" id="p-t">
-              <div class="cmp-row hdr">
-                <div class="cmp-cell">Aspetto</div>
-                <div class="cmp-cell">Metodo Tradizionale</div>
-              </div>
-              <div class="cmp-row"><div class="cmp-cell">Analisi del problema</div><div class="cmp-cell c-no">Superficiale</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Prodotti consigliati</div><div class="cmp-cell c-no">Generici</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Durata del percorso</div><div class="cmp-cell c-no">Indefinita</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Personalizzazione</div><div class="cmp-cell c-no">Assente</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Follow-up</div><div class="cmp-cell c-no">Raro</div></div>
-              <div class="cmp-row"><div class="cmp-cell">Risultati</div><div class="cmp-cell c-no">Incerti</div></div>
-              <div class="cmp-row row-bad">
-                <div class="cmp-cell">Esito finale</div>
-                <div class="cmp-cell">Problema irrisolto ✗</div>
-              </div>
-            </div>
-
+          <div class="cmp2-wrap">
+            <table class="cmp2-table">
+              <thead class="cmp2-thead">
+                <tr>
+                  <th></th>
+                  <th>Metodo 80/20</th>
+                  <th>Metodi Tradizionali</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cmp2-td-aspect">Consulenza</td>
+                  <td class="cmp2-td-yes">✓ 90 minuti approfonditi</td>
+                  <td class="cmp2-td-no">✗ 20 minuti frettolosi</td>
+                </tr>
+                <tr>
+                  <td class="cmp2-td-aspect">Approccio</td>
+                  <td class="cmp2-td-yes">✓ Percorsi personalizzati</td>
+                  <td class="cmp2-td-no">✗ Protocolli standard uguali per tutti</td>
+                </tr>
+                <tr>
+                  <td class="cmp2-td-aspect">Prodotti consigliati</td>
+                  <td class="cmp2-td-yes">✓ Solo 2/3 prodotti necessari</td>
+                  <td class="cmp2-td-no">✗ Migliaia di prodotti</td>
+                </tr>
+                <tr>
+                  <td class="cmp2-td-aspect">Pagamento</td>
+                  <td class="cmp2-td-yes">✓ Seduta per seduta</td>
+                  <td class="cmp2-td-no">✗ Migliaia di euro subito</td>
+                </tr>
+                <tr>
+                  <td class="cmp2-td-aspect">Supporto</td>
+                  <td class="cmp2-td-yes">✓ 5 giorni su 7</td>
+                  <td class="cmp2-td-no">✗ Solo ai controlli periodici</td>
+                </tr>
+                <tr class="cmp2-tr-final">
+                  <td class="cmp2-td-aspect">Risultato finale</td>
+                  <td class="cmp2-td-yes">✓ Problema risolto</td>
+                  <td class="cmp2-td-no">✗ Soldi buttati 💸</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -2682,49 +2352,29 @@
        JAVASCRIPT
   ════════════════════════════════════════ -->
   <script>
-    /* ── Navbar hide-on-scroll-down / show-on-scroll-up ── */
-    const navEl = document.getElementById('nav');
-    let lastY = 0, ticking = false;
+    /* ── Navbar ── */
+    const navEl = document.getElementById('main-navbar');
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const y = window.pageYOffset;
-          navEl.classList.toggle('scrolled', y > 40);
-          if (y <= 10) {
-            navEl.classList.remove('hidden');
-          } else if (y > lastY + 4 && y > 80) {
-            navEl.classList.add('hidden');
-            closeDrawer();           /* close drawer when nav hides */
-          } else if (y < lastY - 4) {
-            navEl.classList.remove('hidden');
-          }
-          lastY = y;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    /* ── Hamburger / mobile drawer ── */
-    const ham    = document.getElementById('ham');
-    const drawer = document.getElementById('drawer');
-
-    ham.addEventListener('click', () => {
-      ham.classList.toggle('open');
-      drawer.classList.toggle('open');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
     });
 
-    function closeDrawer() {
-      ham.classList.remove('open');
-      drawer.classList.remove('open');
-      const mm = document.getElementById('mobileMenu');
-      if (mm) mm.classList.remove('open');
-    }
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
 
-    /* ── New mobile menu toggle ── */
-    document.getElementById('menuToggle').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('open');
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
     });
 
     /* ── Comparison tab switcher ── */
