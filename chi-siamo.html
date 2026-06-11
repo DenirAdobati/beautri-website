@@ -3,20 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chi Siamo — Beautrì</title>
-  <meta name="description" content="40 anni di esperienza. Un metodo unico. Scopri chi siamo e la nostra missione.">
+  <title>Chi Siamo — Daniela Modina | Beautrì</title>
+  <meta name="description" content="40 anni di esperienza tricologica. Scopri Daniela Modina, fondatrice di Beautrì e Tecnica Tricologa certificata TricoItalia.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800;900&family=Lora:ital@1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #0A0A0A; line-height: 1.6; }
-    a { text-decoration: none; }
-    img { max-width: 100%; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #0A0A0A; line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
     .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-    /* ── NAVBAR (identica a index.html) ── */
+    /* ── GRID BACKGROUNDS ── */
+    .grid-dark {
+      background-color: #0A0A0A;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .grid-white {
+      background-color: #FFFFFF;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .grid-yellow {
+      background-color: #F5C200;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ── NAVBAR ── */
     #main-navbar {
       position: fixed;
       top: 16px;
@@ -43,20 +67,19 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      text-decoration: none;
-      color: #FFFFFF;
       font-weight: 800;
       font-size: 18px;
+      color: #FFFFFF;
     }
     .nav-logo-img { height: 28px; width: auto; object-fit: contain; display: block; }
+    .nav-logo-img[src] { font-size: 0; color: transparent; }
     .nav-links { display: flex; gap: 28px; }
-    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a { color: rgba(255,255,255,0.7); font-size: 14px; transition: color 0.2s; }
     .nav-links a:hover { color: #FFFFFF; }
     .nav-right { display: flex; align-items: center; gap: 12px; }
     .nav-cta {
       background: #F5C200; color: #0A0A0A; font-weight: 700; font-size: 13px;
-      padding: 8px 18px; border-radius: 999px; text-decoration: none;
-      white-space: nowrap; transition: opacity 0.2s;
+      padding: 8px 18px; border-radius: 999px; white-space: nowrap; transition: opacity 0.2s;
     }
     .nav-cta:hover { opacity: 0.85; }
     .nav-hamburger {
@@ -64,6 +87,11 @@
       background: none; border: none; cursor: pointer; padding: 4px;
     }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: #FFFFFF; border-radius: 2px; transition: all 0.3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
     .mobile-menu {
       display: none; position: fixed; top: 80px; left: 16px; right: 16px;
       background: rgba(10,10,10,0.96); backdrop-filter: blur(20px);
@@ -74,28 +102,29 @@
     .mobile-menu-logo { display: flex; align-items: center; gap: 10px; padding-bottom: 20px; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .mobile-menu-brand { font-size: 20px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em; }
     .mobile-menu-brand em { font-style: normal; color: #F5C200; }
-    .mobile-menu a { color: #FFFFFF; text-decoration: none; font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mobile-menu a { color: #FFFFFF; font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu .mobile-cta { background: #F5C200; color: #0A0A0A; font-weight: 700; text-align: center; padding: 14px; border-radius: 999px; margin-top: 16px; border-bottom: none; }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
     }
 
-    /* ── HERO ── */
+    /* ── BUTTON ── */
+    .btn-yellow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #F5C200; color: #0A0A0A; font-weight: 700; font-size: 0.9rem;
+      padding: 13px 28px; border-radius: 999px; transition: opacity 0.2s;
+    }
+    .btn-yellow:hover { opacity: 0.88; }
+
+    /* ── SECTION 1: HERO ── */
     .cs-hero {
       padding: 120px 0 80px;
-      background-color: #F5C200;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
     }
-    .cs-hero-inner {
+    .cs-hero-grid {
       display: grid;
       grid-template-columns: 55fr 45fr;
       gap: 64px;
@@ -103,8 +132,9 @@
     }
     .cs-badge {
       display: inline-block;
-      background: rgba(0,0,0,0.1);
-      color: #0A0A0A;
+      background: rgba(245,194,0,0.12);
+      color: #F5C200;
+      border: 1px solid rgba(245,194,0,0.25);
       border-radius: 999px;
       font-size: 11px;
       font-weight: 700;
@@ -114,103 +144,194 @@
     }
     .cs-hero h1 {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      font-size: clamp(2rem, 4.5vw, 3rem);
       font-weight: 900;
-      color: #0A0A0A;
+      color: #FFFFFF;
       margin-top: 20px;
       line-height: 1.1;
       letter-spacing: -0.03em;
     }
-    .cs-hero-sub {
-      color: #1A1A1A;
+    .cs-hero-italic {
+      color: #F5C200;
       font-size: 18px;
-      margin-top: 16px;
+      font-style: italic;
       line-height: 1.7;
+      margin-top: 16px;
     }
-    .daniela-img {
-      width: 100%;
-      max-width: 420px;
-      height: 520px;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 20px;
-      display: block;
-      margin: 0 auto;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    .cs-hero-sub {
+      color: #A0A0A0;
+      font-size: 16px;
+      margin-top: 12px;
     }
 
-    /* ── SEZIONE 2: STORIA ── */
-    .cs-story {
-      padding: 80px 0;
-      background-color: #FFFFFF;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    .cs-story-inner { max-width: 800px; margin: 0 auto; }
+    /* ── SECTION 2: STORIA ── */
+    .cs-story { padding: 80px 0; }
+    .cs-story-inner { max-width: 780px; margin: 0 auto; }
     .cs-story h2 {
       font-family: 'Poppins', sans-serif;
       font-size: 32px;
-      font-weight: 800;
+      font-weight: 900;
       color: #0A0A0A;
-      margin-bottom: 32px;
     }
-    .cs-story p {
+    .cs-story-text {
       color: #444444;
       font-size: 17px;
       line-height: 1.8;
-      margin-bottom: 20px;
+      margin-top: 24px;
     }
-    .cs-story p:last-child { margin-bottom: 0; }
-
-    /* ── SEZIONE 3: STATS ── */
-    .cs-stats {
-      padding: 80px 0;
-      background-color: #0A0A0A;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
+    .cs-story-text p + p { margin-top: 20px; }
+    .cs-quote {
+      border-left: 4px solid #F5C200;
+      padding-left: 24px;
+      margin-top: 40px;
     }
-    .cs-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+    .cs-quote blockquote {
+      font-style: italic;
+      color: #0A0A0A;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.6;
     }
-    .cs-stat {
-      text-align: center;
-      padding: 48px 24px;
-      border-right: 1px solid #222222;
-    }
-    .cs-stat:last-child { border-right: none; }
-    .cs-stat-val {
-      font-family: 'Poppins', sans-serif;
-      font-size: 48px;
-      font-weight: 900;
-      color: #F5C200;
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-    .cs-stat-lbl {
-      color: #A0A0A0;
+    .cs-quote-firma {
+      color: #888888;
       font-size: 14px;
+      margin-top: 12px;
+    }
+
+    /* ── SECTION 3: DANIELA ── */
+    .cs-daniela { padding: 80px 0; }
+    .cs-daniela-inner { max-width: 900px; margin: 0 auto; }
+    .cs-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(0,0,0,0.6);
+    }
+    .cs-daniela h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: #0A0A0A;
+      margin-top: 12px;
+      letter-spacing: -0.03em;
+    }
+    .cs-daniela-sub {
+      color: #333333;
+      font-size: 16px;
       margin-top: 8px;
     }
-
-    /* ── SEZIONE 4: CTA ── */
-    .cs-cta {
-      padding: 100px 0;
-      background-color: #F5C200;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
-      text-align: center;
+    .cs-daniela-text {
+      color: #1A1A1A;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-top: 24px;
     }
+    .cs-daniela-text p + p { margin-top: 20px; }
+
+    /* ── SECTION 4: TIMELINE ── */
+    .cs-timeline { padding: 80px 0; }
+    .cs-timeline-inner { max-width: 720px; margin: 0 auto; }
+    .cs-eyebrow-gold {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #F5C200;
+    }
+    .cs-timeline h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-top: 12px;
+      letter-spacing: -0.03em;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      margin-top: 48px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: #F5C200;
+    }
+    .timeline-item {
+      position: relative;
+      padding: 0 0 40px 24px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #F5C200;
+    }
+    .timeline-anno {
+      color: #F5C200;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .timeline-titolo {
+      color: #FFFFFF;
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .timeline-testo {
+      color: #A0A0A0;
+      font-size: 14px;
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    /* ── SECTION 5: SPECIALIZZAZIONI ── */
+    .cs-spec { padding: 80px 0; }
+    .cs-spec-inner { max-width: 900px; margin: 0 auto; }
+    .cs-spec h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: #0A0A0A;
+      letter-spacing: -0.03em;
+    }
+    .cs-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .cs-spec-card {
+      background: #F5F5F5;
+      border: 1px solid #E5E5E5;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .cs-spec-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .cs-spec-card h3 {
+      color: #0A0A0A;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    /* ── SECTION 6: CTA ── */
+    .cs-cta { padding: 80px 0; text-align: center; }
     .cs-cta h2 {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.25rem);
       font-weight: 900;
       color: #0A0A0A;
       letter-spacing: -0.03em;
@@ -218,7 +339,7 @@
     .cs-cta-sub {
       color: #1A1A1A;
       font-size: 17px;
-      margin-top: 12px;
+      margin-top: 16px;
       line-height: 1.6;
     }
     .cs-cta-btn {
@@ -250,42 +371,81 @@
         linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
       background-size: 40px 40px;
-      padding: 64px 0 32px;
-      color: #A0A0A0;
+      border-top: 1px solid #1A1A1A;
+      padding: 72px 0 40px;
     }
     .footer-top {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 48px;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 56px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid #1A1A1A;
+      margin-bottom: 36px;
     }
-    .footer-brand { font-size: 20px; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; }
-    .footer-brand span { color: #F5C200; }
-    .footer-desc { font-size: 14px; line-height: 1.7; color: #666666; }
-    .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #555555; margin-bottom: 16px; }
-    .footer-col a { display: block; color: #666666; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
-    .footer-col a:hover { color: #FFFFFF; }
-    .footer-btm { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid #1A1A1A; font-size: 13px; color: #444444; }
-    .footer-btm a { color: #444444; transition: color 0.2s; }
-    .footer-btm a:hover { color: #FFFFFF; }
+    .footer-brand h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+    .footer-brand p {
+      color: #666666;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 300px;
+    }
+    .footer-col-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555555;
+      margin-bottom: 22px;
+    }
+    .footer-hours { display: flex; flex-direction: column; gap: 9px; }
+    .fh-row { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; line-height: 1.45; }
+    .fh-day { color: #A0A0A0; white-space: nowrap; }
+    .fh-time { color: #FFFFFF; white-space: nowrap; text-align: right; }
+    .fh-row.fh-today .fh-day,
+    .fh-row.fh-today .fh-time { color: #F5C200; font-weight: 700; }
+    .footer-social-icons { display: flex; flex-direction: row; gap: 10px; flex-wrap: wrap; }
+    .social-icon-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px; background: #1A1A1A; border: 1px solid #333333;
+      border-radius: 10px; color: #FFFFFF; transition: border-color 0.2s, color 0.2s; flex-shrink: 0;
+    }
+    .social-icon-btn:hover { border-color: #F5C200; color: #F5C200; }
+    .social-icon-btn svg { display: block; }
+    .footer-btm {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.84rem; color: #444444; flex-wrap: wrap; gap: 8px;
+    }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1040px) {
+      .cs-hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cs-spec-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 768px) {
-      .cs-hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .cs-hero h1 { font-size: 2.2rem; }
-      .cs-hero-sub { font-size: 16px; }
-      .daniela-img { height: 380px; margin-top: 0; }
-      .cs-stats-grid { grid-template-columns: 1fr 1fr; }
-      .cs-stat { border-right: none; border-bottom: 1px solid #222222; }
-      .cs-stat:nth-child(2n) { border-left: 1px solid #222222; }
-      .cs-stat:nth-last-child(-n+2) { border-bottom: none; }
-      .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .footer-btm { flex-direction: column; gap: 12px; text-align: center; }
+      .cs-hero { padding: 100px 0 60px; }
+      .cs-hero h1 { font-size: 2rem; }
+      .cs-hero-italic { font-size: 16px; }
+      .cs-story h2, .cs-timeline h2, .cs-spec h2 { font-size: 26px; }
+      .cs-daniela h2 { font-size: 28px; }
+      .cs-quote blockquote { font-size: 17px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-btm { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .cs-spec-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav id="main-navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
@@ -307,6 +467,7 @@
     </div>
   </nav>
 
+  <!-- Menu mobile -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-logo">
       <img src="./Logo.png" alt="Beautrì logo" style="height:36px; width:auto; object-fit:contain;">
@@ -321,66 +482,157 @@
   </div>
 
 
-  <!-- HERO -->
-  <section class="cs-hero">
-    <div class="wrap cs-hero-inner">
+  <!-- ════ SEZIONE 1 — HERO ════ -->
+  <section class="cs-hero grid-dark">
+    <div class="wrap cs-hero-grid">
 
       <div>
         <span class="cs-badge">Chi Siamo</span>
-        <h1>Siamo Beautrì</h1>
-        <p class="cs-hero-sub">40 anni di esperienza. Un metodo unico.<br>Una missione: risolvere i tuoi problemi di cute e capelli.</p>
+        <h1>Ciao, sono Daniela Modina.</h1>
+        <p class="cs-hero-italic">Se stai leggendo questa pagina — che il 96% della popolazione ritiene inutile — so già che sei una persona speciale.</p>
+        <p class="cs-hero-sub">Per questo voglio raccontarti come è nata Beautrì.</p>
       </div>
 
       <div>
-        <img src="Daniela%20(1).jpg" alt="Daniela - Fondatrice Beautrì" class="daniela-img">
+        <img src="Daniela%20(1).jpg" alt="Daniela Modina"
+          style="width:100%; max-width:420px; height:520px; object-fit:cover; object-position:center top; border-radius:20px; display:block; margin:0 auto; box-shadow:0 8px 40px rgba(0,0,0,0.4);">
       </div>
 
     </div>
   </section>
 
 
-  <!-- SEZIONE 2: STORIA -->
-  <section class="cs-story">
+  <!-- ════ SEZIONE 2 — LA STORIA ════ -->
+  <section class="cs-story grid-white">
     <div class="wrap cs-story-inner">
-      <h2>La nostra storia</h2>
-      <p>Siamo un'azienda specializzata nella cura dei capelli che si occupa di risolvere tutte le anomalie che riguardano la cute e i capelli.</p>
-      <p>Il nostro obiettivo è essere il veicolo per raggiungere i sogni e gli obiettivi dei nostri clienti.</p>
-      <p>Non promettiamo risultati con la bacchetta magica, sarebbe contro la nostra etica. Promettiamo però che tratteremo i tuoi capelli come se fossero i nostri, con l'ossessione per il risultato che ci contraddistingue.</p>
+
+      <h2>Come è nata Beautrì</h2>
+
+      <div class="cs-story-text">
+        <p>Beautrì nasce nel 2017 con una missione precisa: ridare il sorriso alle persone risolvendo i loro problemi di cute e capelli.</p>
+        <p>A differenza dei classici centri, tu come persona vieni prima di tutto. Negli anni abbiamo capito che i risultati si ottengono prima ascoltando e capendo la persona che si ha davanti — e poi cucirle addosso il percorso adatto a lei: al suo stile di vita, alle sue esigenze, ai risultati che vuole ottenere.</p>
+      </div>
+
+      <div class="cs-quote">
+        <blockquote>«Trattare cute e capelli non è solo curare una parte del corpo, ma lavorare per il benessere psicologico e sociale della persona.»</blockquote>
+        <p class="cs-quote-firma">— Daniela Modina</p>
+      </div>
+
     </div>
   </section>
 
 
-  <!-- SEZIONE 3: STATS -->
-  <section class="cs-stats">
-    <div class="wrap">
-      <div class="cs-stats-grid">
-        <div class="cs-stat">
-          <div class="cs-stat-val">280+</div>
-          <div class="cs-stat-lbl">Persone trattate</div>
+  <!-- ════ SEZIONE 3 — DANIELA ════ -->
+  <section class="cs-daniela grid-yellow">
+    <div class="wrap cs-daniela-inner">
+
+      <p class="cs-eyebrow">La fondatrice</p>
+      <h2>Chi è Daniela Modina</h2>
+      <p class="cs-daniela-sub">Tecnica Tricologa · Coaching Oncologico · Autrice</p>
+
+      <div class="cs-daniela-text">
+        <p>Daniela è la fondatrice e titolare di Beautrì Parrucchieri. Professionista nel settore dell'acconciatura dal 1989, ha costruito in oltre 40 anni di carriera una competenza specialistica che va ben oltre la parrucchieria tradizionale.</p>
+        <p>È Tecnica Tricologa certificata con Master di Alta Formazione riconosciuto da TricoItalia. Si è specializzata in Coaching Oncologico — qualifica che la rende punto di riferimento unico in Lombardia per chi affronta percorsi di chemioterapia e malattie croniche.</p>
+        <p>Nel 2024 ha pubblicato il libro Rinascita, che intreccia tricologia, psicologia e storie reali di trasformazione.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════ SEZIONE 4 — TIMELINE ════ -->
+  <section class="cs-timeline grid-dark">
+    <div class="wrap cs-timeline-inner">
+
+      <p class="cs-eyebrow-gold">Formazione</p>
+      <h2>Un percorso costruito in 40 anni</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-anno">1989</div>
+          <div class="timeline-titolo">Inizio carriera</div>
+          <div class="timeline-testo">Prima formazione nel settore parrucchieria.</div>
         </div>
-        <div class="cs-stat">
-          <div class="cs-stat-val">40+</div>
-          <div class="cs-stat-lbl">Anni di esperienza</div>
+
+        <div class="timeline-item">
+          <div class="timeline-anno">Master</div>
+          <div class="timeline-titolo">Master di Alta Formazione Tricologica — TricoItalia</div>
+          <div class="timeline-testo">Abilitazione come Tecnica Tricologa certificata.</div>
         </div>
-        <div class="cs-stat">
-          <div class="cs-stat-val">3</div>
-          <div class="cs-stat-lbl">Specialisti dedicati</div>
+
+        <div class="timeline-item">
+          <div class="timeline-anno">Coaching</div>
+          <div class="timeline-titolo">Specializzazione in Coaching Oncologico</div>
+          <div class="timeline-testo">Prima e unica tecnica tricologa con questa qualifica nella provincia di Bergamo.</div>
         </div>
-        <div class="cs-stat">
-          <div class="cs-stat-val">100%</div>
-          <div class="cs-stat-lbl">Percorsi personalizzati</div>
+
+        <div class="timeline-item">
+          <div class="timeline-anno">2024</div>
+          <div class="timeline-titolo">Pubblicazione libro «Rinascita»</div>
+          <div class="timeline-testo">Tricologia, psicologia e storie di trasformazione.</div>
         </div>
+
+        <div class="timeline-item">
+          <div class="timeline-anno">2025</div>
+          <div class="timeline-titolo">Master Hair Therapy</div>
+          <div class="timeline-testo">Approfondimento scientifico sui trattamenti avanzati.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-anno">2026</div>
+          <div class="timeline-titolo">Esperto Cosmetico Magistrale — Poliestetico Milano</div>
+          <div class="timeline-testo">Specializzazione in cosmetologia magistrale.</div>
+        </div>
+
       </div>
     </div>
   </section>
 
 
-  <!-- SEZIONE 4: CTA -->
-  <section class="cs-cta">
+  <!-- ════ SEZIONE 5 — SPECIALIZZAZIONI ════ -->
+  <section class="cs-spec grid-white">
+    <div class="wrap cs-spec-inner">
+
+      <h2>Aree di intervento</h2>
+
+      <div class="cs-spec-grid">
+        <div class="cs-spec-card">
+          <div class="cs-spec-icon">💧</div>
+          <h3>Alopecia androgenetica</h3>
+        </div>
+        <div class="cs-spec-card">
+          <div class="cs-spec-icon">💧</div>
+          <h3>Psoriasi del cuoio capelluto</h3>
+        </div>
+        <div class="cs-spec-card">
+          <div class="cs-spec-icon">💧</div>
+          <h3>Diradamento e caduta</h3>
+        </div>
+        <div class="cs-spec-card">
+          <div class="cs-spec-icon">💧</div>
+          <h3>Dermatite seborroica e forfora</h3>
+        </div>
+        <div class="cs-spec-card">
+          <div class="cs-spec-icon">💧</div>
+          <h3>Caduta da chemioterapia</h3>
+        </div>
+        <div class="cs-spec-card">
+          <div class="cs-spec-icon">💧</div>
+          <h3>Tricotillomania</h3>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════ SEZIONE 6 — CTA ════ -->
+  <section class="cs-cta grid-yellow">
     <div class="wrap">
-      <h2>Inizia il tuo percorso</h2>
-      <p class="cs-cta-sub">Il primo passo è una consulenza.<br>Ti ascoltiamo davvero.</p>
-      <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="cs-cta-btn">Come Possiamo Aiutarti</a>
+      <h2>Inizia il tuo percorso con Daniela</h2>
+      <p class="cs-cta-sub">La consulenza Beautrì è il primo passo.<br>90 minuti per capire davvero da dove partire.</p>
+      <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="cs-cta-btn">Prenota la Consulenza</a>
       <a href="index.html" class="cs-cta-back">← Torna alla home</a>
     </div>
   </section>
@@ -389,33 +641,68 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap">
+
       <div class="footer-top">
-        <div>
-          <div class="footer-brand">Beautr<span>ì</span></div>
-          <p class="footer-desc">Centro tricologico a Cologno al Serio (BG).<br>Risolviamo i problemi di cute e capelli con il Metodo 80/20.</p>
+
+        <div class="footer-brand">
+          <h3>Beautrì</h3>
+          <p>Capelli sani nascono da persone ascoltate</p>
+          <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="btn-yellow">Come Possiamo Aiutarti</a>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2793.123!2d9.7024!3d45.5789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia+Circonvallazione+8%2C+Cologno+al+Serio+BG!5e0!3m2!1sit!2sit!4v1"
+            width="100%"
+            height="200"
+            style="border:0; border-radius:12px; margin-top:16px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
+
         <div class="footer-col">
-          <h4>Navigazione</h4>
-          <a href="index.html">Home</a>
-          <a href="chi-siamo.html">Chi Siamo</a>
-          <a href="index.html#testimonianze">Testimonianze</a>
-          <a href="https://form.typeform.com/to/QUzap8so" target="_blank">Consulenza</a>
+          <div class="footer-col-title">Orari</div>
+          <div class="footer-hours">
+            <div class="fh-row" data-day="1"><span class="fh-day">Lunedì</span><span class="fh-time">Chiuso</span></div>
+            <div class="fh-row" data-day="2"><span class="fh-day">Martedì</span><span class="fh-time">13:30–21:00</span></div>
+            <div class="fh-row" data-day="3"><span class="fh-day">Mercoledì</span><span class="fh-time">13:30–21:00</span></div>
+            <div class="fh-row" data-day="4"><span class="fh-day">Giovedì</span><span class="fh-time">09:00–12:00 / 14:00–18:45</span></div>
+            <div class="fh-row" data-day="5"><span class="fh-day">Venerdì</span><span class="fh-time">09:00–12:00 / 14:00–19:30</span></div>
+            <div class="fh-row" data-day="6"><span class="fh-day">Sabato</span><span class="fh-time">08:00–17:30</span></div>
+            <div class="fh-row" data-day="0"><span class="fh-day">Domenica</span><span class="fh-time">Chiuso</span></div>
+          </div>
         </div>
+
         <div class="footer-col">
-          <h4>Contatti</h4>
-          <a href="mailto:info@beautri.it">info@beautri.it</a>
-          <a href="https://instagram.com/beautriparrucchieri" target="_blank">@beautriparrucchieri</a>
+          <div class="footer-col-title">Social</div>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/beautriparrucchieri/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/beautriparrucchieri" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@beautriparrucchieri" target="_blank" rel="noopener" class="social-icon-btn" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@beautriparrucchieri" target="_blank" rel="noopener" class="social-icon-btn" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            </a>
+          </div>
         </div>
+
       </div>
+
       <div class="footer-btm">
-        <span>© 2025 Beautrì S.R.L. — Cologno al Serio (BG)</span>
-        <span>P.IVA — tutti i diritti riservati</span>
+        <span>© 2026 Beautrì &nbsp;·&nbsp; P.IVA 01950500163 &nbsp;·&nbsp; Via Circonvallazione 8, Cologno al Serio (BG)</span>
+        <span>Tutti i diritti riservati</span>
       </div>
+
     </div>
   </footer>
 
 
   <script>
+    /* ── Navbar ── */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -437,6 +724,14 @@
         mobileMenu.classList.remove('open');
       });
     });
+
+    /* ── Footer: oggi in evidenza ── */
+    (function() {
+      var today = new Date().getDay();
+      document.querySelectorAll('.fh-row').forEach(function(row) {
+        if (parseInt(row.dataset.day) === today) row.classList.add('fh-today');
+      });
+    })();
   </script>
 
 </body>
