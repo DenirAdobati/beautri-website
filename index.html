@@ -1726,6 +1726,387 @@
     }
   </style>
 
+  <!-- ════════════════════════════════════════
+       S · TESTIMONIANZE SCROLL
+  ════════════════════════════════════════ -->
+  <style>
+    .sec-tscroll {
+      background-color: #0A0A0A;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      padding: 80px 0;
+      overflow: hidden;
+    }
+    .tscroll-head {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .tscroll-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888888;
+      margin-bottom: 16px;
+    }
+    .tscroll-eyebrow::before {
+      content: '';
+      width: 22px; height: 2px;
+      background: #888888;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .tscroll-h2 {
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
+      line-height: 1.15;
+    }
+    .tscroll-sub {
+      color: #A0A0A0;
+      font-size: 16px;
+      margin-top: 12px;
+    }
+    .tscroll-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #111111;
+      border: 1px solid #222222;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: #FFFFFF;
+      margin-top: 16px;
+    }
+    .tscroll-wrapper {
+      margin-top: 48px;
+      overflow: hidden;
+    }
+    .tscroll-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: tScrollLeft 40s linear infinite;
+    }
+    .tscroll-track-slow {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: tScrollLeft 55s linear infinite;
+      margin-top: 16px;
+    }
+    @keyframes tScrollLeft {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .tscroll-wrapper:hover .tscroll-track,
+    .tscroll-wrapper:hover .tscroll-track-slow {
+      animation-play-state: paused;
+    }
+    .t-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFF9E0 60%, #F5C200 100%);
+      border: none;
+      border-radius: 16px;
+      padding: 24px;
+      width: 320px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(245,194,0,0.15);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .t-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 16px;
+    }
+    .t-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    .t-card:hover {
+      box-shadow: 0 8px 32px rgba(245,194,0,0.25);
+      transform: translateY(-2px);
+    }
+    .t-card-stars {
+      color: #F5C200;
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+    .t-card-text {
+      color: #1A1A1A;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .t-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 16px;
+    }
+    .t-card-ava {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+    .t-card-name {
+      color: #0A0A0A;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+    }
+    .t-card-date {
+      color: #888888;
+      font-size: 12px;
+    }
+    @media (max-width: 768px) {
+      .sec-tscroll { padding: 48px 0; }
+      .tscroll-head { padding: 0 20px; }
+    }
+  </style>
+
+  <section class="sec-tscroll">
+    <div class="tscroll-head fi">
+      <div class="tscroll-eyebrow">Testimonianze</div>
+      <h2 class="tscroll-h2">Cosa dicono di noi i nostri clienti</h2>
+      <p class="tscroll-sub">Recensioni reali di persone che hanno scelto Beautrì</p>
+      <div class="tscroll-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.4-1.04 2.58-2.21 3.37v2.8h3.57c2.08-1.92 3.28-4.74 3.28-8.18z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        4,9 · 210 recensioni
+      </div>
+    </div>
+
+    <div class="tscroll-wrapper">
+
+      <!-- RIGA 1 -->
+      <div class="tscroll-track">
+        <!-- set 1 -->
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Dopo la consulenza con Daniela mi sono sentita capita e mi sono affidata alle loro cure. Sto intraprendendo un percorso che sta notevolmente migliorando le problematiche riscontrate. Daniela e il suo team sono decisamente le persone giuste capitate al momento giusto.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#FF6B9D;">S</div>
+            <div>
+              <div class="t-card-name">Sonia Florio</div>
+              <div class="t-card-date">un giorno fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Se volete entrare in un posto dove oltre ai soliti trattamenti volete essere accolti umanamente e scoprire risposte che non vi sapevate dare, allora non lascerete mai più Beautrì! Con gentilezza e grande cura vi faranno entrare nel mondo di vero benessere dei capelli.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#4A90D9;">V</div>
+            <div>
+              <div class="t-card-name">Vera Popović</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Mi piace molto il fatto che mi spieghiate ogni fase e ogni passaggio in modo minuzioso. Venire da voi mi fa sentire al sicuro perché so che sono in buone mani. La professionalità sia nelle consulenze che nei trattamenti è davvero il top!</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#4A90D9;">S</div>
+            <div>
+              <div class="t-card-name">Simona Limonta</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Ho avuto il piacere di conoscere Daniela sottoponendomi ad una visita tricologica che mi ha permesso di capire lo stato di salute della mia cute. Ho deciso di intraprendere un percorso ad hoc, e mi sto trovando benissimo. Team fantastico.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#E74C3C;">M</div>
+            <div>
+              <div class="t-card-name">Melania Mosso</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Dopo la consulenza con Daniela mi sono sentita capita e mi sono affidata alle loro cure. Sto intraprendendo un percorso che sta notevolmente migliorando le problematiche riscontrate. Daniela e il suo team sono decisamente le persone giuste capitate al momento giusto.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#FF6B9D;">S</div>
+            <div>
+              <div class="t-card-name">Sonia Florio</div>
+              <div class="t-card-date">un giorno fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Se volete entrare in un posto dove oltre ai soliti trattamenti volete essere accolti umanamente e scoprire risposte che non vi sapevate dare, allora non lascerete mai più Beautrì! Con gentilezza e grande cura vi faranno entrare nel mondo di vero benessere dei capelli.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#4A90D9;">V</div>
+            <div>
+              <div class="t-card-name">Vera Popović</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Mi piace molto il fatto che mi spieghiate ogni fase e ogni passaggio in modo minuzioso. Venire da voi mi fa sentire al sicuro perché so che sono in buone mani. La professionalità sia nelle consulenze che nei trattamenti è davvero il top!</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#4A90D9;">S</div>
+            <div>
+              <div class="t-card-name">Simona Limonta</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Ho avuto il piacere di conoscere Daniela sottoponendomi ad una visita tricologica che mi ha permesso di capire lo stato di salute della mia cute. Ho deciso di intraprendere un percorso ad hoc, e mi sto trovando benissimo. Team fantastico.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#E74C3C;">M</div>
+            <div>
+              <div class="t-card-name">Melania Mosso</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGA 2 -->
+      <div class="tscroll-track-slow">
+        <!-- set 1 -->
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Ho conosciuto Beautrì tramite una consulenza tricologica e a oggi a distanza di due anni mi recò mensilmente per mantenere i miei risultati. Lo consiglio per la loro accoglienza e professionalità.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#27AE60;">M</div>
+            <div>
+              <div class="t-card-name">Matteo Zumelli</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Mi sono rivolta a questo centro perché cercavo qualcuno che potesse prendersi cura seriamente dei miei capelli. Da allora sono passati più di cinque anni ed i miei capelli sono rinati. Grazie di ❤️</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#FF6B9D;">S</div>
+            <div>
+              <div class="t-card-name">Silvana Carrara</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Avevo problematiche alla cute, Daniela grazie alla sua consulenza approfondita è riuscita ad aiutarmi e risolvere il mio problema. Le ragazze davvero d'oro. Ad ogni trattamento ti spiegano cosa si va a fare e come agisce sulla cute.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#F5C200;">G</div>
+            <div>
+              <div class="t-card-name">Giulia Aceti</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">È da diversi anni che frequento questo salone. Ho sempre trovato professionalità, gentilezza, allegria e quel briciolo di pazzia che ti strappa un sorriso. Il team è sempre aggiornato e promuove diverse novità non solo per i capelli ma per il benessere psicologico.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#27AE60;">E</div>
+            <div>
+              <div class="t-card-name">elena carne</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Ho conosciuto Beautrì tramite una consulenza tricologica e a oggi a distanza di due anni mi recò mensilmente per mantenere i miei risultati. Lo consiglio per la loro accoglienza e professionalità.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#27AE60;">M</div>
+            <div>
+              <div class="t-card-name">Matteo Zumelli</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Mi sono rivolta a questo centro perché cercavo qualcuno che potesse prendersi cura seriamente dei miei capelli. Da allora sono passati più di cinque anni ed i miei capelli sono rinati. Grazie di ❤️</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#FF6B9D;">S</div>
+            <div>
+              <div class="t-card-name">Silvana Carrara</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">Avevo problematiche alla cute, Daniela grazie alla sua consulenza approfondita è riuscita ad aiutarmi e risolvere il mio problema. Le ragazze davvero d'oro. Ad ogni trattamento ti spiegano cosa si va a fare e come agisce sulla cute.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#F5C200;">G</div>
+            <div>
+              <div class="t-card-name">Giulia Aceti</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <p class="t-card-text">È da diversi anni che frequento questo salone. Ho sempre trovato professionalità, gentilezza, allegria e quel briciolo di pazzia che ti strappa un sorriso. Il team è sempre aggiornato e promuove diverse novità non solo per i capelli ma per il benessere psicologico.</p>
+          <div class="t-card-footer">
+            <div class="t-card-ava" style="background:#27AE60;">E</div>
+            <div>
+              <div class="t-card-name">elena carne</div>
+              <div class="t-card-date">1 mese fa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
   <section id="come-aiutiamo" class="sec-services grid-bg">
     <div class="wrap">
 
