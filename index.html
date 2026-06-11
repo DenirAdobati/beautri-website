@@ -943,7 +943,7 @@
     .footer-top {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 64px;
+      gap: 56px;
       padding-bottom: 64px;
       border-bottom: 1px solid var(--border);
       margin-bottom: 36px;
@@ -981,6 +981,49 @@
       transition: color 0.18s;
     }
     .footer-col ul a:hover { color: var(--text); }
+    .footer-hours {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .fh-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .fh-day { color: #A0A0A0; white-space: nowrap; }
+    .fh-time { color: #ffffff; white-space: nowrap; text-align: right; }
+    .fh-row.fh-today .fh-day,
+    .fh-row.fh-today .fh-time {
+      color: #F5C200;
+      font-weight: 700;
+    }
+    .footer-social-icons {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .social-icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: #1a1a1a;
+      border: 1px solid #333333;
+      border-radius: 10px;
+      color: #ffffff;
+      transition: border-color 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .social-icon-btn:hover {
+      border-color: #F5C200;
+      color: #F5C200;
+    }
+    .social-icon-btn svg { display: block; }
     .footer-btm {
       display: flex;
       justify-content: space-between;
@@ -1004,7 +1047,7 @@
       .hstat { border-bottom: 1px solid var(--border); }
       .hstat:nth-child(2n) { border-right: none; }
       .hstat:nth-last-child(-n+2) { border-bottom: none; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
     }
 
     @media (max-width: 768px) {
@@ -1038,6 +1081,177 @@
       .hero-stats { grid-template-columns: 1fr 1fr; }
       .feat-cards { grid-template-columns: 1fr; }
     }
+
+    /* ══════════════════════════════════════════════════
+       COLOR SCHEME
+    ══════════════════════════════════════════════════ */
+
+    body { background: #FFFFFF; color: #0A0A0A; }
+
+    /* Neutralize hex-bg utility classes */
+    .hex-bg, .hex-bg-lg { background-color: unset; background-image: none; background-size: unset; }
+
+    /* ── NAVBAR (transparent → white on scroll) ── */
+    #nav {
+      background: transparent;
+      border-bottom-color: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    #nav.scrolled {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom-color: #E5E5E5;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+    }
+    .nav-logo { color: #0A0A0A; }
+    .nav-links a { color: #555555; }
+    .nav-links a:hover { color: #0A0A0A; background: rgba(0,0,0,0.04); }
+    .nav-hamburger { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.12); }
+    .nav-hamburger span { background: #0A0A0A; }
+    #drawer { background: rgba(255,255,255,0.98); border-bottom-color: #E5E5E5; backdrop-filter: blur(20px); }
+    #drawer ul li a { color: #444444; }
+    #drawer ul li a:hover { color: #0A0A0A; background: rgba(0,0,0,0.04); }
+    .mobile-menu { background: #FFFFFF; border-bottom-color: #E5E5E5; }
+    .mobile-menu a { color: #0A0A0A; border-bottom-color: #E5E5E5; }
+
+    /* ── HERO (WHITE) ── */
+    .hero { background-color: #FFFFFF; }
+    .hero::before { display: none; }
+    .hero h1 { color: #0A0A0A; }
+    .hero-sub { color: #444444; }
+    .hero-badge { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+    .badge-text { color: #444444; }
+    .badge-text strong { color: #0A0A0A; }
+    .review-widget { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); }
+    .review-text { color: #0A0A0A; }
+    .hero-stats { background: #F5F5F5; border-color: #E5E5E5; }
+    .hstat { border-right-color: #E5E5E5; border-bottom-color: #E5E5E5; }
+    .hstat:hover { background: rgba(245,194,0,0.06); }
+    .hstat-lbl { color: #444444; }
+    .hero .btn-outline { color: #0A0A0A; border-color: #CCCCCC; background: transparent; }
+    .hero .btn-outline:hover { background: rgba(0,0,0,0.05); border-color: #888888; }
+
+
+    /* ── COME AIUTIAMO — stili nell'inline <style> della sezione ── */
+
+    /* ── METODO 80/20 (GIALLO) ── */
+    .sec-m80 { background-color: #F5C200; border-top-color: rgba(0,0,0,0.1); border-bottom-color: rgba(0,0,0,0.1); }
+    .sec-m80 .eyebrow { color: rgba(0,0,0,0.6); }
+    .sec-m80 .eyebrow::before { background: rgba(0,0,0,0.6); }
+    .sec-m80 .sec-h2 { color: #0A0A0A; }
+    .m80-sub { color: #1a1a1a; }
+    .m80-text p { color: #1a1a1a; }
+    .m80-em { color: #0A0A0A !important; }
+    .m80-leg { color: #0A0A0A; }
+    .m80-leg strong { color: #0A0A0A !important; }
+    .m80-step { background: rgba(0,0,0,0.07); border-color: rgba(0,0,0,0.12); }
+    .m80-step:hover { border-color: rgba(0,0,0,0.3); transform: translateY(-3px); }
+    .m80-step-icon { background: rgba(0,0,0,0.1); border-color: rgba(0,0,0,0.15); color: #0A0A0A; }
+    .m80-step h3 { color: #0A0A0A; }
+    .m80-step p { color: #1a1a1a; }
+    .sec-m80 .split-link { color: #0A0A0A; text-decoration: underline; }
+    .sec-m80 .split-link:hover { gap: 16px; }
+
+    /* ── TABELLA NOI VS ALTRI (WHITE) ── */
+    .sec-method { background-color: #FFFFFF; border-bottom-color: #E5E5E5; }
+    .sec-method .eyebrow { color: #888888; }
+    .sec-method .eyebrow::before { background: #888888; }
+    .sec-method .sec-h2 { color: #0A0A0A; }
+    .sec-method .split-text p { color: #444444; }
+    .sec-method .split-link { color: #F5C200; }
+    .cmp-card { background: #FFFFFF; border-color: #E5E5E5; }
+    .cmp-tabs { border-bottom-color: #E5E5E5; }
+    .ctab { color: #888888; background: #F5F5F5; border-color: #E5E5E5; }
+    .ctab.on { background: #F5C200; color: #0A0A0A; border-color: transparent; }
+    .ctab:not(.on):hover { background: rgba(0,0,0,0.04); color: #0A0A0A; border-color: #D0D0D0; }
+    .cmp-row { border-bottom-color: #E5E5E5; }
+    .cmp-row.hdr { background: #FAFAFA; }
+    .cmp-cell:first-child { color: #666666; border-right-color: #E5E5E5; }
+    .cmp-cell:last-child { color: #0A0A0A; }
+    .cmp-row.hdr .cmp-cell { color: #888888; }
+    .sec-method .c-yes { color: #22C55E !important; }
+    .sec-method .c-no  { color: #EF4444 !important; }
+    .row-good { background: rgba(34,197,94,0.05); }
+    .row-good .cmp-cell:last-child { color: #22C55E !important; font-weight: 700; }
+    .row-bad  { background: rgba(239,68,68,0.05); }
+    .row-bad  .cmp-cell:last-child { color: #EF4444 !important; font-weight: 700; }
+    .cmp-row.row-good .cmp-cell:first-child,
+    .cmp-row.row-bad  .cmp-cell:first-child { color: #0A0A0A; font-weight: 600; }
+
+    /* ── CHI SIAMO / SIAMO BEAUTRI (GIALLO) ── */
+    .sec-about { background-color: #F5C200; border-bottom-color: rgba(0,0,0,0.1); }
+    .sec-about .eyebrow { color: rgba(0,0,0,0.6); }
+    .sec-about .eyebrow::before { background: rgba(0,0,0,0.6); }
+    .sec-about .sec-h2 { color: #0A0A0A; }
+    .about-text p { color: #1a1a1a; }
+    .sec-about .split-link { color: #0A0A0A; text-decoration: underline; }
+    .sec-about .split-link:hover { gap: 13px; }
+    .stat-grid { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.08); }
+    .sg-item { background: rgba(255,255,255,0.7); }
+    .sg-item:hover { background: rgba(255,255,255,0.9); }
+    .sg-val { color: #0A0A0A; }
+    .sg-lbl { color: #333333; }
+
+    /* ── TESTIMONIANZE (WHITE) ── */
+    .sec-test { background-color: #FFFFFF; border-bottom-color: #E5E5E5; }
+    .sec-test .eyebrow { color: #F5C200; }
+    .sec-test .eyebrow::before { background: #F5C200; }
+    .sec-test .sec-h2 { color: #0A0A0A; }
+    .sec-test .sec-lead { color: #444444; }
+    .test-main { background: #F5F5F5; border-color: #E5E5E5; }
+    .test-main:hover { border-color: rgba(245,194,0,0.45); }
+    .test-quote { color: #0A0A0A; }
+    .test-name { color: #0A0A0A; }
+    .test-detail { color: #666666; }
+    .test-ava { background: rgba(245,194,0,0.15); border-color: rgba(245,194,0,0.4); color: #b38900; }
+    .img-ph { background: #E5E5E5; border-color: #CCCCCC; color: #888888; }
+    .mini-card { background: #F5F5F5; border-color: #E5E5E5; }
+    .mini-card:hover { border-color: rgba(245,194,0,0.45); }
+    .mini-text { color: #444444; }
+    .mini-name { color: #0A0A0A; }
+    .sec-test .btn-outline { color: #0A0A0A; border-color: #CCCCCC; background: transparent; }
+    .sec-test .btn-outline:hover { background: rgba(0,0,0,0.05); border-color: #888888; }
+
+    /* ── CTA FINALE (GIALLO) ── */
+    .sec-cta { background-color: #F5C200; }
+    .cta-h2 { color: #0A0A0A; }
+    .cta-sub { color: #1a1a1a; }
+    .sec-cta .eyebrow { color: rgba(0,0,0,0.6); }
+    .sec-cta .eyebrow::before { background: rgba(0,0,0,0.6); }
+    .sec-cta .btn-yellow { background: #0A0A0A; color: #FFFFFF; }
+    .sec-cta .btn-yellow:hover { background: #1a1a1a; box-shadow: 0 10px 28px rgba(0,0,0,0.2); transform: translateY(-1px); }
+
+    /* ── FOOTER (DARK) ── */
+    .footer { background-color: #0A0A0A; }
+
+    /* ── GRID BACKGROUNDS ── */
+    .grid-bg {
+      background-color: #ffffff;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .grid-bg-dark {
+      background-color: #0A0A0A;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .grid-bg-yellow {
+      background-color: #F5C200;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ── HIDE radial-gradient dot decorations in components ── */
+    .sv-dots-deco { background-image: none !important; display: none; }
   </style>
 </head>
 <body>
@@ -1107,7 +1321,7 @@
   <!-- ════════════════════════════════════════
        S1 · HERO
   ════════════════════════════════════════ -->
-  <section class="hero hex-bg" id="top">
+  <section class="hero grid-bg" id="top">
     <div class="wrap hero-inner">
 
       <div class="hero-badge fi">
@@ -1142,73 +1356,243 @@
         </div>
       </div>
 
-      <!-- ── Press strip ── -->
-      <style>
-        .press-strip {
-          width: 100%;
-          overflow: hidden;
-          padding: 16px 0;
-        }
-        .press-track {
-          display: flex;
-          align-items: center;
-          gap: 64px;
-          width: max-content;
-          animation: marquee-press 25s linear infinite;
-        }
-        .press-logo {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          color: #ffffff;
-          white-space: nowrap;
-          flex-shrink: 0;
-          opacity: 0.75;
-          transition: opacity 0.3s ease;
-        }
-        .press-logo:hover { opacity: 1; }
-        @keyframes marquee-press {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @media (max-width: 768px) {
-          .press-track { gap: 40px; animation-duration: 18s; }
-        }
-      </style>
+    </div>
+  </section>
 
-      <div class="press-strip fi fi-d4">
-        <div class="press-track">
-          <!-- set 1 -->
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:15px;">prima</span><span style="font-family:'Inter',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.05em;"> TREVIGLIO</span></div>
-          <div class="press-logo"><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;">BERGAMO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;color:rgba(255,255,255,0.5);">NEWS</span></div>
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Salute</span><span style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.6);">&amp;</span><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Armonia</span></div>
-          <div class="press-logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;"><div><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">TRICO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">ITALIA</span></div><span style="font-family:'Inter',sans-serif;font-weight:400;font-size:8px;letter-spacing:0.12em;color:rgba(255,255,255,0.45);text-transform:uppercase;">Associazione Italiana di Tricologia</span></div>
-          <!-- set 2 -->
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:15px;">prima</span><span style="font-family:'Inter',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.05em;"> TREVIGLIO</span></div>
-          <div class="press-logo"><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;">BERGAMO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;color:rgba(255,255,255,0.5);">NEWS</span></div>
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Salute</span><span style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.6);">&amp;</span><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Armonia</span></div>
-          <div class="press-logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;"><div><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">TRICO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">ITALIA</span></div><span style="font-family:'Inter',sans-serif;font-weight:400;font-size:8px;letter-spacing:0.12em;color:rgba(255,255,255,0.45);text-transform:uppercase;">Associazione Italiana di Tricologia</span></div>
-          <!-- set 3 -->
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:15px;">prima</span><span style="font-family:'Inter',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.05em;"> TREVIGLIO</span></div>
-          <div class="press-logo"><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;">BERGAMO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;color:rgba(255,255,255,0.5);">NEWS</span></div>
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Salute</span><span style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.6);">&amp;</span><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Armonia</span></div>
-          <div class="press-logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;"><div><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">TRICO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">ITALIA</span></div><span style="font-family:'Inter',sans-serif;font-weight:400;font-size:8px;letter-spacing:0.12em;color:rgba(255,255,255,0.45);text-transform:uppercase;">Associazione Italiana di Tricologia</span></div>
-          <!-- set 4 -->
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:15px;">prima</span><span style="font-family:'Inter',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.05em;"> TREVIGLIO</span></div>
-          <div class="press-logo"><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;">BERGAMO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;color:rgba(255,255,255,0.5);">NEWS</span></div>
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Salute</span><span style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.6);">&amp;</span><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Armonia</span></div>
-          <div class="press-logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;"><div><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">TRICO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">ITALIA</span></div><span style="font-family:'Inter',sans-serif;font-weight:400;font-size:8px;letter-spacing:0.12em;color:rgba(255,255,255,0.45);text-transform:uppercase;">Associazione Italiana di Tricologia</span></div>
-          <!-- set 5 -->
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:15px;">prima</span><span style="font-family:'Inter',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.05em;"> TREVIGLIO</span></div>
-          <div class="press-logo"><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;">BERGAMO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;color:rgba(255,255,255,0.5);">NEWS</span></div>
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Salute</span><span style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.6);">&amp;</span><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Armonia</span></div>
-          <div class="press-logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;"><div><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">TRICO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">ITALIA</span></div><span style="font-family:'Inter',sans-serif;font-weight:400;font-size:8px;letter-spacing:0.12em;color:rgba(255,255,255,0.45);text-transform:uppercase;">Associazione Italiana di Tricologia</span></div>
-          <!-- set 6 — loop seamless con translateX(-50%) -->
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:15px;">prima</span><span style="font-family:'Inter',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.05em;"> TREVIGLIO</span></div>
-          <div class="press-logo"><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;">BERGAMO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.02em;color:rgba(255,255,255,0.5);">NEWS</span></div>
-          <div class="press-logo"><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Salute</span><span style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.6);">&amp;</span><span style="font-family:Georgia,serif;font-weight:400;font-size:14px;letter-spacing:0.08em;">Armonia</span></div>
-          <div class="press-logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;"><div><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">TRICO</span><span style="font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.03em;">ITALIA</span></div><span style="font-family:'Inter',sans-serif;font-weight:400;font-size:8px;letter-spacing:0.12em;color:rgba(255,255,255,0.45);text-transform:uppercase;">Associazione Italiana di Tricologia</span></div>
+
+  <!-- ════════════════════════════════════════
+       S1b · VIDEO + COPY (dark)
+  ════════════════════════════════════════ -->
+  <style>
+    .sec-story {
+      background-color: #0A0A0A;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      padding: 80px 0;
+    }
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: center;
+    }
+    /* Video column */
+    .story-video-card {
+      background: #111111;
+      border: 1px solid #222222;
+      border-radius: 16px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .story-video-ph {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      width: 100%; height: 100%;
+      background: #0A0A0A;
+    }
+    .story-video-ph-label {
+      color: #A0A0A0; font-size: 13px; margin-top: 12px;
+    }
+    .story-video-ph-sub {
+      color: #555555; font-size: 11px; margin-top: 4px;
+    }
+    /* Text column */
+    .story-text { padding-left: 48px; }
+    .story-title-1 {
+      font-size: 36px; font-weight: 800; color: #FFFFFF;
+      line-height: 1.15; margin: 0;
+    }
+    .story-title-2 {
+      font-size: 28px; font-weight: 700; color: #F5C200;
+      line-height: 1.2; margin: 8px 0 0;
+    }
+    .story-body {
+      color: #A0A0A0; font-size: 16px; line-height: 1.7;
+      margin: 24px 0 0;
+    }
+    .story-btn {
+      display: block;
+      margin-top: 32px;
+      margin-left: auto; margin-right: auto;
+      width: fit-content;
+      background: #F5C200; color: #0A0A0A;
+      font-size: 15px; font-weight: 700;
+      border-radius: 999px;
+      padding: 14px 32px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .story-btn:hover { opacity: 0.9; transform: scale(1.02); }
+    @media (max-width: 768px) {
+      .sec-story { padding: 48px 0; }
+      .story-inner { grid-template-columns: 1fr; gap: 32px; }
+      .story-video-card { margin-bottom: 32px; }
+      .story-text { padding-left: 0; }
+      .story-title-1 { font-size: 28px; }
+      .story-title-2 { font-size: 22px; }
+    }
+  </style>
+
+  <section class="sec-story">
+    <div class="wrap">
+      <div class="story-inner">
+
+        <!-- Video placeholder -->
+        <div class="story-video-card">
+          <div class="story-video-ph">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="color:#FF0000; width:48px; height:48px;" aria-hidden="true">
+              <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+            </svg>
+            <p class="story-video-ph-label">Video</p>
+            <p class="story-video-ph-sub">Il link verrà aggiunto presto</p>
+          </div>
         </div>
+
+        <!-- Testo -->
+        <div class="story-text">
+          <p class="story-title-1">Il Problema non sei tu.</p>
+          <p class="story-title-2">È che Nessuno si ferma ad ascoltarti.</p>
+          <p class="story-body">Il mercato è pieno di aziende valide… che sembrano tutte uguali. Prodotti finti. Frasi aziendali. Contenuti senz'anima. E mentre tu aspetti che qualcuno si fermi, qualcun altro si prende la loro fiducia.</p>
+          <a href="#il-metodo" class="story-btn">Scopri il Metodo</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       S1c · CASO STUDIO ALEXANDRA
+  ════════════════════════════════════════ -->
+  <style>
+    .sec-caso {
+      background-color: #FFFFFF;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      padding: 80px 0;
+    }
+    .caso-hdr { text-align: center; margin-bottom: 48px; }
+    .caso-eyebrow {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #888888; margin-bottom: 12px;
+    }
+    .caso-h2 { font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: #0A0A0A; margin: 0 0 12px; }
+    .caso-lead { font-size: 1rem; color: #666666; margin: 0; }
+
+    .caso-card {
+      background-color: #0A0A0A;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      border-radius: 20px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 40px;
+      align-items: center;
+    }
+    .caso-badge {
+      display: inline-flex; align-items: center;
+      background: rgba(245,194,0,0.12); color: #F5C200;
+      border: 1px solid rgba(245,194,0,0.25); border-radius: 999px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 4px 12px;
+    }
+    .caso-name {
+      font-size: 42px; font-weight: 900; color: #FFFFFF;
+      margin: 16px 0 0; line-height: 1.1;
+    }
+    .caso-sub {
+      font-size: 18px; font-weight: 600; color: #F5C200;
+      margin: 8px 0 0; line-height: 1.3;
+    }
+    .caso-desc {
+      font-size: 15px; color: #A0A0A0; line-height: 1.7;
+      margin: 20px 0 0;
+    }
+    .caso-stats {
+      display: flex; gap: 32px; margin-top: 28px;
+    }
+    .caso-stat-num {
+      font-size: 22px; font-weight: 700; color: #F5C200; line-height: 1;
+    }
+    .caso-stat-lbl {
+      font-size: 12px; color: #666666; margin-top: 4px; line-height: 1.3;
+    }
+    .caso-btn {
+      display: block; margin-top: 32px;
+      margin-left: auto; margin-right: auto;
+      width: fit-content;
+      background: #F5C200; color: #0A0A0A;
+      font-size: 14px; font-weight: 700;
+      border-radius: 999px; padding: 12px 28px;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .caso-btn:hover { opacity: 0.85; }
+    .caso-img-ph {
+      aspect-ratio: 4 / 3;
+      background: #111111;
+      border: 1px solid #222222;
+      border-radius: 16px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: #333333; font-size: 13px; text-align: center;
+      gap: 8px; line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      .sec-caso { padding: 48px 0; }
+      .caso-card { grid-template-columns: 1fr; padding: 24px; gap: 24px; }
+      .caso-name { font-size: 32px; }
+      .caso-sub  { font-size: 16px; }
+      .caso-stats { gap: 20px; flex-wrap: wrap; }
+    }
+  </style>
+
+  <section class="sec-caso">
+    <div class="wrap">
+
+      <div class="caso-hdr fi">
+        <div class="caso-eyebrow">Casi Studio</div>
+        <h2 class="caso-h2">I risultati parlano da soli.</h2>
+        <p class="caso-lead">Storie reali di persone che hanno scelto di non arrendersi.</p>
+      </div>
+
+      <div class="caso-card fi fi-d1">
+
+        <!-- Testo -->
+        <div class="caso-text">
+          <div class="caso-badge">Caso Studio · Alopecia Areata</div>
+          <h3 class="caso-name">Alexandra</h3>
+          <p class="caso-sub">Da 110 mollette in testa a tutti i capelli ricresciuti.</p>
+          <p class="caso-desc">Dicembre 2020. Una ragazzina di 12 anni entra in studio con 110 mollette in testa — le uniche due ciocche rimaste. Tre anni dopo, Alexandra ha tutti i suoi capelli.</p>
+          <div class="caso-stats">
+            <div>
+              <div class="caso-stat-num">12 anni</div>
+              <div class="caso-stat-lbl">età al primo accesso</div>
+            </div>
+            <div>
+              <div class="caso-stat-num">3 anni</div>
+              <div class="caso-stat-lbl">durata del percorso</div>
+            </div>
+            <div>
+              <div class="caso-stat-num">100%</div>
+              <div class="caso-stat-lbl">capelli ricresciuti</div>
+            </div>
+          </div>
+          <a href="caso-studio-alexandra.html" class="caso-btn">Scopri il caso studio →</a>
+        </div>
+
+        <!-- Placeholder immagine -->
+        <div class="caso-img-ph" aria-hidden="true">
+          <span>📸 Foto caso studio</span>
+          <span>Le immagini verranno aggiunte</span>
+        </div>
+
       </div>
 
     </div>
@@ -1216,51 +1600,224 @@
 
 
   <!-- ════════════════════════════════════════
-       S2 · COME AIUTIAMO (light)
+       S2 · COME AIUTIAMO (ecomflow dark card)
   ════════════════════════════════════════ -->
-  <section id="come-aiutiamo" class="sec-light">
+  <style>
+    /* ── SEZIONE ── */
+    .sec-services { padding: 48px 0 104px; background: #FFFFFF; }
+    .sec-services .sec-h2 { color: #0A0A0A; }
+    .sec-services .sec-lead { color: #666666; }
+
+    /* ── DARK CARD CONTAINER ── */
+    .sv-dark-card {
+      position: relative; overflow: hidden;
+      background: #0A0A0A; border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+      margin-top: 56px;
+    }
+    .sv-dots-deco {
+      position: absolute; top: 0; right: 0;
+      width: 200px; height: 200px;
+      background-image: radial-gradient(circle, rgba(245,194,0,0.2) 1.5px, transparent 1.5px);
+      background-size: 16px 16px;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── CARD HEADER ── */
+    .sv-card-hdr {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+      margin-bottom: 48px; position: relative; z-index: 1;
+    }
+    .sv-card-title {
+      font-size: 28px; font-weight: 700; color: #FFFFFF;
+      margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.2;
+    }
+    .sv-card-sub { font-size: 15px; color: #A0A0A0; margin: 0; line-height: 1.55; }
+    .sv-card-link {
+      font-size: 14px; font-weight: 600; color: #F5C200;
+      text-decoration: none; white-space: nowrap; flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+    .sv-card-link:hover { opacity: 0.75; }
+
+    /* ── PHASES ROW ── */
+    .sv-phases {
+      display: flex; align-items: flex-start; gap: 0;
+      position: relative; z-index: 1;
+    }
+    .sv-phase {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .sv-phase-icon {
+      width: 52px; height: 52px;
+      background: #1A1A1A; border: 1px solid #333333; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #FFFFFF; flex-shrink: 0;
+    }
+    .sv-phase-content { margin-top: 20px; padding-right: 12px; }
+    .sv-phase-badge {
+      display: inline-block;
+      background: rgba(245,194,0,0.12); color: #F5C200;
+      border: 1px solid rgba(245,194,0,0.25); border-radius: 20px;
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 3px 8px;
+    }
+    .sv-phase-title {
+      font-size: 15px; font-weight: 700; color: #FFFFFF;
+      margin: 12px 0 6px; line-height: 1.3;
+    }
+    .sv-phase-desc { font-size: 13px; color: #A0A0A0; line-height: 1.6; margin: 0; }
+
+    /* ── PRODOTTI (addon) ── */
+    .sv-phase-addon {
+      background: #F5C200;
+      border: none;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .sv-phase-addon .sv-phase-icon {
+      background: rgba(0,0,0,0.1);
+      border: none;
+      color: #0A0A0A;
+    }
+    .sv-phase-addon .sv-phase-title { color: #0A0A0A; }
+    .sv-phase-addon .sv-phase-desc  { color: #1A1A1A; }
+    .sv-phase-addon-note {
+      font-size: 12px; font-style: italic; color: #333333;
+      margin: 6px 0 0; line-height: 1.5;
+    }
+
+    /* ── DASHED CONNECTOR ── */
+    .sv-dash {
+      flex: 0 0 auto; width: 40px;
+      display: flex; align-items: flex-start; padding-top: 26px;
+    }
+    .sv-dash::after {
+      content: ''; display: block;
+      width: 100%; height: 0;
+      border-top: 2px dashed rgba(245,194,0,0.4);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1080px) and (min-width: 769px) {
+      .sv-dark-card { padding: 36px; }
+      .sv-card-title { font-size: 22px; }
+      .sv-phase-title { font-size: 14px; }
+      .sv-phase-desc { font-size: 12px; }
+      .sv-dash { width: 20px; }
+    }
+    @media (max-width: 768px) {
+      .sv-dark-card { padding: 24px; margin-top: 40px; }
+      .sv-card-hdr { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
+      .sv-card-title { font-size: 20px; }
+      .sv-phases { flex-direction: column; align-items: stretch; }
+      .sv-phase { flex-direction: row; align-items: flex-start; gap: 16px; }
+      .sv-phase-content { margin-top: 0; padding-right: 0; }
+      .sv-dash {
+        display: block;
+        width: 2px; height: 32px;
+        border-left: 2px dashed rgba(245,194,0,0.4);
+        margin: 8px 0 8px 26px;
+        padding: 0;
+      }
+      .sv-dash::after { display: none; }
+    }
+  </style>
+
+  <section id="come-aiutiamo" class="sec-services grid-bg">
     <div class="wrap">
 
-      <div class="eyebrow fi">I Nostri Servizi</div>
-      <h2 class="sec-h2 fi fi-d1" style="color:#0A0A0A;">Come aiutiamo i nostri clienti</h2>
-      <p class="sec-lead sec-lead-dark fi fi-d2">Risolviamo anomalie di cute e capelli con percorsi personalizzati</p>
+      <h2 class="sec-h2 fi fi-d1">Come aiutiamo i nostri clienti</h2>
+      <p class="sec-lead fi fi-d2">Dalla consulenza ai risultati: un percorso costruito su di te.</p>
 
-      <div class="feat-cards">
+      <!-- BIG DARK CARD -->
+      <div class="sv-dark-card fi fi-d3">
+        <div class="sv-dots-deco" aria-hidden="true"></div>
 
-        <div class="feat-card fi fi-d1">
-          <div class="feat-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-            </svg>
+        <!-- Card header -->
+        <div class="sv-card-hdr">
+          <div>
+            <h3 class="sv-card-title">Un percorso in 3 fasi.</h3>
+            <p class="sv-card-sub">Ogni fase è costruita sulla precedente. Niente è lasciato al caso.</p>
           </div>
-          <h3>La nostra consulenza tricologica</h3>
-          <p>Analisi approfondita della cute e del capello per identificare la causa del problema alla radice.</p>
-          <div class="feat-arrow">→</div>
+          <a href="https://form.typeform.com/to/QUzap8so" class="sv-card-link" target="_blank" rel="noopener">Scopri il percorso →</a>
         </div>
 
-        <div class="feat-card fi fi-d2">
-          <div class="feat-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12l2 2 4-4"/><path d="M21 12c0 5.523-4.477 10-10 10S1 17.523 1 12 5.477 2 12 2s9 4.477 9 10z"/>
-            </svg>
-          </div>
-          <h3>I nostri percorsi</h3>
-          <p>Programmi personalizzati costruiti sul tuo specifico problema per ottenere risultati concreti e duraturi.</p>
-          <div class="feat-arrow">→</div>
-        </div>
+        <!-- 4 phases -->
+        <div class="sv-phases">
 
-        <div class="feat-card fi fi-d3">
-          <div class="feat-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
+          <!-- FASE 1 -->
+          <div class="sv-phase">
+            <div class="sv-phase-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+            </div>
+            <div class="sv-phase-content">
+              <div class="sv-phase-badge">Fase 1</div>
+              <h4 class="sv-phase-title">Consulenza Beautrì</h4>
+              <p class="sv-phase-desc">Analizziamo cute e capelli per identificare la causa vera del problema. Senza consulenza, non esiste un percorso.</p>
+            </div>
           </div>
-          <h3>I nostri percorsi di mantenimento</h3>
-          <p>Mantieni i risultati ottenuti con un piano continuativo pensato su misura per te.</p>
-          <div class="feat-arrow">→</div>
-        </div>
 
-      </div>
+          <div class="sv-dash" aria-hidden="true"></div>
+
+          <!-- FASE 2 -->
+          <div class="sv-phase">
+            <div class="sv-phase-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+                <circle cx="3" cy="6" r="1.2" fill="currentColor" stroke="none"/>
+                <circle cx="3" cy="12" r="1.2" fill="currentColor" stroke="none"/>
+                <circle cx="3" cy="18" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+            <div class="sv-phase-content">
+              <div class="sv-phase-badge">Fase 2</div>
+              <h4 class="sv-phase-title">Percorso</h4>
+              <p class="sv-phase-desc">Il percorso personalizzato che riequilibra l'anomalia e risolve i problemi di cute e capelli alla radice.</p>
+            </div>
+          </div>
+
+          <div class="sv-dash" aria-hidden="true"></div>
+
+          <!-- FASE 3 -->
+          <div class="sv-phase">
+            <div class="sv-phase-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="sv-phase-content">
+              <div class="sv-phase-badge">Fase 3</div>
+              <h4 class="sv-phase-title">Percorso di Mantenimento</h4>
+              <p class="sv-phase-desc">Preserviamo nel tempo i risultati ottenuti, adattandoci all'evoluzione delle tue esigenze.</p>
+            </div>
+          </div>
+
+          <div class="sv-dash" aria-hidden="true"></div>
+
+          <!-- Prodotti Personalizzati — incluso nelle fasi 2 & 3 -->
+          <div class="sv-phase sv-phase-addon">
+            <div class="sv-phase-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <div class="sv-phase-content">
+              <h4 class="sv-phase-title">Prodotti Personalizzati</h4>
+              <p class="sv-phase-desc">Per la tua routine quotidiana ti daremo prodotti personalizzati.</p>
+              <p class="sv-phase-addon-note">(non centinaia di prodotti, solo 2/3 prodotti che servono davvero)</p>
+            </div>
+          </div>
+
+        </div><!-- /sv-phases -->
+      </div><!-- /sv-dark-card -->
+
     </div>
   </section>
 
@@ -1293,7 +1850,7 @@
     }
   </style>
 
-  <section class="sec-m80 hex-bg">
+  <section id="il-metodo" class="sec-m80 grid-bg-yellow">
     <div class="wrap">
 
       <div class="m80-hdr">
@@ -1317,12 +1874,12 @@
           <canvas id="donut80" width="300" height="300"></canvas>
           <div class="m80-legend">
             <div class="m80-leg">
-              <span class="m80-sq" style="background:#F5C200;"></span>
-              <span><strong style="color:var(--text);">80%</strong> — Persona: stress, alimentazione, ormoni, stile di vita</span>
+              <span class="m80-sq" style="background:#0A0A0A;"></span>
+              <span><strong style="color:#0A0A0A;">80%</strong> — Persona: stress, alimentazione, ormoni, stile di vita</span>
             </div>
             <div class="m80-leg">
-              <span class="m80-sq" style="background:#2a2a2a;border:1px solid #444;"></span>
-              <span><strong style="color:var(--text);">20%</strong> — Capello: prodotti, trattamenti, routine</span>
+              <span class="m80-sq" style="background:rgba(0,0,0,0.3);border:1px solid rgba(0,0,0,0.2);"></span>
+              <span><strong style="color:#0A0A0A;">20%</strong> — Capello: prodotti, trattamenti, routine</span>
             </div>
           </div>
         </div>
@@ -1405,14 +1962,14 @@
 
         /* ring di sfondo */
         seg(0, TAU);
-        ctx.fillStyle = '#1c1c1c';
+        ctx.fillStyle = 'rgba(0,0,0,0.12)';
         ctx.fill();
 
-        /* arco giallo 80% */
+        /* arco nero 80% */
         const yEnd = START + TAU * 0.8 * p;
         if (p > 0.001) {
           seg(START, yEnd);
-          ctx.fillStyle = '#F5C200';
+          ctx.fillStyle = '#0A0A0A';
           ctx.fill();
         }
 
@@ -1420,9 +1977,9 @@
         const gEnd = START + TAU * p;
         if (p * 0.2 * TAU > 0.003) {
           seg(yEnd, gEnd);
-          ctx.fillStyle = '#2a2a2a';
+          ctx.fillStyle = 'rgba(0,0,0,0.25)';
           ctx.fill();
-          ctx.strokeStyle = '#3e3e3e';
+          ctx.strokeStyle = 'rgba(0,0,0,0.2)';
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -1432,7 +1989,7 @@
           ctx.beginPath();
           ctx.moveTo(cx + Ri * Math.cos(a), cy + Ri * Math.sin(a));
           ctx.lineTo(cx + Ro * Math.cos(a), cy + Ro * Math.sin(a));
-          ctx.strokeStyle = '#0A0A0A';
+          ctx.strokeStyle = '#F5C200';
           ctx.lineWidth = 3;
           ctx.stroke();
         }
@@ -1442,17 +1999,17 @@
         /* buco centrale */
         ctx.beginPath();
         ctx.arc(cx, cy, Ri - 1, 0, TAU);
-        ctx.fillStyle = '#0A0A0A';
+        ctx.fillStyle = '#F5C200';
         ctx.fill();
 
         /* testo centrale */
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.font = '900 40px Inter, system-ui, sans-serif';
-        ctx.fillStyle = '#FFFFFF';
+        ctx.fillStyle = '#0A0A0A';
         ctx.fillText('80/20', cx, cy - 12);
         ctx.font = '500 12px Inter, system-ui, sans-serif';
-        ctx.fillStyle = '#A0A0A0';
+        ctx.fillStyle = '#333333';
         ctx.fillText('Il nostro metodo', cx, cy + 16);
       }
 
@@ -1485,7 +2042,7 @@
   <!-- ════════════════════════════════════════
        S4 · METODO 80/20 (split)
   ════════════════════════════════════════ -->
-  <section id="metodo" class="sec-method">
+  <section id="metodo" class="sec-method grid-bg">
     <div class="wrap">
       <div class="split">
 
@@ -1554,7 +2111,7 @@
   <!-- ════════════════════════════════════════
        S5 · CHI SIAMO (dark hex)
   ════════════════════════════════════════ -->
-  <section id="chi-siamo" class="sec-about hex-bg">
+  <section id="chi-siamo" class="sec-about grid-bg-yellow">
     <div class="wrap">
       <div class="about-split">
 
@@ -1593,7 +2150,7 @@
   <!-- ════════════════════════════════════════
        S6 · TESTIMONIANZE
   ════════════════════════════════════════ -->
-  <section id="testimonianze" class="sec-test">
+  <section id="testimonianze" class="sec-test grid-bg">
     <div class="wrap">
 
       <div class="sec-test-header">
@@ -1655,7 +2212,7 @@
   <!-- ════════════════════════════════════════
        S7 · CTA FINALE
   ════════════════════════════════════════ -->
-  <section id="contattaci" class="sec-cta hex-bg-lg">
+  <section id="contattaci" class="sec-cta grid-bg-yellow">
     <div class="wrap sec-cta-inner">
 
       <div class="eyebrow-center fi">
@@ -1678,35 +2235,57 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <footer class="footer">
+  <footer class="footer grid-bg-dark">
     <div class="wrap">
 
       <div class="footer-top">
+
         <div class="footer-brand">
           <h3>Beautrì</h3>
           <p>Capelli sani nascono da persone ascoltate</p>
           <a href="#contattaci" class="btn btn-yellow">Come Possiamo Aiutarti</a>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2793.123!2d9.7024!3d45.5789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia+Circonvallazione+8%2C+Cologno+al+Serio+BG!5e0!3m2!1sit!2sit!4v1"
+            width="100%"
+            height="200"
+            style="border:0; border-radius:12px; filter:none; margin-top:16px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
 
         <div class="footer-col">
-          <div class="footer-col-title">Pagine</div>
-          <ul>
-            <li><a href="#come-aiutiamo">Consulenza Tricologica</a></li>
-            <li><a href="#come-aiutiamo">Percorsi</a></li>
-            <li><a href="#come-aiutiamo">Mantenimento</a></li>
-            <li><a href="#chi-siamo">Chi Siamo</a></li>
-            <li><a href="#testimonianze">Testimonianze</a></li>
-          </ul>
+          <div class="footer-col-title">Orari</div>
+          <div class="footer-hours">
+            <div class="fh-row" data-day="1"><span class="fh-day">Lunedì</span><span class="fh-time">Chiuso</span></div>
+            <div class="fh-row" data-day="2"><span class="fh-day">Martedì</span><span class="fh-time">13:30–21:00</span></div>
+            <div class="fh-row" data-day="3"><span class="fh-day">Mercoledì</span><span class="fh-time">13:30–21:00</span></div>
+            <div class="fh-row" data-day="4"><span class="fh-day">Giovedì</span><span class="fh-time">09:00–12:00 / 14:00–18:45</span></div>
+            <div class="fh-row" data-day="5"><span class="fh-day">Venerdì</span><span class="fh-time">09:00–12:00 / 14:00–19:30</span></div>
+            <div class="fh-row" data-day="6"><span class="fh-day">Sabato</span><span class="fh-time">08:00–17:30</span></div>
+            <div class="fh-row" data-day="0"><span class="fh-day">Domenica</span><span class="fh-time">Chiuso</span></div>
+          </div>
         </div>
 
         <div class="footer-col">
           <div class="footer-col-title">Social</div>
-          <ul>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">TikTok</a></li>
-            <li><a href="#">YouTube</a></li>
-          </ul>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/beautriparrucchieri/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/beautriparrucchieri" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@beautriparrucchieri" target="_blank" rel="noopener" class="social-icon-btn" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@beautriparrucchieri" target="_blank" rel="noopener" class="social-icon-btn" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            </a>
+          </div>
         </div>
+
       </div>
 
       <div class="footer-btm">
@@ -1730,6 +2309,7 @@
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const y = window.pageYOffset;
+          navEl.classList.toggle('scrolled', y > 40);
           if (y <= 10) {
             navEl.classList.remove('hidden');
           } else if (y > lastY + 4 && y > 80) {
@@ -1786,6 +2366,14 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 
     document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+    /* ── Footer: highlight today's opening hours ── */
+    (function() {
+      var today = new Date().getDay();
+      document.querySelectorAll('.fh-row').forEach(function(row) {
+        if (parseInt(row.dataset.day) === today) row.classList.add('fh-today');
+      });
+    })();
 
     /* ── Smooth scroll (anchor links, offset for fixed nav) ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
