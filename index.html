@@ -2158,51 +2158,72 @@
       line-height: 1.7;
       margin-top: 16px;
     }
-    .metodo-svg-wrap {
-      max-width: 320px;
-      margin: 32px auto;
-      display: block;
+    .metodo-bars {
+      background: #0A0A0A;
+      border-radius: 20px;
+      padding: 32px 24px;
+      margin-top: 32px;
+      width: 100%;
+      max-width: 480px;
     }
-    .metodo-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .metodo-card {
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .metodo-card-dark {
-      background-color: #0A0A0A;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    .metodo-card-yellow {
-      background-color: #F5C200;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    .metodo-card-label {
+    .metodo-bar-header {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .metodo-bar-label {
+      color: #FFFFFF;
       font-weight: 700;
       font-size: 15px;
     }
-    .metodo-card-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
+    .metodo-bar-pct {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1;
     }
-    .metodo-card-text {
-      font-size: 14px;
-      line-height: 1.65;
+    .metodo-bar-track {
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .metodo-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      width: 0%;
+    }
+    .metodo-bar-fill.fill-80 {
+      background: #F5C200;
+      transition: width 1.2s ease-out;
+    }
+    .metodo-bar-fill.fill-20 {
+      background: rgba(255,255,255,0.3);
+      transition: width 1.2s ease-out 0.3s;
+    }
+    .metodo-bars.animate .fill-80 { width: 80%; }
+    .metodo-bars.animate .fill-20 { width: 20%; }
+    .metodo-bar-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
       margin-top: 8px;
+    }
+    .metodo-bars-sep {
+      border-top: 0.5px solid rgba(255,255,255,0.1);
+      margin-top: 24px;
+      padding-top: 20px;
+    }
+    .metodo-bars-footer {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      text-align: center;
+    }
+    .metodo-bars-footer-bold {
+      color: #F5C200;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 4px;
     }
     .metodo-bold {
       margin-top: 28px;
@@ -2234,7 +2255,7 @@
     .metodo-cta-btn:hover { transform: scale(1.03); }
     @media (max-width: 768px) {
       .sec-metodo-split { padding: 48px 0; }
-      .metodo-cards { grid-template-columns: 1fr; }
+      .metodo-bars { padding: 24px 16px; }
     }
   </style>
 
@@ -2246,33 +2267,35 @@
         <h2 class="metodo-h2">Il Metodo 80/20</h2>
         <p class="metodo-sub">La maggior parte dei trattamenti si concentra solo sul capello.<br><span style="background-color: #E53E3E; color: #FFFFFF; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Noi abbiamo ribaltato tutto.</span></p>
 
-        <div class="metodo-svg-wrap">
-          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 200 200 L 200 40 A 160 160 0 1 1 47.8 150.6 Z" fill="#0A0A0A"/>
-            <path d="M 200 200 L 47.8 150.6 A 160 160 0 0 1 200 40 Z" fill="#F5C200"/>
-            <circle cx="200" cy="200" r="80" fill="#FFFFFF"/>
-            <text x="270" y="297" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-size="28" font-weight="900" font-family="Inter,sans-serif">80%</text>
-            <text x="135" y="111" text-anchor="middle" dominant-baseline="middle" fill="#0A0A0A" font-size="18" font-weight="900" font-family="Inter,sans-serif">20%</text>
-            <text x="200" y="192" text-anchor="middle" dominant-baseline="middle" fill="#888888" font-size="13" font-family="Inter,sans-serif">Metodo</text>
-            <text x="200" y="212" text-anchor="middle" dominant-baseline="middle" fill="#0A0A0A" font-size="18" font-weight="800" font-family="Inter,sans-serif">Beautrì</text>
-          </svg>
-        </div>
+        <div class="metodo-bars" id="metodoBars">
 
-        <div class="metodo-cards">
-          <div class="metodo-card metodo-card-dark">
-            <div class="metodo-card-label">
-              <span class="metodo-card-dot" style="background:#FFFFFF;"></span>
-              <span style="color:#FFFFFF;">80% — La Persona</span>
+          <div class="metodo-bar-row">
+            <div class="metodo-bar-header">
+              <span class="metodo-bar-label">La Persona</span>
+              <span class="metodo-bar-pct" style="color:#F5C200;">80%</span>
             </div>
-            <p class="metodo-card-text" style="color:#A0A0A0;">Stress, alimentazione, ormoni, abitudini quotidiane. L'80% del problema non sta nel capello, sta nella persona.</p>
-          </div>
-          <div class="metodo-card metodo-card-yellow">
-            <div class="metodo-card-label">
-              <span class="metodo-card-dot" style="background:#0A0A0A;"></span>
-              <span style="color:#0A0A0A;">20% — Il Capello</span>
+            <div class="metodo-bar-track">
+              <div class="metodo-bar-fill fill-80"></div>
             </div>
-            <p class="metodo-card-text" style="color:#1A1A1A;">Solo il 20% riguarda il capello in sé: prodotti, trattamenti, routine di cura.</p>
+            <div class="metodo-bar-sub">Stress, ormoni, alimentazione, stile di vita</div>
           </div>
+
+          <div class="metodo-bar-row" style="margin-top:24px;">
+            <div class="metodo-bar-header">
+              <span class="metodo-bar-label">Il Capello</span>
+              <span class="metodo-bar-pct" style="color:rgba(255,255,255,0.4);">20%</span>
+            </div>
+            <div class="metodo-bar-track">
+              <div class="metodo-bar-fill fill-20"></div>
+            </div>
+            <div class="metodo-bar-sub">Prodotti, trattamenti, routine di cura</div>
+          </div>
+
+          <div class="metodo-bars-sep">
+            <p class="metodo-bars-footer">La maggior parte dei saloni lavora solo sul 20%.</p>
+            <p class="metodo-bars-footer-bold">Noi lavoriamo sull'intera persona.</p>
+          </div>
+
         </div>
 
         <p class="metodo-bold">Noi lavoriamo sull'intera persona.<br>Prima ascoltiamo, poi agiamo.</p>
@@ -2571,6 +2594,20 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 
     document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+    /* ── Metodo 80/20: barre animate ── */
+    const metodoBars = document.getElementById('metodoBars');
+    if (metodoBars) {
+      const barsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('animate');
+            barsObserver.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      barsObserver.observe(metodoBars);
+    }
 
     /* ── Footer: highlight today's opening hours ── */
     (function() {
