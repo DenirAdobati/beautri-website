@@ -155,162 +155,174 @@
     /* ══════════════════════════════════════════════════
        NAVBAR
     ══════════════════════════════════════════════════ */
-    #nav {
+    #main-navbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 999;
-      background: rgba(10,10,10,0.82);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 68px);
+      max-width: 820px;
+      z-index: 9999;
+      border-radius: 999px;
     }
-    #nav.hidden { transform: translateY(-100%); }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
-      gap: 16px;
+      padding: 12px 16px;
+      background: rgba(10,10,10,0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 999px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.25);
     }
 
     .nav-logo {
-      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #FFFFFF;
       font-weight: 800;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      flex-shrink: 0;
+      font-size: 18px;
+    }
+    .nav-logo-img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .nav-logo-img[src] {
+      font-size: 0;
+      color: transparent;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 2px;
-      list-style: none;
-      flex: 1;
-      justify-content: center;
+      gap: 28px;
     }
     .nav-links a {
-      padding: 8px 14px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-2);
-      border-radius: 8px;
-      transition: color 0.18s, background 0.18s;
-      white-space: nowrap;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-links a:hover { color: #FFFFFF; }
 
-    .nav-cta-wrap { flex-shrink: 0; }
-
-    /* Hamburger (legacy, hidden) */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      width: 32px;
-      padding: 4px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      width: 100%; height: 1.5px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all 0.28s ease;
-    }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
-    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
-
-    /* Mobile nav actions */
-    .nav-mobile-actions {
-      display: none;
-      align-items: center;
-      gap: 8px;
-    }
-    .nav-hamburger {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      padding: 0;
-      width: 42px;
-      height: 42px;
+    .nav-right {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      gap: 12px;
+    }
+
+    .nav-cta {
+      background: #F5C200;
+      color: #0A0A0A;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
       gap: 5px;
+      background: none;
+      border: none;
       cursor: pointer;
+      padding: 4px;
     }
     .nav-hamburger span {
       display: block;
-      width: 18px;
+      width: 22px;
       height: 2px;
-      background: #ffffff;
+      background: #FFFFFF;
       border-radius: 2px;
-    }
-    .nav-cta-icon {
-      background: #F5C200;
-      border: none;
-      border-radius: 10px;
-      width: 42px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
+      transition: all 0.3s;
     }
 
-    /* Mobile dropdown menu */
+    /* Mobile menu */
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 68px;
-      left: 0;
-      right: 0;
-      background: #0A0A0A;
-      border-bottom: 1px solid #222;
+      top: 80px;
+      left: 16px;
+      right: 16px;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
       padding: 24px;
+      z-index: 9998;
       flex-direction: column;
-      gap: 20px;
-      z-index: 999;
-    }
-    .mobile-menu a {
-      color: #ffffff;
-      font-size: 16px;
-      text-decoration: none;
-      padding: 8px 0;
-      border-bottom: 1px solid #1a1a1a;
     }
     .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-whatsapp {
+      background: #25D366;
+      color: #FFFFFF;
+      font-weight: 700;
+      text-align: center;
+      padding: 14px;
+      border-radius: 999px;
+      margin-top: 16px;
+      border-bottom: none;
+    }
+    .mobile-menu .mobile-cta {
+      background: #F5C200;
+      color: #0A0A0A;
+      font-weight: 700;
+      text-align: center;
+      padding: 14px;
+      border-radius: 999px;
+      margin-top: 8px;
+      border-bottom: none;
+    }
 
-    /* Mobile drawer */
-    #drawer {
-      display: none;
-      position: fixed;
-      top: 68px; left: 0; right: 0;
-      background: rgba(10,10,10,0.97);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 20px 24px;
-      z-index: 998;
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
     }
-    #drawer.open { display: block; }
-    #drawer ul { list-style: none; margin-bottom: 16px; }
-    #drawer ul li a {
-      display: block;
-      padding: 13px 16px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-2);
-      border-radius: 8px;
-      transition: color 0.18s, background 0.18s;
+
+    .mobile-menu-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 20px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    #drawer ul li a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-    #drawer .btn { width: 100%; justify-content: center; }
+    .mobile-menu-brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+    .mobile-menu-brand em {
+      font-style: normal;
+      color: #FFFFFF;
+    }
+
+    /* Hamburger → X */
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ══════════════════════════════════════════════════
        HERO
@@ -795,67 +807,38 @@
   <!-- ════════════════════════════════════════
        NAVBAR
   ════════════════════════════════════════ -->
-  <nav id="nav">
-    <div class="wrap nav-inner">
-      <a href="index.html" class="nav-logo">Beautrì</a>
-
-      <ul class="nav-links">
-        <li><a href="index.html#come-aiutiamo">Consulenza Tricologica</a></li>
-        <li><a href="index.html#come-aiutiamo">Percorsi</a></li>
-        <li><a href="index.html#come-aiutiamo">Percorso Mantenimento</a></li>
-        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-        <li><a href="index.html#testimonianze">Testimonianze</a></li>
-      </ul>
-
-      <div class="nav-cta-wrap">
-        <a href="https://form.typeform.com/to/QUzap8so" target="_blank" rel="noopener" class="btn btn-yellow">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          Come Possiamo Aiutarti
-        </a>
+  <nav id="main-navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="./Logo.png" alt="Beautrì logo" class="nav-logo-img">
+        <span>Beautr<span style="color:#FFFFFF">ì</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#">Consulenza</a>
+        <a href="#">Percorsi</a>
+        <a href="#">Chi Siamo</a>
+        <a href="#">Testimonianze</a>
       </div>
-
-      <div class="nav-mobile-actions">
-        <button class="nav-hamburger" id="menuToggle" aria-label="Apri menu">
+      <div class="nav-right">
+        <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="nav-cta">Come Possiamo Aiutarti</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
-        <a href="https://form.typeform.com/to/QUzap8so" target="_blank" rel="noopener" class="nav-cta-icon" aria-label="Contattaci">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-        </a>
       </div>
-      <button class="hamburger" id="ham" style="display:none" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </nav>
 
-  <!-- Mobile drawer -->
-  <div id="drawer">
-    <ul>
-      <li><a href="index.html#come-aiutiamo" onclick="closeDrawer()">Consulenza Tricologica</a></li>
-      <li><a href="index.html#come-aiutiamo" onclick="closeDrawer()">Percorsi</a></li>
-      <li><a href="index.html#come-aiutiamo" onclick="closeDrawer()">Percorso Mantenimento</a></li>
-      <li><a href="index.html#chi-siamo"     onclick="closeDrawer()">Chi Siamo</a></li>
-      <li><a href="index.html#testimonianze" onclick="closeDrawer()">Testimonianze</a></li>
-    </ul>
-    <a href="https://form.typeform.com/to/QUzap8so" target="_blank" rel="noopener" class="btn btn-yellow" onclick="closeDrawer()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Come Possiamo Aiutarti
-    </a>
-  </div>
-
-  <!-- Mobile dropdown menu -->
+  <!-- Menu mobile -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html#come-aiutiamo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Consulenza Tricologica</a>
-    <a href="index.html#come-aiutiamo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Percorsi</a>
-    <a href="index.html#come-aiutiamo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Percorso Mantenimento</a>
-    <a href="index.html#chi-siamo"     onclick="document.getElementById('mobileMenu').classList.remove('open')">Chi Siamo</a>
-    <a href="index.html#testimonianze" onclick="document.getElementById('mobileMenu').classList.remove('open')">Testimonianze</a>
-    <a href="https://form.typeform.com/to/QUzap8so" target="_blank" rel="noopener" class="btn btn-yellow" style="width:100%; margin-top:16px; justify-content:center;" onclick="document.getElementById('mobileMenu').classList.remove('open')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Come Possiamo Aiutarti
-    </a>
+    <div class="mobile-menu-logo">
+      <img src="./Logo.png" alt="Beautrì logo" style="height:36px; width:auto; object-fit:contain;">
+      <span class="mobile-menu-brand">Beautr<em>ì</em></span>
+    </div>
+    <a href="#">Metodo 80/20</a>
+    <a href="#">Chi Siamo</a>
+    <a href="#">Testimonianze</a>
+    <a href="https://wa.me/393313348233" target="_blank" class="mobile-whatsapp">Hai bisogno di aiuto?</a>
+    <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="mobile-cta">Come Possiamo Aiutarti</a>
   </div>
 
 
@@ -1241,49 +1224,27 @@
        JAVASCRIPT
   ════════════════════════════════════════ -->
   <script>
-    /* ── Navbar hide-on-scroll-down / show-on-scroll-up ── */
-    const navEl = document.getElementById('nav');
-    let lastY = 0, ticking = false;
+    /* ── Navbar hamburger ── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const y = window.pageYOffset;
-          navEl.classList.toggle('scrolled', y > 40);
-          if (y <= 10) {
-            navEl.classList.remove('hidden');
-          } else if (y > lastY + 4 && y > 80) {
-            navEl.classList.add('hidden');
-            closeDrawer();
-          } else if (y < lastY - 4) {
-            navEl.classList.remove('hidden');
-          }
-          lastY = y;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-
-    /* ── Hamburger / mobile drawer ── */
-    const ham    = document.getElementById('ham');
-    const drawer = document.getElementById('drawer');
-
-    ham.addEventListener('click', () => {
-      ham.classList.toggle('open');
-      drawer.classList.toggle('open');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
     });
 
-    function closeDrawer() {
-      ham.classList.remove('open');
-      drawer.classList.remove('open');
-      const mm = document.getElementById('mobileMenu');
-      if (mm) mm.classList.remove('open');
-    }
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
 
-    /* ── New mobile menu toggle ── */
-    document.getElementById('menuToggle').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('open');
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
     });
 
     /* ── Fade-in on scroll (IntersectionObserver) ── */
@@ -1314,7 +1275,8 @@
         const target = document.querySelector(id);
         if (!target) return;
         e.preventDefault();
-        const offset = navEl.offsetHeight + 20;
+        const navEl = document.getElementById('main-navbar');
+        const offset = navEl ? navEl.offsetHeight + 20 : 80;
         const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top, behavior: 'smooth' });
       });
