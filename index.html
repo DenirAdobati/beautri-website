@@ -1138,6 +1138,7 @@
 
 
     /* ── TABELLA NOI VS ALTRI (DARK) ── */
+    .sec-method .split-text { text-align: center; }
     .sec-method .eyebrow {
       background: #FFFFFF;
       border-radius: 999px;
@@ -1187,18 +1188,20 @@
 
     /* ── CHI SIAMO / SIAMO BEAUTRI (GIALLO) ── */
     .sec-about { background-color: #F5C200; border-bottom-color: rgba(0,0,0,0.1); }
+    .sec-about .split-text { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .sec-about .eyebrow {
       background: #0A0A0A;
       border-radius: 999px;
       padding: 8px 16px;
       gap: 8px;
       color: #FFFFFF;
-      margin-bottom: 20px;
+      margin: 0 auto 20px;
+      display: inline-flex;
     }
     .sec-about .eyebrow::before { content: none; }
     .sec-about .eyebrow img { width: 18px; height: 18px; object-fit: contain; }
     .sec-about .eyebrow span { color: #FFFFFF; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: none; }
-    .sec-about .sec-h2 { color: #0A0A0A; font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 20px; }
+    .sec-about .sec-h2 { color: #0A0A0A; font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 20px; text-align: center; }
     .about-text p { color: #1a1a1a; }
     .sec-about .split-link { color: #0A0A0A; text-decoration: underline; }
     .sec-about .split-link:hover { gap: 13px; }
@@ -2283,8 +2286,8 @@
     <div class="wrap">
       <div class="about-split">
 
-        <div class="about-text">
-          <div class="eyebrow fi"><img src="Logo.png" alt=""><span>Chi Siamo</span></div>
+        <div class="about-text" style="text-align: center; width: 100%;">
+          <div class="eyebrow fi" style="margin-left: auto; margin-right: auto; display: inline-flex;"><img src="Logo.png" alt=""><span>Chi Siamo</span></div>
           <h2 class="sec-h2 fi fi-d1">Siamo Beautrì</h2>
           <p class="fi fi-d2">Siamo un'azienda specializzata nella cura dei capelli che si occupa di risolvere tutte le anomalie che riguardano la cute e i capelli. Il nostro obiettivo è essere il veicolo per raggiungere i sogni e gli obiettivi dei nostri clienti.</p>
           <p class="fi fi-d2">Non promettiamo risultati con la bacchetta magica, sarebbe contro la nostra etica. Promettiamo però che tratteremo i tuoi capelli come se fossero i nostri, con l'ossessione per il risultato che ci contraddistingue.</p>
