@@ -2281,59 +2281,53 @@
   <!-- ════════════════════════════════════════
        S6 · TESTIMONIANZE
   ════════════════════════════════════════ -->
+  <style>
+    #testimonianze { padding: 120px 24px; }
+    .chi-bar {
+      background: #F5C200;
+      border-radius: 40px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      opacity: 0;
+    }
+    .chi-bar-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0A0A0A;
+      white-space: normal;
+      max-width: 65%;
+    }
+    .chi-bar-btn {
+      background: #0A0A0A;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 999px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
+      animation: chi-pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes chi-pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+  </style>
+
   <section id="testimonianze" class="sec-test grid-bg">
     <div class="wrap">
 
-      <div class="sec-test-header">
-        <div class="eyebrow fi">Testimonianze</div>
-        <h2 class="sec-h2 fi fi-d1">Cosa dicono di noi i nostri clienti</h2>
-        <p class="sec-lead fi fi-d2">Cosa dice di noi chi si è affidato a noi per risolvere i problemi di cute e capelli</p>
-      </div>
-
-      <!-- Card grande -->
-      <div class="test-main fi">
-        <div>
-          <div class="test-stars">★★★★★</div>
-          <p class="test-quote">
-            "Dopo anni di prodotti che non funzionavano, Beautrì ha finalmente capito il mio problema. In 3 mesi ho visto una differenza enorme."
-          </p>
-          <div class="test-author">
-            <div class="test-ava">MR</div>
-            <div>
-              <div class="test-name">Maria R.</div>
-              <div class="test-detail">Cliente da 8 mesi</div>
-            </div>
-          </div>
-        </div>
-        <div class="img-ph" style="aspect-ratio:4/3;">Foto cliente</div>
-      </div>
-
-      <!-- 4 mini card -->
-      <div class="test-mini">
-        <div class="mini-card fi fi-d1">
-          <div class="mini-stars">★★★★★</div>
-          <p class="mini-text">"Finalmente qualcuno che ha ascoltato davvero il mio problema invece di vendermi prodotti."</p>
-          <div class="mini-name">Laura B.</div>
-        </div>
-        <div class="mini-card fi fi-d2">
-          <div class="mini-stars">★★★★★</div>
-          <p class="mini-text">"Il percorso personalizzato ha fatto la differenza. Risultati visibili dopo le prime settimane."</p>
-          <div class="mini-name">Marco T.</div>
-        </div>
-        <div class="mini-card fi fi-d3">
-          <div class="mini-stars">★★★★★</div>
-          <p class="mini-text">"Professionalità e attenzione fuori dal comune. Consiglio a tutti chi ha problemi di cute."</p>
-          <div class="mini-name">Giovanna M.</div>
-        </div>
-        <div class="mini-card fi fi-d4">
-          <div class="mini-stars">★★★★★</div>
-          <p class="mini-text">"Il metodo 80/20 è diverso da tutto ciò che avevo provato prima. Finalmente ho capito il perché."</p>
-          <div class="mini-name">Alessandro F.</div>
-        </div>
-      </div>
-
-      <div class="test-cta fi">
-        <a href="#" class="btn btn-outline">Altre Testimonianze</a>
+      <div class="chi-bar" id="chiBar">
+        <span class="chi-bar-text" id="chiBarText"></span>
+        <a href="#" class="chi-bar-btn">Partiamo!</a>
       </div>
 
     </div>
@@ -2515,6 +2509,35 @@
       }
 
       setInterval(function () { goTo(current + 1); }, 3000);
+    })();
+
+    /* ── Chi Bar: flash + typewriter ── */
+    (function () {
+      var bar  = document.getElementById('chiBar');
+      var text = document.getElementById('chiBarText');
+      if (!bar || !text) return;
+      var phrase = 'Vuoi risolvere i tuoi problemi di cute e capelli?';
+
+      function startTypewriter() {
+        var i = 0;
+        (function tick() {
+          text.textContent = phrase.slice(0, i);
+          if (i < phrase.length) { i++; setTimeout(tick, 60); }
+        })();
+      }
+
+      function flash() {
+        bar.style.transition = 'opacity 0.1s ease';
+        bar.style.opacity = '1';
+        setTimeout(function () { bar.style.opacity = '0.3'; }, 150);
+        setTimeout(function () { bar.style.opacity = '1'; }, 300);
+        setTimeout(function () { bar.style.transition = ''; startTypewriter(); }, 600);
+      }
+
+      var obs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { obs.disconnect(); flash(); }
+      }, { threshold: 0.3 });
+      obs.observe(bar);
     })();
   </script>
 
