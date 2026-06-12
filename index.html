@@ -1457,10 +1457,8 @@
       background-size: 40px 40px;
       border-radius: 20px;
       padding: 40px;
-      display: grid;
-      grid-template-columns: 55% 45%;
-      gap: 40px;
-      align-items: center;
+      display: flex;
+      flex-direction: column;
     }
     .caso-badge {
       display: inline-flex; align-items: center;
@@ -1500,19 +1498,70 @@
       text-decoration: none; transition: opacity 0.2s;
     }
     .caso-btn:hover { opacity: 0.85; }
-    .caso-img-ph {
-      aspect-ratio: 4 / 3;
-      background: #111111;
-      border: 1px solid #222222;
-      border-radius: 16px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: #333333; font-size: 13px; text-align: center;
-      gap: 8px; line-height: 1.5;
+    .caso-slider {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      position: relative;
+      margin-top: 28px;
     }
+    .caso-slider-track {
+      display: flex;
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+    .caso-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+    .caso-slide img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+    .caso-slide-cap {
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 1;
+      text-align: center;
+      margin: 8px 0 0;
+      line-height: 1.4;
+    }
+    .caso-scorri {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 11px;
+      color: #FFFFFF;
+      opacity: 0.6;
+      font-weight: 400;
+      background: rgba(0,0,0,0.35);
+      border-radius: 999px;
+      padding: 4px 10px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .caso-scorri.hidden { display: none; }
+    .caso-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .caso-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      transition: background 0.2s;
+    }
+    .caso-dot.active { background: #F5C200; }
     @media (max-width: 768px) {
       .sec-caso { padding: 48px 0; }
-      .caso-card { grid-template-columns: 1fr; padding: 24px; gap: 24px; }
+      .caso-card { padding: 24px; }
       .caso-name { font-size: 32px; }
       .caso-sub  { font-size: 16px; }
       .caso-stats { gap: 20px; flex-wrap: wrap; }
@@ -1550,14 +1599,44 @@
               <div class="caso-stat-lbl">capelli ricresciuti</div>
             </div>
           </div>
-          <a href="caso-studio-alexandra.html" class="caso-btn">Scopri il caso studio →</a>
         </div>
 
-        <!-- Placeholder immagine -->
-        <div class="caso-img-ph" aria-hidden="true">
-          <span>📸 Foto caso studio</span>
-          <span>Le immagini verranno aggiunte</span>
+        <!-- Slider foto -->
+        <div class="caso-slider" id="casaSlider">
+          <div class="caso-slider-track" id="casaSliderTrack">
+            <div class="caso-slide">
+              <img src="Alexandra 1.webp" alt="Dicembre 2020 — Il primo giorno in studio" loading="lazy">
+              <p class="caso-slide-cap">Dicembre 2020 — Il primo giorno in studio</p>
+            </div>
+            <div class="caso-slide">
+              <img src="alexandra 2.webp" alt="I primi mesi — cute asfittica, grigia" loading="lazy">
+              <p class="caso-slide-cap">I primi mesi — cute asfittica, grigia</p>
+            </div>
+            <div class="caso-slide">
+              <img src="Alexandra 3.webp" alt="La fase più difficile — i capelli ricadono" loading="lazy">
+              <p class="caso-slide-cap">La fase più difficile — i capelli ricadono</p>
+            </div>
+            <div class="caso-slide">
+              <img src="Alexandra 4.png" alt="La ricrescita avanza" loading="lazy">
+              <p class="caso-slide-cap">La ricrescita avanza</p>
+            </div>
+            <div class="caso-slide">
+              <img src="Alexandra 5.webp" alt="Oggi — tutti i capelli ricresciuti" loading="lazy">
+              <p class="caso-slide-cap">Oggi — tutti i capelli ricresciuti</p>
+            </div>
+          </div>
+          <span class="caso-scorri" id="casaScorri">scorri →</span>
+          <div class="caso-dots" id="casaDots">
+            <span class="caso-dot active"></span>
+            <span class="caso-dot"></span>
+            <span class="caso-dot"></span>
+            <span class="caso-dot"></span>
+            <span class="caso-dot"></span>
+          </div>
         </div>
+
+        <!-- CTA -->
+        <a href="caso-studio-alexandra.html" class="caso-btn">Scopri il caso studio →</a>
 
       </div>
 
@@ -2428,6 +2507,41 @@
         window.scrollTo({ top, behavior: 'smooth' });
       });
     });
+
+    /* ── Alexandra slider ── */
+    (function () {
+      var track  = document.getElementById('casaSliderTrack');
+      var dots   = document.querySelectorAll('#casaDots .caso-dot');
+      var scorri = document.getElementById('casaScorri');
+      if (!track || !dots.length) return;
+      var total   = 5;
+      var current = 0;
+      var startX  = 0;
+      var swiped  = false;
+
+      function goTo(idx) {
+        current = (idx + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+      }
+
+      function hideScorri() {
+        if (!swiped && scorri) { swiped = true; scorri.classList.add('hidden'); }
+      }
+
+      track.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      track.addEventListener('touchmove', hideScorri, { passive: true });
+
+      track.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+      });
+
+      track.addEventListener('mousedown', hideScorri);
+    })();
   </script>
 
 </body>
