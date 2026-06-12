@@ -1138,9 +1138,20 @@
 
 
     /* ── TABELLA NOI VS ALTRI (DARK) ── */
-    .sec-method .eyebrow { color: #F5C200; }
-    .sec-method .eyebrow::before { background: #F5C200; }
-    .sec-method .sec-h2 { color: #FFFFFF; }
+    .sec-method .eyebrow {
+      background: #FFFFFF;
+      border-radius: 999px;
+      padding: 8px 16px;
+      gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      margin: 0 auto 20px;
+      width: fit-content;
+    }
+    .sec-method .eyebrow::before { content: none; }
+    .sec-method .eyebrow img { width: 18px; height: 18px; object-fit: contain; }
+    .sec-method .eyebrow span { color: #0A0A0A; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: none; }
+    .sec-method .sec-h2 { color: #FFFFFF; font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 20px; text-align: center; }
     .sec-method .split-text p { color: #A0A0A0; }
     .sec-method .split-link { color: #F5C200; }
     .cmp2-wrap { width: 100%; border-radius: 16px; overflow: hidden; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid #222222; }
@@ -1176,9 +1187,18 @@
 
     /* ── CHI SIAMO / SIAMO BEAUTRI (GIALLO) ── */
     .sec-about { background-color: #F5C200; border-bottom-color: rgba(0,0,0,0.1); }
-    .sec-about .eyebrow { color: rgba(0,0,0,0.6); }
-    .sec-about .eyebrow::before { background: rgba(0,0,0,0.6); }
-    .sec-about .sec-h2 { color: #0A0A0A; }
+    .sec-about .eyebrow {
+      background: #0A0A0A;
+      border-radius: 999px;
+      padding: 8px 16px;
+      gap: 8px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    }
+    .sec-about .eyebrow::before { content: none; }
+    .sec-about .eyebrow img { width: 18px; height: 18px; object-fit: contain; }
+    .sec-about .eyebrow span { color: #FFFFFF; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: none; }
+    .sec-about .sec-h2 { color: #0A0A0A; font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 20px; }
     .about-text p { color: #1a1a1a; }
     .sec-about .split-link { color: #0A0A0A; text-decoration: underline; }
     .sec-about .split-link:hover { gap: 13px; }
@@ -1446,10 +1466,17 @@
     }
     .caso-hdr { text-align: center; margin-bottom: 48px; }
     .caso-eyebrow {
-      font-size: 12px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; color: #888888; margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0A0A0A;
+      border-radius: 999px;
+      padding: 8px 16px;
+      margin-bottom: 12px;
     }
-    .caso-h2 { font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: #0A0A0A; margin: 0 0 12px; }
+    .caso-eyebrow img { width: 18px; height: 18px; object-fit: contain; }
+    .caso-eyebrow span { color: #FFFFFF; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; }
+    .caso-h2 { font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; color: #0A0A0A; margin: 20px 0 12px; line-height: 1.1; letter-spacing: -0.02em; }
     .caso-lead { font-size: 1rem; color: #666666; margin: 0; }
 
     .caso-card {
@@ -1560,7 +1587,7 @@
     <div class="wrap">
 
       <div class="caso-hdr fi">
-        <div class="caso-eyebrow">Casi Studio</div>
+        <div class="caso-eyebrow"><img src="Logo.png" alt=""><span>Casi Studio</span></div>
         <h2 class="caso-h2">I risultati parlano da soli.</h2>
         <p class="caso-lead">Storie reali di persone che hanno scelto di non arrendersi.</p>
       </div>
@@ -1658,27 +1685,22 @@
     .tscroll-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #888888;
+      gap: 8px;
+      background: #FFFFFF;
+      border-radius: 999px;
+      padding: 8px 16px;
       margin-bottom: 16px;
     }
-    .tscroll-eyebrow::before {
-      content: '';
-      width: 22px; height: 2px;
-      background: #888888;
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
+    .tscroll-eyebrow::before { content: none; }
+    .tscroll-eyebrow img { width: 18px; height: 18px; object-fit: contain; }
+    .tscroll-eyebrow span { color: #0A0A0A; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; }
     .tscroll-h2 {
-      font-size: clamp(1.6rem, 3vw, 2.25rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.5rem, 5vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
       color: #FFFFFF;
-      line-height: 1.15;
+      line-height: 1.1;
+      margin-top: 20px;
     }
     .tscroll-sub {
       color: #A0A0A0;
@@ -1809,7 +1831,7 @@
 
   <section class="sec-tscroll">
     <div class="tscroll-head fi">
-      <div class="tscroll-eyebrow">Testimonianze</div>
+      <div class="tscroll-eyebrow"><img src="Logo.png" alt=""><span>Testimonianze</span></div>
       <h2 class="tscroll-h2">Cosa dicono di noi i nostri clienti</h2>
       <p class="tscroll-sub">Recensioni reali di persone che hanno scelto Beautrì</p>
       <div class="tscroll-badge">
@@ -2032,31 +2054,31 @@
     .metodo-center {
       max-width: 680px;
       margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .metodo-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #888888;
-      margin-bottom: 16px;
+      gap: 8px;
+      background: #0A0A0A;
+      border-radius: 999px;
+      padding: 8px 16px;
+      margin: 0 auto 16px;
     }
-    .metodo-eyebrow::before {
-      content: '';
-      width: 22px; height: 2px;
-      background: #888888;
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
+    .metodo-eyebrow::before { content: none; }
+    .metodo-eyebrow img { width: 18px; height: 18px; object-fit: contain; }
+    .metodo-eyebrow span { color: #FFFFFF; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; }
     .metodo-h2 {
-      font-size: clamp(2rem, 3.5vw, 2.5rem);
+      font-size: clamp(2.5rem, 5vw, 2.5rem);
       font-weight: 900;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.02em;
       color: #0A0A0A;
       line-height: 1.1;
+      margin-top: 20px;
+      text-align: center;
     }
     .metodo-sub {
       color: #666666;
@@ -2144,7 +2166,7 @@
     <div class="wrap">
       <div class="metodo-center fi">
 
-        <div class="metodo-eyebrow">Il Nostro Approccio</div>
+        <div class="metodo-eyebrow"><img src="Logo.png" alt=""><span>Il Nostro Approccio</span></div>
         <h2 class="metodo-h2">Il Metodo 80/20</h2>
         <p class="metodo-sub">La maggior parte dei trattamenti si concentra solo sul capello.<br><span style="background-color: #E53E3E; color: #FFFFFF; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Noi abbiamo ribaltato tutto.</span></p>
 
@@ -2195,7 +2217,7 @@
 
         <!-- Left: text -->
         <div class="split-text">
-          <div class="eyebrow fi">Il nostro metodo</div>
+          <div class="eyebrow fi"><img src="Logo.png" alt=""><span>Il Nostro Metodo</span></div>
           <h2 class="sec-h2 fi fi-d1">40+ anni di esperienza per creare qualcosa di diverso</h2>
           <p class="fi fi-d2">Per poter dare alle persone qualcosa di estremamente diverso abbiamo unito oltre 40 anni di esperienza in ambito tricologico per creare 80/20. Un metodo che non si basa sui "prodotti miracolosi" ma su risultati reali.</p>
           <p class="fi fi-d2">Lo facciamo grazie a un metodo, all'insieme di strumenti e competenze che abbiamo messo insieme negli ultimi anni lavorando su più di 280 persone. Risolvendo centinaia di anomalie, imparando dagli errori e rinnovandosi ogni settimana.</p>
@@ -2262,7 +2284,7 @@
       <div class="about-split">
 
         <div class="about-text">
-          <div class="eyebrow fi">Chi Siamo</div>
+          <div class="eyebrow fi"><img src="Logo.png" alt=""><span>Chi Siamo</span></div>
           <h2 class="sec-h2 fi fi-d1">Siamo Beautrì</h2>
           <p class="fi fi-d2">Siamo un'azienda specializzata nella cura dei capelli che si occupa di risolvere tutte le anomalie che riguardano la cute e i capelli. Il nostro obiettivo è essere il veicolo per raggiungere i sogni e gli obiettivi dei nostri clienti.</p>
           <p class="fi fi-d2">Non promettiamo risultati con la bacchetta magica, sarebbe contro la nostra etica. Promettiamo però che tratteremo i tuoi capelli come se fossero i nostri, con l'ossessione per il risultato che ci contraddistingue.</p>
