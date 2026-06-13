@@ -116,22 +116,17 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 11px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
+      letter-spacing: 0.02em;
+      color: inherit;
       margin-bottom: 22px;
     }
-    .eyebrow::before {
-      content: '';
-      width: 22px; height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
+    .eyebrow::before { content: none; }
+    .bdot { font-size: 10px; flex-shrink: 0; }
     .eyebrow-center {
       display: flex;
       justify-content: center;
@@ -438,35 +433,22 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 999px;
-      padding: 6px 14px;
+      background: transparent;
+      border: none;
+      padding: 0;
       margin-bottom: 24px;
     }
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 6px #22c55e;
-      flex-shrink: 0;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { box-shadow: 0 0 4px #22c55e; opacity: 1; }
-      50%       { box-shadow: 0 0 10px #22c55e; opacity: 0.7; }
-    }
+    .hero-badge .bdot { color: #F5C200; }
     .badge-text {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.65);
-      font-weight: 400;
+      font-size: 13px;
+      color: #FFFFFF;
+      font-weight: 700;
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
     .badge-text strong {
-      color: #ffffff;
-      font-weight: 600;
+      color: #FFFFFF;
+      font-weight: 700;
     }
     @media (max-width: 768px) {
       .badge-text { font-size: 11px; }
@@ -1168,9 +1150,9 @@
     .hero::before { display: none; }
     .hero h1 { color: #0A0A0A; }
     .hero-sub { color: #444444; }
-    .hero-badge { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
-    .badge-text { color: #444444; }
-    .badge-text strong { color: #0A0A0A; }
+    .hero-badge .bdot { color: #0A0A0A; }
+    .badge-text { color: #0A0A0A; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    .badge-text strong { color: #0A0A0A; font-weight: 700; }
     .review-widget { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); }
     .review-text { color: #0A0A0A; }
     .hero-stats { background: #F5F5F5; border-color: #E5E5E5; }
@@ -1184,9 +1166,9 @@
     /* ── TABELLA NOI VS ALTRI (DARK) ── */
     .sec-method .split-text { text-align: center; }
     .sec-method .eyebrow {
-      background: #FFFFFF;
-      border-radius: 999px;
-      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      padding: 0;
       gap: 8px;
       display: inline-flex;
       align-items: center;
@@ -1194,8 +1176,7 @@
       width: fit-content;
     }
     .sec-method .eyebrow::before { content: none; }
-    .sec-method .eyebrow img { width: 18px; height: 18px; object-fit: contain; }
-    .sec-method .eyebrow span { color: #0A0A0A; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: none; }
+    .sec-method .eyebrow span { color: #0A0A0A; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
     .sec-method .sec-h2 { color: #FFFFFF; font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 20px; text-align: center; }
     .sec-method .split-text p { color: #A0A0A0; }
     .sec-method .split-link { color: #F5C200; }
@@ -1234,17 +1215,16 @@
     .sec-about { background-color: #F5C200; border-bottom-color: rgba(0,0,0,0.1); }
     .sec-about .split-text { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .sec-about .eyebrow {
-      background: #0A0A0A;
-      border-radius: 999px;
-      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      padding: 0;
       gap: 8px;
-      color: #FFFFFF;
+      color: #0A0A0A;
       margin: 0 auto 20px;
       display: inline-flex;
     }
     .sec-about .eyebrow::before { content: none; }
-    .sec-about .eyebrow img { width: 18px; height: 18px; object-fit: contain; }
-    .sec-about .eyebrow span { color: #FFFFFF; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: none; }
+    .sec-about .eyebrow span { color: #0A0A0A; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
     .sec-about .sec-h2 { color: #0A0A0A; font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 20px; text-align: center; }
     .about-text p { color: #1a1a1a; }
     .sec-about .split-link { color: #0A0A0A; text-decoration: underline; }
@@ -1279,8 +1259,8 @@
     .sec-cta { background-color: #F5C200; }
     .cta-h2 { color: #0A0A0A; }
     .cta-sub { color: #1a1a1a; }
-    .sec-cta .eyebrow { color: rgba(0,0,0,0.6); }
-    .sec-cta .eyebrow::before { background: rgba(0,0,0,0.6); }
+    .sec-cta .eyebrow { color: #0A0A0A; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    .sec-cta .eyebrow::before { content: none; }
     .sec-cta .btn-yellow { background: #0A0A0A; color: #FFFFFF; }
     .sec-cta .btn-yellow:hover { background: #1a1a1a; box-shadow: 0 10px 28px rgba(0,0,0,0.2); transform: translateY(-1px); }
 
@@ -1361,8 +1341,9 @@
     <div class="wrap hero-inner">
 
       <div class="hero-badge fi">
-        <span class="badge-dot"></span>
+        <span class="bdot">•</span>
         <span class="badge-text">✅ Testato su <strong>280+ persone</strong></span>
+        <span class="bdot">•</span>
       </div>
 
       <h1 class="fi fi-d1">
@@ -1439,13 +1420,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 999px;
-      padding: 8px 16px;
-      margin-bottom: 20px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin-bottom: 32px;
     }
-    .story-badge img { width: 16px; height: 16px; object-fit: contain; }
-    .story-badge span { color: #FFFFFF; font-size: 12px; font-weight: 600; }
+    .story-badge .bdot { color: #FFFFFF; }
+    .story-badge span:not(.bdot) { color: #FFFFFF; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
     .story-text {
       padding-left: 48px;
       text-align: center;
@@ -1459,11 +1440,11 @@
     }
     .story-title-2 {
       font-size: 20px; font-weight: 700; color: #F5C200;
-      line-height: 1.3; margin: 8px 0 0; text-align: center;
+      line-height: 1.3; margin: 24px 0 0; text-align: center;
     }
     .story-body {
       color: rgba(255,255,255,0.65); font-size: 15px; font-weight: 400; line-height: 1.6;
-      margin: 20px auto 0; text-align: center; max-width: 340px;
+      margin: 36px auto 0; text-align: center; max-width: 340px;
     }
     .story-btn {
       display: inline-block;
@@ -1509,7 +1490,7 @@
 
         <!-- Testo -->
         <div class="story-text">
-          <div class="story-badge"><img src="Logo.png" alt=""><span>Il Problema</span></div>
+          <div class="story-badge"><span class="bdot">•</span><span>Il Problema</span><span class="bdot">•</span></div>
           <p class="story-title-1">Il Problema non sei tu.</p>
           <p class="story-title-2">È che Nessuno si ferma ad ascoltarti.</p>
           <p class="story-body">Il mercato è pieno di prodotti miracolosi, integratori, protocolli. Promesse enormi e risultati in pochissimo tempo. Tutte soluzioni che capisci non funzionano solo dopo averle provate — e dopo aver buttato i soldi.</p>
@@ -1538,13 +1519,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #0A0A0A;
-      border-radius: 999px;
-      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      padding: 0;
       margin-bottom: 12px;
     }
-    .caso-eyebrow img { width: 18px; height: 18px; object-fit: contain; }
-    .caso-eyebrow span { color: #FFFFFF; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; }
+    .caso-eyebrow span { color: #0A0A0A; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
     .caso-h2 { font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; color: #0A0A0A; margin: 20px 0 12px; line-height: 1.1; letter-spacing: -0.02em; }
     .caso-lead { font-size: 1rem; color: #666666; margin: 0; }
 
@@ -1659,7 +1639,7 @@
     <div class="wrap">
 
       <div class="caso-hdr fi">
-        <div class="caso-eyebrow"><img src="Logo.png" alt=""><span>Casi Studio</span></div>
+        <div class="caso-eyebrow"><span class="bdot">•</span><span>Casi Studio</span><span class="bdot">•</span></div>
         <h2 class="caso-h2">I risultati parlano da soli.</h2>
         <p class="caso-lead">Storie reali di persone che hanno scelto di non arrendersi.</p>
       </div>
@@ -1758,14 +1738,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #FFFFFF;
-      border-radius: 999px;
-      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      padding: 0;
       margin-bottom: 16px;
     }
     .tscroll-eyebrow::before { content: none; }
-    .tscroll-eyebrow img { width: 18px; height: 18px; object-fit: contain; }
-    .tscroll-eyebrow span { color: #0A0A0A; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; }
+    .tscroll-eyebrow .bdot { color: #FFFFFF; }
+    .tscroll-eyebrow span:not(.bdot) { color: #FFFFFF; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
     .tscroll-h2 {
       font-size: clamp(2.5rem, 5vw, 2.5rem);
       font-weight: 900;
@@ -1903,7 +1883,7 @@
 
   <section class="sec-tscroll">
     <div class="tscroll-head fi">
-      <div class="tscroll-eyebrow"><img src="Logo.png" alt=""><span>Testimonianze</span></div>
+      <div class="tscroll-eyebrow"><span class="bdot">•</span><span>Testimonianze</span><span class="bdot">•</span></div>
       <h2 class="tscroll-h2">Cosa dicono di noi i nostri clienti</h2>
       <p class="tscroll-sub">Recensioni reali di persone che hanno scelto Beautrì</p>
       <div class="tscroll-badge">
@@ -2135,14 +2115,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #0A0A0A;
-      border-radius: 999px;
-      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      padding: 0;
       margin: 0 auto 16px;
     }
     .metodo-eyebrow::before { content: none; }
-    .metodo-eyebrow img { width: 18px; height: 18px; object-fit: contain; }
-    .metodo-eyebrow span { color: #FFFFFF; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; }
+    .metodo-eyebrow span { color: #0A0A0A; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
     .metodo-h2 {
       font-size: clamp(2.5rem, 5vw, 2.5rem);
       font-weight: 900;
@@ -2263,7 +2242,7 @@
     <div class="wrap">
       <div class="metodo-center fi">
 
-        <div class="metodo-eyebrow"><img src="Logo.png" alt=""><span>Il Nostro Approccio</span></div>
+        <div class="metodo-eyebrow"><span class="bdot">•</span><span>Il Nostro Approccio</span><span class="bdot">•</span></div>
         <h2 class="metodo-h2">Il Metodo 80/20</h2>
         <p class="metodo-sub">La maggior parte dei trattamenti si concentra solo sul capello.<br><span style="background-color: #E53E3E; color: #FFFFFF; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Noi abbiamo ribaltato tutto.</span></p>
 
@@ -2320,7 +2299,7 @@
 
         <!-- Left: text -->
         <div class="split-text">
-          <div class="eyebrow fi"><img src="Logo.png" alt=""><span>Il Nostro Metodo</span></div>
+          <div class="eyebrow fi"><span class="bdot">•</span><span>Il Nostro Metodo</span><span class="bdot">•</span></div>
           <h2 class="sec-h2 fi fi-d1">40+ anni di esperienza per creare qualcosa di diverso</h2>
           <p class="fi fi-d2">Per poter dare alle persone qualcosa di estremamente diverso abbiamo unito oltre 40 anni di esperienza in ambito tricologico per creare 80/20. Un metodo che non si basa sui "prodotti miracolosi" ma su risultati reali.</p>
           <p class="fi fi-d2">Lo facciamo grazie a un metodo, all'insieme di strumenti e competenze che abbiamo messo insieme negli ultimi anni lavorando su più di 280 persone. Risolvendo centinaia di anomalie, imparando dagli errori e rinnovandosi ogni settimana.</p>
@@ -2387,7 +2366,7 @@
       <div class="about-split">
 
         <div class="about-text" style="text-align: center; width: 100%;">
-          <div class="eyebrow fi" style="margin-left: auto; margin-right: auto; display: inline-flex;"><img src="Logo.png" alt=""><span>Chi Siamo</span></div>
+          <div class="eyebrow fi" style="margin-left: auto; margin-right: auto; display: inline-flex;"><span class="bdot">•</span><span>Chi Siamo</span><span class="bdot">•</span></div>
           <h2 class="sec-h2 fi fi-d1">Siamo Beautrì</h2>
           <p class="fi fi-d2">Siamo un'azienda specializzata nella cura dei capelli che si occupa di risolvere tutte le anomalie che riguardano la cute e i capelli. Il nostro obiettivo è essere il veicolo per raggiungere i sogni e gli obiettivi dei nostri clienti.</p>
           <p class="fi fi-d2">Non promettiamo risultati con la bacchetta magica, sarebbe contro la nostra etica. Promettiamo però che tratteremo i tuoi capelli come se fossero i nostri, con l'ossessione per il risultato che ci contraddistingue.</p>
@@ -2490,7 +2469,7 @@
     <div class="wrap sec-cta-inner">
 
       <div class="eyebrow-center fi">
-        <span class="eyebrow">Inizia Oggi</span>
+        <span class="eyebrow"><span class="bdot">•</span>Inizia Oggi<span class="bdot">•</span></span>
       </div>
 
       <h2 class="cta-h2 fi fi-d1">
