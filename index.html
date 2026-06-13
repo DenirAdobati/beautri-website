@@ -2295,7 +2295,9 @@
             <div style="background:#CC0000; box-shadow:0 0 24px rgba(204,0,0,0.6), 0 0 48px rgba(204,0,0,0.3); border-radius:12px; padding:12px 16px; text-align:center; width:100%; margin-bottom:8px;">
               <span style="color:#FFFFFF; font-size:13px; font-weight:700;">La maggior parte dei saloni lavora solo sul 20%.</span>
             </div>
-            <p class="metodo-bars-footer-bold">Noi lavoriamo sull'intera persona.</p>
+            <div style="background:#00A651; box-shadow:0 0 24px rgba(0,166,81,0.6), 0 0 48px rgba(0,166,81,0.3); border-radius:12px; padding:12px 16px; text-align:center; width:100%; margin-top:8px;">
+              <span style="color:#FFFFFF; font-size:13px; font-weight:700;">Noi lavoriamo sull'intera persona.</span>
+            </div>
           </div>
 
         </div>
@@ -2405,56 +2407,78 @@
        S6 · TESTIMONIANZE
   ════════════════════════════════════════ -->
   <style>
-    #testimonianze { padding: 120px 24px; }
-    .chi-bar {
-      background: #F5C200;
-      border-radius: 40px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      width: 100%;
-      opacity: 0;
+    #testimonianze { padding: 100px 24px; min-height: 100vh; display: flex; align-items: center; }
+    .imsg-wrap { max-width: 340px; margin: 0 auto; padding: 24px 0; }
+    .imsg-row { display: flex; margin-bottom: 8px; }
+    .imsg-row.right { justify-content: flex-end; }
+    .imsg-row.left  { justify-content: flex-start; }
+    .imsg-bubble {
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: 500;
+      max-width: 75%;
+      line-height: 1.4;
     }
-    .chi-bar-text {
-      font-size: 13px;
-      font-weight: 700;
-      color: #0A0A0A;
-      white-space: normal;
-      max-width: 65%;
-    }
-    .chi-bar-btn {
-      background: #0A0A0A;
+    .imsg-bubble.out {
+      background: #0B93F6;
       color: #FFFFFF;
-      font-weight: 800;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-      border-radius: 999px;
-      padding: 14px 32px;
-      border: none;
-      cursor: pointer;
-      white-space: nowrap;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 0 20px rgba(245,194,0,0.35);
-      animation: chi-pulse 1.8s ease-in-out infinite;
+      border-radius: 18px 18px 4px 18px;
+      margin-left: auto;
     }
-    @keyframes chi-pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.06); }
-      100% { transform: scale(1); }
+    .imsg-bubble.in {
+      background: #E5E5EA;
+      color: #000000;
+      border-radius: 18px 18px 18px 4px;
+      margin-right: auto;
+    }
+    .imsg-dots { display: flex; align-items: center; gap: 4px; }
+    .imsg-dots span {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: #888;
+      border-radius: 50%;
+      animation: imsg-bounce 1.2s ease-in-out infinite;
+    }
+    .imsg-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .imsg-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes imsg-bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30%            { transform: translateY(-6px); }
+    }
+    .imsg-label {
+      font-size: 11px;
+      color: rgba(0,0,0,0.35);
+      text-align: right;
+      margin-top: 4px;
     }
   </style>
 
   <section id="testimonianze" class="sec-test grid-bg">
     <div class="wrap">
+      <div class="imsg-wrap">
 
-      <div class="chi-bar" id="chiBar">
-        <span class="chi-bar-text" id="chiBarText"></span>
-        <a href="#" class="chi-bar-btn">Partiamo!</a>
+        <div class="imsg-row right" id="imsg1" style="opacity:0">
+          <div class="imsg-bubble out">Vuoi risolvere il problema dei tuoi capelli?</div>
+        </div>
+
+        <div class="imsg-row left" id="imsgTyping" style="opacity:0">
+          <div class="imsg-bubble in imsg-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="imsg-row left" id="imsg2" style="opacity:0">
+          <div class="imsg-bubble in">Sì!</div>
+        </div>
+
+        <div id="imsgInput" style="opacity:0">
+          <div class="imsg-row right">
+            <a href="#" class="imsg-bubble out" style="cursor:pointer; font-weight:600; text-decoration:none;">Partiamo! 👆</a>
+          </div>
+          <p class="imsg-label">👆 Premi per iniziare</p>
+        </div>
+
       </div>
-
     </div>
   </section>
 
@@ -2650,33 +2674,28 @@
       setInterval(function () { goTo(current + 1); }, 3000);
     })();
 
-    /* ── Chi Bar: flash + typewriter ── */
+    /* ── iMessage chat animation (one-shot) ── */
     (function () {
-      var bar  = document.getElementById('chiBar');
-      var text = document.getElementById('chiBarText');
-      if (!bar || !text) return;
-      var phrase = 'Vuoi risolvere i tuoi problemi di cute e capelli?';
+      var msg1   = document.getElementById('imsg1');
+      var typing = document.getElementById('imsgTyping');
+      var msg2   = document.getElementById('imsg2');
+      var input  = document.getElementById('imsgInput');
+      if (!msg1) return;
 
-      function startTypewriter() {
-        var i = 0;
-        (function tick() {
-          text.textContent = phrase.slice(0, i);
-          if (i < phrase.length) { i++; setTimeout(tick, 60); }
-        })();
+      function fadeIn(el) {
+        void el.offsetWidth;
+        el.style.transition = 'opacity 0.4s ease';
+        el.style.opacity = '1';
       }
 
-      function flash() {
-        bar.style.transition = 'opacity 0.1s ease';
-        bar.style.opacity = '1';
-        setTimeout(function () { bar.style.opacity = '0.3'; }, 150);
-        setTimeout(function () { bar.style.opacity = '1'; }, 300);
-        setTimeout(function () { bar.style.transition = ''; startTypewriter(); }, 600);
-      }
-
-      var obs = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { obs.disconnect(); flash(); }
-      }, { threshold: 0.3 });
-      obs.observe(bar);
+      setTimeout(function () { fadeIn(msg1); }, 50);
+      setTimeout(function () { fadeIn(typing); }, 800);
+      setTimeout(function () {
+        typing.style.transition = 'none';
+        typing.style.opacity = '0';
+        setTimeout(function () { fadeIn(msg2); }, 50);
+      }, 2000);
+      setTimeout(function () { fadeIn(input); }, 3000);
     })();
   </script>
 
