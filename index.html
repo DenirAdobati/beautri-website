@@ -889,6 +889,101 @@
       line-height: 1.4;
     }
 
+    /* About stat widgets */
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .astat-card {
+      background: #0A0A0A;
+      border-radius: 20px;
+      padding: 28px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .astat-num-wrap {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+      line-height: 1;
+    }
+    .astat-num {
+      font-size: clamp(40px, 4.5vw, 56px);
+      font-weight: 800;
+      color: #F5C200;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-family: 'Poppins', sans-serif;
+    }
+    .astat-suffix {
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 800;
+      color: #F5C200;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-family: 'Poppins', sans-serif;
+    }
+    .astat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      margin-top: 10px;
+      letter-spacing: 0.01em;
+    }
+
+    /* Press strip — Opzione A: sul giallo, no blocco separato */
+    .about-press-strip {
+      border-top: 1px solid rgba(0,0,0,0.12);
+      margin-top: 56px;
+      padding: 28px 0 0;
+      text-align: center;
+    }
+    .press-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .press-eyebrow .bdot { color: #0A0A0A; font-size: 8px; }
+    .press-eyebrow .plabel {
+      color: #0A0A0A;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .press-marquee-wrap {
+      overflow: hidden;
+      width: 100%;
+    }
+    .press-marquee-track {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: pressMarquee 14s linear infinite;
+    }
+    @keyframes pressMarquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .press-mitem {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #0A0A0A;
+      padding: 0 28px;
+    }
+    .press-msep {
+      color: rgba(0,0,0,0.3);
+      font-size: 14px;
+      align-self: center;
+    }
+
     /* ══════════════════════════════════════════════════
        SECTION 6 · TESTIMONIANZE
     ══════════════════════════════════════════════════ */
@@ -1140,6 +1235,9 @@
 
       .sec-cta { padding: 100px 0; }
       .val-pills { gap: 8px; }
+      .about-split { grid-template-columns: 1fr; gap: 32px; }
+      .sec-about { padding-bottom: 0; }
+      .about-press-strip { margin-top: 32px; }
     }
 
     @media (max-width: 500px) {
@@ -2357,12 +2455,38 @@
           <p class="fi fi-d2">Siamo un'azienda specializzata nella cura dei capelli che si occupa di risolvere tutte le anomalie che riguardano la cute e i capelli. Il nostro obiettivo è essere il veicolo per raggiungere i sogni e gli obiettivi dei nostri clienti.</p>
           <p class="fi fi-d2">Non promettiamo risultati con la bacchetta magica, sarebbe contro la nostra etica. Promettiamo però che tratteremo i tuoi capelli come se fossero i nostri, con l'ossessione per il risultato che ci contraddistingue.</p>
           <a href="chi-siamo.html" class="split-link fi fi-d3">La nostra azienda <span>→</span></a>
+
+          <div class="about-stats">
+            <div class="astat-card fi fi-d4">
+              <div class="astat-num-wrap">
+                <span class="astat-num" data-target="40">0</span><span class="astat-suffix">+</span>
+              </div>
+              <span class="astat-label">Anni di esperienza</span>
+            </div>
+            <div class="astat-card fi fi-d5">
+              <div class="astat-num-wrap">
+                <span class="astat-num" data-target="280">0</span><span class="astat-suffix">+</span>
+              </div>
+              <span class="astat-label">Persone seguite</span>
+            </div>
+          </div>
         </div>
 
-        <div class="fi fi-d2" style="overflow: hidden; padding: 0; margin: 0; height: 500px; display: flex; align-items: flex-end; justify-content: center;">
-          <img src="Daniela(senzasfondo).png" alt="Daniela - Fondatrice Beautrì" class="daniela-img">
-        </div>
+      </div>
+    </div>
 
+    <div class="about-press-strip">
+      <div class="press-marquee-wrap">
+        <div class="press-marquee-track">
+          <span class="press-mitem">Prima Treviglio</span><span class="press-msep">·</span>
+          <span class="press-mitem">Bergamo News</span><span class="press-msep">·</span>
+          <span class="press-mitem">Salute &amp; Armonia</span><span class="press-msep">·</span>
+          <span class="press-mitem">Trico Italia</span><span class="press-msep">·</span>
+          <span class="press-mitem">Prima Treviglio</span><span class="press-msep">·</span>
+          <span class="press-mitem">Bergamo News</span><span class="press-msep">·</span>
+          <span class="press-mitem">Salute &amp; Armonia</span><span class="press-msep">·</span>
+          <span class="press-mitem">Trico Italia</span><span class="press-msep">·</span>
+        </div>
       </div>
     </div>
   </section>
@@ -2599,6 +2723,34 @@
       }, { threshold: 0.3 });
       barsObserver.observe(metodoBars);
     }
+
+    /* ── Chi Siamo: counter animation ── */
+    (function() {
+      var statsEl = document.querySelector('.about-stats');
+      if (!statsEl) return;
+      var counted = false;
+      var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting && !counted) {
+            counted = true;
+            counterObserver.unobserve(e.target);
+            e.target.querySelectorAll('.astat-num').forEach(function(el) {
+              var target = parseInt(el.dataset.target, 10);
+              var duration = 1200;
+              var start = performance.now();
+              function tick(now) {
+                var p = Math.min((now - start) / duration, 1);
+                var ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(ease * target);
+                if (p < 1) requestAnimationFrame(tick);
+              }
+              requestAnimationFrame(tick);
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+      counterObserver.observe(statsEl);
+    })();
 
     /* ── Footer: highlight today's opening hours ── */
     (function() {
