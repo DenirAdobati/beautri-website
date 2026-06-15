@@ -470,7 +470,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
       font-weight: 900;
       letter-spacing: -0.05em;
       line-height: 1.0;
@@ -824,8 +824,7 @@
        SECTION 5 · CHI SIAMO (dark hex)
     ══════════════════════════════════════════════════ */
     .sec-about {
-      padding: 104px 0 0;
-      padding-bottom: 0;
+      padding: 104px 0 104px;
       border-bottom: 1px solid var(--border);
       overflow: hidden;
       position: relative;
@@ -891,29 +890,33 @@
 
     /* About stat widgets */
     .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       margin-top: 32px;
     }
     .astat-card {
       background: #0A0A0A;
-      border-radius: 20px;
-      padding: 28px 20px;
-      text-align: center;
+      border: 1px solid #1A1A1A;
+      border-radius: 16px;
+      padding: 28px 28px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .astat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
     }
     .astat-num-wrap {
       display: flex;
       align-items: baseline;
-      justify-content: center;
       gap: 2px;
       line-height: 1;
+      margin-bottom: 4px;
     }
     .astat-num {
-      font-size: clamp(40px, 4.5vw, 56px);
+      font-size: clamp(44px, 5vw, 60px);
       font-weight: 800;
       color: #F5C200;
       line-height: 1;
@@ -921,7 +924,7 @@
       font-family: 'Poppins', sans-serif;
     }
     .astat-suffix {
-      font-size: clamp(30px, 3.5vw, 44px);
+      font-size: clamp(32px, 3.8vw, 48px);
       font-weight: 800;
       color: #F5C200;
       line-height: 1;
@@ -929,60 +932,37 @@
       font-family: 'Poppins', sans-serif;
     }
     .astat-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.7);
-      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 20px;
       letter-spacing: 0.01em;
+      text-align: left;
     }
-
-    /* Press strip — Opzione A: sul giallo, no blocco separato */
-    .about-press-strip {
-      border-top: 1px solid rgba(0,0,0,0.12);
-      margin-top: 56px;
-      padding: 28px 0 0;
-      text-align: center;
-    }
-    .press-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .astat-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
       margin-bottom: 20px;
     }
-    .press-eyebrow .bdot { color: #0A0A0A; font-size: 8px; }
-    .press-eyebrow .plabel {
-      color: #0A0A0A;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .astat-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
-    .press-marquee-wrap {
-      overflow: hidden;
-      width: 100%;
+    .astat-sec-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.01em;
     }
-    .press-marquee-track {
-      display: inline-flex;
-      white-space: nowrap;
-      animation: pressMarquee 14s linear infinite;
+    .astat-sec-icon {
+      width: 18px;
+      height: 18px;
+      color: rgba(255,255,255,0.3);
+      flex-shrink: 0;
     }
-    @keyframes pressMarquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .press-mitem {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: #0A0A0A;
-      padding: 0 28px;
-    }
-    .press-msep {
-      color: rgba(0,0,0,0.3);
-      font-size: 14px;
-      align-self: center;
-    }
+
 
     /* ══════════════════════════════════════════════════
        SECTION 6 · TESTIMONIANZE
@@ -1237,11 +1217,11 @@
       .val-pills { gap: 8px; }
       .about-split { grid-template-columns: 1fr; gap: 32px; }
       .sec-about { padding-bottom: 0; }
-      .about-press-strip { margin-top: 32px; }
+
     }
 
     @media (max-width: 500px) {
-      .hero h1 { font-size: 2.5rem; }
+      .hero h1 { font-size: 2.1rem; }
 .test-mini { grid-template-columns: 1fr; }
       .hero-stats { grid-template-columns: 1fr 1fr; }
       .feat-cards { grid-template-columns: 1fr; }
@@ -1322,8 +1302,15 @@
       .cmp2-td-aspect { max-width: 80px; white-space: normal; }
     }
 
-    /* ── CHI SIAMO / SIAMO BEAUTRI (GIALLO) ── */
-    .sec-about { background-color: #F5C200; border-bottom-color: rgba(0,0,0,0.1); }
+    /* ── CHI SIAMO / SIAMO BEAUTRI (BIANCO) ── */
+    .sec-about {
+      background-color: #FFFFFF;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      border-bottom-color: #E5E5E5;
+    }
     .sec-about .split-text { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .sec-about .eyebrow {
       background: transparent;
@@ -1458,7 +1445,8 @@
       </div>
 
       <h1 class="fi fi-d1">
-        Risolviamo i tuoi<br><span class="acc">problemi di capelli</span>
+        Soffri di psoriasi, caduta dei capelli,<br>
+        dermatite, forfora o altre <span class="acc">anomalie della cute e dei capelli?</span>
       </h1>
 
       <p class="hero-sub fi fi-d2">
@@ -2330,7 +2318,10 @@
 
         <div class="metodo-eyebrow"><span class="bdot">•</span><span>Il Nostro Approccio</span><span class="bdot">•</span></div>
         <h2 class="metodo-h2">Il Metodo 80/20</h2>
-        <p class="metodo-sub">La maggior parte dei trattamenti si concentra solo sul capello.<br><span style="background-color: #E53E3E; color: #FFFFFF; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Noi abbiamo ribaltato tutto.</span></p>
+        <p class="metodo-sub">La maggior parte dei trattamenti si concentra solo sul capello.</p>
+        <div style="background:rgba(245,194,0,0.12); border:1.5px solid #F5C200; border-radius:12px; padding:8px 14px; width:fit-content; margin:8px auto 0;">
+          <span style="color:#0A0A0A; font-size:13px; font-weight:700;">Noi abbiamo ribaltato tutto.</span>
+        </div>
 
         <div class="metodo-bars" id="metodoBars">
 
@@ -2445,7 +2436,7 @@
   <!-- ════════════════════════════════════════
        S5 · CHI SIAMO (dark hex)
   ════════════════════════════════════════ -->
-  <section id="chi-siamo" class="sec-about grid-bg-yellow">
+  <section id="chi-siamo" class="sec-about">
     <div class="wrap">
       <div class="about-split">
 
@@ -2462,12 +2453,26 @@
                 <span class="astat-num" data-target="40">0</span><span class="astat-suffix">+</span>
               </div>
               <span class="astat-label">Anni di esperienza</span>
+              <div class="astat-divider"></div>
+              <div class="astat-secondary">
+                <span class="astat-sec-text">Nel settore tricologico</span>
+                <svg class="astat-sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2L3 7v7c0 5.25 3.75 10.18 9 11.25C17.25 24.18 21 19.25 21 14V7l-9-5z"/>
+                </svg>
+              </div>
             </div>
             <div class="astat-card fi fi-d5">
               <div class="astat-num-wrap">
                 <span class="astat-num" data-target="280">0</span><span class="astat-suffix">+</span>
               </div>
               <span class="astat-label">Persone seguite</span>
+              <div class="astat-divider"></div>
+              <div class="astat-secondary">
+                <span class="astat-sec-text">Con il Metodo 80/20</span>
+                <svg class="astat-sec-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -2475,20 +2480,6 @@
       </div>
     </div>
 
-    <div class="about-press-strip">
-      <div class="press-marquee-wrap">
-        <div class="press-marquee-track">
-          <span class="press-mitem">Prima Treviglio</span><span class="press-msep">·</span>
-          <span class="press-mitem">Bergamo News</span><span class="press-msep">·</span>
-          <span class="press-mitem">Salute &amp; Armonia</span><span class="press-msep">·</span>
-          <span class="press-mitem">Trico Italia</span><span class="press-msep">·</span>
-          <span class="press-mitem">Prima Treviglio</span><span class="press-msep">·</span>
-          <span class="press-mitem">Bergamo News</span><span class="press-msep">·</span>
-          <span class="press-mitem">Salute &amp; Armonia</span><span class="press-msep">·</span>
-          <span class="press-mitem">Trico Italia</span><span class="press-msep">·</span>
-        </div>
-      </div>
-    </div>
   </section>
 
 
