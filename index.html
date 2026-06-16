@@ -2371,7 +2371,7 @@
         <!-- Left: text -->
         <div class="split-text">
           <div class="eyebrow fi"><span class="bdot">•</span><span>Il Nostro Metodo</span><span class="bdot">•</span></div>
-          <h2 class="sec-h2 fi fi-d1">40+ anni di esperienza per creare qualcosa di diverso</h2>
+          <h2 class="sec-h2 fi fi-d1"><span id="metodo-counter">40</span>+ anni di esperienza per creare qualcosa di diverso</h2>
           <p class="fi fi-d2">Per poter dare alle persone qualcosa di estremamente diverso abbiamo unito oltre 40 anni di esperienza in ambito tricologico per creare 80/20. Un metodo che non si basa sui "prodotti miracolosi" ma su risultati reali.</p>
           <p class="fi fi-d2">Lo facciamo grazie a un metodo, all'insieme di strumenti e competenze che abbiamo messo insieme negli ultimi anni lavorando su più di 280 persone. Risolvendo centinaia di anomalie, imparando dagli errori e rinnovandosi ogni settimana.</p>
           <a href="#contattaci" class="split-link fi fi-d3">Come Possiamo Aiutarti <span>→</span></a>
@@ -2710,6 +2710,31 @@
       }, { threshold: 0.3 });
       barsObserver.observe(metodoBars);
     }
+
+    /* ── Metodo split: "40+" counter animation ── */
+    (function() {
+      var el = document.getElementById('metodo-counter');
+      if (!el) return;
+      var counted = false;
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting && !counted) {
+            counted = true;
+            obs.unobserve(e.target);
+            var duration = 1200;
+            var start = performance.now();
+            function tick(now) {
+              var p = Math.min((now - start) / duration, 1);
+              var ease = 1 - Math.pow(1 - p, 3);
+              e.target.textContent = Math.round(ease * 40);
+              if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          }
+        });
+      }, { threshold: 0.4 });
+      obs.observe(el);
+    })();
 
     /* ── Chi Siamo: counter animation ── */
     (function() {
