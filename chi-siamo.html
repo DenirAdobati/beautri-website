@@ -408,6 +408,54 @@
       line-height: 1.6;
     }
 
+    /* ── SECTION 4: TEAM ── */
+    .cs-team { padding: 80px 0; background: #0A0A0A; }
+    .cs-team-inner { max-width: 900px; margin: 0 auto; }
+    .cs-team h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin: 0 0 48px;
+      letter-spacing: -0.02em;
+    }
+    .cs-team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 40px;
+    }
+    .cs-team-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .cs-team-img {
+      width: 100%;
+      max-width: 280px;
+      height: 320px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    .cs-team-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin: 0 0 6px;
+    }
+    .cs-team-role {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+      margin: 0;
+    }
+    @media (max-width: 600px) {
+      .cs-team-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cs-team h2 { font-size: 26px; }
+    }
+
     /* ── SECTION 5: SPECIALIZZAZIONI ── */
     .cs-spec { padding: 80px 0; }
     .cs-spec-inner { max-width: 900px; margin: 0 auto; }
@@ -655,6 +703,44 @@
 
 
 
+
+
+  <!-- ════ SEZIONE 4 — TEAM ════ -->
+  <section class="cs-team">
+    <div class="wrap cs-team-inner">
+
+      <h2>Il Nostro Team</h2>
+
+      <div class="cs-team-grid">
+
+        <div class="cs-team-card">
+          <img src="Daniela Team.png" alt="Daniela" class="cs-team-img" loading="lazy">
+          <p class="cs-team-name">Daniela</p>
+          <p class="cs-team-role">Tecnica Tricologa · Specializzata in Coaching Oncologico · Autrice</p>
+        </div>
+
+        <div class="cs-team-card">
+          <img src="Sabrina Team.png" alt="Sabrina" class="cs-team-img" loading="lazy">
+          <p class="cs-team-name">Sabrina</p>
+          <p class="cs-team-role">Parrucchiera Tricologa · Responsabile del settore maschile</p>
+        </div>
+
+        <div class="cs-team-card">
+          <img src="Giada Team.png" alt="Giada" class="cs-team-img" loading="lazy">
+          <p class="cs-team-name">Giada</p>
+          <p class="cs-team-role">Parrucchiera Tricologa</p>
+        </div>
+
+        <div class="cs-team-card">
+          <img src="Desiree Team.png" alt="Desirée" class="cs-team-img" loading="lazy">
+          <p class="cs-team-name">Desirée</p>
+          <p class="cs-team-role">Parrucchiera Tricologa</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
 
   <!-- ════ SEZIONE 6 — CTA ════ -->
