@@ -306,39 +306,90 @@
     .metodo-hero-back:hover { opacity: 0.8; }
 
     /* ── METODO PAGE: SECTIONS ── */
-    .m-section { padding: 96px 0; }
-    .m-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 auto 20px; }
+    .m-section { padding: 96px 0; position: relative; overflow: hidden; }
+    .m-section-glow::before {
+      content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse at center, rgba(245,194,0,0.07) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .m-section-alt { background-color: #0D0D0D; }
+    .m-section + .m-section { border-top: 1px solid rgba(255,255,255,0.04); }
+    .m-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 auto 20px; position: relative; z-index: 1; }
     .m-eyebrow span:not(.m-bdot) { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; color: #F5C200; }
     .m-eyebrow.on-light span:not(.m-bdot) { color: #0A0A0A; }
     .m-bdot { font-size: 10px; flex-shrink: 0; color: #F5C200; }
     .m-eyebrow.on-light .m-bdot { color: #0A0A0A; }
-    .m-center { max-width: 720px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .m-center { max-width: 720px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
     .m-h2 { font-size: clamp(2rem, 4.5vw, 2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; color: #FFFFFF; }
     .m-h2.on-light { color: #0A0A0A; }
     .m-lead { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,0.62); margin-top: 20px; max-width: 640px; }
     .m-lead.on-light { color: #555555; }
 
-    /* 80/20 bars (stesso componente di index.html) */
-    .metodo-bars { background: #0A0A0A; border-radius: 20px; padding: 36px 28px; margin-top: 40px; width: 100%; max-width: 480px; }
+    /* ── 80/20 widget: donut + barre ── */
+    .donut-widget {
+      background: #0A0A0A; border: 1px solid rgba(245,194,0,0.18); border-radius: 24px;
+      padding: 40px 36px; margin-top: 44px; width: 100%; max-width: 720px;
+      box-shadow: 0 0 60px rgba(245,194,0,0.06);
+      display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .donut-wrap { position: relative; width: 190px; height: 190px; flex-shrink: 0; }
+    .donut-wrap svg { width: 100%; height: 100%; }
+    .donut-track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 16; }
+    .donut-fill { fill: none; stroke: #F5C200; stroke-width: 16; stroke-linecap: round; transition: stroke-dashoffset 1.4s cubic-bezier(0.16,1,0.3,1); }
+    .donut-widget.animate .donut-fill { stroke-dashoffset: 100.53; }
+    .donut-center { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .donut-pct { font-size: 38px; font-weight: 900; color: #FFFFFF; line-height: 1; }
+    .donut-pct-label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 6px; }
+    .donut-bars { display: flex; flex-direction: column; gap: 22px; flex: 1; min-width: 220px; }
     .metodo-bar-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
     .metodo-bar-label { color: #FFFFFF; font-weight: 700; font-size: 15px; }
     .metodo-bar-pct { font-size: 28px; font-weight: 900; line-height: 1; }
-    .metodo-bar-track { background: rgba(255,255,255,0.1); border-radius: 999px; height: 8px; overflow: hidden; }
-    .metodo-bar-fill { height: 100%; border-radius: 999px; width: 0%; }
-    .metodo-bar-fill.fill-80 { background: #F5C200; transition: width 1.2s ease-out; }
-    .metodo-bar-fill.fill-20 { background: rgba(255,255,255,0.3); transition: width 1.2s ease-out 0.3s; }
-    .metodo-bars.animate .fill-80 { width: 80%; }
-    .metodo-bars.animate .fill-20 { width: 20%; }
+    .metodo-bar-track { background: rgba(255,255,255,0.1); border-radius: 999px; height: 10px; overflow: hidden; }
+    .metodo-bar-fill { height: 100%; border-radius: 999px; width: 0%; box-shadow: 0 0 12px rgba(245,194,0,0.5); }
+    .metodo-bar-fill.fill-80 { background: #F5C200; transition: width 1.3s cubic-bezier(0.16,1,0.3,1); }
+    .metodo-bar-fill.fill-20 { background: rgba(255,255,255,0.35); box-shadow: none; transition: width 1.3s cubic-bezier(0.16,1,0.3,1) 0.2s; }
+    .donut-widget.animate .fill-80 { width: 80%; }
+    .donut-widget.animate .fill-20 { width: 20%; }
     .metodo-bar-sub { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 8px; }
 
-    /* Fasi del metodo */
-    .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; width: 100%; }
-    .phase-card { background: #111111; border: 1px solid #1E1E1E; border-radius: 20px; padding: 36px 28px; text-align: left; }
-    .phase-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; background: #F5C200; color: #0A0A0A; font-weight: 800; font-size: 16px; margin-bottom: 20px; }
-    .phase-card h3 { font-size: 19px; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -0.01em; }
-    .phase-card p { font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.62); }
+    /* ── Timeline / percorso delle fasi ── */
+    .timeline { position: relative; max-width: 760px; margin: 56px auto 0; width: 100%; z-index: 1; }
+    .timeline-track { position: absolute; top: 8px; bottom: 8px; left: 27px; width: 2px; background: rgba(255,255,255,0.1); }
+    .timeline-track-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(180deg, #F5C200, rgba(245,194,0,0.2)); transition: height 0.2s ease-out; }
+    .timeline-item { display: flex; gap: 26px; position: relative; margin-bottom: 36px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-node {
+      flex-shrink: 0; width: 56px; height: 56px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 19px; background: #111111; z-index: 2;
+      border: 2px solid var(--node-color, #F5C200); color: var(--node-color, #F5C200);
+    }
+    .timeline-item.accent-gold .timeline-node { --node-color: #F5C200; box-shadow: 0 0 24px rgba(245,194,0,0.45); }
+    .timeline-item.accent-white .timeline-node { --node-color: #FFFFFF; box-shadow: 0 0 24px rgba(255,255,255,0.18); }
+    .timeline-item.accent-bronze .timeline-node { --node-color: #C9A86A; box-shadow: 0 0 24px rgba(201,168,106,0.3); }
+    .timeline-card {
+      flex: 1; background: #111111; border: 1px solid #1E1E1E; border-radius: 20px;
+      padding: 30px 28px; border-left: 3px solid var(--node-color, #F5C200);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .timeline-item.accent-gold .timeline-card { box-shadow: 0 0 0 1px rgba(245,194,0,0.06) inset; }
+    .timeline-item.accent-white .timeline-card { box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset; }
+    .timeline-item.accent-bronze .timeline-card { box-shadow: 0 0 0 1px rgba(201,168,106,0.06) inset; }
+    .timeline-card:hover { transform: translateX(4px); }
+    .timeline-card-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--node-color, #F5C200); margin-bottom: 8px; }
+    .timeline-card h3 { font-size: 19px; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .timeline-card p { font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.62); }
 
-    /* CTA finale */
+    /* ── Prodotti: card a griglia orizzontale ── */
+    .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; width: 100%; max-width: 880px; }
+    .prod-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; padding: 28px 20px; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    .prod-icon { width: 52px; height: 52px; border-radius: 999px; background: rgba(245,194,0,0.12); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .prod-icon svg { width: 24px; height: 24px; }
+    .prod-card-label { font-size: 13px; font-weight: 700; color: #0A0A0A; letter-spacing: -0.01em; }
+    .prod-text-card { width: 100%; max-width: 720px; margin-top: 28px; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; padding: 32px 36px; box-shadow: 0 8px 32px rgba(0,0,0,0.04); }
+
+    /* ── CTA finale ── */
     .m-cta-final { padding: 120px 0; text-align: center; position: relative; }
     .m-cta-final::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 900px; height: 400px; background: radial-gradient(ellipse at center bottom, rgba(245,194,0,0.08) 0%, transparent 65%); pointer-events: none; }
     .m-cta-final h2 { position: relative; z-index: 1; }
@@ -372,7 +423,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1040px) {
       .footer-top { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
-      .phase-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .prod-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .wrap { padding: 0 20px; }
@@ -382,9 +433,16 @@
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-btm { flex-direction: column; text-align: center; }
       .m-section { padding: 64px 0; }
-      .phase-grid { grid-template-columns: 1fr; gap: 20px; }
       .m-cta-final { padding: 80px 0; }
-      .metodo-bars { padding: 24px 18px; }
+      .donut-widget { padding: 28px 22px; gap: 28px; }
+      .donut-wrap { width: 150px; height: 150px; }
+      .donut-pct { font-size: 30px; }
+      .timeline-node { width: 46px; height: 46px; font-size: 16px; }
+      .timeline-track { left: 22px; }
+      .timeline-item { gap: 18px; }
+      .timeline-card { padding: 22px 20px; }
+      .prod-grid { grid-template-columns: 1fr; }
+      .prod-text-card { padding: 24px 22px; }
     }
   </style>
 </head>
@@ -439,7 +497,7 @@
   <!-- ════════════════════════════════════════
        PERCHÉ ABBIAMO CREATO IL METODO 80/20
   ════════════════════════════════════════ -->
-  <section class="m-section grid-bg-dark">
+  <section class="m-section m-section-glow grid-bg-dark">
     <div class="wrap">
       <div class="m-center fi">
         <div class="m-eyebrow"><span class="m-bdot">•</span><span>Il Problema</span><span class="m-bdot">•</span></div>
@@ -451,7 +509,7 @@
 
 
   <!-- ════════════════════════════════════════
-       80% PERSONA, 20% CAPELLI
+       80% PERSONA, 20% CAPELLI — donut + barre animate
   ════════════════════════════════════════ -->
   <section class="m-section grid-bg">
     <div class="wrap">
@@ -460,26 +518,39 @@
         <h2 class="m-h2 on-light">80% persona, 20% capelli</h2>
         <p class="m-lead on-light">Per questo il Metodo 80/20 dedica l'80% del tempo alla persona e solo il 20% ai capelli. Per noi questo è fondamentale: i problemi di cute e capelli nascono quasi sempre da qualcosa che riguarda la persona nel suo insieme, non solo i capelli in superficie.</p>
 
-        <div class="metodo-bars" id="metodoBars">
-          <div class="metodo-bar-row">
-            <div class="metodo-bar-header">
-              <span class="metodo-bar-label">La Persona</span>
-              <span class="metodo-bar-pct" style="color:#F5C200;">80%</span>
+        <div class="donut-widget" id="donutWidget">
+          <div class="donut-wrap">
+            <svg viewBox="0 0 200 200">
+              <circle class="donut-track" cx="100" cy="100" r="80"></circle>
+              <circle class="donut-fill" id="donutFill" cx="100" cy="100" r="80" stroke-dasharray="502.65" stroke-dashoffset="502.65" transform="rotate(-90 100 100)"></circle>
+            </svg>
+            <div class="donut-center">
+              <span class="donut-pct" id="donutPct">0%</span>
+              <span class="donut-pct-label">Persona</span>
             </div>
-            <div class="metodo-bar-track">
-              <div class="metodo-bar-fill fill-80"></div>
-            </div>
-            <div class="metodo-bar-sub">Storia personale, stile di vita, emozioni</div>
           </div>
-          <div class="metodo-bar-row" style="margin-top:24px;">
-            <div class="metodo-bar-header">
-              <span class="metodo-bar-label">I Capelli</span>
-              <span class="metodo-bar-pct" style="color:rgba(255,255,255,0.4);">20%</span>
+
+          <div class="donut-bars">
+            <div>
+              <div class="metodo-bar-header">
+                <span class="metodo-bar-label">La Persona</span>
+                <span class="metodo-bar-pct" style="color:#F5C200;">80%</span>
+              </div>
+              <div class="metodo-bar-track">
+                <div class="metodo-bar-fill fill-80"></div>
+              </div>
+              <div class="metodo-bar-sub">Storia personale, stile di vita, emozioni</div>
             </div>
-            <div class="metodo-bar-track">
-              <div class="metodo-bar-fill fill-20"></div>
+            <div>
+              <div class="metodo-bar-header">
+                <span class="metodo-bar-label">I Capelli</span>
+                <span class="metodo-bar-pct" style="color:rgba(255,255,255,0.4);">20%</span>
+              </div>
+              <div class="metodo-bar-track">
+                <div class="metodo-bar-fill fill-20"></div>
+              </div>
+              <div class="metodo-bar-sub">Routine, prodotti, trattamenti</div>
             </div>
-            <div class="metodo-bar-sub">Routine, prodotti, trattamenti</div>
           </div>
         </div>
 
@@ -489,30 +560,43 @@
 
 
   <!-- ════════════════════════════════════════
-       COME FUNZIONA IL METODO 80/20 (3 FASI)
+       COME FUNZIONA IL METODO 80/20 — timeline verticale
   ════════════════════════════════════════ -->
-  <section class="m-section grid-bg-dark">
+  <section class="m-section m-section-alt grid-bg-dark">
     <div class="wrap">
       <div class="m-center fi">
         <div class="m-eyebrow"><span class="m-bdot">•</span><span>Le Fasi</span><span class="m-bdot">•</span></div>
         <h2 class="m-h2">Come funziona il Metodo 80/20</h2>
       </div>
 
-      <div class="phase-grid fi fi-d1">
-        <div class="phase-card">
-          <div class="phase-num">1</div>
-          <h3>La Consulenza</h3>
-          <p>Tutto inizia con una consulenza di 90 minuti in studio insieme a Daniela Modina. Prima una fase di coaching, fatta di domande e ascolto, per individuare la vera causa del tuo problema. Poi una fase di analisi approfondita, grazie a strumenti come videodermatoscopio e trico-analyzer, oltre a un'anamnesi completa. Solo dopo aver capito davvero la causa, costruiamo insieme il percorso su misura, in base alle tue esigenze, al tuo stile di vita, al tuo lavoro, alla tua età.</p>
+      <div class="timeline" id="timeline">
+        <div class="timeline-track"><div class="timeline-track-fill" id="timelineFill"></div></div>
+
+        <div class="timeline-item accent-gold fi">
+          <div class="timeline-node">1</div>
+          <div class="timeline-card">
+            <div class="timeline-card-label">Fase 01</div>
+            <h3>La Consulenza</h3>
+            <p>Tutto inizia con una consulenza di 90 minuti in studio insieme a Daniela Modina. Prima una fase di coaching, fatta di domande e ascolto, per individuare la vera causa del tuo problema. Poi una fase di analisi approfondita, grazie a strumenti come videodermatoscopio e trico-analyzer, oltre a un'anamnesi completa. Solo dopo aver capito davvero la causa, costruiamo insieme il percorso su misura, in base alle tue esigenze, al tuo stile di vita, al tuo lavoro, alla tua età.</p>
+          </div>
         </div>
-        <div class="phase-card">
-          <div class="phase-num">2</div>
-          <h3>Il Percorso Personalizzato</h3>
-          <p>Il percorso ti accompagna verso gli obiettivi individuati durante la consulenza: eliminare la psoriasi, riequilibrare il cuoio capelluto, eliminare la forfora, gestire i capelli durante la chemioterapia, affrontare con serenità la gravidanza o l'adolescenza, e molto altro, in base al tuo caso specifico.</p>
+
+        <div class="timeline-item accent-white fi">
+          <div class="timeline-node">2</div>
+          <div class="timeline-card">
+            <div class="timeline-card-label">Fase 02</div>
+            <h3>Il Percorso Personalizzato</h3>
+            <p>Il percorso ti accompagna verso gli obiettivi individuati durante la consulenza: eliminare la psoriasi, riequilibrare il cuoio capelluto, eliminare la forfora, gestire i capelli durante la chemioterapia, affrontare con serenità la gravidanza o l'adolescenza, e molto altro, in base al tuo caso specifico.</p>
+          </div>
         </div>
-        <div class="phase-card">
-          <div class="phase-num">3</div>
-          <h3>Il Mantenimento</h3>
-          <p>Una volta raggiunti i risultati, entriamo nella fase di mantenimento: non è la fase più intensa, ma è fondamentale, perché ci permette di consolidare quello che abbiamo ottenuto insieme. Come per una dieta: dopo la fase più rigorosa, si può alleggerire mantenendo i risultati raggiunti.</p>
+
+        <div class="timeline-item accent-bronze fi">
+          <div class="timeline-node">3</div>
+          <div class="timeline-card">
+            <div class="timeline-card-label">Fase 03</div>
+            <h3>Il Mantenimento</h3>
+            <p>Una volta raggiunti i risultati, entriamo nella fase di mantenimento: non è la fase più intensa, ma è fondamentale, perché ci permette di consolidare quello che abbiamo ottenuto insieme. Come per una dieta: dopo la fase più rigorosa, si può alleggerire mantenendo i risultati raggiunti.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -520,14 +604,38 @@
 
 
   <!-- ════════════════════════════════════════
-       I PRODOTTI DELLA LINEA BEAUTRÌ
+       I PRODOTTI DELLA LINEA BEAUTRÌ — grid icone
   ════════════════════════════════════════ -->
   <section class="m-section grid-bg">
     <div class="wrap">
       <div class="m-center fi">
-        <div class="m-eyebrow on-light"><span class="m-bdot">•</span><span>I Prodotti</span><span class="m-bdot">•</span></div>
+        <div class="m-eyebrow on-light"><span class="m-bdot">•</span><span>Fase 04 · I Prodotti</span><span class="m-bdot">•</span></div>
         <h2 class="m-h2 on-light">I prodotti della linea Beautrì</h2>
-        <p class="m-lead on-light">Sia durante il percorso che nella fase di mantenimento, ti affianchiamo anche a casa con i prodotti giusti per te. Non parliamo di decine di prodotti costosi: ti consigliamo solo i <strong style="color:#0A0A0A;">2-3 prodotti della linea Beautrì</strong> che ti servono davvero per la tua routine quotidiana, scelti e personalizzati in base alle tue esigenze.</p>
+
+        <div class="prod-grid fi fi-d1">
+          <div class="prod-card">
+            <div class="prod-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c2.5 4 5 7.5 5 11a5 5 0 0 1-10 0c0-3.5 2.5-7 5-11z"/></svg>
+            </div>
+            <div class="prod-card-label">2-3 Prodotti</div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8" fill="#0A0A0A"/></svg>
+            </div>
+            <div class="prod-card-label">Personalizzati</div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5"/></svg>
+            </div>
+            <div class="prod-card-label">Routine Quotidiana</div>
+          </div>
+        </div>
+
+        <div class="prod-text-card fi fi-d2">
+          <p class="m-lead on-light" style="margin-top:0;">Sia durante il percorso che nella fase di mantenimento, ti affianchiamo anche a casa con i prodotti giusti per te. Non parliamo di decine di prodotti costosi: ti consigliamo solo i <strong style="color:#0A0A0A;">2-3 prodotti della linea Beautrì</strong> che ti servono davvero per la tua routine quotidiana, scelti e personalizzati in base alle tue esigenze.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -634,18 +742,45 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
     document.querySelectorAll('.fi').forEach(el => io.observe(el));
 
-    /* ── Metodo 80/20: barre animate ── */
-    const metodoBars = document.getElementById('metodoBars');
-    if (metodoBars) {
-      const barsObserver = new IntersectionObserver((entries) => {
+    /* ── Metodo 80/20: donut + barre animate ── */
+    const donutWidget = document.getElementById('donutWidget');
+    if (donutWidget) {
+      const donutObserver = new IntersectionObserver((entries) => {
         entries.forEach(e => {
           if (e.isIntersecting) {
             e.target.classList.add('animate');
-            barsObserver.unobserve(e.target);
+            donutObserver.unobserve(e.target);
+            var pctEl = document.getElementById('donutPct');
+            var duration = 1300;
+            var start = performance.now();
+            function tick(now) {
+              var p = Math.min((now - start) / duration, 1);
+              var ease = 1 - Math.pow(1 - p, 3);
+              if (pctEl) pctEl.textContent = Math.round(ease * 80) + '%';
+              if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
           }
         });
       }, { threshold: 0.3 });
-      barsObserver.observe(metodoBars);
+      donutObserver.observe(donutWidget);
+    }
+
+    /* ── Timeline fasi: linea di progresso on-scroll ── */
+    const timelineEl = document.getElementById('timeline');
+    const timelineFill = document.getElementById('timelineFill');
+    if (timelineEl && timelineFill) {
+      function updateTimelineLine() {
+        var rect = timelineEl.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var total = rect.height + vh * 0.5;
+        var scrolled = vh * 0.85 - rect.top;
+        var progress = Math.min(Math.max(scrolled / total, 0), 1);
+        timelineFill.style.height = (progress * 100) + '%';
+      }
+      window.addEventListener('scroll', updateTimelineLine, { passive: true });
+      window.addEventListener('resize', updateTimelineLine);
+      updateTimelineLine();
     }
 
     (function() {
