@@ -363,18 +363,21 @@
     }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu .mobile-whatsapp {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      line-height: 1; white-space: nowrap;
       background: #25D366;
       color: #FFFFFF;
       font-weight: 800;
       font-size: 16px;
       letter-spacing: -0.01em;
       text-align: center;
-      padding: 14px 32px;
+      padding: 11px 26px;
       border-radius: 999px;
       margin-top: 16px;
       border-bottom: none;
       box-shadow: 0 0 20px rgba(37,211,102,0.35);
     }
+    .mobile-menu .mobile-whatsapp svg { width: 19px; height: 19px; flex-shrink: 0; }
     .mobile-menu .mobile-cta {
       display: inline-flex; align-items: center; justify-content: center;
       line-height: 1; white-space: nowrap;
@@ -706,7 +709,8 @@
        SECTION 4 · METODO 80/20 (split)
     ══════════════════════════════════════════════════ */
     .sec-method {
-      padding: 104px 0;
+      padding-top: 32px;
+      padding-bottom: 104px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -1254,12 +1258,12 @@
       gap: 8px;
       display: inline-flex;
       align-items: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 10px;
       width: fit-content;
     }
     .sec-method .eyebrow::before { content: none; }
     .sec-method .eyebrow span { color: #0A0A0A; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
-    .sec-method .sec-h2 { color: #FFFFFF; font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 20px; text-align: center; }
+    .sec-method .sec-h2 { color: #FFFFFF; font-size: clamp(2.5rem,5vw,2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 8px; text-align: center; }
     .sec-method .split-text p { color: #A0A0A0; }
     .sec-method .split-link { color: #F5C200; }
     .cmp2-wrap { width: 100%; border-radius: 16px; overflow: hidden; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid #222222; }
@@ -1418,7 +1422,7 @@
     <a href="#metodo">Metodo 80/20</a>
     <a href="#chi-siamo">Chi Siamo</a>
     <a href="#testimonianze">Testimonianze</a>
-    <a href="https://wa.me/393313348233" target="_blank" class="mobile-whatsapp">Hai bisogno di aiuto?</a>
+    <a href="https://wa.me/393313348233" target="_blank" class="mobile-whatsapp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.746-.873-2.888-1.555-4.036-3.527-.305-.524.305-.487.873-1.62.099-.198.05-.371-.05-.52-.099-.148-.669-1.612-.916-2.207-.247-.595-.5-.514-.683-.523-.173-.009-.371-.009-.57-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.057 3.146 4.987 4.286 2.93 1.14 2.93.762 3.99.668 1.06-.092 3.39-1.394 3.866-2.741.476-1.347.476-2.502.347-2.741zM12 22.005c-1.819 0-3.6-.5-5.135-1.448l-.368-.225-3.811.998 1.018-3.715-.24-.382C2.498 15.59 2 13.79 2 12.005 2 6.486 6.486 2 12.005 2c2.673 0 5.184 1.041 7.071 2.93A9.95 9.95 0 0 1 22 12.005c0 5.519-4.486 10-10.005 10z"/></svg>Hai bisogno di aiuto?</a>
     <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="mobile-cta">Come Possiamo Aiutarti</a>
   </div>
 
