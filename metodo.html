@@ -362,89 +362,43 @@
     .donut-widget.animate .fill-20 { width: 20%; }
     .metodo-bar-sub { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 8px; }
 
-    /* ── Timeline / percorso delle fasi ── */
-    .timeline { position: relative; max-width: 760px; margin: 56px auto 0; width: 100%; z-index: 1; }
-    .timeline-track { position: absolute; top: 8px; bottom: 8px; left: 27px; width: 2px; background: rgba(255,255,255,0.1); }
-    .timeline-track-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(180deg, #F5C200, rgba(245,194,0,0.2)); transition: height 0.2s ease-out; }
-    .timeline-item { display: flex; gap: 26px; position: relative; margin-bottom: 36px; }
-    .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-item.accent-gold { --node-color: #F5C200; }
-    .timeline-item.accent-white { --node-color: #FFFFFF; }
-    .timeline-item.accent-bronze { --node-color: #C9A86A; }
-    .timeline-node {
-      flex-shrink: 0; width: 56px; height: 56px; border-radius: 999px;
+    /* ── Fase 01-03: card statiche ── */
+    .phase-stack { width: 100%; max-width: 640px; margin: 56px auto 0; }
+    .phase-card-v2 { background: #111; border: 1px solid #222; border-radius: 18px; overflow: hidden; margin-bottom: 20px; text-align: left; }
+    .phase-badge {
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      background: #F5C200; color: #1a1500; font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 99px;
+    }
+    .phase-card-v2-media { position: relative; width: 100%; height: 170px; overflow: hidden; }
+    .phase-card-v2-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .phase-card-v2-body { padding: 16px; }
+    .phase-card-v2-body h3 { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .phase-card-v2-body p { color: #aaa; font-size: 14px; line-height: 1.5; }
+    .phase-card-v2-body ul { list-style: none; margin-top: 10px; }
+    .phase-card-v2-body ul li { position: relative; color: #aaa; font-size: 14px; line-height: 1.6; margin-bottom: 7px; padding-left: 16px; }
+    .phase-card-v2-body ul li:last-child { margin-bottom: 0; }
+    .phase-card-v2-body ul li::before { content: '-'; position: absolute; left: 0; color: #aaa; }
+
+    /* ── Fase 04: contenitore unico con widget prodotti ── */
+    .fase4-block { background: #111; border: 2px solid #F5C200; border-radius: 18px; overflow: hidden; }
+    .fase4-media { position: relative; width: 100%; height: 150px; overflow: hidden; }
+    .fase4-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fase4-body { padding: 16px 16px 4px; text-align: left; }
+    .fase4-body h3 { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .fase4-body p { color: #aaa; font-size: 14px; line-height: 1.5; }
+    .fase4-widgets { position: relative; padding: 8px 16px 20px; }
+    .fase4-widget-line { position: absolute; top: 8px; bottom: 20px; left: 32px; width: 2px; background: #2a2a2a; z-index: 0; }
+    .fase4-widget { display: flex; align-items: flex-start; gap: 12px; position: relative; z-index: 1; }
+    .fase4-widget:not(:first-child) { margin-top: 16px; }
+    .fase4-widget-dot {
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+      background: #F5C200; color: #1a1500; font-weight: 700; font-size: 13px;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 19px; background: #111111; z-index: 2;
-      border: 2px solid var(--node-color, #F5C200); color: var(--node-color, #F5C200);
     }
-    .timeline-item.accent-gold .timeline-node { box-shadow: 0 0 24px rgba(245,194,0,0.45); }
-    .timeline-item.accent-white .timeline-node { box-shadow: 0 0 24px rgba(255,255,255,0.18); }
-    .timeline-item.accent-bronze .timeline-node { box-shadow: 0 0 24px rgba(201,168,106,0.3); }
-
-    /* Flip card delle fasi */
-    .timeline-card { flex: 1; perspective: 1400px; }
-    .flip-card-inner {
-      position: relative; width: 100%; min-height: 280px;
-      transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
-      transform-style: preserve-3d; cursor: pointer;
-    }
-    .flip-card-inner:hover { transform: scale(1.015); }
-    .timeline-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-    .timeline-card.flipped .flip-card-inner:hover { transform: rotateY(180deg) scale(1.015); }
-    .flip-card-face {
-      position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-      background: #111111; border: 1px solid #1E1E1E; border-radius: 20px;
-      border-left: 3px solid var(--node-color, #F5C200);
-      padding: 30px 26px; display: flex; flex-direction: column;
-    }
-    .timeline-item.accent-gold .flip-card-face { box-shadow: 0 0 0 1px rgba(245,194,0,0.06) inset; }
-    .timeline-item.accent-white .flip-card-face { box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset; }
-    .timeline-item.accent-bronze .flip-card-face { box-shadow: 0 0 0 1px rgba(201,168,106,0.06) inset; }
-    .flip-card-front { padding: 0; overflow: hidden; }
-    .flip-card-back { transform: rotateY(180deg); overflow-y: auto; text-align: left; justify-content: flex-start; }
-    .timeline-card-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--node-color, #F5C200); }
-    .flip-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .flip-card-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.88) 100%);
-    }
-    .flip-card-front-content {
-      position: relative; z-index: 2; width: 100%; height: 100%;
-      display: flex; flex-direction: column; justify-content: space-between;
-      padding: 24px 24px; text-align: left;
-    }
-    .flip-card-front .timeline-card-label { color: #FFFFFF; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
-    .flip-card-title { font-size: 18px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.01em; }
-    .flip-card-front .flip-card-title { text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
-    .flip-card-back .timeline-card-label { margin-bottom: 6px; }
-    .flip-card-back .flip-card-title { margin-bottom: 14px; }
-    .flip-card-back p { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.62); }
-    .flip-hint {
-      display: flex; align-items: center; gap: 6px; margin-top: 10px;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.03em; color: rgba(255,255,255,0.75);
-    }
-    .flip-hint svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-    /* ── Prodotti: card a griglia orizzontale ── */
-    .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; width: 100%; max-width: 880px; }
-    .prod-card {
-      background: #FFFFFF; border: 1px solid rgba(0,0,0,0.07); border-top: 4px solid var(--prod-accent, #F5C200);
-      border-radius: 18px; padding: 32px 22px; text-align: center;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .prod-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(0,0,0,0.10); }
-    .prod-card.accent-gold { --prod-accent: #F5C200; }
-    .prod-card.accent-dark { --prod-accent: #0A0A0A; }
-    .prod-card.accent-bronze { --prod-accent: #C9A86A; }
-    .prod-card.accent-gold .prod-icon { background: rgba(245,194,0,0.13); }
-    .prod-card.accent-dark .prod-icon { background: rgba(10,10,10,0.06); }
-    .prod-card.accent-bronze .prod-icon { background: rgba(201,168,106,0.16); }
-    .prod-icon { width: 54px; height: 54px; border-radius: 999px; color: var(--prod-accent, #0A0A0A); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
-    .prod-icon svg { width: 24px; height: 24px; }
-    .prod-card-label { font-size: 15px; font-weight: 800; color: #0A0A0A; letter-spacing: -0.01em; margin-bottom: 8px; }
-    .prod-card-desc { font-size: 13px; line-height: 1.55; color: #777777; }
-    .prod-text-card { width: 100%; max-width: 720px; margin-top: 32px; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; padding: 32px 36px; box-shadow: 0 8px 32px rgba(0,0,0,0.04); }
+    .fase4-widget-box { flex: 1; background: #1a1a1a; border-radius: 12px; padding: 14px; text-align: left; }
+    .fase4-widget-box h4 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .fase4-widget-box p { color: #999; font-size: 12px; line-height: 1.5; }
 
     /* ── CTA finale ── */
     .m-cta-final { padding: 120px 0; text-align: center; position: relative; }
@@ -480,7 +434,6 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1040px) {
       .footer-top { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
-      .prod-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .wrap { padding: 0 20px; }
@@ -494,13 +447,8 @@
       .donut-widget { padding: 28px 22px; gap: 28px; }
       .donut-wrap { width: 150px; height: 150px; }
       .donut-pct { font-size: 30px; }
-      .timeline-node { width: 46px; height: 46px; font-size: 16px; }
-      .timeline-track { left: 22px; }
-      .timeline-item { gap: 18px; }
-      .flip-card-inner { min-height: 320px; }
-      .flip-card-face { padding: 22px 20px; }
-      .prod-grid { grid-template-columns: 1fr; }
-      .prod-text-card { padding: 24px 22px; }
+      .phase-card-v2-media { height: 150px; }
+      .fase4-media { height: 130px; }
     }
   </style>
 </head>
@@ -618,139 +566,93 @@
 
 
   <!-- ════════════════════════════════════════
-       COME FUNZIONA IL METODO 80/20 — timeline verticale
+       COME FUNZIONA IL METODO 80/20 — 4 fasi unificate
   ════════════════════════════════════════ -->
-  <section class="m-section m-section-alt grid-bg-dark">
+  <section class="m-section grid-bg-dark">
     <div class="wrap">
       <div class="m-center fi">
         <div class="m-eyebrow eyebrow-white"><span class="m-bdot">•</span><span>Le Fasi</span><span class="m-bdot">•</span></div>
-        <h2 class="m-h2">Come funziona il Metodo 80/20</h2>
+        <h2 class="m-h2">Come funziona il Metodo 80/20?</h2>
       </div>
 
-      <div class="timeline" id="timeline">
-        <div class="timeline-track"><div class="timeline-track-fill" id="timelineFill"></div></div>
+      <div class="phase-stack fi fi-d1">
 
-        <div class="timeline-item accent-gold fi">
-          <div class="timeline-node">1</div>
-          <div class="timeline-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-face flip-card-front">
-                <img class="flip-card-img" src="Consulenza.jpg" alt="Consulenza Beautrìco">
-                <div class="flip-card-overlay"></div>
-                <div class="flip-card-front-content">
-                  <div class="timeline-card-label">Fase 01</div>
-                  <div>
-                    <h3 class="flip-card-title">Consulenza Beautrìco</h3>
-                    <div class="flip-hint">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg>
-                      <span>Tocca per scoprire</span>
-                    </div>
-                  </div>
-                </div>
+        <div class="phase-card-v2">
+          <div class="phase-card-v2-media">
+            <img src="Consulenza.jpg" alt="Consulenza Beautrìco">
+            <div class="phase-badge">FASE 01</div>
+          </div>
+          <div class="phase-card-v2-body">
+            <h3>Consulenza Beautrìco</h3>
+            <p>Tutto inizia con una consulenza di <strong style="color:#fff">90 minuti</strong> in studio insieme a Daniela Modina. Prima una fase di coaching, fatta di domande e ascolto, per <strong style="color:#fff">individuare la vera causa del tuo problema</strong>. Poi una fase di analisi approfondita, grazie a strumenti come videodermatoscopio e trico-analyzer, oltre a un'anamnesi completa. Solo dopo aver capito davvero la causa, costruiamo insieme <span style="color:#F5C200; font-weight:700">il percorso su misura</span>, in base alle tue esigenze, al tuo stile di vita, al tuo lavoro, alla tua età.</p>
+          </div>
+        </div>
+
+        <div class="phase-card-v2">
+          <div class="phase-card-v2-media">
+            <img src="Percorso.jpg" alt="Percorso Personalizzato">
+            <div class="phase-badge">FASE 02</div>
+          </div>
+          <div class="phase-card-v2-body">
+            <h3>Percorso Personalizzato</h3>
+            <p>Il percorso ti accompagna verso gli obiettivi individuati durante la consulenza:</p>
+            <ul>
+              <li><span style="color:#F5C200; font-weight:700">Eliminare la psoriasi</span></li>
+              <li><strong style="color:#fff">Riequilibrare il cuoio capelluto</strong></li>
+              <li><span style="color:#F5C200; font-weight:700">Eliminare forfora e desquamazione</span></li>
+              <li><strong style="color:#fff">Contrastare la caduta dei capelli</strong></li>
+              <li><span style="color:#F5C200; font-weight:700">Gestire i capelli durante la chemioterapia</span></li>
+              <li><strong style="color:#fff">Affrontare con serenità gravidanza, adolescenza e altre anomalie della cute e dei capelli</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase-card-v2">
+          <div class="phase-card-v2-media">
+            <img src="Percorso M. .jpg" alt="Percorsi di Mantenimento">
+            <div class="phase-badge">FASE 03</div>
+          </div>
+          <div class="phase-card-v2-body">
+            <h3>Percorsi di Mantenimento</h3>
+            <p>Una volta raggiunti i risultati, entriamo nella fase di mantenimento: non è la fase più intensa, ma <span style="color:#F5C200; font-weight:700">è fondamentale</span>, perché ci permette di <strong style="color:#fff">consolidare quello che abbiamo ottenuto insieme</strong>. Come per una dieta: dopo la fase più rigorosa, si può alleggerire mantenendo i risultati raggiunti.</p>
+          </div>
+        </div>
+
+        <div class="fase4-block">
+          <div class="fase4-media">
+            <img src="Prodotti.jpg" alt="Prodotti Personalizzati">
+            <div class="phase-badge">FASE 04</div>
+          </div>
+          <div class="fase4-body">
+            <h3>Prodotti Personalizzati</h3>
+            <p>Non vendiamo migliaia di prodotti: solo i <span style="color:#F5C200; font-weight:700">2-3 che ti servono davvero</span> per il tuo problema.</p>
+          </div>
+          <div class="fase4-widgets">
+            <div class="fase4-widget-line"></div>
+            <div class="fase4-widget">
+              <div class="fase4-widget-dot">1</div>
+              <div class="fase4-widget-box">
+                <h4>2-3 prodotti, non migliaia</h4>
+                <p>Solo l'essenziale per il tuo problema, <strong style="color:#fff">mai sprechi</strong>.</p>
               </div>
-              <div class="flip-card-face flip-card-back">
-                <div class="timeline-card-label">Fase 01</div>
-                <h3 class="flip-card-title">Consulenza Beautrìco</h3>
-                <p>Tutto inizia con una consulenza di <strong>90 minuti</strong> in studio insieme a Daniela Modina. Prima una fase di coaching, fatta di domande e ascolto, per <strong>individuare la vera causa del tuo problema</strong>. Poi una fase di analisi approfondita, grazie a strumenti come videodermatoscopio e trico-analyzer, oltre a un'anamnesi completa. Solo dopo aver capito davvero la causa, costruiamo insieme <strong>il percorso su misura</strong>, in base alle tue esigenze, al tuo stile di vita, al tuo lavoro, alla tua età.</p>
+            </div>
+            <div class="fase4-widget">
+              <div class="fase4-widget-dot">2</div>
+              <div class="fase4-widget-box">
+                <h4>Personalizzati per te</h4>
+                <p>Riceverai una <span style="color:#F5C200; font-weight:700">personalizzazione specifica</span> in base alle tue esigenze.</p>
+              </div>
+            </div>
+            <div class="fase4-widget">
+              <div class="fase4-widget-dot">3</div>
+              <div class="fase4-widget-box">
+                <h4>Routine quotidiana</h4>
+                <p>Per gestire al meglio i tuoi capelli <strong style="color:#fff">ogni giorno</strong>.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="timeline-item accent-white fi">
-          <div class="timeline-node">2</div>
-          <div class="timeline-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-face flip-card-front">
-                <img class="flip-card-img" src="Percorso.jpg" alt="Percorso Personalizzato">
-                <div class="flip-card-overlay"></div>
-                <div class="flip-card-front-content">
-                  <div class="timeline-card-label">Fase 02</div>
-                  <div>
-                    <h3 class="flip-card-title">Percorso Personalizzato</h3>
-                    <div class="flip-hint">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg>
-                      <span>Tocca per scoprire</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flip-card-face flip-card-back">
-                <div class="timeline-card-label">Fase 02</div>
-                <h3 class="flip-card-title">Percorso Personalizzato</h3>
-                <p>Il percorso ti accompagna verso gli obiettivi individuati durante la consulenza: <strong>eliminare la psoriasi</strong>, <strong>riequilibrare il cuoio capelluto</strong>, <strong>eliminare la forfora</strong>, gestire i capelli durante la chemioterapia, affrontare con serenità la gravidanza o l'adolescenza, e molto altro, in base al tuo caso specifico.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item accent-bronze fi">
-          <div class="timeline-node">3</div>
-          <div class="timeline-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-face flip-card-front">
-                <img class="flip-card-img" src="Percorso M. .jpg" alt="Percorsi di Mantenimento">
-                <div class="flip-card-overlay"></div>
-                <div class="flip-card-front-content">
-                  <div class="timeline-card-label">Fase 03</div>
-                  <div>
-                    <h3 class="flip-card-title">Percorsi di Mantenimento</h3>
-                    <div class="flip-hint">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg>
-                      <span>Tocca per scoprire</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flip-card-face flip-card-back">
-                <div class="timeline-card-label">Fase 03</div>
-                <h3 class="flip-card-title">Percorsi di Mantenimento</h3>
-                <p>Una volta raggiunti i risultati, entriamo nella fase di mantenimento: non è la fase più intensa, ma <strong>è fondamentale</strong>, perché ci permette di <strong>consolidare quello che abbiamo ottenuto insieme</strong>. Come per una dieta: dopo la fase più rigorosa, si può alleggerire mantenendo i risultati raggiunti.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════
-       I PRODOTTI DELLA LINEA BEAUTRÌ — grid icone
-  ════════════════════════════════════════ -->
-  <section class="m-section grid-bg">
-    <div class="wrap">
-      <div class="m-center fi">
-        <div class="m-eyebrow on-light"><span class="m-bdot">•</span><span>Fase 04 · I Prodotti</span><span class="m-bdot">•</span></div>
-        <h2 class="m-h2 on-light">I prodotti della linea Beautrì</h2>
-
-        <div class="prod-grid fi fi-d1">
-          <div class="prod-card accent-gold">
-            <div class="prod-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c2.5 4 5 7.5 5 11a5 5 0 0 1-10 0c0-3.5 2.5-7 5-11z"/></svg>
-            </div>
-            <div class="prod-card-label">2-3 Prodotti</div>
-            <div class="prod-card-desc">Solo l'essenziale, mai sprechi.</div>
-          </div>
-          <div class="prod-card accent-dark">
-            <div class="prod-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="14" cy="6" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="8" cy="12" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="16" cy="18" r="2" fill="currentColor" stroke="none"/></svg>
-            </div>
-            <div class="prod-card-label">Personalizzati</div>
-            <div class="prod-card-desc">Scelti su misura per te.</div>
-          </div>
-          <div class="prod-card accent-bronze">
-            <div class="prod-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg>
-            </div>
-            <div class="prod-card-label">Routine Quotidiana</div>
-            <div class="prod-card-desc">Semplice da seguire ogni giorno.</div>
-          </div>
-        </div>
-
-        <div class="prod-text-card fi fi-d2">
-          <p class="m-lead on-light" style="margin-top:0;">Sia durante il percorso che nella fase di mantenimento, ti affianchiamo anche a casa con i prodotti giusti per te. Non parliamo di decine di prodotti costosi: ti consigliamo solo i <strong style="color:#0A0A0A;">2-3 prodotti della linea Beautrì</strong> che ti servono davvero per la tua routine quotidiana, scelti e personalizzati in base alle tue esigenze.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -881,29 +783,6 @@
       donutObserver.observe(donutWidget);
     }
 
-    /* ── Timeline fasi: linea di progresso on-scroll ── */
-    const timelineEl = document.getElementById('timeline');
-    const timelineFill = document.getElementById('timelineFill');
-    if (timelineEl && timelineFill) {
-      function updateTimelineLine() {
-        var rect = timelineEl.getBoundingClientRect();
-        var vh = window.innerHeight;
-        var total = rect.height + vh * 0.5;
-        var scrolled = vh * 0.85 - rect.top;
-        var progress = Math.min(Math.max(scrolled / total, 0), 1);
-        timelineFill.style.height = (progress * 100) + '%';
-      }
-      window.addEventListener('scroll', updateTimelineLine, { passive: true });
-      window.addEventListener('resize', updateTimelineLine);
-      updateTimelineLine();
-    }
-
-    /* ── Flip card delle fasi: toggle al click/tap ── */
-    document.querySelectorAll('.timeline-card').forEach(function(card) {
-      card.addEventListener('click', function() {
-        card.classList.toggle('flipped');
-      });
-    });
 
 
     (function() {
