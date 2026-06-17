@@ -368,27 +368,58 @@
     .timeline-track-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(180deg, #F5C200, rgba(245,194,0,0.2)); transition: height 0.2s ease-out; }
     .timeline-item { display: flex; gap: 26px; position: relative; margin-bottom: 36px; }
     .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item.accent-gold { --node-color: #F5C200; }
+    .timeline-item.accent-white { --node-color: #FFFFFF; }
+    .timeline-item.accent-bronze { --node-color: #C9A86A; }
     .timeline-node {
       flex-shrink: 0; width: 56px; height: 56px; border-radius: 999px;
       display: flex; align-items: center; justify-content: center;
       font-weight: 900; font-size: 19px; background: #111111; z-index: 2;
       border: 2px solid var(--node-color, #F5C200); color: var(--node-color, #F5C200);
     }
-    .timeline-item.accent-gold .timeline-node { --node-color: #F5C200; box-shadow: 0 0 24px rgba(245,194,0,0.45); }
-    .timeline-item.accent-white .timeline-node { --node-color: #FFFFFF; box-shadow: 0 0 24px rgba(255,255,255,0.18); }
-    .timeline-item.accent-bronze .timeline-node { --node-color: #C9A86A; box-shadow: 0 0 24px rgba(201,168,106,0.3); }
-    .timeline-card {
-      flex: 1; background: #111111; border: 1px solid #1E1E1E; border-radius: 20px;
-      padding: 30px 28px; border-left: 3px solid var(--node-color, #F5C200);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    .timeline-item.accent-gold .timeline-node { box-shadow: 0 0 24px rgba(245,194,0,0.45); }
+    .timeline-item.accent-white .timeline-node { box-shadow: 0 0 24px rgba(255,255,255,0.18); }
+    .timeline-item.accent-bronze .timeline-node { box-shadow: 0 0 24px rgba(201,168,106,0.3); }
+
+    /* Flip card delle fasi */
+    .timeline-card { flex: 1; perspective: 1400px; }
+    .flip-card-inner {
+      position: relative; width: 100%; min-height: 280px;
+      transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
+      transform-style: preserve-3d; cursor: pointer;
     }
-    .timeline-item.accent-gold .timeline-card { box-shadow: 0 0 0 1px rgba(245,194,0,0.06) inset; }
-    .timeline-item.accent-white .timeline-card { box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset; }
-    .timeline-item.accent-bronze .timeline-card { box-shadow: 0 0 0 1px rgba(201,168,106,0.06) inset; }
-    .timeline-card:hover { transform: translateX(4px); }
-    .timeline-card-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--node-color, #F5C200); margin-bottom: 8px; }
-    .timeline-card h3 { font-size: 19px; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -0.01em; }
-    .timeline-card p { font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.62); }
+    .flip-card-inner:hover { transform: scale(1.015); }
+    .timeline-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .timeline-card.flipped .flip-card-inner:hover { transform: rotateY(180deg) scale(1.015); }
+    .flip-card-face {
+      position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      background: #111111; border: 1px solid #1E1E1E; border-radius: 20px;
+      border-left: 3px solid var(--node-color, #F5C200);
+      padding: 30px 26px; display: flex; flex-direction: column;
+    }
+    .timeline-item.accent-gold .flip-card-face { box-shadow: 0 0 0 1px rgba(245,194,0,0.06) inset; }
+    .timeline-item.accent-white .flip-card-face { box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset; }
+    .timeline-item.accent-bronze .flip-card-face { box-shadow: 0 0 0 1px rgba(201,168,106,0.06) inset; }
+    .flip-card-front { align-items: center; text-align: center; justify-content: space-between; }
+    .flip-card-back { transform: rotateY(180deg); overflow-y: auto; text-align: left; justify-content: flex-start; }
+    .timeline-card-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--node-color, #F5C200); }
+    .flip-placeholder {
+      flex: 1; width: 100%; display: flex; align-items: center; justify-content: center;
+      margin: 16px 0; border-radius: 14px; min-height: 80px;
+      background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 14px 14px; background-color: rgba(255,255,255,0.025);
+      color: var(--node-color, #F5C200); opacity: 0.6;
+    }
+    .flip-placeholder svg { width: 46px; height: 46px; }
+    .flip-card-title { font-size: 18px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.01em; }
+    .flip-card-back .timeline-card-label { margin-bottom: 6px; }
+    .flip-card-back .flip-card-title { margin-bottom: 14px; }
+    .flip-card-back p { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.62); }
+    .flip-hint {
+      display: flex; align-items: center; gap: 6px; margin-top: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.03em; color: rgba(255,255,255,0.4);
+    }
+    .flip-hint svg { width: 13px; height: 13px; flex-shrink: 0; }
 
     /* ── Prodotti: card a griglia orizzontale ── */
     .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; width: 100%; max-width: 880px; }
@@ -417,6 +448,40 @@
     .m-cta-final h2 { position: relative; z-index: 1; }
     .m-cta-btn { display: inline-flex; align-items: center; justify-content: center; line-height: 1; white-space: nowrap; margin-top: 32px; position: relative; z-index: 1; background: #F5C200; color: #0A0A0A; font-size: 16px; font-weight: 800; letter-spacing: -0.01em; border-radius: 999px; padding: 14px 32px; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(245,194,0,0.35); transition: transform 0.2s ease; text-decoration: none; }
     .m-cta-btn:hover { transform: scale(1.03); }
+
+    /* ── ANTEPRIMA: versione alternativa a stepper ── */
+    .preview-section { background-color: #0A0500; border-top: 2px dashed rgba(245,194,0,0.3); border-bottom: 2px dashed rgba(245,194,0,0.3); }
+    .preview-banner {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(245,194,0,0.12);
+      border: 1px dashed rgba(245,194,0,0.5); border-radius: 999px; padding: 8px 18px;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+      color: #F5C200; margin: 0 auto 20px;
+    }
+    .preview-note { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 14px; max-width: 560px; }
+    .stepper { max-width: 720px; margin: 48px auto 0; width: 100%; }
+    .stepper-track { display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+    .stepper-dot {
+      width: 48px; height: 48px; border-radius: 999px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 17px; background: #111111; color: rgba(255,255,255,0.4);
+      border: 2px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 0.25s ease;
+    }
+    .stepper-dot.active { color: #0A0A0A; background: #F5C200; border-color: #F5C200; box-shadow: 0 0 20px rgba(245,194,0,0.4); }
+    .stepper-dot.done { color: #F5C200; border-color: #F5C200; }
+    .stepper-line { width: 80px; height: 2px; background: rgba(255,255,255,0.1); position: relative; flex-shrink: 0; }
+    .stepper-line-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: #F5C200; transition: width 0.4s ease; }
+    .stepper-labels { display: flex; justify-content: center; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
+    .stepper-labels span { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.35); transition: color 0.25s ease; cursor: pointer; }
+    .stepper-labels span.active { color: #F5C200; }
+    .stepper-panel { display: none; background: #111111; border: 1px solid #1E1E1E; border-radius: 20px; padding: 32px 30px; text-align: left; }
+    .stepper-panel.active { display: block; animation: stepFadeIn 0.4s ease; }
+    .stepper-panel h3 { font-size: 19px; font-weight: 800; color: #FFFFFF; margin-bottom: 14px; }
+    .stepper-panel p { font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.62); }
+    @keyframes stepFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .stepper-nav { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+    .stepper-btn { padding: 10px 24px; border-radius: 999px; font-weight: 700; font-size: 13px; background: #1a1a1a; border: 1px solid #2A2A2A; color: #FFFFFF; cursor: pointer; transition: opacity 0.2s; }
+    .stepper-btn:hover { opacity: 0.8; }
+    .stepper-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
     /* ── FOOTER ── */
     .footer {
@@ -462,9 +527,14 @@
       .timeline-node { width: 46px; height: 46px; font-size: 16px; }
       .timeline-track { left: 22px; }
       .timeline-item { gap: 18px; }
-      .timeline-card { padding: 22px 20px; }
+      .flip-card-inner { min-height: 320px; }
+      .flip-card-face { padding: 22px 20px; }
       .prod-grid { grid-template-columns: 1fr; }
       .prod-text-card { padding: 24px 22px; }
+      .stepper-line { width: 36px; }
+      .stepper-dot { width: 40px; height: 40px; font-size: 15px; }
+      .stepper-panel { padding: 24px 22px; }
+      .stepper-labels { gap: 14px; }
     }
   </style>
 </head>
@@ -537,7 +607,7 @@
     <div class="wrap">
       <div class="m-center fi">
         <div class="m-eyebrow on-light"><span class="m-bdot">•</span><span>Il Principio</span><span class="m-bdot">•</span></div>
-        <h2 class="m-h2 on-light">80% persona<br>: 20% capelli</h2>
+        <h2 class="m-h2 on-light">80% persona<br>20% capelli</h2>
         <p class="m-lead on-light">Per questo il Metodo 80/20 dedica l'80% del tempo alla persona e solo il 20% ai capelli. Per noi questo è fondamentale: i problemi di cute e capelli nascono quasi sempre da qualcosa che riguarda la persona nel suo insieme, non solo i capelli in superficie.</p>
 
         <div class="donut-widget" id="donutWidget">
@@ -587,7 +657,7 @@
   <section class="m-section m-section-alt grid-bg-dark">
     <div class="wrap">
       <div class="m-center fi">
-        <div class="m-eyebrow"><span class="m-bdot">•</span><span>Le Fasi</span><span class="m-bdot">•</span></div>
+        <div class="m-eyebrow eyebrow-white"><span class="m-bdot">•</span><span>Le Fasi</span><span class="m-bdot">•</span></div>
         <h2 class="m-h2">Come funziona il Metodo 80/20</h2>
       </div>
 
@@ -597,27 +667,72 @@
         <div class="timeline-item accent-gold fi">
           <div class="timeline-node">1</div>
           <div class="timeline-card">
-            <div class="timeline-card-label">Fase 01</div>
-            <h3>Consulenza Beautrìco</h3>
-            <p>Tutto inizia con una consulenza di <strong>90 minuti</strong> in studio insieme a Daniela Modina. Prima una fase di coaching, fatta di domande e ascolto, per <strong>individuare la vera causa del tuo problema</strong>. Poi una fase di analisi approfondita, grazie a strumenti come videodermatoscopio e trico-analyzer, oltre a un'anamnesi completa. Solo dopo aver capito davvero la causa, costruiamo insieme <strong>il percorso su misura</strong>, in base alle tue esigenze, al tuo stile di vita, al tuo lavoro, alla tua età.</p>
+            <div class="flip-card-inner">
+              <div class="flip-card-face flip-card-front">
+                <div class="timeline-card-label">Fase 01</div>
+                <div class="flip-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                </div>
+                <h3 class="flip-card-title">Consulenza Beautrìco</h3>
+                <div class="flip-hint">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg>
+                  <span>Tocca per scoprire</span>
+                </div>
+              </div>
+              <div class="flip-card-face flip-card-back">
+                <div class="timeline-card-label">Fase 01</div>
+                <h3 class="flip-card-title">Consulenza Beautrìco</h3>
+                <p>Tutto inizia con una consulenza di <strong>90 minuti</strong> in studio insieme a Daniela Modina. Prima una fase di coaching, fatta di domande e ascolto, per <strong>individuare la vera causa del tuo problema</strong>. Poi una fase di analisi approfondita, grazie a strumenti come videodermatoscopio e trico-analyzer, oltre a un'anamnesi completa. Solo dopo aver capito davvero la causa, costruiamo insieme <strong>il percorso su misura</strong>, in base alle tue esigenze, al tuo stile di vita, al tuo lavoro, alla tua età.</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="timeline-item accent-white fi">
           <div class="timeline-node">2</div>
           <div class="timeline-card">
-            <div class="timeline-card-label">Fase 02</div>
-            <h3>Percorso Personalizzato</h3>
-            <p>Il percorso ti accompagna verso gli obiettivi individuati durante la consulenza: <strong>eliminare la psoriasi</strong>, <strong>riequilibrare il cuoio capelluto</strong>, <strong>eliminare la forfora</strong>, gestire i capelli durante la chemioterapia, affrontare con serenità la gravidanza o l'adolescenza, e molto altro, in base al tuo caso specifico.</p>
+            <div class="flip-card-inner">
+              <div class="flip-card-face flip-card-front">
+                <div class="timeline-card-label">Fase 02</div>
+                <div class="flip-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                </div>
+                <h3 class="flip-card-title">Percorso Personalizzato</h3>
+                <div class="flip-hint">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg>
+                  <span>Tocca per scoprire</span>
+                </div>
+              </div>
+              <div class="flip-card-face flip-card-back">
+                <div class="timeline-card-label">Fase 02</div>
+                <h3 class="flip-card-title">Percorso Personalizzato</h3>
+                <p>Il percorso ti accompagna verso gli obiettivi individuati durante la consulenza: <strong>eliminare la psoriasi</strong>, <strong>riequilibrare il cuoio capelluto</strong>, <strong>eliminare la forfora</strong>, gestire i capelli durante la chemioterapia, affrontare con serenità la gravidanza o l'adolescenza, e molto altro, in base al tuo caso specifico.</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="timeline-item accent-bronze fi">
           <div class="timeline-node">3</div>
           <div class="timeline-card">
-            <div class="timeline-card-label">Fase 03</div>
-            <h3>Percorsi di Mantenimento</h3>
-            <p>Una volta raggiunti i risultati, entriamo nella fase di mantenimento: non è la fase più intensa, ma <strong>è fondamentale</strong>, perché ci permette di <strong>consolidare quello che abbiamo ottenuto insieme</strong>. Come per una dieta: dopo la fase più rigorosa, si può alleggerire mantenendo i risultati raggiunti.</p>
+            <div class="flip-card-inner">
+              <div class="flip-card-face flip-card-front">
+                <div class="timeline-card-label">Fase 03</div>
+                <div class="flip-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                </div>
+                <h3 class="flip-card-title">Percorsi di Mantenimento</h3>
+                <div class="flip-hint">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg>
+                  <span>Tocca per scoprire</span>
+                </div>
+              </div>
+              <div class="flip-card-face flip-card-back">
+                <div class="timeline-card-label">Fase 03</div>
+                <h3 class="flip-card-title">Percorsi di Mantenimento</h3>
+                <p>Una volta raggiunti i risultati, entriamo nella fase di mantenimento: non è la fase più intensa, ma <strong>è fondamentale</strong>, perché ci permette di <strong>consolidare quello che abbiamo ottenuto insieme</strong>. Come per una dieta: dopo la fase più rigorosa, si può alleggerire mantenendo i risultati raggiunti.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -674,6 +789,55 @@
       <div class="fi">
         <h2 class="m-h2">Pronto a iniziare il tuo percorso?</h2>
         <a href="#" class="m-cta-btn">Inizia Ora</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       ANTEPRIMA - VERSIONE ALTERNATIVA (stepper/wizard)
+       Sezione temporanea di confronto, da rimuovere dopo la scelta finale
+  ════════════════════════════════════════ -->
+  <section class="m-section preview-section grid-bg-dark" id="preview-alt">
+    <div class="wrap">
+      <div class="m-center fi">
+        <div class="preview-banner">⚠ Anteprima · Versione Alternativa</div>
+        <h2 class="m-h2">Come funziona il Metodo 80/20 — Stepper</h2>
+        <p class="preview-note">Versione alternativa a "step" stile wizard, da confrontare con la timeline a flip card qui sopra prima di scegliere quale mantenere definitivamente. Questa sezione è temporanea.</p>
+
+        <div class="stepper" id="stepper">
+          <div class="stepper-track">
+            <button class="stepper-dot active" data-step="1" type="button">1</button>
+            <div class="stepper-line"><div class="stepper-line-fill" id="stepperLine1"></div></div>
+            <button class="stepper-dot" data-step="2" type="button">2</button>
+            <div class="stepper-line"><div class="stepper-line-fill" id="stepperLine2"></div></div>
+            <button class="stepper-dot" data-step="3" type="button">3</button>
+          </div>
+
+          <div class="stepper-labels">
+            <span class="active" data-step-label="1">Consulenza Beautrìco</span>
+            <span data-step-label="2">Percorso Personalizzato</span>
+            <span data-step-label="3">Percorsi di Mantenimento</span>
+          </div>
+
+          <div class="stepper-panel active" data-panel="1">
+            <h3>Consulenza Beautrìco</h3>
+            <p>Tutto inizia con una consulenza di <strong>90 minuti</strong> in studio insieme a Daniela Modina. Prima una fase di coaching, fatta di domande e ascolto, per <strong>individuare la vera causa del tuo problema</strong>. Poi una fase di analisi approfondita, grazie a strumenti come videodermatoscopio e trico-analyzer, oltre a un'anamnesi completa. Solo dopo aver capito davvero la causa, costruiamo insieme <strong>il percorso su misura</strong>, in base alle tue esigenze, al tuo stile di vita, al tuo lavoro, alla tua età.</p>
+          </div>
+          <div class="stepper-panel" data-panel="2">
+            <h3>Percorso Personalizzato</h3>
+            <p>Il percorso ti accompagna verso gli obiettivi individuati durante la consulenza: <strong>eliminare la psoriasi</strong>, <strong>riequilibrare il cuoio capelluto</strong>, <strong>eliminare la forfora</strong>, gestire i capelli durante la chemioterapia, affrontare con serenità la gravidanza o l'adolescenza, e molto altro, in base al tuo caso specifico.</p>
+          </div>
+          <div class="stepper-panel" data-panel="3">
+            <h3>Percorsi di Mantenimento</h3>
+            <p>Una volta raggiunti i risultati, entriamo nella fase di mantenimento: non è la fase più intensa, ma <strong>è fondamentale</strong>, perché ci permette di <strong>consolidare quello che abbiamo ottenuto insieme</strong>. Come per una dieta: dopo la fase più rigorosa, si può alleggerire mantenendo i risultati raggiunti.</p>
+          </div>
+
+          <div class="stepper-nav">
+            <button class="stepper-btn stepper-prev" type="button" disabled>← Indietro</button>
+            <button class="stepper-btn stepper-next" type="button">Avanti →</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -807,6 +971,57 @@
       window.addEventListener('resize', updateTimelineLine);
       updateTimelineLine();
     }
+
+    /* ── Flip card delle fasi: toggle al click/tap ── */
+    document.querySelectorAll('.timeline-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        card.classList.toggle('flipped');
+      });
+    });
+
+    /* ── Anteprima: stepper alternativo ── */
+    (function() {
+      var stepperEl = document.getElementById('stepper');
+      if (!stepperEl) return;
+      var dots = stepperEl.querySelectorAll('.stepper-dot');
+      var labels = stepperEl.querySelectorAll('[data-step-label]');
+      var panels = stepperEl.querySelectorAll('.stepper-panel');
+      var lines = [document.getElementById('stepperLine1'), document.getElementById('stepperLine2')];
+      var prevBtn = stepperEl.querySelector('.stepper-prev');
+      var nextBtn = stepperEl.querySelector('.stepper-next');
+      var current = 1;
+
+      function goTo(step) {
+        current = step;
+        dots.forEach(function(d) {
+          var n = parseInt(d.dataset.step, 10);
+          d.classList.toggle('active', n === step);
+          d.classList.toggle('done', n < step);
+        });
+        labels.forEach(function(l) {
+          l.classList.toggle('active', parseInt(l.dataset.stepLabel, 10) === step);
+        });
+        panels.forEach(function(p) {
+          p.classList.toggle('active', parseInt(p.dataset.panel, 10) === step);
+        });
+        lines.forEach(function(line, i) {
+          if (line) line.style.width = (step > i + 1) ? '100%' : '0%';
+        });
+        if (prevBtn) prevBtn.disabled = step === 1;
+        if (nextBtn) nextBtn.disabled = step === 3;
+      }
+
+      dots.forEach(function(d) {
+        d.addEventListener('click', function() { goTo(parseInt(d.dataset.step, 10)); });
+      });
+      labels.forEach(function(l) {
+        l.addEventListener('click', function() { goTo(parseInt(l.dataset.stepLabel, 10)); });
+      });
+      if (prevBtn) prevBtn.addEventListener('click', function() { if (current > 1) goTo(current - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function() { if (current < 3) goTo(current + 1); });
+
+      goTo(1);
+    })();
 
     (function() {
       var today = new Date().getDay();
