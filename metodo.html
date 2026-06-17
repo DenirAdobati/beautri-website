@@ -260,39 +260,46 @@
 
     /* ── HERO ── */
     .metodo-hero {
-      padding: 120px 0;
+      padding: 152px 0 128px;
       text-align: center;
-      background-color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      background-color: #0A0A0A;
       background-image:
-        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
       background-size: 40px 40px;
     }
-    .metodo-hero-badge {
+    .metodo-hero::before {
+      content: '';
+      position: absolute;
+      top: -180px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 560px;
+      background: radial-gradient(ellipse at center, rgba(245,194,0,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .metodo-hero .wrap { position: relative; z-index: 1; }
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      background: #FFF8E1;
-      border: 1px solid rgba(245,194,0,0.4);
-      border-radius: 999px;
-      padding: 6px 16px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #B8860B;
-      margin-bottom: 20px;
+      gap: 8px;
+      margin: 0 auto 24px;
     }
+    .hero-eyebrow .m-bdot { color: #FFFFFF; }
+    .hero-eyebrow span:not(.m-bdot) { color: #FFFFFF; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
     .metodo-hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.25rem);
+      font-size: clamp(2.4rem, 5.5vw, 3.5rem);
       font-weight: 900;
-      letter-spacing: -0.05em;
-      color: #0A0A0A;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      color: #FFFFFF;
       margin: 0 auto;
     }
     .metodo-hero-sub {
       font-size: 18px;
-      color: #888888;
-      margin-top: 16px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.62);
+      margin-top: 22px;
     }
     .metodo-hero-back {
       display: block;
@@ -382,12 +389,25 @@
     .timeline-card p { font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.62); }
 
     /* ── Prodotti: card a griglia orizzontale ── */
-    .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; width: 100%; max-width: 880px; }
-    .prod-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; padding: 28px 20px; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
-    .prod-icon { width: 52px; height: 52px; border-radius: 999px; background: rgba(245,194,0,0.12); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; width: 100%; max-width: 880px; }
+    .prod-card {
+      background: #FFFFFF; border: 1px solid rgba(0,0,0,0.07); border-top: 4px solid var(--prod-accent, #F5C200);
+      border-radius: 18px; padding: 32px 22px; text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .prod-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(0,0,0,0.10); }
+    .prod-card.accent-gold { --prod-accent: #F5C200; }
+    .prod-card.accent-dark { --prod-accent: #0A0A0A; }
+    .prod-card.accent-bronze { --prod-accent: #C9A86A; }
+    .prod-card.accent-gold .prod-icon { background: rgba(245,194,0,0.13); }
+    .prod-card.accent-dark .prod-icon { background: rgba(10,10,10,0.06); }
+    .prod-card.accent-bronze .prod-icon { background: rgba(201,168,106,0.16); }
+    .prod-icon { width: 54px; height: 54px; border-radius: 999px; color: var(--prod-accent, #0A0A0A); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
     .prod-icon svg { width: 24px; height: 24px; }
-    .prod-card-label { font-size: 13px; font-weight: 700; color: #0A0A0A; letter-spacing: -0.01em; }
-    .prod-text-card { width: 100%; max-width: 720px; margin-top: 28px; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; padding: 32px 36px; box-shadow: 0 8px 32px rgba(0,0,0,0.04); }
+    .prod-card-label { font-size: 15px; font-weight: 800; color: #0A0A0A; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .prod-card-desc { font-size: 13px; line-height: 1.55; color: #777777; }
+    .prod-text-card { width: 100%; max-width: 720px; margin-top: 32px; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; padding: 32px 36px; box-shadow: 0 8px 32px rgba(0,0,0,0.04); }
 
     /* ── CTA finale ── */
     .m-cta-final { padding: 120px 0; text-align: center; position: relative; }
@@ -487,9 +507,9 @@
   <!-- HERO -->
   <section class="metodo-hero" id="top">
     <div class="wrap fi">
-      <div class="metodo-hero-badge">Il Nostro Metodo</div>
+      <div class="hero-eyebrow"><span class="m-bdot">•</span><span>Il Nostro Metodo</span><span class="m-bdot">•</span></div>
       <h1>Il Metodo Beautrì</h1>
-      <p class="metodo-hero-sub" style="max-width:700px; margin:16px auto 0;">Il Metodo 80/20 nasce dall'esperienza di Daniela Modina, tecnica tricologa specializzata in coaching oncologico e autrice del libro «Rinascita». Dopo oltre 40 anni di esperienza nel mondo della tricologia, Daniela ha creato un metodo che ribalta il modo tradizionale di affrontare i problemi di cute e capelli.</p>
+      <p class="metodo-hero-sub" style="max-width:700px; margin:22px auto 0;">Il Metodo 80/20 nasce dall'esperienza di Daniela Modina, tecnica tricologa specializzata in coaching oncologico e autrice del libro «Rinascita». Dopo <strong style="color:#F5C200;">oltre 40 anni di esperienza nel mondo della tricologia</strong>, Daniela ha creato un metodo che ribalta il modo tradizionale di affrontare i problemi di cute e capelli.</p>
     </div>
   </section>
 
@@ -613,23 +633,26 @@
         <h2 class="m-h2 on-light">I prodotti della linea Beautrì</h2>
 
         <div class="prod-grid fi fi-d1">
-          <div class="prod-card">
+          <div class="prod-card accent-gold">
             <div class="prod-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c2.5 4 5 7.5 5 11a5 5 0 0 1-10 0c0-3.5 2.5-7 5-11z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c2.5 4 5 7.5 5 11a5 5 0 0 1-10 0c0-3.5 2.5-7 5-11z"/></svg>
             </div>
             <div class="prod-card-label">2-3 Prodotti</div>
+            <div class="prod-card-desc">Solo l'essenziale, mai sprechi.</div>
           </div>
-          <div class="prod-card">
+          <div class="prod-card accent-dark">
             <div class="prod-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8" fill="#0A0A0A"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="14" cy="6" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="8" cy="12" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="16" cy="18" r="2" fill="currentColor" stroke="none"/></svg>
             </div>
             <div class="prod-card-label">Personalizzati</div>
+            <div class="prod-card-desc">Scelti su misura per te.</div>
           </div>
-          <div class="prod-card">
+          <div class="prod-card accent-bronze">
             <div class="prod-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 20v-4h4"/></svg>
             </div>
             <div class="prod-card-label">Routine Quotidiana</div>
+            <div class="prod-card-desc">Semplice da seguire ogni giorno.</div>
           </div>
         </div>
 
