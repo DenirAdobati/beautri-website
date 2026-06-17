@@ -305,6 +305,46 @@
     }
     .metodo-hero-back:hover { opacity: 0.8; }
 
+    /* ── METODO PAGE: SECTIONS ── */
+    .m-section { padding: 96px 0; }
+    .m-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 auto 20px; }
+    .m-eyebrow span:not(.m-bdot) { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; color: #F5C200; }
+    .m-eyebrow.on-light span:not(.m-bdot) { color: #0A0A0A; }
+    .m-bdot { font-size: 10px; flex-shrink: 0; color: #F5C200; }
+    .m-eyebrow.on-light .m-bdot { color: #0A0A0A; }
+    .m-center { max-width: 720px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .m-h2 { font-size: clamp(2rem, 4.5vw, 2.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; color: #FFFFFF; }
+    .m-h2.on-light { color: #0A0A0A; }
+    .m-lead { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,0.62); margin-top: 20px; max-width: 640px; }
+    .m-lead.on-light { color: #555555; }
+
+    /* 80/20 bars (stesso componente di index.html) */
+    .metodo-bars { background: #0A0A0A; border-radius: 20px; padding: 36px 28px; margin-top: 40px; width: 100%; max-width: 480px; }
+    .metodo-bar-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+    .metodo-bar-label { color: #FFFFFF; font-weight: 700; font-size: 15px; }
+    .metodo-bar-pct { font-size: 28px; font-weight: 900; line-height: 1; }
+    .metodo-bar-track { background: rgba(255,255,255,0.1); border-radius: 999px; height: 8px; overflow: hidden; }
+    .metodo-bar-fill { height: 100%; border-radius: 999px; width: 0%; }
+    .metodo-bar-fill.fill-80 { background: #F5C200; transition: width 1.2s ease-out; }
+    .metodo-bar-fill.fill-20 { background: rgba(255,255,255,0.3); transition: width 1.2s ease-out 0.3s; }
+    .metodo-bars.animate .fill-80 { width: 80%; }
+    .metodo-bars.animate .fill-20 { width: 20%; }
+    .metodo-bar-sub { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 8px; }
+
+    /* Fasi del metodo */
+    .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; width: 100%; }
+    .phase-card { background: #111111; border: 1px solid #1E1E1E; border-radius: 20px; padding: 36px 28px; text-align: left; }
+    .phase-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; background: #F5C200; color: #0A0A0A; font-weight: 800; font-size: 16px; margin-bottom: 20px; }
+    .phase-card h3 { font-size: 19px; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .phase-card p { font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.62); }
+
+    /* CTA finale */
+    .m-cta-final { padding: 120px 0; text-align: center; position: relative; }
+    .m-cta-final::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 900px; height: 400px; background: radial-gradient(ellipse at center bottom, rgba(245,194,0,0.08) 0%, transparent 65%); pointer-events: none; }
+    .m-cta-final h2 { position: relative; z-index: 1; }
+    .m-cta-btn { display: inline-flex; align-items: center; justify-content: center; line-height: 1; white-space: nowrap; margin-top: 32px; position: relative; z-index: 1; background: #F5C200; color: #0A0A0A; font-size: 16px; font-weight: 800; letter-spacing: -0.01em; border-radius: 999px; padding: 14px 32px; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(245,194,0,0.35); transition: transform 0.2s ease; text-decoration: none; }
+    .m-cta-btn:hover { transform: scale(1.03); }
+
     /* ── FOOTER ── */
     .footer {
       padding: 72px 0 40px;
@@ -332,6 +372,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1040px) {
       .footer-top { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
+      .phase-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
     }
     @media (max-width: 768px) {
       .wrap { padding: 0 20px; }
@@ -340,6 +381,10 @@
       .metodo-hero { padding: 120px 0 80px; }
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-btm { flex-direction: column; text-align: center; }
+      .m-section { padding: 64px 0; }
+      .phase-grid { grid-template-columns: 1fr; gap: 20px; }
+      .m-cta-final { padding: 80px 0; }
+      .metodo-bars { padding: 24px 18px; }
     }
   </style>
 </head>
@@ -381,13 +426,122 @@
   </div>
 
 
-  <!-- HERO PLACEHOLDER -->
+  <!-- HERO -->
   <section class="metodo-hero" id="top">
     <div class="wrap fi">
       <div class="metodo-hero-badge">Il Nostro Metodo</div>
       <h1>Il Metodo Beautrì</h1>
-      <p class="metodo-hero-sub">La pagina del metodo è in costruzione. Torna presto.</p>
-      <a href="index.html" class="metodo-hero-back">← Torna alla home</a>
+      <p class="metodo-hero-sub" style="max-width:700px; margin:16px auto 0;">Il Metodo 80/20 nasce dall'esperienza di Daniela Modina, tecnica tricologa specializzata in coaching oncologico e autrice del libro «Rinascita». Dopo oltre 40 anni di esperienza nel mondo della tricologia, Daniela ha creato un metodo che ribalta il modo tradizionale di affrontare i problemi di cute e capelli.</p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       PERCHÉ ABBIAMO CREATO IL METODO 80/20
+  ════════════════════════════════════════ -->
+  <section class="m-section grid-bg-dark">
+    <div class="wrap">
+      <div class="m-center fi">
+        <div class="m-eyebrow"><span class="m-bdot">•</span><span>Il Problema</span><span class="m-bdot">•</span></div>
+        <h2 class="m-h2">Perché abbiamo creato il Metodo 80/20</h2>
+        <p class="m-lead">Il mercato offre tantissimi prodotti, protocolli e integratori. Non sono sbagliati di per sé, ma manca l'80% del lavoro vero. Perché prima di creare un percorso personalizzato, il vero lavoro è capire chi abbiamo davanti e in che modo possiamo aiutarlo davvero. Il cuore del Metodo 80/20 è ascoltare le persone.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       80% PERSONA, 20% CAPELLI
+  ════════════════════════════════════════ -->
+  <section class="m-section grid-bg">
+    <div class="wrap">
+      <div class="m-center fi">
+        <div class="m-eyebrow on-light"><span class="m-bdot">•</span><span>Il Principio</span><span class="m-bdot">•</span></div>
+        <h2 class="m-h2 on-light">80% persona, 20% capelli</h2>
+        <p class="m-lead on-light">Per questo il Metodo 80/20 dedica l'80% del tempo alla persona e solo il 20% ai capelli. Per noi questo è fondamentale: i problemi di cute e capelli nascono quasi sempre da qualcosa che riguarda la persona nel suo insieme, non solo i capelli in superficie.</p>
+
+        <div class="metodo-bars" id="metodoBars">
+          <div class="metodo-bar-row">
+            <div class="metodo-bar-header">
+              <span class="metodo-bar-label">La Persona</span>
+              <span class="metodo-bar-pct" style="color:#F5C200;">80%</span>
+            </div>
+            <div class="metodo-bar-track">
+              <div class="metodo-bar-fill fill-80"></div>
+            </div>
+            <div class="metodo-bar-sub">Storia personale, stile di vita, emozioni</div>
+          </div>
+          <div class="metodo-bar-row" style="margin-top:24px;">
+            <div class="metodo-bar-header">
+              <span class="metodo-bar-label">I Capelli</span>
+              <span class="metodo-bar-pct" style="color:rgba(255,255,255,0.4);">20%</span>
+            </div>
+            <div class="metodo-bar-track">
+              <div class="metodo-bar-fill fill-20"></div>
+            </div>
+            <div class="metodo-bar-sub">Routine, prodotti, trattamenti</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       COME FUNZIONA IL METODO 80/20 (3 FASI)
+  ════════════════════════════════════════ -->
+  <section class="m-section grid-bg-dark">
+    <div class="wrap">
+      <div class="m-center fi">
+        <div class="m-eyebrow"><span class="m-bdot">•</span><span>Le Fasi</span><span class="m-bdot">•</span></div>
+        <h2 class="m-h2">Come funziona il Metodo 80/20</h2>
+      </div>
+
+      <div class="phase-grid fi fi-d1">
+        <div class="phase-card">
+          <div class="phase-num">1</div>
+          <h3>La Consulenza</h3>
+          <p>Tutto inizia con una consulenza di 90 minuti in studio insieme a Daniela Modina. Prima una fase di coaching, fatta di domande e ascolto, per individuare la vera causa del tuo problema. Poi una fase di analisi approfondita, grazie a strumenti come videodermatoscopio e trico-analyzer, oltre a un'anamnesi completa. Solo dopo aver capito davvero la causa, costruiamo insieme il percorso su misura, in base alle tue esigenze, al tuo stile di vita, al tuo lavoro, alla tua età.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">2</div>
+          <h3>Il Percorso Personalizzato</h3>
+          <p>Il percorso ti accompagna verso gli obiettivi individuati durante la consulenza: eliminare la psoriasi, riequilibrare il cuoio capelluto, eliminare la forfora, gestire i capelli durante la chemioterapia, affrontare con serenità la gravidanza o l'adolescenza, e molto altro, in base al tuo caso specifico.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">3</div>
+          <h3>Il Mantenimento</h3>
+          <p>Una volta raggiunti i risultati, entriamo nella fase di mantenimento: non è la fase più intensa, ma è fondamentale, perché ci permette di consolidare quello che abbiamo ottenuto insieme. Come per una dieta: dopo la fase più rigorosa, si può alleggerire mantenendo i risultati raggiunti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       I PRODOTTI DELLA LINEA BEAUTRÌ
+  ════════════════════════════════════════ -->
+  <section class="m-section grid-bg">
+    <div class="wrap">
+      <div class="m-center fi">
+        <div class="m-eyebrow on-light"><span class="m-bdot">•</span><span>I Prodotti</span><span class="m-bdot">•</span></div>
+        <h2 class="m-h2 on-light">I prodotti della linea Beautrì</h2>
+        <p class="m-lead on-light">Sia durante il percorso che nella fase di mantenimento, ti affianchiamo anche a casa con i prodotti giusti per te. Non parliamo di decine di prodotti costosi: ti consigliamo solo i <strong style="color:#0A0A0A;">2-3 prodotti della linea Beautrì</strong> che ti servono davvero per la tua routine quotidiana, scelti e personalizzati in base alle tue esigenze.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       CTA FINALE
+  ════════════════════════════════════════ -->
+  <section class="m-cta-final grid-bg-dark">
+    <div class="wrap">
+      <div class="fi">
+        <h2 class="m-h2">Pronto a iniziare il tuo percorso?</h2>
+        <a href="#" class="m-cta-btn">Inizia Ora</a>
+      </div>
     </div>
   </section>
 
@@ -479,6 +633,20 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
     document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+    /* ── Metodo 80/20: barre animate ── */
+    const metodoBars = document.getElementById('metodoBars');
+    if (metodoBars) {
+      const barsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('animate');
+            barsObserver.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      barsObserver.observe(metodoBars);
+    }
 
     (function() {
       var today = new Date().getDay();
