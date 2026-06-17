@@ -330,6 +330,9 @@
     .footer-btm { display: flex; justify-content: space-between; align-items: center; font-size: 0.84rem; color: var(--text-2); flex-wrap: wrap; gap: 8px; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1040px) {
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
+    }
     @media (max-width: 768px) {
       .wrap { padding: 0 20px; }
       .nav-links, .nav-cta-wrap { display: none; }
@@ -337,9 +340,6 @@
       .metodo-hero { padding: 120px 0 80px; }
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-btm { flex-direction: column; text-align: center; }
-    }
-    @media (max-width: 1040px) {
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
     }
   </style>
 </head>
