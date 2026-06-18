@@ -398,6 +398,7 @@
       .nav-cta { display: none; }
       .nav-whatsapp { display: none; }
       .nav-hamburger { display: flex; }
+      .nav-inner { padding-top: 14px; padding-bottom: 14px; }
     }
 
     .mobile-menu-logo {
@@ -820,7 +821,7 @@
     ══════════════════════════════════════════════════ */
     .sec-about {
       padding: 104px 0 104px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px dashed #F5C200;
       overflow: hidden;
       position: relative;
     }
@@ -1364,7 +1365,6 @@
         linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
       background-size: 40px 40px;
-      border-bottom-color: #E5E5E5;
     }
     .sec-about .split-text { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .sec-about .eyebrow {
@@ -2636,78 +2636,121 @@
 
 
   <!-- ════════════════════════════════════════
-       S6 · TESTIMONIANZE
+       S6 · FAQ
   ════════════════════════════════════════ -->
   <style>
-    #testimonianze { padding: 100px 24px; padding-top: 100px; min-height: 100vh; display: flex; align-items: center; }
-    .imsg-wrap { max-width: 340px; margin: 0 auto; padding: 24px 0; }
-    .imsg-row { display: flex; margin-bottom: 8px; }
-    .imsg-row.right { justify-content: flex-end; }
-    .imsg-row.left  { justify-content: flex-start; }
-    .imsg-bubble {
-      padding: 12px 16px;
-      font-size: 15px;
-      font-weight: 500;
-      max-width: 75%;
-      line-height: 1.4;
+    .sec-faq { padding: 100px 0; background-color: #0A0A0A; border-bottom: 2px dashed #F5C200; }
+    .faq-head { text-align: center; margin-bottom: 48px; }
+    .sec-faq .eyebrow { color: #FFFFFF; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    .sec-faq .eyebrow::before { content: none; }
+    .sec-faq .bdot { color: #FFFFFF; }
+    .faq-h2 { font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; color: #FFFFFF; margin-top: 20px; }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      background: #141414;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      cursor: pointer;
     }
-    .imsg-bubble.out {
-      background: #0B93F6;
-      color: #FFFFFF;
-      border-radius: 18px 18px 4px 18px;
-      margin-left: auto;
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-    .imsg-bubble.in {
-      background: #E5E5EA;
-      color: #000000;
-      border-radius: 18px 18px 18px 4px;
-      margin-right: auto;
+    .faq-question-text { color: #FFFFFF; font-weight: 700; font-size: 16px; }
+    .faq-icon {
+      flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+      background: #F5C200; color: #0A0A0A;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; line-height: 1;
+      transition: transform 0.25s ease;
     }
-    .imsg-dots { display: flex; align-items: center; gap: 4px; }
-    .imsg-dots span {
-      display: inline-block;
-      width: 8px; height: 8px;
-      background: #888;
-      border-radius: 50%;
-      animation: imsg-bounce 1.2s ease-in-out infinite;
+    .faq-item.is-open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+      opacity: 0; margin-top: 0;
+      color: #999999; font-size: 14px; line-height: 1.6;
     }
-    .imsg-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .imsg-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes imsg-bounce {
-      0%, 60%, 100% { transform: translateY(0); }
-      30%            { transform: translateY(-6px); }
-    }
-    .imsg-label {
-      font-size: 11px;
-      color: rgba(0,0,0,0.35);
-      text-align: right;
-      margin-top: 4px;
+    .faq-item.is-open .faq-answer { max-height: 400px; opacity: 1; margin-top: 14px; }
+    @media (max-width: 768px) {
+      .sec-faq { padding: 64px 0; }
+      .faq-item { padding: 16px 16px; }
+      .faq-question-text { font-size: 15px; }
     }
   </style>
 
-  <section id="testimonianze" class="sec-test grid-bg">
+  <section id="testimonianze" class="sec-faq grid-bg-dark">
     <div class="wrap">
-      <div class="imsg-wrap">
 
-        <div class="imsg-row right" id="imsg1" style="opacity:0">
-          <div class="imsg-bubble out">Vuoi risolvere il problema dei tuoi capelli?</div>
-        </div>
+      <div class="faq-head fi">
+        <div class="eyebrow-center"><span class="eyebrow"><span class="bdot">•</span>Domande Frequenti<span class="bdot">•</span></span></div>
+        <h2 class="faq-h2">FAQ.</h2>
+      </div>
 
-        <div class="imsg-row left" id="imsgTyping" style="opacity:0">
-          <div class="imsg-bubble in imsg-dots">
-            <span></span><span></span><span></span>
+      <div class="faq-list fi fi-d1">
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Funziona anche per la mia situazione specifica?</span>
+            <span class="faq-icon">+</span>
           </div>
+          <div class="faq-answer">Sì. Il Metodo 80/20 non è pensato per un singolo problema, ma per capire la causa di ogni singola persona. Lavoriamo con psoriasi, alopecia, dermatite, forfora, caduta dei capelli e altre anomalie della cute, sempre con un percorso costruito su misura per il caso specifico. Accompagniamo anche chi sta affrontando un percorso di chemioterapia, il pre e post chemioterapia, la menopausa o la gravidanza.</div>
         </div>
 
-        <div class="imsg-row left" id="imsg2" style="opacity:0">
-          <div class="imsg-bubble in">Sì!</div>
-        </div>
-
-        <div id="imsgInput" style="opacity:0">
-          <div class="imsg-row right">
-            <a href="#" class="imsg-bubble out" style="cursor:pointer; font-weight:600; text-decoration:none;">Partiamo! 👆</a>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Quanto dura un percorso, in media?</span>
+            <span class="faq-icon">+</span>
           </div>
-          <p class="imsg-label">👆 Premi per iniziare</p>
+          <div class="faq-answer">Il percorso si divide in due fasi: una fase iniziale, più intensa, con una seduta a settimana per circa 5-8 settimane, e una fase di mantenimento, dove si passa a una seduta al mese per consolidare i risultati raggiunti. La durata complessiva varia da persona a persona, come per il caso studio di Alexandra. Lo scopriamo insieme già durante la prima consulenza.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Devo firmare qualcosa o impegnarmi a lungo termine?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Assolutamente no. Al termine della consulenza decidi tu, in piena autonomia, se iniziare un percorso con noi oppure no. E se decidi di iniziare, non devi pagare migliaia di euro subito: paghi seduta per seduta, volta per volta.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Cosa succede dopo la consulenza Beautrìco?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Dopo i 90 minuti di consulenza, hai totale libertà di scelta: puoi decidere di essere seguito da noi nel percorso per risolvere il tuo problema di cute e capelli, oppure puoi portare a casa tutto il materiale che Daniela ti ha dato durante la consulenza — consigli su come gestire i capelli, sui prodotti da utilizzare e sulla routine quotidiana — e proseguire da solo.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Posso venire anche se ho già provato altri trattamenti senza risultati?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Assolutamente sì: il 70% delle persone che arriva da noi ha già provato altri prodotti, integratori o trattamenti senza ottenere risultati. Spesso il problema non è la persona, ma il fatto che nessuno si è davvero fermato ad ascoltarla prima.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Lavorate anche con uomini?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Sì, seguiamo anche gli uomini, con un percorso pensato per le loro esigenze specifiche.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Dove siete e come prenoto?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Siamo a Cologno al Serio (BG), in Via Circonvallazione 8. Puoi prenotare la tua consulenza direttamente tramite il bottone "Come Possiamo Aiutarti" presente sul sito.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-question-text">Seguite anche bambini (0-9 anni)?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Sì, offriamo il Baby Check: un'analisi del cuoio capelluto del bambino, pensata per individuare eventuali anomalie fin da piccoli. Educhiamo anche mamma e papà su come occuparsi correttamente dei capelli del proprio bimbo, con consigli sui prodotti giusti e sulla routine quotidiana.</div>
         </div>
 
       </div>
@@ -3080,28 +3123,17 @@
       goToVis(1, false);
     })();
 
-    /* ── iMessage chat animation (one-shot) ── */
+    /* ── FAQ accordion ── */
     (function () {
-      var msg1   = document.getElementById('imsg1');
-      var typing = document.getElementById('imsgTyping');
-      var msg2   = document.getElementById('imsg2');
-      var input  = document.getElementById('imsgInput');
-      if (!msg1) return;
-
-      function fadeIn(el) {
-        void el.offsetWidth;
-        el.style.transition = 'opacity 0.4s ease';
-        el.style.opacity = '1';
-      }
-
-      setTimeout(function () { fadeIn(msg1); }, 50);
-      setTimeout(function () { fadeIn(typing); }, 800);
-      setTimeout(function () {
-        typing.style.transition = 'none';
-        typing.style.opacity = '0';
-        setTimeout(function () { fadeIn(msg2); }, 50);
-      }, 2000);
-      setTimeout(function () { fadeIn(input); }, 3000);
+      var items = document.querySelectorAll('.faq-item');
+      items.forEach(function (item) {
+        var question = item.querySelector('.faq-question');
+        question.addEventListener('click', function () {
+          var wasOpen = item.classList.contains('is-open');
+          items.forEach(function (i) { i.classList.remove('is-open'); });
+          if (!wasOpen) item.classList.add('is-open');
+        });
+      });
     })();
 
     /* ── CTA video: avvio riproduzione ── */
