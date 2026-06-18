@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZF3VC7TSE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LZF3VC7TSE');
+  </script>
+    <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Testimonianze | Beautrì</title>
   <meta name="description" content="Storie reali di persone che hanno scelto Beautrì. 4,9 stelle su Google — 213 recensioni.">
@@ -346,7 +354,7 @@
       </div>
       <div class="nav-right">
         <a href="https://wa.me/393313348233" target="_blank" class="nav-whatsapp">Hai bisogno di aiuto?</a>
-        <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="nav-cta">Come Possiamo Aiutarti</a>
+        <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="nav-cta" data-ga-event="click_come_possiamo_aiutarti">Come Possiamo Aiutarti</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -360,11 +368,11 @@
       <img src="./Logo.png" alt="Beautrì logo" style="height:36px; width:auto; object-fit:contain;">
       <span class="mobile-menu-brand">Beautr<em>ì</em></span>
     </div>
-    <a href="metodo.html">Metodo 80/20</a>
-    <a href="chi-siamo.html">Chi Siamo</a>
-    <a href="testimonianze.html">Testimonianze</a>
+    <a href="metodo.html" data-ga-event="click_menu_nav" data-ga-voce="metodo">Metodo 80/20</a>
+    <a href="chi-siamo.html" data-ga-event="click_menu_nav" data-ga-voce="chi-siamo">Chi Siamo</a>
+    <a href="testimonianze.html" data-ga-event="click_menu_nav" data-ga-voce="testimonianze">Testimonianze</a>
     <a href="https://wa.me/393313348233" target="_blank" class="mobile-whatsapp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.746-.873-2.888-1.555-4.036-3.527-.305-.524.305-.487.873-1.62.099-.198.05-.371-.05-.52-.099-.148-.669-1.612-.916-2.207-.247-.595-.5-.514-.683-.523-.173-.009-.371-.009-.57-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.057 3.146 4.987 4.286 2.93 1.14 2.93.762 3.99.668 1.06-.092 3.39-1.394 3.866-2.741.476-1.347.476-2.502.347-2.741zM12 22.005c-1.819 0-3.6-.5-5.135-1.448l-.368-.225-3.811.998 1.018-3.715-.24-.382C2.498 15.59 2 13.79 2 12.005 2 6.486 6.486 2 12.005 2c2.673 0 5.184 1.041 7.071 2.93A9.95 9.95 0 0 1 22 12.005c0 5.519-4.486 10-10.005 10z"/></svg>Hai bisogno di aiuto?</a>
-    <a href="index.html#inizia-oggi" class="mobile-cta">Come Possiamo Aiutarti</a>
+    <a href="index.html#inizia-oggi" class="mobile-cta" data-ga-event="click_come_possiamo_aiutarti">Come Possiamo Aiutarti</a>
   </div>
 
 
@@ -407,7 +415,7 @@
         <div class="footer-brand">
           <h3>Beautrì</h3>
           <p>Capelli sani nascono da persone ascoltate</p>
-          <a href="index.html#inizia-oggi" class="btn btn-yellow">Come Possiamo Aiutarti</a>
+          <a href="index.html#inizia-oggi" class="btn btn-yellow" data-ga-event="click_come_possiamo_aiutarti">Come Possiamo Aiutarti</a>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2793.123!2d9.7024!3d45.5789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia+Circonvallazione+8%2C+Cologno+al+Serio+BG!5e0!3m2!1sit!2sit!4v1"
             width="100%"
@@ -500,5 +508,6 @@
     })();
   </script>
 
+  <script src="analytics-events.js"></script>
 </body>
 </html>
