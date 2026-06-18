@@ -1194,7 +1194,7 @@
     @media (max-width: 768px) {
       .wrap { padding: 0 20px; }
 
-      .hero { padding: 130px 0 80px; }
+      .hero { padding: 100px 0 80px; }
       .hero-review-badge { font-size: 0.78rem; }
 
       .sec-light, .sec-values, .sec-method, .sec-about, .sec-test { padding: 72px 0; }
@@ -1474,13 +1474,24 @@
   ════════════════════════════════════════ -->
   <style>
     .sec-story {
+      position: relative;
+      overflow: hidden;
       background-color: #0A0A0A;
       background-image:
         linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
       background-size: 40px 40px;
-      padding: 80px 0;
+      padding: 112px 0;
     }
+    .sec-story::before {
+      content: '';
+      position: absolute;
+      top: -180px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 560px;
+      background: radial-gradient(ellipse at center, rgba(245,194,0,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .sec-story .wrap { position: relative; z-index: 1; }
     .story-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1491,14 +1502,40 @@
     .story-video-card {
       background: #111111;
       border: 1px solid #222222;
-      border-radius: 16px;
-      aspect-ratio: 16 / 9;
+      border-radius: 18px;
       overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    .video-window-bar {
+      height: 42px;
+      background: #1a1a1a;
+      border-bottom: 1px solid #222222;
+      display: flex; align-items: center;
+      padding: 0 14px;
+      gap: 10px;
+    }
+    .video-window-dots { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+    .vw-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+    .vw-dot-red { background: #FF5F56; }
+    .vw-dot-yellow { background: #FFBD2E; }
+    .vw-dot-green { background: #27C93F; }
+    .video-window-title {
+      flex: 1; min-width: 0; text-align: center;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .video-window-menu {
+      flex-shrink: 0; color: #666666; font-size: 16px; font-weight: 700;
+      letter-spacing: 1px; line-height: 1;
     }
     .story-video-ph {
+      position: relative;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      width: 100%; height: 100%;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       background: #0A0A0A;
     }
     .story-video-ph-label {
@@ -1506,6 +1543,10 @@
     }
     .story-video-ph-sub {
       color: #555555; font-size: 11px; margin-top: 4px;
+    }
+    .video-window-badge {
+      position: absolute; bottom: 10px; right: 12px;
+      font-size: 10px; color: #666666; letter-spacing: 0.03em;
     }
     /* Text column */
     .story-badge {
@@ -1559,9 +1600,9 @@
     }
     .story-btn:hover { transform: scale(1.03); }
     @media (max-width: 768px) {
-      .sec-story { padding: 48px 0; }
+      .sec-story { padding: 64px 0; }
       .story-inner { grid-template-columns: 1fr; gap: 32px; }
-      .story-video-card { margin-bottom: 32px; }
+      .story-video-card { margin-top: 24px; margin-bottom: 32px; }
       .story-text { padding-left: 0; }
       .story-title-1 { font-size: 28px; }
       .story-title-2 { font-size: 22px; }
@@ -1572,14 +1613,27 @@
     <div class="wrap">
       <div class="story-inner">
 
-        <!-- Video placeholder -->
+        <!-- Video -->
         <div class="story-video-card">
+          <div class="video-window-bar">
+            <div class="video-window-dots">
+              <span class="vw-dot vw-dot-red"></span>
+              <span class="vw-dot vw-dot-yellow"></span>
+              <span class="vw-dot vw-dot-green"></span>
+            </div>
+            <div class="video-window-title">BEA-VIDEO-001</div>
+            <div class="video-window-menu">⋯</div>
+          </div>
           <div class="story-video-ph">
-            <svg viewBox="0 0 24 24" fill="currentColor" style="color:#FF0000; width:48px; height:48px;" aria-hidden="true">
-              <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
-            </svg>
-            <p class="story-video-ph-label">Video</p>
-            <p class="story-video-ph-sub">Il link verrà aggiunto presto</p>
+            <iframe
+              src="https://www.youtube.com/embed/cpa0zl12z2w"
+              title="Video Beautrì"
+              style="position:absolute; inset:0; width:100%; height:100%; border:0;"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <div class="video-window-badge">16:9 · IT</div>
           </div>
         </div>
 
