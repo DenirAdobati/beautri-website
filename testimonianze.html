@@ -241,9 +241,24 @@
 
     /* ── HERO ── */
     .t-hero {
-      padding: 120px 0;
+      padding: 120px 0 80px;
       text-align: center;
     }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #0A0A0A;
+      margin-bottom: 22px;
+    }
+    .bdot { font-size: 10px; flex-shrink: 0; }
+
     .t-badge {
       display: inline-block;
       background: rgba(245,194,0,0.12);
@@ -269,33 +284,149 @@
       color: #A0A0A0;
       font-size: 18px;
       margin-top: 16px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .t-google-badge {
+    .review-widget {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #111111;
-      border: 1px solid #222222;
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: 13px;
-      color: #FFFFFF;
-      margin-top: 24px;
+      margin-top: 28px;
     }
-    .t-placeholder {
-      color: #555555;
-      font-size: 16px;
-      margin-top: 48px;
+    .review-stars { color: #F5C200; font-size: 14px; letter-spacing: 1px; }
+    .review-text  { color: #ffffff; font-size: 14px; font-weight: 700; }
+
+    /* ── STATS (40+ / 300+) ── */
+    .t-stats {
+      padding: 96px 0;
+      background-color: #FFFFFF;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
-    .t-back {
-      display: block;
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .astat-card {
+      background: #0A0A0A;
+      border: 1px solid #1A1A1A;
+      border-radius: 16px;
+      padding: 28px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .astat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    }
+    .astat-num-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .astat-num {
+      font-size: clamp(44px, 5vw, 60px);
+      font-weight: 800;
       color: #F5C200;
-      font-size: 14px;
-      margin-top: 32px;
-      text-align: center;
-      transition: opacity 0.2s;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-family: 'Poppins', sans-serif;
     }
-    .t-back:hover { opacity: 0.75; }
+    .astat-suffix {
+      font-size: clamp(32px, 3.8vw, 48px);
+      font-weight: 800;
+      color: #F5C200;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-family: 'Poppins', sans-serif;
+    }
+    .astat-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+      text-align: left;
+    }
+    .astat-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin-bottom: 20px;
+    }
+    .astat-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .astat-sec-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.01em;
+    }
+    .astat-sec-icon {
+      width: 18px;
+      height: 18px;
+      color: rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+
+    /* ── GRIGLIA RECENSIONI ── */
+    .grid-bg {
+      background-color: #ffffff;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .t-reviews {
+      padding: 96px 0 104px;
+      border-top: 1px solid #EFEFEF;
+    }
+    .t-reviews-head { text-align: center; }
+    .t-reviews-head h2 {
+      font-family: 'Poppins', sans-serif;
+      color: #0A0A0A;
+      font-size: clamp(2.5rem, 5vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-top: 20px;
+    }
+    .t-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .t-card {
+      background: #FFFFFF;
+      border: 1px solid #ECECEC;
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .t-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    }
+    .t-card-stars { color: #F5C200; font-size: 16px; letter-spacing: 2px; }
+    .t-card-name { font-weight: 700; font-size: 15px; color: #0A0A0A; }
+    .t-card-text { font-size: 14px; line-height: 1.7; color: #444444; }
 
     /* ── FOOTER ── */
     .footer {
@@ -342,9 +473,15 @@
     .social-icon-btn svg { display: block; width: 100%; height: 100%; }
     .footer-btm { display: flex; justify-content: space-between; align-items: center; font-size: 0.84rem; color: #444444; flex-wrap: wrap; gap: 8px; }
 
+    @media (max-width: 1040px) {
+      .t-reviews-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 768px) {
       .t-hero h1 { font-size: 36px; }
       .t-hero-sub { font-size: 16px; }
+      .t-stats { padding: 64px 0; }
+      .t-reviews { padding: 64px 0 72px; }
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-btm { flex-direction: column; text-align: center; }
     }
@@ -394,26 +531,163 @@
 
       <span class="t-badge">Testimonianze</span>
 
-      <h1>Dicono di Noi</h1>
+      <h1>Le Storie di Chi Si è Affidato a Noi</h1>
 
-      <p class="t-hero-sub">Storie reali di persone che hanno scelto Beautrì.</p>
+      <p class="t-hero-sub">Ogni percorso è diverso, ma il filo conduttore è sempre lo stesso: sentirsi finalmente ascoltati.</p>
 
-      <div>
-        <span class="t-google-badge">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-          </svg>
-          4,9 · 213 recensioni
-        </span>
+      <div class="review-widget">
+        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="border-radius:50%;overflow:hidden;flex-shrink:0;">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.4-1.04 2.58-2.21 3.37v2.8h3.57c2.08-1.92 3.28-4.74 3.28-8.18z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <div class="review-stars">★★★★★</div>
+        <span class="review-text">4,9 · 213 recensioni</span>
       </div>
 
-      <p class="t-placeholder">La pagina delle testimonianze è in costruzione.</p>
+    </div>
+  </section>
 
-      <a href="index.html" class="t-back">← Torna alla home</a>
 
+  <!-- STATS -->
+  <section class="t-stats">
+    <div class="wrap">
+      <div class="about-stats">
+        <div class="astat-card">
+          <div class="astat-num-wrap">
+            <span class="astat-num" data-target="40">0</span><span class="astat-suffix">+</span>
+          </div>
+          <span class="astat-label">Anni di esperienza</span>
+          <div class="astat-divider"></div>
+          <div class="astat-secondary">
+            <span class="astat-sec-text">Nel settore tricologico</span>
+            <svg class="astat-sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M8 12.5l2.5 2.5L16 9.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="astat-card">
+          <div class="astat-num-wrap">
+            <span class="astat-num" data-target="300">0</span><span class="astat-suffix">+</span>
+          </div>
+          <span class="astat-label">Persone seguite</span>
+          <div class="astat-divider"></div>
+          <div class="astat-secondary">
+            <span class="astat-sec-text">Con il Metodo 80/20</span>
+            <svg class="astat-sec-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GRIGLIA RECENSIONI -->
+  <section class="t-reviews grid-bg">
+    <div class="wrap">
+
+      <div class="t-reviews-head">
+        <div class="eyebrow" style="display:inline-flex; margin-left:auto; margin-right:auto;"><span class="bdot">•</span><span>Testimonianze</span><span class="bdot">•</span></div>
+        <h2>Cosa dicono di noi i nostri clienti</h2>
+      </div>
+
+      <div class="t-reviews-grid">
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Giorgia Mandelli</span>
+          <p class="t-card-text">Un ambiente dove ci si sente davvero a casa! Ho scoperto Beautrì sui social e, colpita dalla professionalità che traspariva dai loro racconti, ho deciso di prenotare una consulenza con Daniela. È stata una scoperta meravigliosa: soffro di psoriasi e, pur essendo solo alla seconda seduta, noto già grandissimi miglioramenti. Inoltre, sono riuscite a realizzarmi il colore che desideravo da tempo, nonostante io sia allergica alle tinte tradizionali. Ogni appuntamento è una vera coccola... chi vi lascia più!</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Chiara Alini</span>
+          <p class="t-card-text">Da ormai due anni affido con serenità la salute dei miei capelli a Beautri, e ogni volta ritrovo la stessa cura autentica che mi ha conquistata fin dal primo giorno. Oltre alla professionalità, ciò che le distingue davvero è l'umanità: ti accolgono con un sorriso sincero, ti ascoltano con attenzione e si assicurano sempre di aver compreso a fondo le tue esigenze prima di intervenire. Dal momento in cui entri a quello in cui esci, ti senti coccolata. Con piccoli gesti e spiegazioni semplici ti aiutano a capire come prenderti cura dei tuoi capelli anche a casa, rendendo tutto più facile e naturale. Da quando ho scoperto il loro focus sulla tricologia, ho portato anche mia mamma: per lei hanno costruito un percorso personalizzato, studiato con delicatezza e competenza. Le ragazze sono sempre solari, disponibili e incredibilmente brave. Un luogo dove ci si sente davvero a casa.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Sonia Florio</span>
+          <p class="t-card-text">Ho conosciuto beautry per caso un post apparso all improvviso ascolto il video tutto sembra rispecchiare il mio stato d animo lo riguardo ..e' vero... chi prova un disagio non viene ascoltata nel profondo, . Dopo la consulenza con Daniela mi sono sentita capita e mi sono affidata alle loro cure e coccole. Sto intraprendendo un percorso che richiederà il suo tempo ma che già sta notevolmente migliorando una delle problematiche riscontrate . Ogni appuntamento settimanale e' per me un momento di rigenerazione psicofisica non solo per il trattamento da seguire ma un appuntamento fatto anche di chiacchere biscotti e tisane . Daniela e il suo team sono decisamente le persone giuste capitate al momento giusto in un anno particolarmente difficile di grande cambiamento per me. Grazie infinite ❤️ Sonia</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Isidoro Bonomi</span>
+          <p class="t-card-text">Ho appena cominciato il percorso e sono più che soddisfatto sulla serietà del personale sulla professionalità di tutto lo staff..La consulenza è stata esaustiva e chiara anche per un neofita alle prime cure..senza dimenticare poi la sensazione di essere sempre coccolato da tutti.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Fulvia Rigantini</span>
+          <p class="t-card-text">Sono ormai più di 3 anni che sono cliente di questo salone. Devo ringraziare Daniela ed il suo staff per avermi ridato una chioma sana e bella. Sono felicissima di essere una loro affezionata cliente ed andare in salone é come una seduta in una spa: ne esci rilassata e più bella. Daniela, Sabrina, Giada ti fanno sentire coccolata ed in ottime mani.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Matteo Zumelli</span>
+          <p class="t-card-text">Ho conosciuto Beautrì tramite una consulenza tricologica e a oggi a distanza di due anni mi recò mensilmente per mantenere i miei risultati… Lo consiglio per la loro accoglienza e professionalità.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Ale</span>
+          <p class="t-card-text">Trattamenti per la cura della cute e quindi del capello eseguiti con una cura professionale e unica, in un salone straccogliente sia per l' ambiente che soprattutto per il team! Consigliato assolutamente per ridare vita e dunque bellezza ai capelli!</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">matteo carissimi</span>
+          <p class="t-card-text">Da tanti anni frequento il salone di Daniela , e ogni anno ho visto sempre di più crescere il salone e continuare ad evolversi mettendo sempre al primo posto il benessere del cliente . Ogni trattamento è mirato e studiato per ogni singola esigenza del cliente e in ogni appuntamento vieni accolto da persone veramente competenti e preparate e pronte a prendersi cura delle " problematiche " che ogni cliente porta con sé in tematica di capelli . Lo staff ogni volta ti coccola e ti accoglie sempre con un sorriso ! Continuate così …</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Luigi</span>
+          <p class="t-card-text">Centro consigliato per la cura dei capelli, ottimi trattamenti tricologici e personale competente in merito. Lo consiglio per chi ama prendersi cura dei propri capelli e nello stesso tempo è alla ricerca di tecnologie avanzate e professionalità.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">claudia partenza</span>
+          <p class="t-card-text">Ambiente accogliente, personale professionale e attento alle esigenze del cliente. Ho appena superato la prima fase dei trattamenti e sono già soddisfatta dei risultati ma soprattutto fiduciosa di quelli che verranno. Un grazie particolare a Daniela</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Giovanni Paris</span>
+          <p class="t-card-text">Abbiamo effettuato il baby check con Daniela ed è stato bello vedere la nostra cute e i nostri capelli l'abbiamo raccontato a tutti i nostri amici Gabriele e Giorgio</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Simona Limonta</span>
+          <p class="t-card-text">Oltre al fatto che è un po' come sentirsi a casa perché tutto il personale è davvero cordiale, simpatico e accogliente, venire da voi mi fa sentire al sicuro perché so che sono in buone mani e che la professionalità sia nelle consulenze che nei trattamenti è davvero il top! Mi piace molto il fatto che mi spiegate ogni fase e ogni passaggio in modo minuzioso così da rendermi partecipe ad ogni azione. Apprezzo molto anche il fatto che alcune parti del trattamento si possono fare al lavaggio dove c'è un'area relax davvero perfetta. Complimenti a tutte voi per l'impegno e la dedizione che ci mettete, grazie davvero!</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Giulia Longhi</span>
+          <p class="t-card-text">Ho conosciuto questo centro per una consulenza per prendermi cura dei miei capelli, sono molto soddisfatta della mia esperienza sia per la disponibilità del personale che per i risultati.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Daniela A.</span>
+          <p class="t-card-text">Ottimo studio di parrucchieria, ho risolto dei problemi alla cute, team molto professionale e gentile. Daniela, la proprietaria è il suo team, sono sempre gentile e disponibile e molto preparati.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Luca Lattanzio</span>
+          <p class="t-card-text">Ho effettuato una visita tricologica con consulenza e sono rimasto veramente soddisfatto: personale molto gentile, preparato e attento alle esigenze individuali. Mi hanno spiegato tutto con grande professionalità, mettendomi subito a mio agio. Servizio Altamente consigliato!</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -517,6 +791,34 @@
       document.querySelectorAll('.fh-row').forEach(function(row) {
         if (parseInt(row.dataset.day) === today) row.classList.add('fh-today');
       });
+    })();
+
+    /* Stats: counter animation */
+    (function() {
+      var statsEl = document.querySelector('.about-stats');
+      if (!statsEl) return;
+      var counted = false;
+      var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting && !counted) {
+            counted = true;
+            counterObserver.unobserve(e.target);
+            e.target.querySelectorAll('.astat-num').forEach(function(el) {
+              var target = parseInt(el.dataset.target, 10);
+              var duration = 1200;
+              var start = performance.now();
+              function tick(now) {
+                var p = Math.min((now - start) / duration, 1);
+                var ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(ease * target);
+                if (p < 1) requestAnimationFrame(tick);
+              }
+              requestAnimationFrame(tick);
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+      counterObserver.observe(statsEl);
     })();
   </script>
 
