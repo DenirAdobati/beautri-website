@@ -117,6 +117,7 @@
       color: #FFFFFF;
       font-weight: 800;
       font-size: 18px;
+      flex-shrink: 0;
     }
     .nav-logo-img {
       height: 28px;
@@ -131,12 +132,14 @@
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 32px;
+      flex-shrink: 0;
     }
     .nav-links a {
       color: rgba(255,255,255,0.7);
       text-decoration: none;
       font-size: 14px;
+      white-space: nowrap;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: #FFFFFF; }
@@ -144,7 +147,8 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      flex-shrink: 0;
     }
 
     .nav-cta {
@@ -163,14 +167,20 @@
     .nav-whatsapp {
       background: #25D366;
       color: #FFFFFF;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 8px 18px;
-      border-radius: 999px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
       text-decoration: none;
-      white-space: nowrap;
+      flex-shrink: 0;
       transition: opacity 0.2s;
+      isolation: isolate;
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
+    .nav-whatsapp svg { width: 18px; height: 18px; flex-shrink: 0; shape-rendering: geometricPrecision; }
     .nav-whatsapp:hover { opacity: 0.85; }
 
     .nav-hamburger {
@@ -493,7 +503,7 @@
         <a href="testimonianze.html">Testimonianze</a>
       </div>
       <div class="nav-right">
-        <a href="https://wa.me/393313348233" target="_blank" class="nav-whatsapp">Hai bisogno di aiuto?</a>
+        <a href="https://wa.me/393313348233" target="_blank" class="nav-whatsapp" aria-label="Hai bisogno di aiuto? Scrivici su WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.746-.873-2.888-1.555-4.036-3.527-.305-.524.305-.487.873-1.62.099-.198.05-.371-.05-.52-.099-.148-.669-1.612-.916-2.207-.247-.595-.5-.514-.683-.523-.173-.009-.371-.009-.57-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.057 3.146 4.987 4.286 2.93 1.14 2.93.762 3.99.668 1.06-.092 3.39-1.394 3.866-2.741.476-1.347.476-2.502.347-2.741zM12 22.005c-1.819 0-3.6-.5-5.135-1.448l-.368-.225-3.811.998 1.018-3.715-.24-.382C2.498 15.59 2 13.79 2 12.005 2 6.486 6.486 2 12.005 2c2.673 0 5.184 1.041 7.071 2.93A9.95 9.95 0 0 1 22 12.005c0 5.519-4.486 10-10.005 10z"/></svg></a>
         <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="nav-cta" data-ga-event="click_come_possiamo_aiutarti">Come Possiamo Aiutarti</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
