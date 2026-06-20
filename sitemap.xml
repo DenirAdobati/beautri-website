@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://beautri.it/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://beautri.it/chi-siamo.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://beautri.it/metodo.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://beautri.it/testimonianze.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://beautri.it/caso-studio-alexandra.html</loc>
+    <priority>0.6</priority>
+  </url>
+</urlset>
