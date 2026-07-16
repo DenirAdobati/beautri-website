@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(git -C /Users/deniradobati/Documents/listino-beautri- log --oneline -5)",
+      "Bash(git -C /Users/deniradobati/Documents/listino-beautri- add index.html \"Emulsione avvolgente.png\" Maschera.png)",
+      "Bash(git -C /Users/deniradobati/Documents/listino-beautri- commit -m \"feat: aggiunti widget upsell Maschera, Conditioner ed Emulsione Avvolgente a sezioni schiariture e forma\")",
+      "Bash(git -C /Users/deniradobati/Documents/listino-beautri- pull --rebase origin main)",
+      "Bash(open /Users/deniradobati/Documents/scheda-interna/index.html)",
+      "Bash(git -C /Users/deniradobati/Documents/scheda-interna status)",
+      "Bash(git -C /Users/deniradobati/Documents/scheda-interna diff --stat)",
+      "Bash(git -C /Users/deniradobati/Documents/scheda-interna add index.html)",
+      "Bash(git -C /Users/deniradobati/Documents/scheda-interna commit -m ' *)",
+      "Bash(git -C /Users/deniradobati/Documents/scheda-interna push origin main)",
+      "Bash(xargs -r kill)",
+      "Bash(curl -sI http://localhost:8080/)",
+      "Bash(git -C \"/Users/deniradobati/Documents/Beautri/beautri-website\" log --oneline -5)",
+      "Bash(git -C \"/Users/deniradobati/Documents/Beautri/beautri-website\" status)",
+      "Bash(nohup python3 -m http.server 8000)",
+      "Bash(curl -sI http://localhost:8000/index.html)",
+      "Bash(open http://localhost:8000/index.html)"
+    ]
+  }
+}
