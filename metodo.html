@@ -262,6 +262,81 @@
       .nav-inner { padding-top: 14px; padding-bottom: 14px; }
     }
 
+    /* Desktop navbar redesign — additive only, does not touch mobile rules above */
+    .nav-hamburger-desktop {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger-desktop span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #FFFFFF;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .nav-hamburger-desktop.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger-desktop.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger-desktop.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-dropdown-desktop {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 16px;
+      min-width: 220px;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+      z-index: 9998;
+    }
+    .nav-dropdown-desktop.open { display: flex; }
+    .nav-dropdown-desktop a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .nav-dropdown-desktop a:hover { background: rgba(255,255,255,0.08); }
+    .nav-dropdown-desktop .nav-dropdown-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 6px 4px;
+    }
+    .nav-dropdown-desktop .nav-dropdown-whatsapp {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #25D366;
+      font-weight: 700;
+    }
+    .nav-dropdown-desktop .nav-dropdown-whatsapp svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .nav-dropdown-desktop .nav-dropdown-whatsapp:hover { background: rgba(37,211,102,0.1); }
+
+    @media (min-width: 769px) {
+      .nav-links { display: none; }
+      .nav-whatsapp { display: none; }
+      .nav-hamburger-desktop { display: flex; }
+    }
+
+    /* Desktop-only fix: footer columns vertically centered instead of top-aligned */
+    @media (min-width: 1041px) {
+      .footer-col, .footer-col-social { align-self: center; }
+    }
+
     .mobile-menu-logo {
       display: flex;
       align-items: center;
@@ -507,10 +582,21 @@
       <div class="nav-right">
         <a href="https://wa.me/393313348233" target="_blank" class="nav-whatsapp" aria-label="Hai bisogno di aiuto? Scrivici su WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.746-.873-2.888-1.555-4.036-3.527-.305-.524.305-.487.873-1.62.099-.198.05-.371-.05-.52-.099-.148-.669-1.612-.916-2.207-.247-.595-.5-.514-.683-.523-.173-.009-.371-.009-.57-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.057 3.146 4.987 4.286 2.93 1.14 2.93.762 3.99.668 1.06-.092 3.39-1.394 3.866-2.741.476-1.347.476-2.502.347-2.741zM12 22.005c-1.819 0-3.6-.5-5.135-1.448l-.368-.225-3.811.998 1.018-3.715-.24-.382C2.498 15.59 2 13.79 2 12.005 2 6.486 6.486 2 12.005 2c2.673 0 5.184 1.041 7.071 2.93A9.95 9.95 0 0 1 22 12.005c0 5.519-4.486 10-10.005 10z"/></svg></a>
         <a href="https://form.typeform.com/to/QUzap8so" target="_blank" class="nav-cta" data-ga-event="click_come_possiamo_aiutarti">Come Possiamo Aiutarti</a>
+        <button class="nav-hamburger-desktop" id="hamburgerDesktop" aria-label="Menu" aria-expanded="false" aria-controls="navDropdownDesktop">
+          <span></span><span></span><span></span>
+        </button>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
       </div>
+    </div>
+    <div class="nav-dropdown-desktop" id="navDropdownDesktop">
+      <a href="metodo.html">Metodo 80/20</a>
+      <a href="chi-siamo.html">Chi Siamo</a>
+      <a href="libro.html">Libro Rinascita</a>
+      <a href="testimonianze.html">Testimonianze</a>
+      <div class="nav-dropdown-divider"></div>
+      <a href="https://wa.me/393313348233" target="_blank" class="nav-dropdown-whatsapp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.746-.873-2.888-1.555-4.036-3.527-.305-.524.305-.487.873-1.62.099-.198.05-.371-.05-.52-.099-.148-.669-1.612-.916-2.207-.247-.595-.5-.514-.683-.523-.173-.009-.371-.009-.57-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.057 3.146 4.987 4.286 2.93 1.14 2.93.762 3.99.668 1.06-.092 3.39-1.394 3.866-2.741.476-1.347.476-2.502.347-2.741zM12 22.005c-1.819 0-3.6-.5-5.135-1.448l-.368-.225-3.811.998 1.018-3.715-.24-.382C2.498 15.59 2 13.79 2 12.005 2 6.486 6.486 2 12.005 2c2.673 0 5.184 1.041 7.071 2.93A9.95 9.95 0 0 1 22 12.005c0 5.519-4.486 10-10.005 10z"/></svg>Hai Bisogno di Aiuto?</a>
     </div>
   </nav>
 
@@ -801,6 +887,33 @@
       link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
+      });
+    });
+
+    /* Desktop nav dropdown — separate elements/logic, does not touch mobile menu above */
+    const hamburgerDesktop = document.getElementById('hamburgerDesktop');
+    const navDropdownDesktop = document.getElementById('navDropdownDesktop');
+
+    hamburgerDesktop.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = hamburgerDesktop.classList.toggle('open');
+      navDropdownDesktop.classList.toggle('open');
+      hamburgerDesktop.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!hamburgerDesktop.contains(e.target) && !navDropdownDesktop.contains(e.target)) {
+        hamburgerDesktop.classList.remove('open');
+        navDropdownDesktop.classList.remove('open');
+        hamburgerDesktop.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    navDropdownDesktop.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerDesktop.classList.remove('open');
+        navDropdownDesktop.classList.remove('open');
+        hamburgerDesktop.setAttribute('aria-expanded', 'false');
       });
     });
 
