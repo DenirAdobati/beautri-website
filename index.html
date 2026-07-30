@@ -33,7 +33,7 @@
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "228"
+      "reviewCount": "230"
     },
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "13:30", "closes": "21:00" },
@@ -1698,7 +1698,7 @@
             <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
           </svg>
           <div class="review-stars">★★★★★</div>
-          <span class="review-text">4,9 · 228 recensioni</span>
+          <span class="review-text">4,9 · 230 recensioni</span>
         </div>
       </div>
 
@@ -2232,7 +2232,7 @@
     .tcarousel-item {
       flex-shrink: 0;
       width: 600px;
-      height: 350px;
+      height: 294px;
       background: #FFFFFF;
       border-radius: 24px;
       padding: 28px 28px 24px;
@@ -2272,7 +2272,27 @@
       font-size: 15px;
       line-height: 1.75;
       margin-top: 16px;
+      position: relative;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      line-clamp: 5;
     }
+    .tc-readmore {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to left, #FFFFFF 60%, rgba(255,255,255,0));
+      padding: 0 0 0 28px;
+      border: none;
+      color: #1A1A1A;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.75;
+      cursor: pointer;
+    }
+    .tc-readmore:hover { text-decoration: underline; }
     .tc-footer {
       display: flex;
       align-items: center;
@@ -2282,6 +2302,7 @@
       border-top: 1px solid rgba(0,0,0,0.08);
       flex-shrink: 0;
     }
+    .tc-footer > div:not(.tc-ava) { min-width: 0; }
     .tc-ava {
       width: 44px;
       height: 44px;
@@ -2300,11 +2321,17 @@
       font-size: 15px;
       font-weight: 800;
       line-height: 1.3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .tc-meta {
       color: #888888;
       font-size: 12px;
       margin-top: 2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .tcarousel-dots {
       display: flex;
@@ -2332,9 +2359,56 @@
       .sec-tscroll { padding: 48px 0; }
       .tscroll-head { padding: 0 20px; }
       .tcarousel-outer { max-width: 100%; margin-top: 36px; }
-      .tcarousel-item { width: calc(100vw - 88px); height: 500px; padding: 20px 18px; }
-      .tc-text { font-size: 14px; }
+      .tcarousel-item { width: calc(100vw - 88px); height: 396px; padding: 20px 18px; }
+      .tc-text { font-size: 14px; -webkit-line-clamp: 10; line-clamp: 10; }
+      .tc-readmore { font-size: 14px; }
       .tcarousel-dots { margin-top: 24px; }
+    }
+    /* ── Modale recensione completa ── */
+    .tc-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .tc-modal-overlay.is-open { display: flex; }
+    .tc-modal-card {
+      position: relative;
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 36px 32px 28px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    }
+    .tc-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 26px;
+      line-height: 1;
+      background: transparent;
+      border: none;
+      color: #888888;
+      cursor: pointer;
+      padding: 6px 10px;
+    }
+    .tc-modal-close:hover { color: #1A1A1A; }
+    .tc-modal-text {
+      color: #1A1A1A;
+      font-size: 15px;
+      line-height: 1.75;
+      margin-top: 16px;
+      white-space: pre-wrap;
+    }
+    @media (max-width: 768px) {
+      .tc-modal-card { padding: 32px 22px 24px; }
     }
   </style>
 
@@ -2349,15 +2423,67 @@
           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
         </svg>
-        4,9 · 228 recensioni
+        4,9 · 230 recensioni
       </div>
     </div>
 
     <div class="tcarousel-outer" id="tcarouselOuter">
       <div class="tcarousel-track" id="tcarouselTrack">
 
-        <!-- 1. Giorgia Mandelli -->
+        <!-- 1. Michela Brioni -->
         <div class="tcarousel-item active">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">"Mi sono rivolta a Beautri per prevenire la caduta dei capelli post gravidanza e ho ottenuto risultati davvero ottimi... e da allora non ho più cambiato salone! Daniela e il suo staff sono professionali, preparate e sempre attente alle esigenze del cliente. Gentilezza e cortesia qui sono una certezza. Ogni trattamento è una coccola che fa la differenza. Consigliatissimo."</p>
+          <div class="tc-footer">
+            <div class="tc-ava" style="background:#27AE60;">M</div>
+            <div>
+              <div class="tc-name">Michela Brioni</div>
+              <div class="tc-meta">3 recensioni · 4 giorni fa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Francesco Trapattoni -->
+        <div class="tcarousel-item">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">"Era da tempo che cercavo di risolvere dei fastidi alla cute, e fortunatamente, proprio vicino a casa ho incontrato Daniela e il suo staff; è stata ed è un'esperienza che mi lascia estremamente soddisfatto, sotto tutti gli aspetti. Oltre ad una splendida accoglienza, c'è anche molta cura a attenzione per la persona. Oltretutto, ho risolto il mio problema alla cute🙂"</p>
+          <div class="tc-footer">
+            <div class="tc-ava" style="background:#E74C3C;">F</div>
+            <div>
+              <div class="tc-name">Francesco Trapattoni</div>
+              <div class="tc-meta">3 recensioni · 1 foto · 2 settimane fa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Sergio Rana -->
+        <div class="tcarousel-item">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">"Posto meraviglioso, ampio e accogliente. Il personale, oltre a essere preparato e professionale, è anche caloroso e ospitale. I trattamenti sono stati soddisfacenti e sono certo che sarà così anche per le prossime sedute. L'attenzione e la presa in carico del cliente sul posto e a casa, vengono curate in ogni minimo dettaglio...provare per credere."</p>
+          <div class="tc-footer">
+            <div class="tc-ava" style="background:#4A90D9;">S</div>
+            <div>
+              <div class="tc-name">Sergio Rana</div>
+              <div class="tc-meta">2 recensioni · una settimana fa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Emanuele Belloli -->
+        <div class="tcarousel-item">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">"Seguito scrupolosamente dalla prima all'ultima seduta facendomi sentire sempre a mio agio grazie a tutte le ragazze dello staff di Daniela. Preparate e molto attente hanno svolto tutti i miei servizi nei migliori dei modi e i miei capelli ringraziano"</p>
+          <div class="tc-footer">
+            <div class="tc-ava" style="background:#FF6B9D;">E</div>
+            <div>
+              <div class="tc-name">Emanuele Belloli</div>
+              <div class="tc-meta">5 recensioni · una settimana fa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Giorgia Mandelli -->
+        <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Un ambiente dove ci si sente davvero a casa! Ho scoperto Beautrì sui social e, colpita dalla professionalità che trapariva dai loro racconti, ho deciso di prenotare una consulenza con Daniela. È stata una scoperta meravigliosa: soffro di psoriasi e, pur essendo solo alla seconda seduta, noto già grandissimi miglioramenti. Inoltre, sono riuscite a realizzarmi il colore che desideravo da tempo, nonostante io sia allergica alle tinte tradizionali. Ogni appuntamento è una vera coccola... chi vi lascia più!"</p>
           <div class="tc-footer">
@@ -2369,7 +2495,7 @@
           </div>
         </div>
 
-        <!-- 2. Chiara Alini -->
+        <!-- 6. Chiara Alini -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Da ormai due anni affido con serenità la salute dei miei capelli a Beautrì, e ogni volta ritrovo la stessa cura autentica che mi ha conquistata fin dal primo giorno. Oltre alla professionalità, ciò che le distingue davvero è l'umanità: ti accolgono con un sorriso sincero, ti ascoltano con attenzione e si assicurano sempre di aver compreso a fondo le tue esigenze prima di intervenire..."</p>
@@ -2382,7 +2508,7 @@
           </div>
         </div>
 
-        <!-- 3. Sonia Florio -->
+        <!-- 7. Sonia Florio -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Ho conosciuto Beautrì per caso, da un post apparso all'improvviso. Ascoltando il video, tutto sembrava rispecchiare il mio stato d'animo riguardo a questo: è vero, chi prova un disagio non viene ascoltato nel profondo. Dopo la consulenza con Daniela mi sono sentita capita e mi sono affidata alle loro cure e coccole..."</p>
@@ -2395,7 +2521,7 @@
           </div>
         </div>
 
-        <!-- 4. Vera Popović -->
+        <!-- 8. Vera Popović -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Se volete entrare in un posto dove oltre ai soliti trattamenti volete essere accolti umanamente e scoprire risposte che non vi sapevate dare, allora non lascerete mai più Beautrì! Con gentilezza e grande cura vi faranno entrare nel mondo di vero benessere dei capelli."</p>
@@ -2408,7 +2534,7 @@
           </div>
         </div>
 
-        <!-- 5. Giulia Aceti -->
+        <!-- 9. Giulia Aceti -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Avevo problematiche alla cute, Daniela grazie alla sua consulenza approfondita è riuscita ad aiutarmi e risolvere il mio problema. Le ragazze davvero d'oro. Ad ogni trattamento ti spiegano cosa si va a fare e come agisce sulla cute."</p>
@@ -2421,7 +2547,7 @@
           </div>
         </div>
 
-        <!-- 6. Elena Carne -->
+        <!-- 10. Elena Carne -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"È da diversi anni che frequento questo salone. Ho sempre trovato professionalità, gentilezza, allegria e quel briciolo di pazzia che ti strappa un sorriso. Il team è sempre aggiornato e promuove diverse novità non solo per i capelli ma per il benessere psicologico."</p>
@@ -2434,7 +2560,7 @@
           </div>
         </div>
 
-        <!-- 7. Melania Mosso -->
+        <!-- 11. Melania Mosso -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Ho avuto il piacere di conoscere Daniela sottoponendomi ad una visita tricologica che mi ha permesso di capire lo stato di salute della mia cute. Ho deciso di intraprendere un percorso ad hoc, e mi sto trovando benissimo. Team fantastico."</p>
@@ -2447,7 +2573,7 @@
           </div>
         </div>
 
-        <!-- 8. Simona Limonta -->
+        <!-- 12. Simona Limonta -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Mi piace molto il fatto che mi spieghiate ogni fase e ogni passaggio in modo minuzioso. Venire da voi mi fa sentire al sicuro perché so che sono in buone mani. La professionalità sia nelle consulenze che nei trattamenti è davvero il top!"</p>
@@ -2460,7 +2586,7 @@
           </div>
         </div>
 
-        <!-- 9. Matteo Zumelli -->
+        <!-- 13. Matteo Zumelli -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Ho conosciuto Beautrì tramite una consulenza tricologica e a oggi a distanza di due anni mi recò mensilmente per mantenere i miei risultati. Lo consiglio per la loro accoglienza e professionalità."</p>
@@ -2473,7 +2599,20 @@
           </div>
         </div>
 
-        <!-- 10. Silvana Carrara -->
+        <!-- 14. Engl -->
+        <div class="tcarousel-item">
+          <div class="tc-stars">★★★★☆</div>
+          <p class="tc-text">"Ottimo centro. Sempre gentili e attente. Precise, spiegano tutto per filo e per segno. Tantissimi consigli. Nonostante abbia iniziato da poco i trattamenti post consulenza vedo già dei miglioramenti a livello di pulizia e gestione del cuoio capelluto. Ottimi prodotti e soprattutto funzionali! La consulenza di Daniela è stata accurata valutando ogni aspetto per trovare la via migliore alla risoluzione della mia problematica! Lo consiglio altamente."</p>
+          <div class="tc-footer">
+            <div class="tc-ava" style="background:#F5C200;">E</div>
+            <div>
+              <div class="tc-name">Engl</div>
+              <div class="tc-meta">1 recensione · 5 giorni fa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Silvana Carrara -->
         <div class="tcarousel-item">
           <div class="tc-stars">★★★★★</div>
           <p class="tc-text">"Mi sono rivolta a questo centro perché cercavo qualcuno che potesse prendersi cura seriamente dei miei capelli. Da allora sono passati più di cinque anni ed i miei capelli sono rinati. Grazie di ❤️"</p>
@@ -2499,8 +2638,29 @@
         <button class="tcarousel-dot" aria-label="Recensione 8"></button>
         <button class="tcarousel-dot" aria-label="Recensione 9"></button>
         <button class="tcarousel-dot" aria-label="Recensione 10"></button>
+        <button class="tcarousel-dot" aria-label="Recensione 11"></button>
+        <button class="tcarousel-dot" aria-label="Recensione 12"></button>
+        <button class="tcarousel-dot" aria-label="Recensione 13"></button>
+        <button class="tcarousel-dot" aria-label="Recensione 14"></button>
+        <button class="tcarousel-dot" aria-label="Recensione 15"></button>
       </div>
 
+    </div>
+
+    <!-- Modale recensione completa -->
+    <div class="tc-modal-overlay" id="tcModalOverlay">
+      <div class="tc-modal-card">
+        <button class="tc-modal-close" id="tcModalClose" aria-label="Chiudi">×</button>
+        <div class="tc-stars" id="tcModalStars"></div>
+        <p class="tc-modal-text" id="tcModalText"></p>
+        <div class="tc-footer">
+          <div class="tc-ava" id="tcModalAva"></div>
+          <div>
+            <div class="tc-name" id="tcModalName"></div>
+            <div class="tc-meta" id="tcModalMeta"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -3270,10 +3430,10 @@
 
       /* ── Inietta cloni alle estremità ── */
       var realItems = Array.from(track.querySelectorAll('.tcarousel-item'));
-      var TOTAL     = realItems.length;                        /* 10 */
+      var TOTAL     = realItems.length;                        /* 15 */
 
       var cloneLast  = realItems[TOTAL - 1].cloneNode(true);  /* Silvana */
-      var cloneFirst = realItems[0].cloneNode(true);           /* Giorgia */
+      var cloneFirst = realItems[0].cloneNode(true);           /* Michela */
       cloneLast.classList.remove('active');
       cloneFirst.classList.remove('active');
       track.insertBefore(cloneLast, realItems[0]);             /* posizione 0 */
@@ -3376,6 +3536,57 @@
 
       /* Init senza flicker */
       goToVis(1, false);
+
+      /* ── Leggi tutto: rileva testo troncato e apre la recensione completa in modale ── */
+      var modalOverlay = document.getElementById('tcModalOverlay');
+      if (modalOverlay) {
+        var modalClose = document.getElementById('tcModalClose');
+        var modalStars = document.getElementById('tcModalStars');
+        var modalText  = document.getElementById('tcModalText');
+        var modalAva   = document.getElementById('tcModalAva');
+        var modalName  = document.getElementById('tcModalName');
+        var modalMeta  = document.getElementById('tcModalMeta');
+
+        var openReviewModal = function (item) {
+          var avaEl = item.querySelector('.tc-ava');
+          modalStars.textContent = item.querySelector('.tc-stars').textContent;
+          modalText.textContent  = item.dataset.fullReview || item.querySelector('.tc-text').textContent;
+          modalAva.textContent   = avaEl.textContent;
+          modalAva.style.background = avaEl.style.background;
+          modalName.textContent  = item.querySelector('.tc-name').textContent;
+          modalMeta.textContent  = item.querySelector('.tc-meta').textContent;
+          modalOverlay.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        };
+        var closeReviewModal = function () {
+          modalOverlay.classList.remove('is-open');
+          document.body.style.overflow = '';
+        };
+
+        modalClose.addEventListener('click', closeReviewModal);
+        modalOverlay.addEventListener('click', function (e) {
+          if (e.target === modalOverlay) closeReviewModal();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeReviewModal();
+        });
+
+        realItems.forEach(function (item) {
+          var textEl = item.querySelector('.tc-text');
+          if (textEl.scrollHeight - textEl.clientHeight > 1) {
+            item.dataset.fullReview = textEl.textContent;
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'tc-readmore';
+            btn.textContent = 'Continua a leggere';
+            textEl.appendChild(btn);
+            btn.addEventListener('click', function (e) {
+              e.stopPropagation();
+              openReviewModal(item);
+            });
+          }
+        });
+      }
     })();
 
     /* ── FAQ accordion ── */
