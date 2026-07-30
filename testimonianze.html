@@ -369,87 +369,47 @@
 
     /* ── STATS (40+ / 300+) ── */
     .t-stats {
-      padding: 96px 0;
+      padding: 0;
       background-color: #FFFFFF;
       background-image:
         linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
       background-size: 40px 40px;
     }
-    .about-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 460px;
-      margin: 0 auto;
+    /* ── Muro di prove sociali: collage sparso di screenshot recensioni ── */
+    .spc-wall {
+      position: relative;
+      width: 100%;
+      height: 640px;
+      overflow: hidden;
     }
-    .astat-card {
-      background: #0A0A0A;
-      border: 1px solid #1A1A1A;
-      border-radius: 16px;
-      padding: 28px 28px;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .spc {
+      position: absolute;
+      border-radius: 8px;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 10px 26px rgba(10,10,10,0.22), 0 0 0 1px rgba(10,10,10,0.08);
+      object-fit: cover;
+      background: #FFFFFF;
     }
-    .astat-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
-    }
-    .astat-num-wrap {
-      display: flex;
-      align-items: baseline;
-      gap: 2px;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .astat-num {
-      font-size: clamp(44px, 5vw, 60px);
-      font-weight: 800;
-      color: #F5C200;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      font-family: 'Poppins', sans-serif;
-    }
-    .astat-suffix {
-      font-size: clamp(32px, 3.8vw, 48px);
-      font-weight: 800;
-      color: #F5C200;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      font-family: 'Poppins', sans-serif;
-    }
-    .astat-label {
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 20px;
-      letter-spacing: 0.01em;
-      text-align: left;
-    }
-    .astat-divider {
-      height: 1px;
-      background: rgba(255,255,255,0.1);
-      margin-bottom: 20px;
-    }
-    .astat-secondary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .astat-sec-text {
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.4);
-      letter-spacing: 0.01em;
-    }
-    .astat-sec-icon {
-      width: 18px;
-      height: 18px;
-      color: rgba(255,255,255,0.3);
-      flex-shrink: 0;
-    }
+    .spc-1  { top: -25px; left: -1.94%; width: 25.19%; transform: rotate(-7deg); z-index: 3; }
+    .spc-2  { top: -35px; left: 22.29%; width: 22.29%; transform: rotate(5deg);  z-index: 6; }
+    .spc-3  { top: -15px; left: 43.60%; width: 27.13%; transform: rotate(-3deg); z-index: 2; }
+    .spc-4  { top: -30px; left: 69.77%; width: 23.26%; transform: rotate(7deg);  z-index: 7; }
+    .spc-5  { top: 140px; left: -2.91%; width: 23.26%; transform: rotate(4deg);  z-index: 5; }
+    .spc-6  { top: 130px; left: 19.38%; width: 25.19%; transform: rotate(-6deg); z-index: 8; }
+    .spc-7  { top: 155px; left: 44.57%; width: 22.29%; transform: rotate(6deg);  z-index: 3; }
+    .spc-8  { top: 135px; left: 67.83%; width: 25.19%; transform: rotate(-5deg); z-index: 9; }
+    .spc-9  { top: 320px; left: 5.81%;  width: 26.16%; transform: rotate(3deg);  z-index: 4; }
+    .spc-10 { top: 315px; left: 33.91%; width: 29.07%; transform: rotate(-4deg); z-index: 10; }
+    .spc-11 { top: 325px; left: 63.95%; width: 22.29%; transform: rotate(5deg);  z-index: 5; }
+    .spc-12 { top: -40px; left: 91.09%; width: 18.41%; transform: rotate(-8deg); z-index: 4; }
+    .spc-13 { top: 310px; left: 87.21%; width: 20.35%; transform: rotate(6deg);  z-index: 6; }
+    .spc-14 { top: 150px; left: 90.12%; width: 19.38%; transform: rotate(-6deg); z-index: 7; }
+    .spc-15 { top: 525px; left: -0.97%; width: 24.22%; transform: rotate(5deg);  z-index: 3; }
+    .spc-16 { top: 535px; left: 22.29%; width: 25.19%; transform: rotate(-4deg); z-index: 8; }
+    .spc-17 { top: 520px; left: 48.45%; width: 25.19%; transform: rotate(6deg);  z-index: 5; }
+    .spc-18 { top: 530px; left: 73.64%; width: 22.29%; transform: rotate(-7deg); z-index: 9; }
+    .spc-19 { top: 522px; left: 89.00%; width: 22.00%; transform: rotate(-5deg); z-index: 7; }
 
     /* ── GRIGLIA RECENSIONI ── */
     .grid-bg {
@@ -559,10 +519,31 @@
     @media (max-width: 768px) {
       .t-hero h1 { font-size: 36px; }
       .t-hero-sub { font-size: 16px; }
-      .t-stats { padding: 64px 0; }
+      .t-stats { padding: 0; }
       .t-reviews { padding: 64px 0 72px; }
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-btm { flex-direction: column; text-align: center; }
+
+      /* Muro di prove sociali: layout compatto ma esteso su tutta l'altezza e larghezza della sezione */
+      .spc-wall { height: 520px; }
+      .spc-1  { top: -15px; left: -3.89%; width: 52.78%; transform: rotate(-6deg); z-index: 3; }
+      .spc-2  { top: -25px; left: 41.67%; width: 44.44%; transform: rotate(5deg);  z-index: 6; }
+      .spc-3  { top: 85px;  left: 2.78%;  width: 47.22%; transform: rotate(-4deg); z-index: 2; }
+      .spc-5  { top: 95px;  left: 45.83%; width: 43.06%; transform: rotate(6deg);  z-index: 5; }
+      .spc-6  { top: 190px; left: -5.00%; width: 51.39%; transform: rotate(4deg);  z-index: 7; }
+      .spc-7  { top: 200px; left: 41.67%; width: 45.83%; transform: rotate(-6deg); z-index: 4; }
+      .spc-9  { top: 295px; left: 1.11%;  width: 52.78%; transform: rotate(3deg);  z-index: 8; }
+      .spc-10 { top: 290px; left: 44.44%; width: 48.61%; transform: rotate(-3deg); z-index: 9; }
+      .spc-4  { top: 430px; left: -2.78%; width: 50.00%; transform: rotate(-7deg); z-index: 3; }
+      .spc-8  { top: 440px; left: 41.67%; width: 47.22%; transform: rotate(5deg);  z-index: 6; }
+
+      /* Filler lato destro: chiudono la banda bianca a fine riga senza toccare le immagini esistenti */
+      .spc-11 { top: -20px; left: 88%; width: 22%; transform: rotate(6deg);  z-index: 4; display: block; }
+      .spc-12 { top: 90px;  left: 90%; width: 20%; transform: rotate(-7deg); z-index: 5; display: block; }
+      .spc-13 { top: 195px; left: 86%; width: 23%; transform: rotate(5deg);  z-index: 4; display: block; }
+      .spc-14 { top: 293px; left: 88%; width: 21%; transform: rotate(-6deg); z-index: 5; display: block; }
+      .spc-15 { top: 435px; left: 90%; width: 22%; transform: rotate(6deg);  z-index: 4; display: block; }
+      .spc-16, .spc-17, .spc-18, .spc-19 { display: none; }
     }
   </style>
 </head>
@@ -644,37 +625,27 @@
 
   <!-- STATS -->
   <section class="t-stats">
-    <div class="wrap">
-      <div class="about-stats">
-        <div class="astat-card">
-          <div class="astat-num-wrap">
-            <span class="astat-num" data-target="40">0</span><span class="astat-suffix">+</span>
-          </div>
-          <span class="astat-label">Anni di esperienza</span>
-          <div class="astat-divider"></div>
-          <div class="astat-secondary">
-            <span class="astat-sec-text">Nel settore tricologico</span>
-            <svg class="astat-sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M8 12.5l2.5 2.5L16 9.5"/>
-            </svg>
-          </div>
-        </div>
-        <div class="astat-card">
-          <div class="astat-num-wrap">
-            <span class="astat-num" data-target="300">0</span><span class="astat-suffix">+</span>
-          </div>
-          <span class="astat-label">Persone seguite</span>
-          <div class="astat-divider"></div>
-          <div class="astat-secondary">
-            <span class="astat-sec-text">Con il Metodo 80/20</span>
-            <svg class="astat-sec-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-            </svg>
-          </div>
-        </div>
+      <div class="spc-wall">
+        <img class="spc spc-1"  src="assets/recensioni/recensione-collage-01.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-2"  src="assets/recensioni/recensione-collage-02.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-3"  src="assets/recensioni/recensione-collage-03.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-4"  src="assets/recensioni/recensione-collage-04.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-5"  src="assets/recensioni/recensione-collage-05.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-6"  src="assets/recensioni/recensione-collage-06.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-7"  src="assets/recensioni/recensione-collage-07.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-8"  src="assets/recensioni/recensione-collage-08.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-9"  src="assets/recensioni/recensione-collage-09.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-10" src="assets/recensioni/recensione-collage-10.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-11" src="assets/recensioni/recensione-collage-02.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-12" src="assets/recensioni/recensione-collage-05.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-13" src="assets/recensioni/recensione-collage-08.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-14" src="assets/recensioni/recensione-collage-03.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-15" src="assets/recensioni/recensione-collage-01.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-16" src="assets/recensioni/recensione-collage-06.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-17" src="assets/recensioni/recensione-collage-09.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-18" src="assets/recensioni/recensione-collage-04.png" alt="Recensione cliente Beautrì" loading="lazy">
+        <img class="spc spc-19" src="assets/recensioni/recensione-collage-07.png" alt="Recensione cliente Beautrì" loading="lazy">
       </div>
-    </div>
   </section>
 
 
@@ -777,6 +748,36 @@
           <div class="t-card-stars">★★★★★</div>
           <span class="t-card-name">Luca Lattanzio</span>
           <p class="t-card-text">Ho effettuato una visita tricologica con consulenza e sono rimasto veramente soddisfatto: personale molto gentile, preparato e attento alle esigenze individuali. Mi hanno spiegato tutto con grande professionalità, mettendomi subito a mio agio. Servizio Altamente consigliato!</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Michela Brioni</span>
+          <p class="t-card-text">Mi sono rivolta a Beautri per prevenire la caduta dei capelli post gravidanza e ho ottenuto risultati davvero ottimi... e da allora non ho più cambiato salone! Daniela e il suo staff sono professionali, preparate e sempre attente alle esigenze del cliente. Gentilezza e cortesia qui sono una certezza. Ogni trattamento è una coccola che fa la differenza. Consigliatissimo.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Francesco Trapattoni</span>
+          <p class="t-card-text">Era da tempo che cercavo di risolvere dei fastidi alla cute, e fortunatamente, proprio vicino a casa ho incontrato Daniela e il suo staff; è stata ed è un'esperienza che mi lascia estremamente soddisfatto, sotto tutti gli aspetti. Oltre ad una splendida accoglienza, c'è anche molta cura a attenzione per la persona. Oltretutto, ho risolto il mio problema alla cute🙂</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Sergio Rana</span>
+          <p class="t-card-text">Posto meraviglioso, ampio e accogliente. Il personale, oltre a essere preparato e professionale, è anche caloroso e ospitale. I trattamenti sono stati soddisfacenti e sono certo che sarà così anche per le prossime sedute. L'attenzione e la presa in carico del cliente sul posto e a casa, vengono curate in ogni minimo dettaglio...provare per credere.</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★★</div>
+          <span class="t-card-name">Emanuele Belloli</span>
+          <p class="t-card-text">Seguito scrupolosamente dalla prima all'ultima seduta facendomi sentire sempre a mio agio grazie a tutte le ragazze dello staff di Daniela. Preparate e molto attente hanno svolto tutti i miei servizi nei migliori dei modi e i miei capelli ringraziano</p>
+        </div>
+
+        <div class="t-card">
+          <div class="t-card-stars">★★★★☆</div>
+          <span class="t-card-name">Engl</span>
+          <p class="t-card-text">Ottimo centro. Sempre gentili e attente. Precise, spiegano tutto per filo e per segno. Tantissimi consigli. Nonostante abbia iniziato da poco i trattamenti post consulenza vedo già dei miglioramenti a livello di pulizia e gestione del cuoio capelluto. Ottimi prodotti e soprattutto funzionali! La consulenza di Daniela è stata accurata valutando ogni aspetto per trovare la via migliore alla risoluzione della mia problematica! Lo consiglio altamente.</p>
         </div>
 
       </div>
@@ -916,33 +917,6 @@
       });
     })();
 
-    /* Stats: counter animation */
-    (function() {
-      var statsEl = document.querySelector('.about-stats');
-      if (!statsEl) return;
-      var counted = false;
-      var counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting && !counted) {
-            counted = true;
-            counterObserver.unobserve(e.target);
-            e.target.querySelectorAll('.astat-num').forEach(function(el) {
-              var target = parseInt(el.dataset.target, 10);
-              var duration = 1200;
-              var start = performance.now();
-              function tick(now) {
-                var p = Math.min((now - start) / duration, 1);
-                var ease = 1 - Math.pow(1 - p, 3);
-                el.textContent = Math.round(ease * target);
-                if (p < 1) requestAnimationFrame(tick);
-              }
-              requestAnimationFrame(tick);
-            });
-          }
-        });
-      }, { threshold: 0.4 });
-      counterObserver.observe(statsEl);
-    })();
   </script>
 
   <script src="analytics-events.js"></script>
