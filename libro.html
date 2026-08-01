@@ -425,8 +425,7 @@
       background-size: 40px 40px;
     }
     .lb-gallery > .wrap,
-    .lb-gallery-carousel,
-    .lb-gallery-dots { position: relative; z-index: 1; }
+    .lb-mosaic-wall { position: relative; z-index: 1; }
     .lb-gallery-lead {
       text-align: center;
       color: #FFFFFF;
@@ -436,53 +435,37 @@
       opacity: 0.85;
       margin-bottom: 16px;
     }
-    .lb-gallery-caption-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
-    .lb-gallery-caption {
-      background-color: #F5C200;
-      color: #0A0A0A;
-      font-weight: 800;
-      padding: 2px 10px;
-      border-radius: 4px;
-      display: inline;
+    /* ── Mosaico foto libro Rinascita: cluster compatto e contenuto, rotazioni e sovrapposizioni ── */
+    .lb-mosaic-wall {
+      position: relative;
+      max-width: 300px;
+      height: 460px;
+      margin: 28px auto 0;
+      overflow: hidden;
     }
-    .lb-gallery-carousel {
-      display: flex;
-      gap: 16px;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 4px 24px 18px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    .lb-gallery-carousel::-webkit-scrollbar { display: none; }
-    .lb-gallery-photo {
-      flex: 0 0 auto;
-      width: 180px;
-      height: 220px;
+    .lbm {
+      position: absolute;
+      border-radius: 6px;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,0,0,0.15);
       object-fit: cover;
-      border-radius: 10px;
-      scroll-snap-align: start;
+      background: #FFFFFF;
     }
-    .lb-gallery-dots {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
+    .lbm-1  { top: 24px;  left: 4%;   width: 42%; transform: rotate(-7deg); z-index: 3; }
+    .lbm-2  { top: 16px;  left: 40%;  width: 40%; transform: rotate(6deg);  z-index: 6; }
+    .lbm-3  { top: 69px;  left: 66%;  width: 38%; transform: rotate(-5deg); z-index: 8; }
+    .lbm-4  { top: 94px;  left: 2%;   width: 40%; transform: rotate(7deg);  z-index: 2; }
+    .lbm-5  { top: 119px; left: 36%;  width: 42%; transform: rotate(-6deg); z-index: 5; }
+    .lbm-6  { top: 154px; left: 64%;  width: 39%; transform: rotate(5deg);  z-index: 9; }
+    .lbm-7  { top: 179px; left: 0%;   width: 41%; transform: rotate(-4deg); z-index: 4; }
+    .lbm-8  { top: 202px; left: 34%;  width: 40%; transform: rotate(6deg);  z-index: 7; }
+    .lbm-9  { top: 239px; left: 63%;  width: 38%; transform: rotate(-6deg); z-index: 3; }
+    .lbm-10 { top: 264px; left: 12%;  width: 42%; transform: rotate(4deg);  z-index: 6; }
+
+    /* Mosaico: blocco un po' più largo su desktop, ma sempre compatto (le % dei tile sono relative al contenitore, si ridimensionano da sole) */
+    @media (min-width: 769px) {
+      .lb-mosaic-wall { max-width: 440px; height: 550px; }
     }
-    .lb-gallery-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #444444;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: background 0.25s ease;
-    }
-    .lb-gallery-dot.active { background: #F5C200; }
 
     /* ── S2: VIDEO ── */
     .lb-video {
@@ -1170,24 +1153,18 @@
   <section class="lb-gallery">
     <div class="wrap">
       <p class="lb-gallery-lead">Storie vere di donne che hanno ritrovato sé stesse attraverso la cura dei capelli.</p>
-      <div class="lb-gallery-caption-wrap">
-        <p class="lb-gallery-caption">Oltre 500 copie consegnate.</p>
-      </div>
     </div>
-    <div class="lb-gallery-carousel" id="lbGalleryCarousel">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_9770.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_0374.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_9775.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_1450.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_9767.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_2260.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_9771.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_6051.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_9764.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-      <img class="lb-gallery-photo" src="libro-rinascita/IMG_6280.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
-    </div>
-    <div class="wrap">
-      <div class="lb-gallery-dots" id="lbGalleryDots"></div>
+    <div class="lb-mosaic-wall">
+      <img class="lbm lbm-1"  src="libro-rinascita/IMG_9770.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-2"  src="libro-rinascita/IMG_0374.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-3"  src="libro-rinascita/IMG_9775.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-4"  src="libro-rinascita/IMG_1450.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-5"  src="libro-rinascita/IMG_9767.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-6"  src="libro-rinascita/IMG_2260.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-7"  src="libro-rinascita/IMG_9771.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-8"  src="libro-rinascita/IMG_6051.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-9"  src="libro-rinascita/IMG_9764.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
+      <img class="lbm lbm-10" src="libro-rinascita/IMG_6280.jpg" alt="Cliente con il libro Rinascita di Daniela Modina" loading="lazy">
     </div>
   </section>
 
@@ -1773,88 +1750,6 @@
           if (!wasOpen) item.classList.add('is-open');
         });
       });
-    })();
-
-    /* ── Galleria clienti: autoplay + pallini di progressione ── */
-    (function () {
-      var carousel = document.getElementById('lbGalleryCarousel');
-      var dotsWrap = document.getElementById('lbGalleryDots');
-      if (!carousel) return;
-
-      var photos = Array.prototype.slice.call(carousel.querySelectorAll('.lb-gallery-photo'));
-      var dots = [];
-
-      if (dotsWrap) {
-        photos.forEach(function (photo, i) {
-          var dot = document.createElement('button');
-          dot.type = 'button';
-          dot.className = 'lb-gallery-dot' + (i === 0 ? ' active' : '');
-          dot.setAttribute('aria-label', 'Vai alla foto ' + (i + 1));
-          dot.addEventListener('click', function () {
-            photo.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-            pauseThenResume();
-          });
-          dotsWrap.appendChild(dot);
-          dots.push(dot);
-        });
-      }
-
-      function setActiveDot(index) {
-        dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
-      }
-
-      var autoplayTimer = null;
-      var resumeTimer = null;
-
-      function getStep() {
-        var photo = photos[0];
-        var gap = parseFloat(getComputedStyle(carousel).gap) || 16;
-        return photo ? photo.offsetWidth + gap : 196;
-      }
-
-      function scrollNext() {
-        var maxScroll = carousel.scrollWidth - carousel.clientWidth;
-        if (carousel.scrollLeft >= maxScroll - 5) {
-          carousel.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          carousel.scrollBy({ left: getStep(), behavior: 'smooth' });
-        }
-      }
-
-      function startAutoplay() {
-        stopAutoplay();
-        autoplayTimer = setInterval(scrollNext, 2500);
-      }
-
-      function stopAutoplay() {
-        if (autoplayTimer) clearInterval(autoplayTimer);
-        autoplayTimer = null;
-      }
-
-      function pauseThenResume() {
-        stopAutoplay();
-        clearTimeout(resumeTimer);
-        resumeTimer = setTimeout(startAutoplay, 5000);
-      }
-
-      carousel.addEventListener('touchstart', pauseThenResume, { passive: true });
-      carousel.addEventListener('pointerdown', pauseThenResume);
-      carousel.addEventListener('wheel', pauseThenResume, { passive: true });
-
-      /* Sincronizza il pallino attivo con la foto più visibile nel viewport del carousel */
-      if (dots.length && 'IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
-              var index = photos.indexOf(entry.target);
-              if (index !== -1) setActiveDot(index);
-            }
-          });
-        }, { root: carousel, threshold: [0.6] });
-        photos.forEach(function (photo) { observer.observe(photo); });
-      }
-
-      startAutoplay();
     })();
   </script>
 
