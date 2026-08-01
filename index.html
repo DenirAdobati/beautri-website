@@ -2210,205 +2210,77 @@
       color: #FFFFFF;
       margin-top: 16px;
     }
-    /* ── Carousel ── */
-    .tcarousel-outer {
-      max-width: 840px;
-      margin: 48px auto 0;
-      overflow: hidden;
+    /* ── Carosello ventaglio (fan) di telefoni ── */
+    .tfan-outer {
       position: relative;
+      max-width: 900px;
+      margin: 48px auto 0;
+      padding: 0 12px;
+    }
+    .tfan-stage {
+      position: relative;
+      height: clamp(330px, 68vw, 545px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: pan-y;
       cursor: grab;
       user-select: none;
       -webkit-user-select: none;
     }
-    .tcarousel-outer.is-dragging { cursor: grabbing; }
-    .tcarousel-track {
-      display: flex;
-      gap: 24px;
-      align-items: stretch;
-      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: transform;
-    }
-    .tcarousel-track.no-transition { transition: none !important; }
-    .tcarousel-item {
-      flex-shrink: 0;
-      width: 600px;
-      height: 294px;
-      background: #FFFFFF;
-      border-radius: 24px;
-      padding: 28px 28px 24px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
-      opacity: 0.45;
-      transform: scale(0.95);
-      transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.45s ease;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .tcarousel-item::before {
-      content: '';
+    .tfan-stage.is-dragging { cursor: grabbing; }
+    .tfan-item {
       position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-      background-size: 24px 24px;
-      pointer-events: none;
-      border-radius: 24px;
-    }
-    .tcarousel-item > * { position: relative; z-index: 1; }
-    .tcarousel-item.active {
-      opacity: 1;
-      transform: scale(1);
-      box-shadow: 0 8px 48px rgba(245,194,0,0.2), 0 2px 16px rgba(0,0,0,0.12);
-    }
-    .tc-stars {
-      color: #F5C200;
-      font-size: 18px;
-      letter-spacing: 3px;
-    }
-    .tc-text {
-      color: #1A1A1A;
-      font-size: 15px;
-      line-height: 1.75;
-      margin-top: 16px;
-      position: relative;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 5;
-      line-clamp: 5;
-    }
-    .tc-readmore {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to left, #FFFFFF 60%, rgba(255,255,255,0));
-      padding: 0 0 0 28px;
+      top: 50%;
+      left: 50%;
+      width: clamp(155px, 35vw, 260px);
+      aspect-ratio: 900 / 1950;
+      background: transparent;
       border: none;
-      color: #1A1A1A;
-      font-weight: 700;
-      font-size: 15px;
-      line-height: 1.75;
+      padding: 0;
+      margin: 0;
       cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+      will-change: transform, opacity;
     }
-    .tc-readmore:hover { text-decoration: underline; }
-    .tc-footer {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: auto;
-      padding-top: 20px;
-      border-top: 1px solid rgba(0,0,0,0.08);
-      flex-shrink: 0;
+    .tfan-item.is-center { cursor: default; }
+    .tfan-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,0.5));
     }
-    .tc-footer > div:not(.tc-ava) { min-width: 0; }
-    .tc-ava {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 17px;
-      color: #FFFFFF;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .tc-name {
-      color: #0A0A0A;
-      font-size: 15px;
-      font-weight: 800;
-      line-height: 1.3;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .tc-meta {
-      color: #888888;
-      font-size: 12px;
-      margin-top: 2px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .tcarousel-dots {
+    .tfan-dots {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 8px;
-      margin-top: 32px;
+      margin-top: 28px;
     }
-    .tcarousel-dot {
+    .tfan-dot {
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.35);
       border: none;
       cursor: pointer;
       transition: width 0.3s ease, background 0.3s ease;
       padding: 0;
       flex-shrink: 0;
     }
-    .tcarousel-dot.active {
+    .tfan-dot.active {
       width: 24px;
-      background: #F5C200;
+      background: #FFFFFF;
     }
     @media (max-width: 768px) {
       .sec-tscroll { padding: 48px 0; }
       .tscroll-head { padding: 0 20px; }
-      .tcarousel-outer { max-width: 100%; margin-top: 36px; }
-      .tcarousel-item { width: calc(100vw - 88px); height: 396px; padding: 20px 18px; }
-      .tc-text { font-size: 14px; -webkit-line-clamp: 10; line-clamp: 10; }
-      .tc-readmore { font-size: 14px; }
-      .tcarousel-dots { margin-top: 24px; }
-    }
-    /* ── Modale recensione completa ── */
-    .tc-modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .tc-modal-overlay.is-open { display: flex; }
-    .tc-modal-card {
-      position: relative;
-      background: #FFFFFF;
-      border-radius: 24px;
-      max-width: 600px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 36px 32px 28px;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
-    }
-    .tc-modal-close {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      font-size: 26px;
-      line-height: 1;
-      background: transparent;
-      border: none;
-      color: #888888;
-      cursor: pointer;
-      padding: 6px 10px;
-    }
-    .tc-modal-close:hover { color: #1A1A1A; }
-    .tc-modal-text {
-      color: #1A1A1A;
-      font-size: 15px;
-      line-height: 1.75;
-      margin-top: 16px;
-      white-space: pre-wrap;
-    }
-    @media (max-width: 768px) {
-      .tc-modal-card { padding: 32px 22px 24px; }
+      .tfan-outer { max-width: 100%; margin-top: 36px; padding: 0 8px; }
+      .tfan-stage { height: clamp(272px, 92vw, 400px); }
+      .tfan-item { width: clamp(128px, 50vw, 200px); }
+      .tfan-dots { margin-top: 20px; }
     }
   </style>
 
@@ -2427,239 +2299,25 @@
       </div>
     </div>
 
-    <div class="tcarousel-outer" id="tcarouselOuter">
-      <div class="tcarousel-track" id="tcarouselTrack">
-
-        <!-- 1. Michela Brioni -->
-        <div class="tcarousel-item active">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Mi sono rivolta a Beautri per prevenire la caduta dei capelli post gravidanza e ho ottenuto risultati davvero ottimi... e da allora non ho più cambiato salone! Daniela e il suo staff sono professionali, preparate e sempre attente alle esigenze del cliente. Gentilezza e cortesia qui sono una certezza. Ogni trattamento è una coccola che fa la differenza. Consigliatissimo."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#27AE60;">M</div>
-            <div>
-              <div class="tc-name">Michela Brioni</div>
-              <div class="tc-meta">3 recensioni · 4 giorni fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Francesco Trapattoni -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Era da tempo che cercavo di risolvere dei fastidi alla cute, e fortunatamente, proprio vicino a casa ho incontrato Daniela e il suo staff; è stata ed è un'esperienza che mi lascia estremamente soddisfatto, sotto tutti gli aspetti. Oltre ad una splendida accoglienza, c'è anche molta cura a attenzione per la persona. Oltretutto, ho risolto il mio problema alla cute🙂"</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#E74C3C;">F</div>
-            <div>
-              <div class="tc-name">Francesco Trapattoni</div>
-              <div class="tc-meta">3 recensioni · 1 foto · 2 settimane fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Sergio Rana -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Posto meraviglioso, ampio e accogliente. Il personale, oltre a essere preparato e professionale, è anche caloroso e ospitale. I trattamenti sono stati soddisfacenti e sono certo che sarà così anche per le prossime sedute. L'attenzione e la presa in carico del cliente sul posto e a casa, vengono curate in ogni minimo dettaglio...provare per credere."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#4A90D9;">S</div>
-            <div>
-              <div class="tc-name">Sergio Rana</div>
-              <div class="tc-meta">2 recensioni · una settimana fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. Emanuele Belloli -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Seguito scrupolosamente dalla prima all'ultima seduta facendomi sentire sempre a mio agio grazie a tutte le ragazze dello staff di Daniela. Preparate e molto attente hanno svolto tutti i miei servizi nei migliori dei modi e i miei capelli ringraziano"</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#FF6B9D;">E</div>
-            <div>
-              <div class="tc-name">Emanuele Belloli</div>
-              <div class="tc-meta">5 recensioni · una settimana fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Giorgia Mandelli -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Un ambiente dove ci si sente davvero a casa! Ho scoperto Beautrì sui social e, colpita dalla professionalità che trapariva dai loro racconti, ho deciso di prenotare una consulenza con Daniela. È stata una scoperta meravigliosa: soffro di psoriasi e, pur essendo solo alla seconda seduta, noto già grandissimi miglioramenti. Inoltre, sono riuscite a realizzarmi il colore che desideravo da tempo, nonostante io sia allergica alle tinte tradizionali. Ogni appuntamento è una vera coccola... chi vi lascia più!"</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#FF6B9D;">G</div>
-            <div>
-              <div class="tc-name">Giorgia Mandelli</div>
-              <div class="tc-meta">Local Guide · 31 recensioni · 19 ore fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Chiara Alini -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Da ormai due anni affido con serenità la salute dei miei capelli a Beautrì, e ogni volta ritrovo la stessa cura autentica che mi ha conquistata fin dal primo giorno. Oltre alla professionalità, ciò che le distingue davvero è l'umanità: ti accolgono con un sorriso sincero, ti ascoltano con attenzione e si assicurano sempre di aver compreso a fondo le tue esigenze prima di intervenire..."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#4A90D9;">C</div>
-            <div>
-              <div class="tc-name">Chiara Alini</div>
-              <div class="tc-meta">3 recensioni · un giorno fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7. Sonia Florio -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Ho conosciuto Beautrì per caso, da un post apparso all'improvviso. Ascoltando il video, tutto sembrava rispecchiare il mio stato d'animo riguardo a questo: è vero, chi prova un disagio non viene ascoltato nel profondo. Dopo la consulenza con Daniela mi sono sentita capita e mi sono affidata alle loro cure e coccole..."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#FF6B9D;">S</div>
-            <div>
-              <div class="tc-name">Sonia Florio</div>
-              <div class="tc-meta">1 recensione · 4 giorni fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 8. Vera Popović -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Se volete entrare in un posto dove oltre ai soliti trattamenti volete essere accolti umanamente e scoprire risposte che non vi sapevate dare, allora non lascerete mai più Beautrì! Con gentilezza e grande cura vi faranno entrare nel mondo di vero benessere dei capelli."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#4A90D9;">V</div>
-            <div>
-              <div class="tc-name">Vera Popović</div>
-              <div class="tc-meta">1 mese fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 9. Giulia Aceti -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Avevo problematiche alla cute, Daniela grazie alla sua consulenza approfondita è riuscita ad aiutarmi e risolvere il mio problema. Le ragazze davvero d'oro. Ad ogni trattamento ti spiegano cosa si va a fare e come agisce sulla cute."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#F5C200;">G</div>
-            <div>
-              <div class="tc-name">Giulia Aceti</div>
-              <div class="tc-meta">1 mese fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 10. Elena Carne -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"È da diversi anni che frequento questo salone. Ho sempre trovato professionalità, gentilezza, allegria e quel briciolo di pazzia che ti strappa un sorriso. Il team è sempre aggiornato e promuove diverse novità non solo per i capelli ma per il benessere psicologico."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#27AE60;">E</div>
-            <div>
-              <div class="tc-name">elena carne</div>
-              <div class="tc-meta">1 mese fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 11. Melania Mosso -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Ho avuto il piacere di conoscere Daniela sottoponendomi ad una visita tricologica che mi ha permesso di capire lo stato di salute della mia cute. Ho deciso di intraprendere un percorso ad hoc, e mi sto trovando benissimo. Team fantastico."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#E74C3C;">M</div>
-            <div>
-              <div class="tc-name">Melania Mosso</div>
-              <div class="tc-meta">1 mese fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 12. Simona Limonta -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Mi piace molto il fatto che mi spieghiate ogni fase e ogni passaggio in modo minuzioso. Venire da voi mi fa sentire al sicuro perché so che sono in buone mani. La professionalità sia nelle consulenze che nei trattamenti è davvero il top!"</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#4A90D9;">S</div>
-            <div>
-              <div class="tc-name">Simona Limonta</div>
-              <div class="tc-meta">1 mese fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 13. Matteo Zumelli -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Ho conosciuto Beautrì tramite una consulenza tricologica e a oggi a distanza di due anni mi recò mensilmente per mantenere i miei risultati. Lo consiglio per la loro accoglienza e professionalità."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#27AE60;">M</div>
-            <div>
-              <div class="tc-name">Matteo Zumelli</div>
-              <div class="tc-meta">1 mese fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 14. Engl -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★☆</div>
-          <p class="tc-text">"Ottimo centro. Sempre gentili e attente. Precise, spiegano tutto per filo e per segno. Tantissimi consigli. Nonostante abbia iniziato da poco i trattamenti post consulenza vedo già dei miglioramenti a livello di pulizia e gestione del cuoio capelluto. Ottimi prodotti e soprattutto funzionali! La consulenza di Daniela è stata accurata valutando ogni aspetto per trovare la via migliore alla risoluzione della mia problematica! Lo consiglio altamente."</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#F5C200;">E</div>
-            <div>
-              <div class="tc-name">Engl</div>
-              <div class="tc-meta">1 recensione · 5 giorni fa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 15. Silvana Carrara -->
-        <div class="tcarousel-item">
-          <div class="tc-stars">★★★★★</div>
-          <p class="tc-text">"Mi sono rivolta a questo centro perché cercavo qualcuno che potesse prendersi cura seriamente dei miei capelli. Da allora sono passati più di cinque anni ed i miei capelli sono rinati. Grazie di ❤️"</p>
-          <div class="tc-footer">
-            <div class="tc-ava" style="background:#FF6B9D;">S</div>
-            <div>
-              <div class="tc-name">Silvana Carrara</div>
-              <div class="tc-meta">1 mese fa</div>
-            </div>
-          </div>
-        </div>
-
+    <div class="tfan-outer" id="tfanOuter">
+      <div class="tfan-stage" id="tfanStage">
+        <button type="button" class="tfan-item" data-index="0"><img src="assets/whatsapp/whatsapp-review-01.png" alt="Recensione cliente Beautrì via WhatsApp" loading="lazy" draggable="false"></button>
+        <button type="button" class="tfan-item" data-index="1"><img src="assets/whatsapp/whatsapp-review-02.png" alt="Recensione cliente Beautrì via WhatsApp" loading="lazy" draggable="false"></button>
+        <button type="button" class="tfan-item" data-index="2"><img src="assets/whatsapp/whatsapp-review-03.png" alt="Recensione cliente Beautrì via WhatsApp" loading="lazy" draggable="false"></button>
+        <button type="button" class="tfan-item" data-index="3"><img src="assets/whatsapp/whatsapp-review-04.png" alt="Recensione cliente Beautrì via WhatsApp" loading="lazy" draggable="false"></button>
+        <button type="button" class="tfan-item" data-index="4"><img src="assets/whatsapp/whatsapp-review-05.png" alt="Recensione cliente Beautrì via WhatsApp" loading="lazy" draggable="false"></button>
+        <button type="button" class="tfan-item" data-index="5"><img src="assets/whatsapp/whatsapp-review-06.png" alt="Recensione cliente Beautrì via WhatsApp" loading="lazy" draggable="false"></button>
+        <button type="button" class="tfan-item" data-index="6"><img src="assets/whatsapp/whatsapp-review-07.png" alt="Recensione cliente Beautrì via WhatsApp" loading="lazy" draggable="false"></button>
       </div>
 
-      <div class="tcarousel-dots" id="tcarouselDots">
-        <button class="tcarousel-dot active" aria-label="Recensione 1"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 2"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 3"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 4"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 5"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 6"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 7"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 8"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 9"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 10"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 11"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 12"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 13"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 14"></button>
-        <button class="tcarousel-dot" aria-label="Recensione 15"></button>
-      </div>
-
-    </div>
-
-    <!-- Modale recensione completa -->
-    <div class="tc-modal-overlay" id="tcModalOverlay">
-      <div class="tc-modal-card">
-        <button class="tc-modal-close" id="tcModalClose" aria-label="Chiudi">×</button>
-        <div class="tc-stars" id="tcModalStars"></div>
-        <p class="tc-modal-text" id="tcModalText"></p>
-        <div class="tc-footer">
-          <div class="tc-ava" id="tcModalAva"></div>
-          <div>
-            <div class="tc-name" id="tcModalName"></div>
-            <div class="tc-meta" id="tcModalMeta"></div>
-          </div>
-        </div>
+      <div class="tfan-dots" id="tfanDots">
+        <button class="tfan-dot active" aria-label="Recensione 1"></button>
+        <button class="tfan-dot" aria-label="Recensione 2"></button>
+        <button class="tfan-dot" aria-label="Recensione 3"></button>
+        <button class="tfan-dot" aria-label="Recensione 4"></button>
+        <button class="tfan-dot" aria-label="Recensione 5"></button>
+        <button class="tfan-dot" aria-label="Recensione 6"></button>
+        <button class="tfan-dot" aria-label="Recensione 7"></button>
       </div>
     </div>
   </section>
@@ -3417,176 +3075,93 @@
       setInterval(function () { goTo(current + 1); }, 3000);
     })();
 
-    /* ── Testimonianze Carousel (loop con cloni) ── */
+    /* ── Testimonianze: carosello a ventaglio di telefoni ── */
     (function () {
-      var outer  = document.getElementById('tcarouselOuter');
-      var track  = document.getElementById('tcarouselTrack');
-      var dotsEl = document.querySelectorAll('#tcarouselDots .tcarousel-dot');
-      if (!outer || !track) return;
+      var stage = document.getElementById('tfanStage');
+      var outer = document.getElementById('tfanOuter');
+      if (!stage || !outer) return;
 
-      var GAP       = 24;
-      var TRANS_MS  = 450;
-      var jumping   = false;
+      var items    = Array.from(stage.querySelectorAll('.tfan-item'));
+      var dots     = Array.from(document.querySelectorAll('#tfanDots .tfan-dot'));
+      var N        = items.length;
+      var current  = 0;
 
-      /* ── Inietta cloni alle estremità ── */
-      var realItems = Array.from(track.querySelectorAll('.tcarousel-item'));
-      var TOTAL     = realItems.length;                        /* 15 */
-
-      var cloneLast  = realItems[TOTAL - 1].cloneNode(true);  /* Silvana */
-      var cloneFirst = realItems[0].cloneNode(true);           /* Michela */
-      cloneLast.classList.remove('active');
-      cloneFirst.classList.remove('active');
-      track.insertBefore(cloneLast, realItems[0]);             /* posizione 0 */
-      track.appendChild(cloneFirst);                           /* posizione TOTAL+1 */
-
-      /* Array completo: [cloneLast, r0..r9, cloneFirst]  (12 elem) */
-      var allItems = Array.from(track.querySelectorAll('.tcarousel-item'));
-
-      var visIdx = 1; /* punta a r0 (Giorgia) */
-
-      /* ── Calcola realIdx dal visIdx ── */
-      function realOf(vi) {
-        if (vi === 0)           return TOTAL - 1;
-        if (vi === TOTAL + 1)   return 0;
-        return vi - 1;
+      function shortestOffset(i, cur) {
+        var raw = i - cur;
+        if (raw > N / 2)  raw -= N;
+        if (raw < -N / 2) raw += N;
+        return raw;
       }
 
-      /* ── Sposta il track ── */
-      function translate(vi, animated) {
-        var m  = { outerW: outer.offsetWidth, cardW: allItems[0].offsetWidth };
-        var tx = (m.outerW - m.cardW) / 2 - vi * (m.cardW + GAP);
-        if (!animated) {
-          track.classList.add('no-transition');
-          track.style.transform = 'translateX(' + tx + 'px)';
-          track.offsetHeight;                                  /* force reflow */
-          track.classList.remove('no-transition');
-        } else {
-          track.style.transform = 'translateX(' + tx + 'px)';
-        }
+      function render() {
+        var phoneW = items[0].offsetWidth;
+        var stepX  = phoneW * 0.58;
+        items.forEach(function (item, i) {
+          var d    = shortestOffset(i, current);
+          var abs  = Math.abs(d);
+          var x    = d * stepX;
+          var y    = Math.pow(abs, 1.3) * 6;
+          var rot  = d * 10;
+          var scale   = Math.max(1 - abs * 0.16, 0.4);
+          var opacity = abs > 3 ? 0 : (abs === 0 ? 1 : 1 - abs * 0.12);
+          item.style.zIndex    = 10 - abs;
+          item.style.opacity   = opacity;
+          item.style.transform = 'translate(-50%, -50%) translateX(' + x + 'px) translateY(' + y + 'px) rotate(' + rot + 'deg) scale(' + scale + ')';
+          item.classList.toggle('is-center', d === 0);
+        });
+        dots.forEach(function (dot, i) { dot.classList.toggle('active', i === current); });
       }
 
-      /* ── Aggiorna classi active ── */
-      function updateActive(vi) {
-        var ri = realOf(vi);
-        allItems.forEach(function (el, i) { el.classList.toggle('active', i === vi); });
-        dotsEl.forEach(function (d, i)    { d.classList.toggle('active', i === ri); });
+      function goTo(idx) {
+        current = ((idx % N) + N) % N;
+        render();
       }
 
-      /* ── Naviga a indice visivo ── */
-      function goToVis(vi, animated) {
-        if (jumping) return;
-        if (animated === undefined) animated = true;
-        visIdx = vi;
-        translate(vi, animated);
-        updateActive(vi);
-
-        /* Se è un clone, salto silenzioso alla card reale dopo la transizione */
-        if (animated && (vi === 0 || vi === TOTAL + 1)) {
-          jumping = true;
-          setTimeout(function () {
-            var target = (vi === 0) ? TOTAL : 1;
-            visIdx = target;
-            translate(target, false);
-            updateActive(target);
-            jumping = false;
-          }, TRANS_MS);
-        }
-      }
-
-      /* ── Naviga a indice reale (usato dai dots) ── */
-      function goToReal(ri) { goToVis(ri + 1, true); }
-
-      /* Dots */
-      dotsEl.forEach(function (d, i) {
-        d.addEventListener('click', function () { goToReal(i); });
+      items.forEach(function (item, i) {
+        item.addEventListener('click', function () { goTo(i); });
+      });
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { goTo(i); });
       });
 
       /* Touch swipe */
       var tsX = 0;
-      outer.addEventListener('touchstart', function (e) {
+      stage.addEventListener('touchstart', function (e) {
         tsX = e.touches[0].clientX;
       }, { passive: true });
-      outer.addEventListener('touchend', function (e) {
+      stage.addEventListener('touchend', function (e) {
         var dx = tsX - e.changedTouches[0].clientX;
-        if (Math.abs(dx) > 50) goToVis(visIdx + (dx > 0 ? 1 : -1));
+        if (Math.abs(dx) > 40) goTo(current + (dx > 0 ? 1 : -1));
       }, { passive: true });
 
       /* Mouse drag */
       var mdX = 0, dragging = false;
-      outer.addEventListener('mousedown', function (e) {
-        if (jumping) return;
+      stage.addEventListener('mousedown', function (e) {
         mdX = e.clientX;
         dragging = true;
-        outer.classList.add('is-dragging');
+        stage.classList.add('is-dragging');
+        e.preventDefault();
+      });
+      document.addEventListener('mousemove', function (e) {
+        if (!dragging) return;
+        e.preventDefault();
       });
       document.addEventListener('mouseup', function (e) {
         if (!dragging) return;
         dragging = false;
-        outer.classList.remove('is-dragging');
+        stage.classList.remove('is-dragging');
         var dx = mdX - e.clientX;
-        goToVis(Math.abs(dx) > 50 ? visIdx + (dx > 0 ? 1 : -1) : visIdx);
+        if (Math.abs(dx) > 40) goTo(current + (dx > 0 ? 1 : -1));
       });
 
       /* Resize */
       var rtimer;
       window.addEventListener('resize', function () {
         clearTimeout(rtimer);
-        rtimer = setTimeout(function () { translate(visIdx, false); }, 100);
+        rtimer = setTimeout(render, 100);
       });
 
-      /* Init senza flicker */
-      goToVis(1, false);
-
-      /* ── Leggi tutto: rileva testo troncato e apre la recensione completa in modale ── */
-      var modalOverlay = document.getElementById('tcModalOverlay');
-      if (modalOverlay) {
-        var modalClose = document.getElementById('tcModalClose');
-        var modalStars = document.getElementById('tcModalStars');
-        var modalText  = document.getElementById('tcModalText');
-        var modalAva   = document.getElementById('tcModalAva');
-        var modalName  = document.getElementById('tcModalName');
-        var modalMeta  = document.getElementById('tcModalMeta');
-
-        var openReviewModal = function (item) {
-          var avaEl = item.querySelector('.tc-ava');
-          modalStars.textContent = item.querySelector('.tc-stars').textContent;
-          modalText.textContent  = item.dataset.fullReview || item.querySelector('.tc-text').textContent;
-          modalAva.textContent   = avaEl.textContent;
-          modalAva.style.background = avaEl.style.background;
-          modalName.textContent  = item.querySelector('.tc-name').textContent;
-          modalMeta.textContent  = item.querySelector('.tc-meta').textContent;
-          modalOverlay.classList.add('is-open');
-          document.body.style.overflow = 'hidden';
-        };
-        var closeReviewModal = function () {
-          modalOverlay.classList.remove('is-open');
-          document.body.style.overflow = '';
-        };
-
-        modalClose.addEventListener('click', closeReviewModal);
-        modalOverlay.addEventListener('click', function (e) {
-          if (e.target === modalOverlay) closeReviewModal();
-        });
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') closeReviewModal();
-        });
-
-        realItems.forEach(function (item) {
-          var textEl = item.querySelector('.tc-text');
-          if (textEl.scrollHeight - textEl.clientHeight > 1) {
-            item.dataset.fullReview = textEl.textContent;
-            var btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'tc-readmore';
-            btn.textContent = 'Continua a leggere';
-            textEl.appendChild(btn);
-            btn.addEventListener('click', function (e) {
-              e.stopPropagation();
-              openReviewModal(item);
-            });
-          }
-        });
-      }
+      render();
     })();
 
     /* ── FAQ accordion ── */
