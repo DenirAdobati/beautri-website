@@ -2831,16 +2831,12 @@
     .tmarquee-outer {
       max-width: 100%;
       margin: 48px auto 0;
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      overflow: hidden;
+      touch-action: pan-y;
       cursor: grab;
       user-select: none;
       -webkit-user-select: none;
     }
-    .tmarquee-outer::-webkit-scrollbar { display: none; }
     .tmarquee-outer.is-dragging { cursor: grabbing; }
     .tmarquee-track {
       display: flex;
@@ -2848,6 +2844,7 @@
       align-items: stretch;
       width: max-content;
       padding: 24px 40px;
+      will-change: transform;
     }
     .tmarquee-item {
       flex-shrink: 0;
@@ -3782,16 +3779,35 @@
       var track = document.getElementById('tmarqueeTrack');
       if (!outer || !track) return;
 
+      /* Animazione via transform: translateX, non tramite scrollLeft nativo:
+         su iOS Safari, -webkit-overflow-scrolling/scrollLeft pilotato da JS
+         viene ignorato o è inaffidabile durante il momentum scroll, quindi
+         l'auto-scroll non partiva su mobile. transform funziona ovunque. */
       var SPEED    = 0.6; /* px per frame */
       var paused   = false;
       var touching = false;
+      var offset   = 0;
+      var half     = 0;
+
+      function measure() {
+        half = track.scrollWidth / 2;
+      }
+
+      function wrap() {
+        if (half <= 0) return;
+        offset = ((offset % half) + half) % half;
+      }
+
+      function render() {
+        track.style.transform = 'translateX(-' + offset + 'px)';
+      }
 
       function step() {
-        if (!touching) {
-          if (!paused) outer.scrollLeft += SPEED;
-          var half = track.scrollWidth / 2;
-          if (outer.scrollLeft >= half)      outer.scrollLeft -= half;
-          else if (outer.scrollLeft < 0)     outer.scrollLeft += half;
+        measure();
+        if (!touching && !paused) {
+          offset += SPEED;
+          wrap();
+          render();
         }
         requestAnimationFrame(step);
       }
@@ -3801,10 +3817,21 @@
       outer.addEventListener('mouseenter', function () { paused = true; });
       outer.addEventListener('mouseleave', function () { paused = false; });
 
-      /* Su mobile lo scorrimento resta attivo, ma non ostacola lo swipe manuale */
-      outer.addEventListener('touchstart', function () {
+      /* Swipe manuale su mobile: mette in pausa l'auto-scroll durante il touch
+         e lo riprende al rilascio, senza bloccare lo scroll verticale della pagina */
+      var touchStartX = 0, touchStartOffset = 0;
+      outer.addEventListener('touchstart', function (e) {
         touching = true;
+        touchStartX = e.touches[0].clientX;
+        touchStartOffset = offset;
         outer.classList.add('is-dragging');
+      }, { passive: true });
+      outer.addEventListener('touchmove', function (e) {
+        if (!touching) return;
+        var dx = touchStartX - e.touches[0].clientX;
+        offset = touchStartOffset + dx;
+        wrap();
+        render();
       }, { passive: true });
       outer.addEventListener('touchend', function () {
         touching = false;
@@ -3816,18 +3843,20 @@
       }, { passive: true });
 
       /* Drag con mouse su desktop */
-      var dragging = false, dragStartX = 0, dragStartScroll = 0;
+      var dragging = false, dragStartX = 0, dragStartOffset = 0;
       outer.addEventListener('mousedown', function (e) {
         dragging = true;
         touching = true;
         dragStartX = e.clientX;
-        dragStartScroll = outer.scrollLeft;
+        dragStartOffset = offset;
         outer.classList.add('is-dragging');
         e.preventDefault();
       });
       document.addEventListener('mousemove', function (e) {
         if (!dragging) return;
-        outer.scrollLeft = dragStartScroll - (e.clientX - dragStartX);
+        offset = dragStartOffset + (dragStartX - e.clientX);
+        wrap();
+        render();
       });
       document.addEventListener('mouseup', function () {
         if (!dragging) return;
